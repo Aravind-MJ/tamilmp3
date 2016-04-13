@@ -52,6 +52,10 @@ $filename = basename($url);
         <![endif]-->
         <script src="plugins/filestyle/bootstrap-filestyle.js" type="text/javascript"></script>
         <script src="plugins/filestyle/bootstrap-filestyle.min.js" type="text/javascript"></script>
+        <!-- FORM VALIDATOR -->
+        <link href="plugins/formValidator/formValidation.min.css" rel="stylesheet" type="text/css"/>
+        <script src="plugins/formValidator/formValidation.min.js" type="text/javascript"></script>
+        <script src="plugins/formValidator/framework/bootstrap.js" type="text/javascript"></script>
     </head>
     <!--
     BODY TAG OPTIONS:
@@ -73,7 +77,7 @@ $filename = basename($url);
     |               | sidebar-mini                            |
     |---------------------------------------------------------|
     -->
-    <body class="skin-blue fixed">
+    <body class="skin-blue sidebar-mini">
         <div class="wrapper">
 
             <!-- Main Header -->
