@@ -43,6 +43,14 @@ include 'db.php';
 
     <!-- Main content -->
     <section class="content">
+
+        <div class="alert alert-info alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h2><i class="icon fa fa-info"></i> Note!</h2>
+            <h4>This single page powers the addition of all data to the database without going to other pages. <br><br>
+                If you don't see a suggestion don't worry, just add it manually and it will be added to the database automatically. <br><br>
+                Quite useful isn't it?!</h4>
+        </div>
         <div class="box box-primary">
             <div class="box-header">
                 <div class="box-title">Add Song</div>
@@ -298,8 +306,8 @@ include 'db.php';
                         },
                         function (response) {
                             data = JSON.parse(response);
-                            $('#director').select2({data: data[0], tags: true}).trigger("change");
-                            $('#starring').select2({data: data[1], tags: true}).trigger("change");
+                            $('#director').val(null).select2({data: data[0], tags: true}).trigger("change");
+                            $('#starring').val(null).select2({data: data[1], tags: true}).trigger("change");
                             $('#year').val(null).trigger("change");
 
                         }

@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <?php
 $url = $_SERVER['SCRIPT_FILENAME'];
 $filename = basename($url);
@@ -20,10 +16,6 @@ $filename = basename($url);
         <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
         <!-- Theme style -->
         <link href="dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
-        <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
-              page. However, you can choose any other skin. Make sure you
-              apply the skin class to the body tag so the changes take effect.
-        -->
         <link href="dist/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css" />
 
         <!-- jQuery 2.1.4 -->
@@ -38,18 +30,7 @@ $filename = basename($url);
         <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
         <!-- AdminLTE App -->
         <script src="dist/js/app.min.js" type="text/javascript"></script>
-
-        <!-- Optionally, you can add Slimscroll and FastClick plugins.
-              Both of these plugins are recommended to enhance the
-              user experience. Slimscroll is required when using the
-              fixed layout. -->
-
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
+        
         <script src="plugins/filestyle/bootstrap-filestyle.js" type="text/javascript"></script>
         <script src="plugins/filestyle/bootstrap-filestyle.min.js" type="text/javascript"></script>
         <!-- FORM VALIDATOR -->
@@ -57,26 +38,7 @@ $filename = basename($url);
         <script src="plugins/formValidator/formValidation.min.js" type="text/javascript"></script>
         <script src="plugins/formValidator/framework/bootstrap.js" type="text/javascript"></script>
     </head>
-    <!--
-    BODY TAG OPTIONS:
-    =================
-    Apply one or more of the following classes to get the
-    desired effect
-    |---------------------------------------------------------|
-    | SKINS         | skin-blue                               |
-    |               | skin-black                              |
-    |               | skin-purple                             |
-    |               | skin-yellow                             |
-    |               | skin-red                                |
-    |               | skin-green                              |
-    |---------------------------------------------------------|
-    |LAYOUT OPTIONS | fixed                                   |
-    |               | layout-boxed                            |
-    |               | layout-top-nav                          |
-    |               | sidebar-collapse                        |
-    |               | sidebar-mini                            |
-    |---------------------------------------------------------|
-    -->
+    
     <body class="skin-blue sidebar-mini">
         <div class="wrapper">
 
@@ -86,9 +48,9 @@ $filename = basename($url);
                 <!-- Logo -->
                 <a href="index2.html" class="logo">
                     <!-- mini logo for sidebar mini 50x50 pixels -->
-                    <span class="logo-mini"><b>A</b>LT</span>
+                    <span class="logo-mini"><b>A</b>D</span>
                     <!-- logo for regular state and mobile devices -->
-                    <span class="logo-lg"><b>Admin</b>LTE</span>
+                    <span class="logo-lg"><b>Admin</b> DashBoard</span>
                 </a>
 
                 <!-- Header Navbar -->
@@ -98,10 +60,10 @@ $filename = basename($url);
                         <span class="sr-only">Toggle navigation</span>
                     </a>
                     <!-- Navbar Right Menu -->
-                    <div class="navbar-custom-menu">
-                        <ul class="nav navbar-nav">
+                    <div class="navbar-custom-menu text-center">
+                        <ul class="nav navbar-nav" >
                             <!-- User Account Menu -->
-                            <li class="dropdown user user-menu">
+                            <li class="dropdown user user-menu" style="width:150px;">
                                 <!-- Menu Toggle Button -->
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <!-- The user image in the navbar-->
@@ -116,18 +78,6 @@ $filename = basename($url);
                                             Admin
                                         </p>
                                     </li>
-                                    <!-- Menu Body -->
-                                    <li class="user-body">
-                                        <div class="col-xs-4 text-center">
-                                            <a href="#">Followers</a>
-                                        </div>
-                                        <div class="col-xs-4 text-center">
-                                            <a href="#">Sales</a>
-                                        </div>
-                                        <div class="col-xs-4 text-center">
-                                            <a href="#">Friends</a>
-                                        </div>
-                                    </li>
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
@@ -138,10 +88,6 @@ $filename = basename($url);
                                         </div>
                                     </li>
                                 </ul>
-                            </li>
-                            <!-- Control Sidebar Toggle Button -->
-                            <li>
-                                <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
                             </li>
                         </ul>
                     </div>
