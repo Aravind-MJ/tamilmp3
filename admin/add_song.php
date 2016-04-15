@@ -48,7 +48,28 @@ include 'db.php';
                 <div class="box-title">Add Song</div>
             </div>
             <div class="box-body"> 
-                <form id="defaultForm" role="form" action="add_song_process.php" method="get" enctype="multipart/form-data">
+                <?php
+                if ($_GET) {
+                    if ($_GET['status'] == 0) {
+                        ?>
+                        <div class="alert alert-success alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            <h4><i class="icon fa fa-info"></i> Success!</h4>
+                            All Data successfully Added
+                        </div>
+                        <?php
+                    } else {
+                        ?>
+                        <div class="alert alert-danger alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            <h4><i class="icon fa fa-info"></i> Failed!</h4>
+                            <?php echo $_GET['status']; ?>
+                        </div>
+                        <?php
+                    }
+                }
+                ?>
+                <form id="defaultForm" role="form" action="add_song_process.php" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="song_file" class="control-label">SELECT SONG FILE</label>
                         <input type="file" name="song_file" id="song_file" class="form-control filestyle" accept="audio/*"/>
@@ -79,13 +100,13 @@ include 'db.php';
 
                     <div class="form-group">
                         <label for="director" class="control-label">DIRECTOR</label>
-                        <select class="form-control select2" id="director" name="director" multiple >
+                        <select class="form-control select2" id="director" name="director[]" multiple >
 
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="starring" class="control-label">STARRING</label>
-                        <select class="form-control select2" id="starring" name="starring" multiple >
+                        <select class="form-control select2" id="starring" name="starring[]" multiple >
 
                         </select>
                     </div>
@@ -99,7 +120,7 @@ include 'db.php';
                         $query = sprintf("SELECT id,name FROM singers");
                         $result = mysqli_query($link, $query) or die(mysqli_error($link));
                         ?>
-                        <select class="form-control select2" id="singers" name="singers" multiple>
+                        <select class="form-control select2" id="singers" name="singers[]" multiple>
                             <option value="" ></option>
                             <?php
                             while ($row = mysqli_fetch_assoc($result)) {
@@ -116,7 +137,7 @@ include 'db.php';
                         $query = sprintf("SELECT id,name FROM music_directors");
                         $result = mysqli_query($link, $query) or die(mysqli_error($link));
                         ?>
-                        <select class="form-control" id="music_directors" name="music_directors" multiple>
+                        <select class="form-control" id="music_directors" name="music_directors[]" multiple>
                             <option value="" ></option>
                             <?php
                             while ($row = mysqli_fetch_assoc($result)) {
@@ -128,7 +149,7 @@ include 'db.php';
                         </select>
                     </div>
                     <div class="form-group">
-                        <input type="submit" id="submit" name="submit" class="btn btn-primary" value="ADD SONG"/>
+                        <input type="submit" id="submitButton" name="submitButton" class="btn btn-primary" value="ADD SONG"/>
                     </div>
                 </form>
             </div>
@@ -189,7 +210,7 @@ include 'db.php';
                     message: 'Select Director',
                     validators: {
                         notEmpty: {
-                            message: 'Please Select Director'
+                            message: 'Please Enter Director'
                         }
                     }
                 },
@@ -246,13 +267,14 @@ include 'db.php';
         $('#music_directors').select2({placeholder: "Select Music Director", tags: true, tokenSeparators: [',']});
         $('#director').select2();
         $('#starring').select2();
+
         $('#movie_name').change(function () {
             $('.movie_message').hide();
             $('#director').prop('disabled', false);
             $('#starring').prop('disabled', false);
             $('#year').prop('disabled', false);
             var id = $(this).val();
-            if (!isNaN(id) && id != -1) {
+            if (!isNaN(id)) {
                 $.post("get_data.php",
                         {
                             id: id
@@ -267,12 +289,22 @@ include 'db.php';
 
                         }
                 );
-            } else if (id != -1) {
+            } else {
                 $('.movie_message').show();
                 $('.movie_message').text("The Movie You Entered Doesnot Exists. Please add the Details of the movie Below");
-                $('#director').val(null).trigger("change");
-                $('#starring').val(null).trigger("change");
-                $('#year').val(null).trigger("change");
+                $.post("get_data.php",
+                        {
+                            id: "new"
+                        },
+                        function (response) {
+                            data = JSON.parse(response);
+                            $('#director').select2({data: data[0], tags: true}).trigger("change");
+                            $('#starring').select2({data: data[1], tags: true}).trigger("change");
+                            $('#year').val(null).trigger("change");
+
+                        }
+                );
+
             }
         });
     });
