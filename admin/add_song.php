@@ -77,7 +77,7 @@ include 'db.php';
                     }
                 }
                 ?>
-                <form id="defaultForm" role="form" action="add_song_process.php" method="post" enctype="multipart/form-data">
+                <form id="song_form" role="form" action="add_song_process.php" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="song_file" class="control-label">SELECT SONG FILE</label>
                         <input type="file" name="song_file" id="song_file" class="form-control filestyle" accept="audio/*"/>
@@ -167,7 +167,7 @@ include 'db.php';
 <script>
     $(document).ready(function () {
 
-        $('#defaultForm').formValidation({
+        $('#song_form').formValidation({
             message: 'This value is not valid',
             icon: {
                 valid: 'glyphicon glyphicon-ok',
@@ -176,7 +176,7 @@ include 'db.php';
             },
             fields: {
                 song_name: {
-                    message: 'The username is not valid',
+                    message: 'The song is not valid',
                     validators: {
                         notEmpty: {
                             message: 'The Song Name is required and can\'t be empty'
@@ -210,10 +210,19 @@ include 'db.php';
                     validators: {
                         notEmpty: {
                             message: 'Please select a Movie'
+                        },
+                        stringLength: {
+                            min: 6,
+                            max: 30,
+                            message: 'The Movie Name must be more than 6 and less than 30 characters long'
+                        },
+                        regexp: {
+                            regexp: /^[a-zA-Z0-9\-_\.]+$/,
+                            message: 'The Movie Name can only consist of alphabetical, number, dot, hyphen and underscore'
                         }
                     }
                 },
-                director: {
+                'director[]': {
                     trigger: 'change',
                     message: 'Select Director',
                     validators: {
@@ -222,7 +231,7 @@ include 'db.php';
                         }
                     }
                 },
-                starring: {
+                'starring[]': {
                     trigger: 'change',
                     message: 'Select Actors',
                     validators: {
@@ -244,7 +253,7 @@ include 'db.php';
                         }
                     }
                 },
-                singers: {
+                'singers[]': {
                     message: 'Select Singers',
                     validators: {
                         notEmpty: {
@@ -252,7 +261,7 @@ include 'db.php';
                         }
                     }
                 },
-                music_directors: {
+                'music_directors[]': {
                     message: 'Select Music Directors',
                     validators: {
                         notEmpty: {
@@ -306,14 +315,18 @@ include 'db.php';
                         },
                         function (response) {
                             data = JSON.parse(response);
-                            $('#director').val(null).select2({data: data[0], tags: true}).trigger("change");
-                            $('#starring').val(null).select2({data: data[1], tags: true}).trigger("change");
+                            $('#director').select2({data: data[0], tags: true}).val(null).trigger("change");
+                            $('#starring').select2({data: data[1], tags: true}).val(null).trigger("change");
                             $('#year').val(null).trigger("change");
 
                         }
                 );
 
             }
+
+            /*$('#song_form')
+                    .formValidation('revalidateField', 'director')
+                    .formValidation('revalidateField', 'starring');*/
         });
     });
 </script>

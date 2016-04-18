@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2016 at 11:53 AM
+-- Generation Time: Apr 18, 2016 at 06:02 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `directed_by` (
   `song_id` int(11) NOT NULL,
   `director_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `directed_by`
@@ -44,7 +44,10 @@ INSERT INTO `directed_by` (`id`, `song_id`, `director_id`) VALUES
 (4, 5, 4),
 (5, 6, 4),
 (6, 7, 4),
-(7, 8, 4);
+(7, 8, 4),
+(8, 9, 4),
+(9, 10, 3),
+(10, 10, 5);
 
 -- --------------------------------------------------------
 
@@ -78,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `movies` (
   `year` year(4) NOT NULL,
   `image` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `movies`
@@ -97,7 +100,9 @@ INSERT INTO `movies` (`id`, `name`, `year`, `image`) VALUES
 (10, 'movie6', 2006, 'illa'),
 (11, 'movie7', 2007, 'illa'),
 (12, 'movie8', 2008, 'illa'),
-(13, 'movie9', 2009, 'illa');
+(13, 'movie9', 2009, 'illa'),
+(14, 'Kali', 2000, ''),
+(15, 'Kalimba', 2005, '');
 
 -- --------------------------------------------------------
 
@@ -110,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `movie_directed_by` (
   `director_id` int(11) NOT NULL,
   `movie_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `movie_directed_by`
@@ -118,7 +123,8 @@ CREATE TABLE IF NOT EXISTS `movie_directed_by` (
 
 INSERT INTO `movie_directed_by` (`id`, `director_id`, `movie_id`) VALUES
 (1, 1, 2),
-(2, 2, 2);
+(2, 2, 2),
+(3, 1, 15);
 
 -- --------------------------------------------------------
 
@@ -190,7 +196,7 @@ CREATE TABLE IF NOT EXISTS `songs` (
   `movie_id` int(11) NOT NULL,
   `file` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `songs`
@@ -199,12 +205,11 @@ CREATE TABLE IF NOT EXISTS `songs` (
 INSERT INTO `songs` (`id`, `name`, `movie_id`, `file`) VALUES
 (1, 'Sadfnsakjdf', 2, 'dummy.php'),
 (2, 'Sadfnsakjdf', 2, 'dummy.php'),
-(3, 'First-song', 2, ''),
-(4, 'First-song', 2, ''),
-(5, 'First-song', 2, ''),
 (6, 'First-song', 2, 'First-song.mp3'),
 (7, 'First-song', 2, 'First-song.mp3'),
-(8, 'Second-song', 2, 'Second-song.mp3');
+(8, 'Second-song', 2, 'Second-song.mp3'),
+(9, 'Testing-song', 14, 'Testing-song.mp3'),
+(10, 'Abcdefg', 15, 'Abcdefg.mp3');
 
 -- --------------------------------------------------------
 
@@ -217,7 +222,7 @@ CREATE TABLE IF NOT EXISTS `starred_by` (
   `movie_id` int(11) NOT NULL,
   `star_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `starred_by`
@@ -225,7 +230,8 @@ CREATE TABLE IF NOT EXISTS `starred_by` (
 
 INSERT INTO `starred_by` (`id`, `movie_id`, `star_id`) VALUES
 (1, 2, 2),
-(2, 2, 3);
+(2, 2, 3),
+(3, 15, 3);
 
 -- --------------------------------------------------------
 
@@ -267,7 +273,7 @@ CREATE TABLE IF NOT EXISTS `sung_by` (
   `song_id` int(11) NOT NULL,
   `singer_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `sung_by`
@@ -282,7 +288,10 @@ INSERT INTO `sung_by` (`id`, `song_id`, `singer_id`) VALUES
 (6, 5, 3),
 (7, 6, 3),
 (8, 7, 3),
-(9, 8, 3);
+(9, 8, 3),
+(10, 9, 3),
+(11, 10, 3),
+(12, 10, 5);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

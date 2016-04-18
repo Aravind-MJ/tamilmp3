@@ -10,7 +10,7 @@ if ($_POST) {
 
         $year = $row['year'];
 
-        $query = sprintf("SELECT d.id,name FROM directors d INNER JOIN movie_directed_by md ON d.id = md.director_id WHERE md.movie_id = '%s' ", $id);
+        $query = sprintf("SELECT d.id,name FROM directors d INNER JOIN movie_directed_by md ON d.id = md.director_id WHERE md.movie_id = '%s' ORDER BY d.name ", $id);
         $result = mysqli_query($link, $query) or die(mysqli_error($link));
         $director = array();
         $data[2] = array();
@@ -21,7 +21,7 @@ if ($_POST) {
             $i++;
         };
 
-        $query = sprintf("SELECT s.id,name FROM stars s INNER JOIN starred_by sb ON s.id = sb.star_id WHERE sb.movie_id = '%s' ", $id);
+        $query = sprintf("SELECT s.id,name FROM stars s INNER JOIN starred_by sb ON s.id = sb.star_id WHERE sb.movie_id = '%s' ORDER BY s.name ", $id);
         $result = mysqli_query($link, $query)or die(mysqli_error($link));
         $stars = array();
         $data[4] = array();
@@ -37,7 +37,7 @@ if ($_POST) {
         $data[3] = $stars;
         echo json_encode($data);
     } else {
-        $query = sprintf("SELECT id,name FROM directors");
+        $query = sprintf("SELECT id,name FROM directors ORDER BY name");
         $result = mysqli_query($link, $query);
         $director = array();
         $i=0;
@@ -47,7 +47,7 @@ if ($_POST) {
         }
         
         
-        $query = sprintf("SELECT id,name FROM stars");
+        $query = sprintf("SELECT id,name FROM stars ORDER BY name");
         $result = mysqli_query($link, $query);
         $stars = array();
         $i=0;

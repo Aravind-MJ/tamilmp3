@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST['submitButton'])) {
+if ($_POST) {
     include 'db.php';
 
     $movie_id = $_POST['movie_name'];
@@ -90,9 +90,11 @@ if (isset($_POST['submitButton'])) {
             if (move_uploaded_file($_FILES['song_file']['tmp_name'], $uploadpath)) {
                 
             } else {
+                //header('Location: add_song.php?status=2');
                 echo '<script> window.location.href="add_song.php?status=2"; </script>';
             }
         } else {
+            //header('Location: add_song.php?status='.$err.'');
             echo '<script> window.location.href="add_song.php?status='.$err.'"; </script>';
         }
     }
@@ -132,7 +134,8 @@ if (isset($_POST['submitButton'])) {
         mysqli_query($link, $query) or die(mysqli_error($link));
     }
 
-    echo '<script> window.location.href="add_song.php?status=0"; </script>';
+        //header('Location: add_song.php?status=0');
+        echo '<script> window.location.href="add_song.php?status=0"; </script>';
 } else {
     echo '<h1>ACCESS DENIED!!!</h1>';
 }
