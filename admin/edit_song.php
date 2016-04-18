@@ -1,7 +1,9 @@
 <?php
 include 'header.php';
 include 'db.php';
-$status = $_GET['status'];
+if ($_GET) {
+    $id = $_GET['id'];
+}
 ?>
 <style>
     .btn-file {
@@ -38,56 +40,27 @@ $status = $_GET['status'];
         </h1>
         <ol class="breadcrumb">
             <li><a href="home.php"><i class="fa fa-dashboard"></i> Admin </a></li>
-            <li class="active">Add song</li>
+            <li class="active">Edit song</li>
         </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
 
-        <div class="alert alert-info alert-dismissable">
+        <!--div class="alert alert-info alert-dismissable">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
             <h2><i class="icon fa fa-info"></i> Note!</h2>
             <h4>This single page powers the addition of all data to the database without going to other pages. <br><br>
                 If you don't see a suggestion don't worry, just add it manually and it will be added to the database automatically. <br><br>
                 Quite useful isn't it?!</h4>
-        </div>
+        </div-->
         <div class="box box-primary">
             <div class="box-header">
-                <div class="box-title">Add Song</div>
+                <div class="box-title">Edit Song</div>
             </div>
             <div class="box-body"> 
-                <?php
-                if (isset($status)) {
-
-                    if ($status == 0) {
-                        ?>
-                        <div class="alert alert-success alert-dismissable">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                            <h4><i class="icon fa fa-info"></i> Success!</h4>
-                            All Data successfully Added
-                        </div>
-                        <?php
-                    } else {
-                        ?>
-                        <div class="alert alert-danger alert-dismissable">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                            <h4><i class="icon fa fa-info"></i> Failed!</h4>
-                            <?php echo $_GET['status']; ?>
-                        </div>
-                        <?php
-                    }
-                }
-                ?>
-                <form id="song_form" role="form" action="add_song_process.php" method="post" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label for="song_file" class="control-label">SELECT SONG FILE</label>
-                        <input type="file" name="song_file" id="song_file" class="form-control filestyle" accept="audio/*"/>
-                    </div>
-                    <!--div class="progress">
-                        <div class="progress-bar progress-bar-green" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:50%">
-                        </div>
-                    </div-->
+                <form id="song_form" role="form" action="edit_song_process.php" method="post" enctype="multipart/form-data">
+                    <input type="text" name="song_id" id="song_id" value="<?php echo $id; ?>" hidden/>
                     <div class="form-group">
                         <label for="song_name" class="control-label">SONG NAME</label>
                         <input type="text" name="song_name" id="song_name" class="form-control" placeholder="SONG NAME"/>
@@ -99,7 +72,6 @@ $status = $_GET['status'];
                         $result = mysqli_query($link, $query) or die(mysqli_error($link));
                         ?>
                         <select class="form-control" id="movie_name" name="movie_name">
-                            <option value="">Type Movie Name</option>
                             <?php
                             while ($row = mysqli_fetch_assoc($result)) {
                                 ?>
@@ -129,7 +101,7 @@ $status = $_GET['status'];
                         <input type="text" name="year" id="year" class="form-control" placeholder="YEAR" />
                     </div>
                     <div class="form-group">
-                        <label for="singers" class="control-label">SINGERS</label>
+                        <label for="movie_name" class="control-label">SINGERS</label>
                         <?php
                         $query = sprintf("SELECT id,name FROM singers");
                         $result = mysqli_query($link, $query) or die(mysqli_error($link));
@@ -163,7 +135,7 @@ $status = $_GET['status'];
                         </select>
                     </div>
                     <div class="form-group">
-                        <input type="submit" id="submitButton" name="submitButton" class="btn btn-primary" value="ADD SONG"/>
+                        <input type="submit" id="submitButton" name="submitButton" class="btn btn-primary" value="UPDATE SONG"/>
                     </div>
                 </form>
             </div>
@@ -195,19 +167,6 @@ $status = $_GET['status'];
                         regexp: {
                             regexp: /^[a-zA-Z0-9\-_\.]+$/,
                             message: 'The Song Name can only consist of alphabetical, number, dot, hyphen and underscore'
-                        }
-                    }
-                },
-                song_file: {
-                    message: 'Select a File',
-                    validators: {
-                        notEmpty: {
-                            message: 'Please select a song file'
-                        },
-                        file: {
-                            extension: 'mp3',
-                            type: 'audio/mp3',
-                            message: 'Please choose an Audio File of mp3,wav or ogg.'
                         }
                     }
                 },
@@ -272,15 +231,22 @@ $status = $_GET['status'];
 
 
 
+        $.post("edit_song_data.php",
+                {
+                    id: <?php echo $id; ?>
+                },
+                function (response) {
+                    data = JSON.parse(response);
+                    $('#song_name').val(data[0]).trigger("change");
+                    $('#movie_name').select2({data: data[1], tags: true}).val(data[2]).trigger("change");
+                    $('#year').val(data[3]).trigger("change");
+                    $('#director').select2({data: data[4], tags: true}).val(data[5]).trigger("change");
+                    $('#starring').select2({data: data[6], tags: true}).val(data[7]).trigger("change");
+                    $('#singers').select2({data: data[8], tags: true}).val(data[9]).trigger("change");
+                    $('#music_directors').select2({data: data[10], tags: true}).val(data[11]).trigger("change");
 
-
-
-
-        $('#movie_name').select2({placeholder: "Select a Movie", tags: true, tokenSeparators: [',', ' ']});
-        $('#singers').select2({placeholder: "Select Singer", tags: true, tokenSeparators: [',', ' ']});
-        $('#music_directors').select2({placeholder: "Select Music Director", tags: true, tokenSeparators: [',']});
-        $('#director').select2();
-        $('#starring').select2();
+                }
+        );
 
         $('#movie_name').change(function () {
             $('.movie_message').hide();

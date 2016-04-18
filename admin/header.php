@@ -30,15 +30,25 @@ $filename = basename($url);
         <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
         <!-- AdminLTE App -->
         <script src="dist/js/app.min.js" type="text/javascript"></script>
-        
+
         <script src="plugins/filestyle/bootstrap-filestyle.js" type="text/javascript"></script>
         <script src="plugins/filestyle/bootstrap-filestyle.min.js" type="text/javascript"></script>
         <!-- FORM VALIDATOR -->
         <link href="plugins/formValidator/formValidation.min.css" rel="stylesheet" type="text/css"/>
         <script src="plugins/formValidator/formValidation.min.js" type="text/javascript"></script>
         <script src="plugins/formValidator/framework/bootstrap.js" type="text/javascript"></script>
+        \
+        <!-- DATA TABLES -->
+        <link href="plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+        <!-- DATA TABES SCRIPT -->
+        <script src="plugins/datatables/jquery.dataTables.min.js" type="text/javascript"></script>
+        <script src="plugins/datatables/dataTables.bootstrap.min.js" type="text/javascript"></script>
+        
+        <!-- AngularJS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+
     </head>
-    
+
     <body class="skin-blue sidebar-mini">
         <div class="wrapper">
 
@@ -130,7 +140,7 @@ $filename = basename($url);
                         if ($filename == "home.php") {
                             echo 'class="active"';
                         }
-                        ?>><a href="home.php"><i class='fa fa-paperclip'></i> <span>Dashborad</span></a></li>
+                        ?>><a href="home.php"><i class='fa fa-paperclip'></i> <span>Dashboard</span></a></li>
                         <li <?php
                         if ($filename == "add_song.php") {
                             echo 'class="active"';
