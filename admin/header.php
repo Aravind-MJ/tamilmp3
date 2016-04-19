@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+require 'check_session.php';
 $url = $_SERVER['SCRIPT_FILENAME'];
 $filename = basename($url);
 ?>
@@ -43,7 +44,7 @@ $filename = basename($url);
         <!-- DATA TABES SCRIPT -->
         <script src="plugins/datatables/jquery.dataTables.min.js" type="text/javascript"></script>
         <script src="plugins/datatables/dataTables.bootstrap.min.js" type="text/javascript"></script>
-        
+
         <!-- AngularJS -->
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 
@@ -91,10 +92,10 @@ $filename = basename($url);
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                            <a href="change.php" class="btn btn-default btn-flat">Profile</a>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                            <a href="logout.php" class="btn btn-default btn-flat">Sign out</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -141,11 +142,25 @@ $filename = basename($url);
                             echo 'class="active"';
                         }
                         ?>><a href="home.php"><i class='fa fa-paperclip'></i> <span>Dashboard</span></a></li>
-                        <li <?php
-                        if ($filename == "add_song.php") {
-                            echo 'class="active"';
+                        <li class="treeview <?php
+                        if ($filename == "add_song.php" || $filename == "view_song.php") {
+                            echo 'active';
                         }
-                        ?>><a href="add_song.php"><i class='fa fa-plus'></i> <span>Add Song</span></a></li>
+                        ?>">
+                            <a href="#"><i class='fa fa-link'></i> <span>Song</span> <i class="fa fa-angle-left pull-right"></i></a>
+                            <ul class="treeview-menu">
+                                <li class="<?php
+                                if ($filename == "add_song.php") {
+                                    echo 'active';
+                                }
+                                ?>"><a href="add_song.php"><i class='fa fa-plus'></i>Add Song</a></li>
+                                <li class="<?php
+                                if ($filename == "view_song.php") {
+                                    echo 'active';
+                                }
+                                ?>"><a href="view_song.php"><i class='fa fa-list'></i>List Song</a></li>
+                            </ul>
+                        </li>
                         <!--li><a href="#"><i class='fa fa-link'></i> <span>Another Link</span></a></li>
                         <li class="treeview">
                             <a href="#"><i class='fa fa-link'></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
