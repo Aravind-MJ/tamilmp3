@@ -18,8 +18,8 @@
 
     $js_inc  = array(
         'jquery'       =>  'https://code.jquery.com/jquery.min.js',
-        'bootstrap-js' =>  'bootstrap.min.js',
-        'theme-js'     =>  'main.js'
+        'bootstrap-js' =>  'js/bootstrap.min.js',
+        'theme-js'     =>  'js/main.js'
     );
 
     include_once 'autoload.php';
