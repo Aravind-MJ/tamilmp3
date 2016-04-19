@@ -47,7 +47,7 @@ $status = $_GET['status'];
 
         <div class="alert alert-info alert-dismissable">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <h2><i class="icon fa fa-info"></i> Note!</h2>
+            <h2><i class="icon fa fa-info"></i> Note!</h2><br>
             <h4>This single page powers the addition of all data to the database without going to other pages. <br><br>
                 If you don't see a suggestion don't worry, just add it manually and it will be added to the database automatically. <br><br>
                 Quite useful isn't it?!</h4>

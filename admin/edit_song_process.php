@@ -10,8 +10,7 @@ if ($_POST) {
     $song_name = ucwords($_POST['song_name']);
     $status = 0;
 
-    if (!is_numeric($movie_id)) {
-
+    if (!is_numeric($movie_id)) { //condition True if a new movie is added
         $year = $_POST['year'];
         $director = $_POST['director'];
         $starring = $_POST['starring'];
@@ -59,51 +58,57 @@ if ($_POST) {
         $movie_name = $row['name'];
     }
 
-    /*//PHP Upload Script
-    if (!is_dir("upload")) {
-        mkdir("upload");
-    }
+    /* //PHP Upload Script
+      if (!is_dir("upload")) {
+      mkdir("upload");
+      }
 
-    $uploadpath = 'upload/' . $movie_name;      // directory to store the uploaded files
-    if (!is_dir($uploadpath)) {
-        mkdir($uploadpath);
-    }
-    $max_size = 30000;          // maximum file size, in KiloBytes
-    $allowtype = array('wav', 'mp3');        // allowed extensions
+      $uploadpath = 'upload/' . $movie_name;      // directory to store the uploaded files
+      if (!is_dir($uploadpath)) {
+      mkdir($uploadpath);
+      }
+      $max_size = 30000;          // maximum file size, in KiloBytes
+      $allowtype = array('wav', 'mp3');        // allowed extensions
 
-    if (isset($_FILES['song_file']) && strlen($_FILES['song_file']['name']) > 1) {
+      if (isset($_FILES['song_file']) && strlen($_FILES['song_file']['name']) > 1) {
 
-        $sepext = explode('.', strtolower($_FILES['song_file']['name']));
-        $type = end($sepext);       // gets extension
-        $err = '';         // to store the errors
-        // Checks if the file has allowed type and size
-        if (!in_array($type, $allowtype)) {
-            $err .= 'The file: <b>' . $_FILES['song_file']['name'] . '</b> not has the allowed extension type.';
-        }
-        if ($_FILES['song_file']['size'] > $max_size * 1000) {
-            $err .= '<br/>Maximum file size is: ' . $max_size . ' KB.';
-        }
+      $sepext = explode('.', strtolower($_FILES['song_file']['name']));
+      $type = end($sepext);       // gets extension
+      $err = '';         // to store the errors
+      // Checks if the file has allowed type and size
+      if (!in_array($type, $allowtype)) {
+      $err .= 'The file: <b>' . $_FILES['song_file']['name'] . '</b> not has the allowed extension type.';
+      }
+      if ($_FILES['song_file']['size'] > $max_size * 1000) {
+      $err .= '<br/>Maximum file size is: ' . $max_size . ' KB.';
+      }
 
-        $file = $song_name . '.' . $type;
-        $uploadpath = $uploadpath . '/' . $file;     // gets the file name
-        // If no errors, upload the image, else, output the errors
-        if ($err == '') {
-            if (move_uploaded_file($_FILES['song_file']['tmp_name'], $uploadpath)) {
-                
-            } else {
-                //header('Location: add_song.php?status=2');
-                echo '<script> window.location.href="add_song.php?status=2"; </script>';
-            }
-        } else {
-            //header('Location: add_song.php?status='.$err.'');
-            echo '<script> window.location.href="add_song.php?status='.$err.'"; </script>';
-        }
-    }*/
+      $file = $song_name . '.' . $type;
+      $uploadpath = $uploadpath . '/' . $file;     // gets the file name
+      // If no errors, upload the image, else, output the errors
+      if ($err == '') {
+      if (move_uploaded_file($_FILES['song_file']['tmp_name'], $uploadpath)) {
 
-    //Adding new song to the Table songs
-    $query = sprintf("UPDATE songs SET name='%s',movie_id=%d WHERE id=%d", $song_name, $movie_id,$id);
+      } else {
+      //header('Location: add_song.php?status=2');
+      echo '<script> window.location.href="add_song.php?status=2"; </script>';
+      }
+      } else {
+      //header('Location: add_song.php?status='.$err.'');
+      echo '<script> window.location.href="add_song.php?status='.$err.'"; </script>';
+      }
+      } */
+
+    //Editing song in Table songs
+    $query = sprintf("UPDATE songs SET name='%s',movie_id=%d WHERE id=%d", $song_name, $movie_id, $id);
     mysqli_query($link, $query) or die(mysqli_error($link));
     $song_id = mysqli_insert_id($link);
+
+
+    //Deleting existing records of singers
+    $query = sprintf("DELETE FROM sung_by WHERE song_id=%d", $id);
+    mysqli_query($link, $query) or die(mysqli_error($link));
+
 
     //Adding new singer to the Table singers
     foreach ($singers as $singer) {
@@ -115,10 +120,17 @@ if ($_POST) {
         } else {
             $singer_id = $singer;
         }
+
         //Updating sung_by Table
-        $query = sprintf("UPDATE sung_by SET singer_id=%d WHERE song_id=%d", $singer_id, $song_id);
+        $query = sprintf("INSERT INTO sung_by SET singer_id=%d, song_id=%d", $singer_id, $song_id);
         mysqli_query($link, $query) or die(mysqli_error($link));
     }
+
+    //Deleting existing records of singers
+    $query = sprintf("DELETE FROM directed_by WHERE song_id=%d", $id);
+    mysqli_query($link, $query) or die(mysqli_error($link));
+
+
 
     //Adding new Music Director to Table music_directors
     foreach ($music_directors as $music_director) {
@@ -130,13 +142,14 @@ if ($_POST) {
         } else {
             $music_director_id = $music_director;
         }
+
         //Updating directed_by Table
-        $query = sprintf("UPDATE directed_by SET director_id=%d WHERE song_id=%d", $music_director_id, $song_id);
+        $query = sprintf("INSERT INTO directed_by SET director_id=%d, song_id=%d", $music_director_id, $song_id);
         mysqli_query($link, $query) or die(mysqli_error($link));
     }
 
-        //header('Location: add_song.php?status=0');
-        echo '<script> window.location.href="view_song.php?status=0"; </script>';
+    //header('Location: add_song.php?status=0');
+    echo '<script> window.location.href="view_song.php?status=0"; </script>';
 } else {
     echo '<h1>ACCESS DENIED!!!</h1>';
 }

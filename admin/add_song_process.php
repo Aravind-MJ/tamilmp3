@@ -53,6 +53,12 @@ if ($_POST) {
             mysqli_query($link, $query) or die(mysqli_error($link));
         }
     } else {
+        $query = sprintf("SELECT * FROM songs WHERE name='%s' AND movie_id='%s'",$song_name ,$movie_id);
+        if(mysqli_num_rows(mysqli_query($link, $query))>0){
+            echo '<script> window.location.href="add_song.php?status=Song with Same Name already Exists."; </script>';  
+            die();
+        }        
+        
         $query = sprintf("SELECT name FROM movies WHERE id='%s'", $movie_id);
         $row = mysqli_fetch_assoc(mysqli_query($link, $query));
         $movie_name = $row['name'];

@@ -2,24 +2,22 @@
 
 if ($_POST) {
     include 'db.php';
+    $id = $_POST['id'];
     $movie_name = $_POST['name'];
     $movie_name = ucwords($movie_name);
     $year = $_POST['year'];
     $director = $_POST['director'];
     $starring = $_POST['starring'];
 
-    //Check to see if movie already exists
-    $query = sprintf("SELECT * FROM movies WHERE name='%s'", $movie_name);
-    $result = mysqli_query($link, $query) or die(mysqli_error($link));
-    if (mysqli_num_rows($result) > 0) {
-        echo '<script> window.location.href="add_movie.php?status=1"; </script>';
-        die();
-    }
 
-    $query = sprintf("INSERT INTO movies SET name='%s',year=%d", $movie_name, $year);
+    $query = sprintf("UPDATE movies SET name='%s',year=%d WHERE id=%d", $movie_name, $year,$id);
     mysqli_query($link, $query) or die(mysqli_error($link));
     $movie_id = mysqli_insert_id($link);
-
+    
+    //Deleting existing records of director
+    $query = sprintf("DELETE FROM movie_directed_by WHERE movie_id=%d",$id);
+    mysqli_query($link, $query) or die(mysqli_error($link));
+    
     //Adding new directors if not already present
     foreach ($director as $each_director) {
         if (!is_numeric($each_director)) {
@@ -30,13 +28,17 @@ if ($_POST) {
         } else {
             $director_id = $each_director;
         }
+        
         //Updating movie_directed_by Table
-        $query = sprintf("INSERT INTO movie_directed_by SET director_id=%d,movie_id=%d", $director_id, $movie_id);
+        $query = sprintf("INSERT INTO movie_directed_by SET director_id=%d,movie_id=%d", $director_id, $id);
         mysqli_query($link, $query) or die(mysqli_error($link));
     }
 
+    //Deleting existing records of stars
+    $query = sprintf("DELETE FROM starred_by WHERE movie_id=%d",$id);
+    mysqli_query($link, $query) or die(mysqli_error($link));
+    
     //Adding new Stars if Not already present
-
     foreach ($starring as $star) {
         if (!is_numeric($star)) {
             $star = ucwords($star);
@@ -47,7 +49,7 @@ if ($_POST) {
             $star_id = $star;
         }
         //Updating starred_by Table
-        $query = sprintf("INSERT INTO starred_by SET star_id=%d,movie_id=%d", $star_id, $movie_id);
+        $query = sprintf("INSERT INTO starred_by SET star_id=%d,movie_id=%d", $star_id, $id);
         mysqli_query($link, $query) or die(mysqli_error($link));
     }
 
@@ -91,14 +93,14 @@ if ($_POST) {
                 mysqli_query($link, $query) or die(mysqli_error($link));
             } else {
                 //header('Location: add_movie.php?status=2');
-                echo '<script> window.location.href="add_movie.php?status=2"; </script>';
+                echo '<script> window.location.href="view_movie.php?status=2"; </script>';
             }
         } else {
             //header('Location: add_movie.php?status='.$err.'');
-            echo '<script> window.location.href="add_movie.php?status=' . $err . '"; </script>';
+            echo '<script> window.location.href="view_movie.php?status=' . $err . '"; </script>';
         }
     }
-    echo '<script> window.location.href="add_movie.php?status=0"; </script>';
+    echo '<script> window.location.href="view_movie.php?status=0"; </script>';
 } else {
     echo '<h1>ACCESS DENIED!!!</h1>';
 }

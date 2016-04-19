@@ -261,11 +261,11 @@ if ($_GET) {
                         },
                         function (response) {
                             data = JSON.parse(response);
-                            $('#year').val(data[0]).trigger("change").prop('disabled', true);
+                            $('#year').val(data[0]).trigger("change");
                             $('#director').select2({data: data[1], tags: true});
-                            $('#director').val(data[2]).trigger("change").prop('disabled', true);
+                            $('#director').val(data[2]).trigger("change");
                             $('#starring').select2({data: data[3], tags: true});
-                            $('#starring').val(data[4]).trigger("change").prop('disabled', true);
+                            $('#starring').val(data[4]).trigger("change");
 
                         }
                 );

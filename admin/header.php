@@ -38,7 +38,7 @@ $filename = basename($url);
         <link href="plugins/formValidator/formValidation.min.css" rel="stylesheet" type="text/css"/>
         <script src="plugins/formValidator/formValidation.min.js" type="text/javascript"></script>
         <script src="plugins/formValidator/framework/bootstrap.js" type="text/javascript"></script>
-        \
+        
         <!-- DATA TABLES -->
         <link href="plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
         <!-- DATA TABES SCRIPT -->
@@ -147,7 +147,7 @@ $filename = basename($url);
                             echo 'active';
                         }
                         ?>">
-                            <a href="#"><i class='fa fa-link'></i> <span>Song</span> <i class="fa fa-angle-left pull-right"></i></a>
+                            <a href="#"><i class='fa fa-music'></i> <span>Songs</span> <i class="fa fa-angle-left pull-right"></i></a>
                             <ul class="treeview-menu">
                                 <li class="<?php
                                 if ($filename == "add_song.php") {
@@ -158,7 +158,26 @@ $filename = basename($url);
                                 if ($filename == "view_song.php") {
                                     echo 'active';
                                 }
-                                ?>"><a href="view_song.php"><i class='fa fa-list'></i>List Song</a></li>
+                                ?>"><a href="view_song.php"><i class='fa fa-list'></i>List Songs</a></li>
+                            </ul>
+                        </li>
+                         <li class="treeview <?php
+                        if ($filename == "add_movie.php" || $filename == "view_movie.php") {
+                            echo 'active';
+                        }
+                        ?>">
+                            <a href="#"><i class='fa fa-film'></i> <span>Movies</span> <i class="fa fa-angle-left pull-right"></i></a>
+                            <ul class="treeview-menu">
+                                <li class="<?php
+                                if ($filename == "add_movie.php") {
+                                    echo 'active';
+                                }
+                                ?>"><a href="add_movie.php"><i class='fa fa-plus'></i>Add Movie</a></li>
+                                <li class="<?php
+                                if ($filename == "view_movie.php") {
+                                    echo 'active';
+                                }
+                                ?>"><a href="view_movie.php"><i class='fa fa-list'></i>List Movies</a></li>
                             </ul>
                         </li>
                         <!--li><a href="#"><i class='fa fa-link'></i> <span>Another Link</span></a></li>

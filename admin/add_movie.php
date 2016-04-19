@@ -1,6 +1,6 @@
 <?php include 'header.php'; ?>
-<?php 
-    $status = $_GET['status'];
+<?php
+$status = $_GET['status'];
 ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -37,7 +37,7 @@
                             All Data successfully Added
                         </div>
                         <?php
-                    }else if ($status == 1) {
+                    } else if ($status == 1) {
                         ?>
                         <div class="alert alert-danger alert-dismissable">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -62,6 +62,18 @@
                         <input type="text" id="name" name="name" class="form-control">
                     </div>
                     <div class="form-group">
+                        <label for="director" class="control-label">DIRECTOR</label>
+                        <select class="form-control select2" id="director" name="director[]" multiple >
+
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="starring" class="control-label">STARRING</label>
+                        <select class="form-control select2" id="starring" name="starring[]" multiple >
+
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="year" class="control-label">Year</label>
                         <input type="text" id="year" name="year" class="form-control">
                     </div>
@@ -70,7 +82,7 @@
                         <input type="file" name="image" id="image" class="form-control filestyle" accept="image/*"/>
                     </div>
                     <div class="form-group">
-                        <input type="submit" id="submitButton" name="submitButton" class="btn btn-primary" value="ADD SONG"/>
+                        <input type="submit" id="submitButton" name="submitButton" class="btn btn-primary" value="ADD MOVIE"/>
                     </div>
                 </form>
             </div>
@@ -106,6 +118,24 @@
                         }
                     }
                 },
+                'director[]': {
+                    trigger: 'change',
+                    message: 'Select Director',
+                    validators: {
+                        notEmpty: {
+                            message: 'Please Enter Director'
+                        }
+                    }
+                },
+                'starring[]': {
+                    trigger: 'change',
+                    message: 'Select Actors',
+                    validators: {
+                        notEmpty: {
+                            message: 'Please Select Actors'
+                        }
+                    }
+                },
                 image: {
                     message: 'Select a File',
                     validators: {
@@ -113,8 +143,8 @@
                             message: 'Please select an Image file'
                         },
                         file: {
-                            extension: 'jpg',
-                            type: 'image/jpeg',
+                            extension: 'jpg,jpeg',
+                            type: 'image/jpeg,image/jpg',
                             message: 'Please choose an Image File of jpg format.'
                         }
                     }
@@ -135,5 +165,17 @@
             }
         });
     });
+
+    $.post("get_data.php",
+            {
+                id: 'new'
+            },
+            function (response) {
+                data = JSON.parse(response);
+                $('#director').select2({data: data[0], tags: true});
+                $('#starring').select2({data: data[1], tags: true});
+
+            }
+    );
 </script>
 <?php include 'footer.php'; ?>
