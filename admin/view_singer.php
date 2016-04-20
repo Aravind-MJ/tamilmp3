@@ -1,5 +1,5 @@
 <?php include 'header.php'; ?>
-<script src="view_stars.js" type="text/javascript"></script>
+<script src="view_singer.js" type="text/javascript"></script>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -28,7 +28,7 @@
                     <div class="alert alert-success alert-dismissable">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                         <h4><i class="icon fa fa-info"></i> Success!</h4>
-                        Star Edited successfully
+                        Singer Edited successfully
                     </div>
                     <?php
                 } else if ($status == 1) {
@@ -36,7 +36,7 @@
                     <div class="alert alert-success alert-dismissable">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                         <h4><i class="icon fa fa-info"></i> Success!</h4>
-                        Star Deleted successfully
+                        Singer Deleted successfully
                     </div>
                     <?php
                 }
@@ -52,10 +52,10 @@
         }
         ?>
 
-        <div class="box box-success" ng-app="starApp" ng-controller="starCtrl">
+        <div class="box box-success" ng-app="directorApp" ng-controller="directorCtrl">
             <div class="box-header">
                 <div class="box-title">
-                    View Songs
+                    View Movie Directors
                 </div>
             </div>
             <div class="box-body">
@@ -70,7 +70,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="search">Search by Star Name</label>
+                        <label for="search">Search by Singer Name</label>
                         <input type="text" ng-model="search" ng-change="searchFn()" class="form-control">
                     </div>
                 </div>
@@ -78,19 +78,19 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Actor/Actress Name</th>
+                            <th>Director Name</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
-                    <tr ng-repeat="star in stars">
+                    <tr ng-repeat="singer in singers">
                         <td>{{ offset * limit + $index + 1}}</td>
-                        <td>{{ star.name}}</td>
+                        <td>{{ singer.name}}</td>
                         <td>
-                            <a class="btn btn-warning" href="edit_star.php?id={{ star.id}}">EDIT</a>
+                            <a class="btn btn-warning" href="edit_movie_director.php?id={{ singer.id}}">EDIT</a>
                         </td>
                         <td>
-                            <a class="btn btn-danger" href="delete_star.php?id={{ star.id}}">DELETE</a>
+                            <a class="btn btn-danger" href="delete_movie_director.php?id={{ singer.id}}">DELETE</a>
                         </td>
                     </tr>
                 </table>

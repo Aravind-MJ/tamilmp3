@@ -1,5 +1,5 @@
 <?php include 'header.php'; ?>
-<script src="view_stars.js" type="text/javascript"></script>
+<script src="view_music_director.js" type="text/javascript"></script>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -28,7 +28,7 @@
                     <div class="alert alert-success alert-dismissable">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                         <h4><i class="icon fa fa-info"></i> Success!</h4>
-                        Star Edited successfully
+                        Movie Director Edited successfully
                     </div>
                     <?php
                 } else if ($status == 1) {
@@ -36,7 +36,7 @@
                     <div class="alert alert-success alert-dismissable">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                         <h4><i class="icon fa fa-info"></i> Success!</h4>
-                        Star Deleted successfully
+                        Movie Director Deleted successfully
                     </div>
                     <?php
                 }
@@ -52,10 +52,10 @@
         }
         ?>
 
-        <div class="box box-success" ng-app="starApp" ng-controller="starCtrl">
+        <div class="box box-success" ng-app="directorApp" ng-controller="directorCtrl">
             <div class="box-header">
                 <div class="box-title">
-                    View Songs
+                    View Music Directors
                 </div>
             </div>
             <div class="box-body">
@@ -70,7 +70,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="search">Search by Star Name</label>
+                        <label for="search">Search by Director Name</label>
                         <input type="text" ng-model="search" ng-change="searchFn()" class="form-control">
                     </div>
                 </div>
@@ -78,19 +78,19 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Actor/Actress Name</th>
+                            <th>Director Name</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
-                    <tr ng-repeat="star in stars">
+                    <tr ng-repeat="director in directors">
                         <td>{{ offset * limit + $index + 1}}</td>
-                        <td>{{ star.name}}</td>
+                        <td>{{ director.name}}</td>
                         <td>
-                            <a class="btn btn-warning" href="edit_star.php?id={{ star.id}}">EDIT</a>
+                            <a class="btn btn-warning" href="edit_music_director.php?id={{ director.id}}">EDIT</a>
                         </td>
                         <td>
-                            <a class="btn btn-danger" href="delete_star.php?id={{ star.id}}">DELETE</a>
+                            <a class="btn btn-danger" href="delete_music_director.php?id={{ director.id}}">DELETE</a>
                         </td>
                     </tr>
                 </table>

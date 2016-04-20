@@ -199,6 +199,63 @@ $filename = basename($url);
                                 ?>"><a href="view_stars.php"><i class='fa fa-list'></i>List Actors/Actresses</a></li>
                             </ul>
                         </li>
+                        <li class="treeview <?php
+                        if ($filename == "add_singer.php" || $filename == "view_singer.php") {
+                            echo 'active';
+                        }
+                        ?>">
+                            <a href="#"><i class='fa fa-microphone'></i> <span>Singers</span> <i class="fa fa-angle-left pull-right"></i></a>
+                            <ul class="treeview-menu">
+                                <li class="<?php
+                                if ($filename == "add_singer.php") {
+                                    echo 'active';
+                                }
+                                ?>"><a href="add_singer.php"><i class='fa fa-plus'></i>Add Singer</a></li>
+                                <li class="<?php
+                                if ($filename == "view_singer.php") {
+                                    echo 'active';
+                                }
+                                ?>"><a href="view_singer.php"><i class='fa fa-list'></i>List Singers</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview <?php
+                        if ($filename == "add_music_directr.php" || $filename == "view_music_director.php") {
+                            echo 'active';
+                        }
+                        ?>">
+                            <a href="#"><i class='fa fa-sliders'></i> <span>Music Directors</span> <i class="fa fa-angle-left pull-right"></i></a>
+                            <ul class="treeview-menu">
+                                <li class="<?php
+                                if ($filename == "add_music_directr.php") {
+                                    echo 'active';
+                                }
+                                ?>"><a href="add_music_directr.php"><i class='fa fa-plus'></i>Add Music Director</a></li>
+                                <li class="<?php
+                                if ($filename == "view_music_director.php") {
+                                    echo 'active';
+                                }
+                                ?>"><a href="view_music_director.php"><i class='fa fa-list'></i>List Music Directors</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview <?php
+                        if ($filename == "add_movie_director.php" || $filename == "view_movie_director.php") {
+                            echo 'active';
+                        }
+                        ?>">
+                            <a href="#"><i class='fa fa-video-camera'></i> <span>Movie Directors</span> <i class="fa fa-angle-left pull-right"></i></a>
+                            <ul class="treeview-menu">
+                                <li class="<?php
+                                if ($filename == "add_movie_director.php") {
+                                    echo 'active';
+                                }
+                                ?>"><a href="add_movie_director.php"><i class='fa fa-plus'></i>Add Movie Director</a></li>
+                                <li class="<?php
+                                if ($filename == "view_movie_director.php") {
+                                    echo 'active';
+                                }
+                                ?>"><a href="view_movie_director.php"><i class='fa fa-list'></i>List Movie Directors</a></li>
+                            </ul>
+                        </li>
                         <!--li><a href="#"><i class='fa fa-link'></i> <span>Another Link</span></a></li>
                         <li class="treeview">
                             <a href="#"><i class='fa fa-link'></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
