@@ -180,6 +180,25 @@ $filename = basename($url);
                                 ?>"><a href="view_movie.php"><i class='fa fa-list'></i>List Movies</a></li>
                             </ul>
                         </li>
+                        <li class="treeview <?php
+                        if ($filename == "add_star.php" || $filename == "view_stars.php") {
+                            echo 'active';
+                        }
+                        ?>">
+                            <a href="#"><i class='fa fa-star'></i> <span>Actor/Actress</span> <i class="fa fa-angle-left pull-right"></i></a>
+                            <ul class="treeview-menu">
+                                <li class="<?php
+                                if ($filename == "add_star.php") {
+                                    echo 'active';
+                                }
+                                ?>"><a href="add_star.php"><i class='fa fa-plus'></i>Add Actor/Actresses</a></li>
+                                <li class="<?php
+                                if ($filename == "view_stars.php") {
+                                    echo 'active';
+                                }
+                                ?>"><a href="view_stars.php"><i class='fa fa-list'></i>List Actors/Actresses</a></li>
+                            </ul>
+                        </li>
                         <!--li><a href="#"><i class='fa fa-link'></i> <span>Another Link</span></a></li>
                         <li class="treeview">
                             <a href="#"><i class='fa fa-link'></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>

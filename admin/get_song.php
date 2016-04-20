@@ -12,7 +12,7 @@ if (isset($params)) {
     $result = mysqli_query($link, $query);
     $count = mysqli_num_rows($result);
 
-    $query = sprintf("SELECT s.id as id,s.name as song,m.name as movie FROM songs s LEFT JOIN movies m ON s.movie_id = m.id WHERE s.name LIKE '%%%s%%' LIMIT %d OFFSET %d", $params['search'], $params['limit'], $offset);
+    $query = sprintf("SELECT s.id as id,s.name as song,m.name as movie FROM songs s LEFT JOIN movies m ON s.movie_id = m.id WHERE s.name LIKE '%%%s%%' ORDER BY s.name LIMIT %d OFFSET %d", $params['search'], $params['limit'], $offset);
     $result = mysqli_query($link, $query);
     while ($row = mysqli_fetch_object($result)) {
         $full_row = new stdClass;

@@ -89,7 +89,7 @@ if ($_POST) {
             }
             */
             if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadpath)) {
-                $query = sprintf("UPDATE movies SET image='%s' WHERE id=%d", $file, $movie_id);
+                $query = sprintf("UPDATE movies SET image='%s' WHERE id=%d", $file, $id);
                 mysqli_query($link, $query) or die(mysqli_error($link));
             } else {
                 //header('Location: add_movie.php?status=2');
