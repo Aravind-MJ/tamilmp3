@@ -12,7 +12,7 @@ $status = $_GET['status'];
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Admin</a></li>
-            <li>Home</li>
+            <li>Movie</li>
             <li class="active">Add Movie</li>
         </ol>
     </section>

@@ -10,7 +10,8 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Admin</a></li>
-            <li class="active">Home</li>
+            <li>Singers</li>
+            <li class="active">List Singers</li>
         </ol>
     </section>
 

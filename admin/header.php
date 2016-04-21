@@ -219,17 +219,17 @@ $filename = basename($url);
                             </ul>
                         </li>
                         <li class="treeview <?php
-                        if ($filename == "add_music_directr.php" || $filename == "view_music_director.php") {
+                        if ($filename == "add_music_director.php" || $filename == "view_music_director.php") {
                             echo 'active';
                         }
                         ?>">
                             <a href="#"><i class='fa fa-sliders'></i> <span>Music Directors</span> <i class="fa fa-angle-left pull-right"></i></a>
                             <ul class="treeview-menu">
                                 <li class="<?php
-                                if ($filename == "add_music_directr.php") {
+                                if ($filename == "add_music_director.php") {
                                     echo 'active';
                                 }
-                                ?>"><a href="add_music_directr.php"><i class='fa fa-plus'></i>Add Music Director</a></li>
+                                ?>"><a href="add_music_director.php"><i class='fa fa-plus'></i>Add Music Director</a></li>
                                 <li class="<?php
                                 if ($filename == "view_music_director.php") {
                                     echo 'active';

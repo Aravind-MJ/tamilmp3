@@ -38,6 +38,7 @@ $status = $_GET['status'];
         </h1>
         <ol class="breadcrumb">
             <li><a href="home.php"><i class="fa fa-dashboard"></i> Admin </a></li>
+            <li>Songs</li>
             <li class="active">Add song</li>
         </ol>
     </section>
