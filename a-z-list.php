@@ -164,7 +164,7 @@ $autoload->js_inc  = $js_inc;
                         <ul class="lineup">
                             <?php foreach ($firstColList as $firstList): ?>
                                 <li>
-                                    <div class="lineup-artist"><a href="javascript:;"><?php echo $firstList['name']?></a></div>
+                                    <div class="lineup-artist"><a href="album.php?id=<?php echo $firstList['id'];?>"><?php echo $firstList['name']?></a></div>
                                 </li>
                             <?php endforeach; ?>
                         </ul>
@@ -176,7 +176,7 @@ $autoload->js_inc  = $js_inc;
                         <ul class="lineup">
                         <?php foreach ($secondColList as $secondList): ?>
                             <li>
-                                <div class="lineup-artist"><a href="javascript:;"><?php echo $secondList['name']?></a></div>
+                                <div class="lineup-artist"><a href="album.php?id=<?php echo $secondList['id'];?>"><?php echo $secondList['name']?></a></div>
                             </li>
                         <?php endforeach; ?>
                         </ul>
@@ -189,7 +189,7 @@ $autoload->js_inc  = $js_inc;
                         <ul class="lineup">
                         <?php foreach ($thirdColList as $thirdList): ?>
                             <li>
-                                <div class="lineup-artist"><a href="javascript:;"><?php echo $thirdList['name']?></a></div>
+                                <div class="lineup-artist"><a href="album.php?id=<?php echo $thirdList['id'];?>"><?php echo $thirdList['name']?></a></div>
                             </li>
                         <?php endforeach; ?>
                         </ul>
