@@ -1,47 +1,54 @@
 <?php
-
-if ($_GET['id']) {
-    include 'db.php';
+if ($_GET) {
     $id = $_GET['id'];
-    
-    //Code to delete Song file
-
-    /*$query = sprintf("SELECT s.name as name,s.file as file,m.name as moviename FROM songs s LEFT JOIN movies m ON s.movie_id = m.id WHERE s.id=%d", $id);
-    $row = mysqli_fetch_assoc(mysqli_query($link, $query));
-
-    $filepath = "upload/" . $row['moviename'] . "/" . $row['file'];
-
-    if (file_exists($filepath)) {
-        chmod($filepath, 0777);
-        if (unlink($filepath)) {
-            echo '<script> window.location.href="view_song.php?status=1"; </script>';
-        } else {
-            echo '<script> window.location.href="view_song.php?status=File Deletion Failed"; </script>';
-        }
-    } else {
-        echo '<script> window.location.href="view_song.php?status=Song File Not Found"; </script>';
-    }*/
-    
-    $query = sprintf("DELETE FROM songs WHERE id=%d",$id);
-    $r = mysqli_query($link, $query);
-    if(!$r){
-        echo '<script> window.location.href="view_song.php?status=Deletion at song Table failed"; </script>';
+    include 'header.php';
+    ?>
+<style>
+    .box{
+        text-align: center;
     }
-    
-    $query = sprintf("DELETE FROM sung_by WHERE song_id=%d",$id);
-    $r = mysqli_query($link, $query);
-    if(!$r){
-        echo '<script> window.location.href="view_song.php?status=Deletion at sung_by Table failed"; </script>';
+    .btn{
+        width: 100px;
+        padding: 10px;
+        margin: 20px;
     }
-    
-    $query = sprintf("DELETE FROM directed_by WHERE song_id=%d",$id);
-    $r = mysqli_query($link, $query);
-    if(!$r){
-        echo '<script> window.location.href="view_song.php?status=Deletion at directed_by Table failed"; </script>';
-    }
-    
-    echo '<script> window.location.href="view_song.php?status=1"; </script>';
-    
-    
+</style>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Admin
+                <small>Dashboard</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Admin</a></li>
+                <li class="active">Confirm</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <div class="box box-danger">
+                <div class="box-header">
+                    <div class="box-title text-danger">
+                        <span class="fa fa-info"></span> CONFIRM?
+                    </div>
+                    <div class="box-body">
+                        Once deleted the Data cannot be Retrieved...<br>
+                        Are you sure you want to Continue?<br>
+                        <a class="btn btn-danger" href="delete_song.php?id=<?php echo $id; ?>">YES</a>
+                        <a class="btn btn-success" href="view_song.php">NO</a>
+                    </div>
+                </div>
+            </div>
+
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+    <?php
+    include 'footer.php';
+} else {
+    echo '<h1>ACCESS DENIED!!!</h1>';
 }
-
+?>

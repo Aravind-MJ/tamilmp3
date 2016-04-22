@@ -121,7 +121,7 @@ if ($_POST) {
             $singer_id = $singer;
         }
         //Updating sung_by Table
-        $query = sprintf("INSERT INTO sung_by SET song_id=%d,singer_id=%d", $song_id, $singer_id);
+        $query = sprintf("INSERT INTO sung_by SET song_id=%d,singer_id=%d,movie_id=%d", $song_id, $singer_id,$movie_id);
         mysqli_query($link, $query) or die(mysqli_error($link));
     }
 
@@ -136,7 +136,7 @@ if ($_POST) {
             $music_director_id = $music_director;
         }
         //Updating directed_by Table
-        $query = sprintf("INSERT INTO directed_by SET song_id=%d,director_id=%d", $song_id, $music_director_id);
+        $query = sprintf("INSERT INTO directed_by SET song_id=%d,director_id=%d,movie_id=%d", $song_id, $music_director_id,$movie_id);
         mysqli_query($link, $query) or die(mysqli_error($link));
     }
 

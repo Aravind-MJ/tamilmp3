@@ -38,7 +38,7 @@ $filename = basename($url);
         <link href="plugins/formValidator/formValidation.min.css" rel="stylesheet" type="text/css"/>
         <script src="plugins/formValidator/formValidation.min.js" type="text/javascript"></script>
         <script src="plugins/formValidator/framework/bootstrap.js" type="text/javascript"></script>
-        
+
         <!-- DATA TABLES -->
         <link href="plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
         <!-- DATA TABES SCRIPT -->
@@ -123,15 +123,25 @@ $filename = basename($url);
                     </div>
 
                     <!-- search form (Optional) -->
-                    <form action="#" method="get" class="sidebar-form">
+                    <form action="search_result.php" method="post" class="sidebar-form" id="search-form">
                         <div class="input-group">
-                            <input type="text" name="q" class="form-control" placeholder="Search..."/>
+                            <input type="text" name="search" id="search" class="form-control" placeholder="Search..."/>
                             <span class="input-group-btn">
-                                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+                                <button id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
                             </span>
                         </div>
                     </form>
                     <!-- /.search form -->
+                    <script>
+                        $('#search-btn').click(function () {
+                            $('#search-form').submit();
+                        });
+                        $('#search').keypress(function (e) {
+                            if (e.which == 13) {
+                               $('#search-form').submit();
+                            }
+                        });
+                    </script>
 
                     <!-- Sidebar Menu -->
                     <ul class="sidebar-menu">
@@ -161,7 +171,7 @@ $filename = basename($url);
                                 ?>"><a href="view_song.php"><i class='fa fa-list'></i>List Songs</a></li>
                             </ul>
                         </li>
-                         <li class="treeview <?php
+                        <li class="treeview <?php
                         if ($filename == "add_movie.php" || $filename == "view_movie.php") {
                             echo 'active';
                         }
