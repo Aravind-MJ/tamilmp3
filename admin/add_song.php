@@ -210,7 +210,7 @@ $status = $_GET['status'];
                         },
                         file: {
                             extension: 'mp3',
-                            type: 'audio/mp3',
+                            type: 'audio/mpeg, audio/mp3, audio/ogg',
                             message: 'Please choose an Audio File of mp3,wav or ogg.'
                         }
                     }
