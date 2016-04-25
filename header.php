@@ -24,4 +24,4 @@
     <![endif]-->
 </head>
 
-<?php require_once ('db.php');?>
+<?php require ('db.php');?>
