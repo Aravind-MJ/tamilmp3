@@ -1747,6 +1747,7 @@ transition: all 0.7s ease;
 .cc_im_box img {
     
    transition: all 0.5s ease 0s; 
+   height: 262px;
 }
 
 .cc_im_box:hover img {

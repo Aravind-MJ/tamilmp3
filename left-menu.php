@@ -37,7 +37,7 @@
                 <div class="fs_news_right">
                     <div class="single_mega">
                         <ul>
-                            <li> <a href="inner-page.html"> Star Hits </a> </li>
+                            <li> <a href="star-hits.php"> Star Hits </a> </li>
                             <li> <a href="#"> Music Director Hits </a></li>
                             <li> <a href="#"> Singer Hits </a></li>
 
