@@ -38,7 +38,7 @@ if ($_GET) {
                     <div class="box-body">
                         Once deleted the Data cannot be Retrieved...<br>
                         Are you sure you want to Continue?<br>
-                        <a class="btn btn-danger" href="delete_song.php?id=<?php echo $id; ?>">YES</a>
+                        <a class="btn btn-danger" href="delete_song_process.php?id=<?php echo $id; ?>">YES</a>
                         <a class="btn btn-success" href="view_song.php">NO</a>
                     </div>
                 </div>
