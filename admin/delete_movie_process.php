@@ -13,25 +13,25 @@ if($_GET){
     $query = sprintf("DELETE FROM movies WHERE id=%d",$id);
     $r = mysqli_query($link, $query);
     if(!$r){
-        echo '<script> window.location.href="view_song.php?status=Deletion at movies Table failed"; </script>';
+        echo '<script> window.location.href="view_movie.php?status=Deletion at movies Table failed"; </script>';
         die();
     }
     
     $query = sprintf("DELETE FROM movie_directed_by WHERE movie_id=%d",$id);
     $r = mysqli_query($link, $query);
     if(!$r){
-        echo '<script> window.location.href="view_song.php?status=Deletion at movie_directed_by Table failed"; </script>';
+        echo '<script> window.location.href="view_movie.php?status=Deletion at movie_directed_by Table failed"; </script>';
         die();
     }
     
     $query = sprintf("DELETE FROM starred_by WHERE movie_id=%d",$id);
     $r = mysqli_query($link, $query);
     if(!$r){
-        echo '<script> window.location.href="view_song.php?status=Deletion at starred_by Table failed"; </script>';
+        echo '<script> window.location.href="view_movie.php?status=Deletion at starred_by Table failed"; </script>';
         die();
     }
     
-    echo '<script> window.location.href="view_song.php?status=1"; </script>';
+    echo '<script> window.location.href="view_movie.php?status=1"; </script>';
     
 }else{
     echo '<h1>ACCESS DENIED!!!</h1>';

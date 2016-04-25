@@ -7,7 +7,7 @@ if ($_GET) {
     .box{
         text-align: center;
     }
-    .btn{
+    .content .btn{
         width: 100px;
         padding: 10px;
         margin: 20px;

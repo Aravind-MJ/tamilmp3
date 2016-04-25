@@ -88,10 +88,10 @@
                         <td>{{ offset * limit + $index + 1}}</td>
                         <td>{{ singer.name}}</td>
                         <td>
-                            <a class="btn btn-warning" href="edit_movie_director.php?id={{ singer.id}}">EDIT</a>
+                            <a class="btn btn-warning" href="edit_singer.php?id={{ singer.id}}">EDIT</a>
                         </td>
                         <td>
-                            <a class="btn btn-danger" href="delete_movie_director.php?id={{ singer.id}}">DELETE</a>
+                            <a class="btn btn-danger" href="delete_singer.php?id={{ singer.id}}">DELETE</a>
                         </td>
                     </tr>
                 </table>

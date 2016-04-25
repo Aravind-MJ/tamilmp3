@@ -12,9 +12,9 @@ if($_GET){
     $query = sprintf("DELETE FROM singers WHERE id=%d",$id);
     $r = mysqli_query($link, $query);
     if(!$r){
-        echo '<script> window.location.href="view_stars.php?status=Deletion at stars Table failed"; </script>';
+        echo '<script> window.location.href="view_singer.php?status=Deletion at stars Table failed"; </script>';
         die();
     }
     
-    echo '<script> window.location.href="view_stars.php?status=1"; </script>';
+    echo '<script> window.location.href="view_singer.php?status=1"; </script>';
 }
