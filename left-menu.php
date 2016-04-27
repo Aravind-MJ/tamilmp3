@@ -7,7 +7,7 @@
                 <div class="fs_news_right">
                     <div class="single_mega">
                         <ul>
-                            <li> <a href="a-z-list.php"> A-Z Movie Songs </a> </li>
+                            <li> <a href="#/azlisting/A"> A-Z Movie Songs </a> </li>
                             <li> <a href="#"> Movie List By Year </a></li>
                             <li> <a href="#"> New Releases </a></li>
 

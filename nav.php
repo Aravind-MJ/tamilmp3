@@ -50,7 +50,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5 col-sm-4 col-xs-12">
-                    <div class="logo"> <a href="index.html"><img src="images/logo.png" title="Tamil Mp3"/></a> </div>
+                    <div class="logo"> <a href="#/"><img src="images/logo.png" title="Tamil Mp3"/></a> </div>
                 </div>
                 <div class="col-md-7 col-sm-8 col-xs-12">
                     <div class="header_add"> <form class="form-wrapper">
