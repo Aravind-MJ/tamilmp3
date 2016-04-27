@@ -34,10 +34,21 @@
     <?php include ('header.php'); ?>
     <style type="text/css">
         .loading-screen {
-            margin-top: 10%;
-            margin-left: 40%;;
-            position: absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            position: fixed;
             z-index: 20;
+            background-color: #111;
+            opacity: 0.6;
+            filter: alpha(opacity=60);
+
+        }
+        .loading-icon{
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 21%;
         }
         .sk-wave {
             margin: 40px auto;
@@ -46,7 +57,7 @@
             text-align: center;
             font-size: 10px; }
         .sk-wave .sk-rect {
-            background-color: #333;
+            background-color: #fff;
             height: 100%;
             width: 6px;
             display: inline-block;
@@ -166,8 +177,8 @@
                     <?php include_once ('left-menu.php'); ?>
                     <div class="col-lg-9 col-md-9">
                         <ng-view></ng-view>
-                        <div data-loading class="loading-screen" >
-                            <div class="sk-folding-cube">
+                        <div data-loading class="loading-screen">
+                            <div class="loading-icon">
                                 <div class="sk-wave">
                                     <div class="sk-rect sk-rect1"></div>
                                     <div class="sk-rect sk-rect2"></div>

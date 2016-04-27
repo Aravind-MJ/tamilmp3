@@ -39,6 +39,7 @@ var app = angular.module('tamilMp3', ['ngRoute'])
         })
         .controller('main', function ($scope) {
             $scope.banner = {};
+            $scope.fetchedatoz = [];
             $scope.banner.visibility = true;
         })
         .controller('mp3Ctrl', function ($scope) {
@@ -47,11 +48,22 @@ var app = angular.module('tamilMp3', ['ngRoute'])
         })
         .controller('azList', function ($scope, $routeParams, $http) {
             $scope.banner.visibility = true;
+            $scope.indexChar = function (index) {
+                return String.fromCharCode(65 + index);
+            };
+            $scope.getTimes = function (n) {
+                return new Array(n);
+            };
             var alpha = $routeParams.alpha;
-            $http.get('ajax/azlist.php?alpha=' + alpha)
-                    .then(function (response) {
-                        $scope.list = response.data;
-                    });
+            if (angular.isDefined($scope.fetchedatoz[alpha])) {
+                $scope.list = $scope.fetchedatoz[alpha];
+            } else {
+                $http.get('ajax/azlist.php?alpha=' + alpha)
+                        .then(function (response) {
+                            $scope.list = response.data;
+                            $scope.fetchedatoz[alpha] = response.data;
+                        });
+            }
         })
         .controller('albumCtrl', function ($scope, $routeParams) {
             $scope.banner.visibility = false;
