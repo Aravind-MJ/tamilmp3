@@ -33,18 +33,12 @@
 
     <?php include ('header.php'); ?>
     <style type="text/css">
-        /*
-     *  Usage:
-     *
-          <div class="sk-wave">
-            <div class="sk-rect sk-rect1"></div>
-            <div class="sk-rect sk-rect2"></div>
-            <div class="sk-rect sk-rect3"></div>
-            <div class="sk-rect sk-rect4"></div>
-            <div class="sk-rect sk-rect5"></div>
-          </div>
-     *
-     */
+        .loading-screen {
+            margin-top: 10%;
+            margin-left: 40%;;
+            position: absolute;
+            z-index: 20;
+        }
         .sk-wave {
             margin: 40px auto;
             width: 50px;
