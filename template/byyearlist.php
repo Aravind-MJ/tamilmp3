@@ -2,19 +2,10 @@
 
     <ul class="top-filter-select">
 
-        <li> <a href="#/azlisting/A" class="active" data-pid="106" data-lang="tamil" data-toggle="tootltip" title="" data-original-title="Latest Releases"> A-Z MOVIE LIST </a> </li>
+        <li> <a href="#/byyear/{{ year }}" class="active" data-pid="106" data-lang="tamil" data-toggle="tootltip" title="" data-original-title="Latest Releases"> MOVIE LIST BY YEAR / {{ year }} </a> </li>
 
     </ul>
 
-</div>
-
-<div class="m-b-f-p">
-    <ul class="station-select">
-        <?php foreach (range('A', 'Z') as $char): ?>
-            <li> <a href="#/azlisting/<?php echo $char; ?>" class="alphabets"> <?php echo $char; ?> </a> </li>
-        <?php endforeach; ?>
-        <li> <a href = "#/azlisting/num" class = "" data-pid = "126" data-lang = "tamil" data-toggle = "tootltip" title = "" data-original-title = "Tamil Private Albums"> 1-9 </a> </li>
-    </ul>
 </div>
 
 <div class = "m-b-f-p" id = "a-zlist-affix">

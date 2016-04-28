@@ -1,8 +1,7 @@
 <?php
 
 $alpha = $_GET['alpha'];
-$folder = "../";
-sleep(5);
+$folder = "../../";
 function folderlist($startdir, $alpha) {
     $ignoredDirectory[] = '.';
     $ignoredDirectory[] = '..';
@@ -31,6 +30,8 @@ function folderlist($startdir, $alpha) {
     }
     return($directorylist);
 }
-
-echo json_encode(folderlist($folder, $alpha));
+$list = folderlist($folder, $alpha);
+$count = ceil(count($list) / 3);
+$rlist = array_chunk($list, $count);
+echo json_encode($rlist);
 ?>

@@ -8,7 +8,7 @@
                     <div class="single_mega">
                         <ul>
                             <li> <a href="#/azlisting/A"> A-Z Movie Songs </a> </li>
-                            <li> <a href="#"> Movie List By Year </a></li>
+                            <li> <a href="#/byyear"> Movie List By Year </a></li>
                             <li> <a href="#"> New Releases </a></li>
 
                         </ul>

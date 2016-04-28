@@ -21,7 +21,8 @@
         'theme-js' => 'js/main.js',
         'angular-js' => 'http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js',
         'angular-js-route' => 'http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js',
-        'script' => 'scripts/injection.js'
+        'script' => 'scripts/injection.js',
+        'animate' => 'http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js'
     );
 
     include_once 'autoload.php';
@@ -33,6 +34,7 @@
 
     <?php include ('header.php'); ?>
     <style type="text/css">
+
         .loading-screen {
             top:0;
             left:0;
