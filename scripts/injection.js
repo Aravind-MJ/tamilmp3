@@ -142,6 +142,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                         $scope.detail = response.data.detail;
                         console.log($scope.list);
                     });
+                    
         })
         /*.controller('yearCtrl', function ($scope) {                     //Controller for Year Listing
          $scope.banner.visibility = false;

@@ -77,7 +77,7 @@
                                                 src="images/playlist-play.png"> </i></a>
                                     <a href="javascript:;" class="googleplus-share"><i class="icon icon-download"><img
                                                 src="images/playlist-add.png"></i></a>
-                                    <a href="javascript:;" class="googleplus-share"><i class="icon icon-download"><img
+                                    <a href="{{ x.downpath }}/{{ x.name }}" download="{{ x.name }}" class="googleplus-share"><i class="icon icon-download"><img
                                                 src="images/playlist-dl.png"></i></a>
                                 </div>
                                 <a class="track sp-play-track" href="#" data-cover="">
