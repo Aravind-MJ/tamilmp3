@@ -1,5 +1,4 @@
 
-
 <div class="movie_ft">
     <div class="col-md-5 col-sm-5 col-xs-12">
         <div class="fs_news_left ht_fs_news_left m-t-f-p">
@@ -14,14 +13,13 @@
     <div class="col-md-7 col-sm-7 col-xs-12">
         <div class="single_fs_news_right_text m-t-f-p">
             <h2><a href="#"></a></h2>
-
-
+            
             <p>Starring : {{ name }} </p>
 
             <p>Music Director : Ilaiyaraaja</p>
 
             <p>Singers : </p>
-
+            
             <p>Director :</p>
 
             <p>Year : </p>
@@ -64,7 +62,7 @@
         <div class="col-md-1 col-md-1 col-xs-1 col-sm-1"><input type="checkbox" id="checkAll"/></div>
         <div class="col-md-11 col-xs-11 col-sm-11 selec-m">Select All</div>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-9" ng-repeat="x in list.song">
         <div class="col-md-1 col-md-1 col-xs-1 col-sm-1"><input type="checkbox" name="a" class="styled"/>
         </div>
         <div class="col-md-11 col-xs-11 col-sm-11">
@@ -86,10 +84,10 @@
                                     <!-- cover -->
                                     <span class="track-title"></span>
                                     <!-- Artists -->
-                                    <span class="track-artists">Unknown</span>
+                                    <span class="track-artists">{{ x.name }}</span>
                                 </a>
 
-                                <div class="track-size">10.05 MB</div>
+                                <div class="track-size">{{ detail[x.name]/1000000 | number:2 }}MB</div>
 
                             </div>
                         </li>

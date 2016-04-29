@@ -95,9 +95,16 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                         });
             }
         })
-        .controller('albumCtrl', function ($scope, $routeParams) {      //Controller for Album Page
+        .controller('albumCtrl', function ($scope, $routeParams, $http) {
             $scope.banner.visibility = false;
             $scope.name = $routeParams.name;
+            var name = $routeParams.name;
+            $http.get('ajax/songlist.php?name=' + name)
+                    .then(function (response) {
+                        $scope.list = response.data;
+                        $scope.detail = response.data.detail;
+                        console.log($scope.list);
+                    });
         })
         /*.controller('yearCtrl', function ($scope) {                     //Controller for Year Listing
          $scope.banner.visibility = false;
