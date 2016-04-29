@@ -1,4 +1,3 @@
-
 /* =============================
 1. Base CSS
 ================================*/
@@ -54,11 +53,12 @@ a:hover { color: #000 }
 
 section .movie_ft {
     
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+float:left;
     
 }
 
-
+ 
 
 /* =========================
 2. Home CSS
@@ -2392,7 +2392,8 @@ input[type="submit"]:hover, button:hover, .btn:hover {
 
 input[type="submit"] i, button i, .btn i {
 	margin-right: 8px;
-	color: #fff;
+	color: #fff; 
+        vertical-align:text-bottom;
 }
 input[type="submit"]:hover i, button:hover i, .btn:hover i { color: #fff; }
 
@@ -2616,6 +2617,7 @@ input[type="checkbox"] {
     margin: 0;
     padding: 5px 0;
     position: relative;
+    list-style:outside none none;
     
 }
 
@@ -2707,5 +2709,4 @@ input[type="checkbox"] {
 
 
 /* END of Style */
-
 

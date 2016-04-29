@@ -22,7 +22,7 @@
         <ul class = "lineup">
             <li ng-repeat = "name in list1 track by $index">
                 <div class = "lineup-artist">
-                    <a href = "#/movie/{{name.name}}"> {{ name.name}}
+                    <a href = "#/Album/azlisting/{{name.name}}"> {{ name.name}}
                     </a>
                 </div>
             </li>
@@ -32,7 +32,7 @@
         <ul class = "lineup">
             <li ng-repeat = "name in list2 track by $index">
                 <div class = "lineup-artist">
-                    <a href = "#/movie/{{name.name}}"> {{ name.name}}
+                    <a href = "#/Album/azlisting/{{name.name}}"> {{ name.name}}
                     </a>
                 </div>
             </li>
@@ -42,7 +42,7 @@
         <ul class = "lineup">
             <li ng-repeat = "name in list3 track by $index">
                 <div class = "lineup-artist">
-                    <a href = "#/movie/{{name.name}}"> {{ name.name}}
+                    <a href = "#/Album/azlisting/{{name.name}}"> {{ name.name}}
                     </a>
                 </div>
             </li>

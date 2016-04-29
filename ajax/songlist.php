@@ -1,6 +1,7 @@
 <?php
- $name = $_GET['name'];
-$folder = "../$name";
+$param = json_decode(file_get_contents("php://input"));
+$folder = $param -> loc;
+
 function songslist($startdir){  
   $ignoredDirectory[] = '.'; 
   $ignoredDirectory[] = '..';
@@ -47,5 +48,4 @@ $detail[$song['name']] = $ThisFileInfo['filesize'];
 $songDetailMerge = array('detail' => $detail, 'song' => $songs);
 
 echo json_encode($songDetailMerge);
-?>
 

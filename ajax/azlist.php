@@ -1,7 +1,7 @@
 <?php
 
 $alpha = $_GET['alpha'];
-$folder = "../../";
+$folder = "../FileSystem/A-Z Movie Songs/";
 function folderlist($startdir, $alpha) {
     $ignoredDirectory[] = '.';
     $ignoredDirectory[] = '..';

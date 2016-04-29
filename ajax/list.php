@@ -25,5 +25,4 @@ function folderlist($startdir) {
 
 $rlist = folderlist($folder);
 echo json_encode($rlist);
-?>
 

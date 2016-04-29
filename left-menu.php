@@ -39,7 +39,7 @@
                         <ul>
                             <li> <a href="#/StarHits"> Star Hits </a> </li>
                             <li> <a href="#/MusicDirectorHits"> Music Director Hits </a></li>
-                            <li> <a href="#"> Singer Hits </a></li>
+                            <li> <a href="#/SingerHits"> Singer Hits </a></li>
 
                         </ul>
                     </div>
