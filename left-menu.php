@@ -38,7 +38,7 @@
                     <div class="single_mega">
                         <ul>
                             <li> <a href="#/StarHits"> Star Hits </a> </li>
-                            <li> <a href="#"> Music Director Hits </a></li>
+                            <li> <a href="#/MusicDirectorHits"> Music Director Hits </a></li>
                             <li> <a href="#"> Singer Hits </a></li>
 
                         </ul>

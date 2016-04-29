@@ -58,6 +58,8 @@ section .movie_ft {
     
 }
 
+
+
 /* =========================
 2. Home CSS
 ============================*/
@@ -93,7 +95,7 @@ section .movie_ft {
     width: 100%;
     padding: 18px;
     margin-top: 40px;
-    margin-left: 30px;
+    margin-left: 15px;
 }
 
 .ftm-alb-title h2 {
@@ -1747,7 +1749,6 @@ transition: all 0.7s ease;
 .cc_im_box img {
     
    transition: all 0.5s ease 0s; 
-   height: 262px;
 }
 
 .cc_im_box:hover img {

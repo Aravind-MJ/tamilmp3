@@ -47,9 +47,13 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                         templateUrl: 'template/starhits.php',
                         controller: 'starhitsCtrl'
                     })
+                     .when("/MusicDirectorHits/", {//Album Page
+                        templateUrl: 'template/starhits.php',
+                        controller: 'directorCtrl'
+                    })
                     .otherwise({redirectTo: '/'});
         })
-        .controller('main', function ($scope) {                     //Main Controller mainly used For Caching
+        .controller('main', function ($scope) {                     //Main Controller (mainly used For Caching)
             $scope.banner = {};
             $scope.fetchedatoz = [];
             $scope.fetchedbyyear = [];
@@ -62,6 +66,16 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
         .controller('starhitsCtrl', function ($scope, $http) {      //Controller for Star Hits Template Page
             $scope.banner.visibility = true;
             $scope.location = "star_images";                        //Location of Star Images
+            $http.post('ajax/list.php', {
+                loc: "../admin/"                                    //Location of Folder
+            })
+                    .then(function (response) {
+                        $scope.list = response.data;
+                    });
+        })
+        .controller('directorCtrl', function ($scope, $http) {      //Controller for Star Hits Template Page
+            $scope.banner.visibility = true;
+            $scope.location = "director_images";                        //Location of Music Director Images
             $http.post('ajax/list.php', {
                 loc: "../admin/"                                    //Location of Folder
             })
