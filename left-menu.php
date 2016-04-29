@@ -22,10 +22,8 @@
                 <div class="fs_news_right">
                     <div class="single_mega">
                         <ul>
-                            <li> <a href="#"> ILaiyaraja Movies </a> </li>
-                            <li> <a href="#">Star Movies </a></li>
-                            <li> <a href="#"> Music Director Movies </a></li>
-
+                            <li> <a href="#/List/ARRahmanHits">A R Rahman Hits </a></li>
+                            <li> <a href="#/List/IlayarajaHits"> ILaiyaraja Hits </a> </li>
                         </ul>
                     </div>
 
@@ -40,6 +38,8 @@
                             <li> <a href="#/StarHits"> Star Hits </a> </li>
                             <li> <a href="#/MusicDirectorHits"> Music Director Hits </a></li>
                             <li> <a href="#/SingerHits"> Singer Hits </a></li>
+                            <li> <a href="#/SingerHits"> Star Movies </a></li>
+                            <li> <a href="#"> Music Director Movies </a></li>
 
                         </ul>
                     </div>

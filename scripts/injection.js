@@ -1,5 +1,5 @@
 var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
-        .directive('loading', ['$http', function ($http) //Directive defined to show Loading Screen on Ajax Call
+        .directive('loading', ['$http', function ($http)            //Directive defined to show Loading Screen on Ajax Call
             {
                 return {
                     restrict: 'A',
@@ -33,7 +33,11 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                         templateUrl: 'template/album.php',
                         controller: 'albumCtrl'
                     })
-                    .when("/:place", {//Year Inner Page
+                    .when("/List/:place", {//List Common Page
+                        templateUrl: 'template/3col.php',
+                        controller: 'colCtrl'
+                    })
+                    .when("/:place", {//Hits Common
                         templateUrl: 'template/hits.php',
                         controller: 'listCtrl'
                     })
@@ -56,6 +60,28 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
         .controller('mp3Ctrl', function ($scope) {                  //Not in Use and Left for Reference(Donot Remove)
             $scope.banner.visibility = true;
             $scope.message = "first";
+        })
+        .controller('colCtrl', function ($scope, $routeParams,$http) {                  //Not in Use and Left for Reference(Donot Remove)
+            $scope.banner.visibility = false;
+            var place = $routeParams.place;
+            if (place == "IlayarajaHits") {
+                place = "Ilayaraja Hits";
+                $scope.listlocation = "IlayarajaHits";
+                $scope.listlocationname = "ILAYARAJA HITS";
+            } else if (place == "ARRahmanHits") {
+                place = "A R Rahman Hits";
+                $scope.listlocation = "ARRahmanHits";
+                $scope.listlocationname = "A R RAHMAN HITS";
+            }
+            
+            $http.post('ajax/3col.php',{
+                loc: '../FileSystem/' + place + '/'  
+            })
+                    .then(function (response) {
+                        $scope.list1 = response.data[0];
+                        $scope.list2 = response.data[1];
+                        $scope.list3 = response.data[2];
+                    });
         })
         .controller('listCtrl', function ($scope, $routeParams, $http) {
             //Controller for Star Hits Template Page
@@ -131,6 +157,10 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 place = "Music Director Hits";
             } else if (place == "SingerHits") {
                 place = "Singer Hits";
+            } else if (place == "IlayarajaHits") {
+                place = "Ilayaraja Hits";
+            } else if (place == "ARRahmanHits") {
+                place = "Ilayaraja Hits";
             }
 
             var name = $routeParams.name;
