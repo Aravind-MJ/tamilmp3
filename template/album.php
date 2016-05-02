@@ -1,4 +1,27 @@
+<?php
+$css_inc = array(
+    'font-awsome' => 'http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css',
+    'bootstrap-css' => '../css/bootstrap.css',
+    'style-css' => '../style.css',
+    'responsive-css' => '../css/responsive.css',
+    'jplayer-css' => '../plugin/jplayer/dist/skin/blue.monday/css/jplayer.blue.monday.min.css'
+);
 
+$js_inc = array(
+    'jquery' => 'https://code.jquery.com/jquery.min.js',
+    'bootstrap-js' => '../js/bootstrap.min.js',
+    'polyfill' => '../js/ie-opacity-polyfill.js',
+    'theme-js' => '../js/main.js',
+    'jplayer' => '../plugin/jplayer/dist/jplayer/jquery.jplayer.min.js',
+    'jplayer-playlist' => '../plugin/jplayer/dist/add-on/jplayer.playlist.min.js'
+);
+
+include_once '../autoload.php';
+$autoload = new Autoload();
+$autoload->title = 'Tamil MP3';
+$autoload->css_inc = $css_inc;
+$autoload->js_inc = $js_inc;
+?>
 <div class="movie_ft">
     <div class="col-md-5 col-sm-5 col-xs-12">
         <div class="fs_news_left ht_fs_news_left m-t-f-p">
@@ -13,16 +36,60 @@
     <div class="col-md-7 col-sm-7 col-xs-12">
         <div class="single_fs_news_right_text m-t-f-p">
             <h2><a href="#"></a></h2>
-            
-            <p>Starring : {{ name }} </p>
+
+            <p>Starring : {{ name}} </p>
 
             <p>Music Director : Ilaiyaraaja</p>
 
             <p>Singers : </p>
-            
+
             <p>Director :</p>
 
             <p>Year : </p>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div id="jp-player" >
+            <div id="jquery_jplayer_1" class="jp-jplayer"></div>
+            <div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
+                <div class="jp-type-single">
+                    <div class="jp-gui jp-interface">
+                        <div class="jp-controls">
+                            <button class="jp-play" role="button" tabindex="0">play</button>
+                            <button class="jp-stop" role="button" tabindex="0">stop</button>
+                        </div>
+                        <div class="jp-progress">
+                            <div class="jp-seek-bar">
+                                <div class="jp-play-bar"></div>
+                            </div>
+                        </div>
+                        <div class="jp-volume-controls">
+                            <button class="jp-mute" role="button" tabindex="0">mute</button>
+                            <button class="jp-volume-max" role="button" tabindex="0">max volume</button>
+                            <div class="jp-volume-bar">
+                                <div class="jp-volume-bar-value"></div>
+                            </div>
+                        </div>
+                        <div class="jp-time-holder">
+                            <div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
+                            <div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
+                            <div class="jp-toggles">
+                                <button class="jp-repeat" role="button" tabindex="0">repeat</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="jp-details">
+                        <div class="jp-title" aria-label="title">&nbsp;</div>
+                    </div>
+                    <div class="jp-no-solution">
+                        <span>Update Required</span>
+                        To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="jplayer-affix">
+
         </div>
     </div>
 </div>
@@ -59,8 +126,9 @@
 <form action="#">
 
     <div class="select-section">
-        <div class="col-md-1 col-md-1 col-xs-1 col-sm-1"><input type="checkbox" id="checkAll"/></div>
-        <div class="col-md-11 col-xs-11 col-sm-11 selec-m">Select All</div>
+        <div class="col-md-1 col-md-1 col-xs-1 col-sm-1" ng-show="list.song"><input type="checkbox" id="checkAll"/></div>
+        <div class="col-md-11 col-xs-11 col-sm-11 selec-m" ng-show="list.song">Select All</div>
+        <div class="col-md-11 col-xs-11 col-sm-11 selec-m" ng-show="!list.song">No Songs</div>
     </div>
     <div class="col-md-9" ng-repeat="x in list.song">
         <div class="col-md-1 col-md-1 col-xs-1 col-sm-1"><input type="checkbox" name="a" class="styled"/>
@@ -77,17 +145,17 @@
                                                 src="images/playlist-play.png"> </i></a>
                                     <a href="javascript:;" class="googleplus-share"><i class="icon icon-download"><img
                                                 src="images/playlist-add.png"></i></a>
-                                    <a href="{{ x.downpath }}/{{ x.name }}" download="{{ x.name }}" class="googleplus-share"><i class="icon icon-download"><img
+                                    <a href="{{ x.downpath}}/{{ x.name}}" download="{{ x.name}}" class="googleplus-share"><i class="icon icon-download"><img
                                                 src="images/playlist-dl.png"></i></a>
                                 </div>
                                 <a class="track sp-play-track" href="#" data-cover="">
                                     <!-- cover -->
                                     <span class="track-title"></span>
                                     <!-- Artists -->
-                                    <span class="track-artists">{{ x.name }}</span>
+                                    <span class="track-artists">{{ x.name}}</span>
                                 </a>
 
-                                <div class="track-size">{{ detail[x.name]/1000000 | number:2 }}MB</div>
+                                <div class="track-size">{{ detail[x.name] / 1000000 | number:2 }}MB</div>
 
                             </div>
                         </li>

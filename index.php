@@ -12,7 +12,8 @@
         'font-awsome' => 'http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css',
         'bootstrap-css' => 'css/bootstrap.css',
         'style-css' => 'style.css',
-        'responsive-css' => 'css/responsive.css'
+        'responsive-css' => 'css/responsive.css',
+        'jplayer-css'    => 'plugin/jplayer/dist/skin/blue.monday/css/jplayer.blue.monday.min.css'
     );
 
     $js_inc = array(
@@ -22,7 +23,9 @@
         'angular-js' => 'http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js',
         'angular-js-route' => 'http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js',
         'script' => 'scripts/injection.js',
-        'animate' => 'http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js'
+        'animate' => 'http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js',
+        'jplayer'          => 'plugin/jplayer/dist/jplayer/jquery.jplayer.min.js',
+        'jplayer-playlist' => 'plugin/jplayer/dist/add-on/jplayer.playlist.min.js'
     );
 
     include_once 'autoload.php';
