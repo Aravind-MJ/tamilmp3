@@ -1,7 +1,8 @@
 <?php
 
 $param = json_decode(file_get_contents("php://input"));
-$folder = $param -> loc;
+$folder = $param->loc;
+$col = $param->col;
 
 function folderlist($startdir) {
     $ignoredDirectory[] = '.';
@@ -23,6 +24,8 @@ function folderlist($startdir) {
     return($directorylist);
 }
 
-$rlist = folderlist($folder);
+$list = folderlist($folder);
+$count = ceil(count($list) / $col);
+$rlist = array_chunk($list, $count);
 echo json_encode($rlist);
-
+?>

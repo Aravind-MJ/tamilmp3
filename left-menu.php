@@ -3,13 +3,14 @@
         <div class="follow_us_side">
             <div class="ftm-title">
                 <h2>CATEGORIES</h2>
-            </div>						<div class="all_news_right">
+            </div>						
+            <div class="all_news_right">
                 <div class="fs_news_right">
                     <div class="single_mega">
                         <ul>
                             <li> <a href="#/azlisting/A"> A-Z Movie Songs </a> </li>
-                            <li> <a href="#/byyear"> Movie List By Year </a></li>
-                            <li> <a href="#"> New Releases </a></li>
+                            <li> <a href="#"> Movie List By Year </a></li>
+                            <li> <a href="#/NewReleases"> New Releases </a></li>
 
                         </ul>
                     </div>
@@ -38,7 +39,7 @@
                             <li> <a href="#/StarHits"> Star Hits </a> </li>
                             <li> <a href="#/MusicDirectorHits"> Music Director Hits </a></li>
                             <li> <a href="#/SingerHits"> Singer Hits </a></li>
-                            <li> <a href="#/SingerHits"> Star Movies </a></li>
+                            <li> <a href="#"> Star Movies </a></li>
                             <li> <a href="#"> Music Director Movies </a></li>
 
                         </ul>

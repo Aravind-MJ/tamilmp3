@@ -3,6 +3,7 @@
 $param = json_decode(file_get_contents("php://input"));
 $folder = $param->loc;
 
+
 function songslist($startdir) {
     $ignoredDirectory[] = '.';
     $ignoredDirectory[] = '..';
@@ -25,7 +26,7 @@ function songslist($startdir) {
 }
 
 // include getID3() library (can be in a different directory if full path is specified)
-require_once('../getid3/getid3/getid3.php');
+require_once('getID3/getid3/getid3.php');
 
 // Initialize getID3 engine
 
