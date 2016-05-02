@@ -53,7 +53,7 @@
                     <div class="single_mega">
                         <ul>
                             <li> <a href="#"> Old Collections </a> </li>
-                            <li> <a href="#"> Old Hits (Singers) </a></li>
+                            <li> <a href="#/OldHits"> Old Hits (Singers) </a></li>
                             <li> <a href="#"> M.S.Vishwanathan Hits </a></li>
 
                         </ul>

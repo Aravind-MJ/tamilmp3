@@ -57,9 +57,15 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
             $scope.fetchedbyyear = [];
             $scope.banner.visibility = true;
         })
-        .controller('mp3Ctrl', function ($scope) {                  //Not in Use and Left for Reference(Donot Remove)
+        .controller('mp3Ctrl', function ($scope, $http) {                  //Not in Use and Left for Reference(Donot Remove)
             $scope.banner.visibility = true;
             $scope.message = "first";
+           
+                $http.get('ajax/movielist.php')
+                        .then(function (response) {
+                             $scope.listmovie = response.data;
+                             console.log($scope.listmovie);
+                        });    
         })
         .controller('colCtrl', function ($scope, $routeParams,$http) {                  //Not in Use and Left for Reference(Donot Remove)
             $scope.banner.visibility = false;
@@ -103,6 +109,11 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 $scope.listlocation = "SingerHits";
                 $scope.listlocationname = "SINGER HITS";
                 $scope.location = "singer_images";
+            }else if (place == "OldHits") {
+                place = "Old Hits";
+                $scope.listlocation = "OldHits";
+                $scope.listlocationname = "OLD HITS";
+                $scope.location = "old_images";
             }
 
             /*
@@ -161,6 +172,8 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 place = "Ilayaraja Hits";
             } else if (place == "ARRahmanHits") {
                 place = "Ilayaraja Hits";
+            }else if (place == "OldHits") {
+                place = "Old Hits";
             }
 
             var name = $routeParams.name;
