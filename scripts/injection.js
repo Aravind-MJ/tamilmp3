@@ -45,6 +45,10 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                         templateUrl: 'template/hits.php',
                         controller: 'listCtrl'
                     })
+                    .when("/List2/:place", {//List 2col Common Page
+                        templateUrl: 'template/2col.php',
+                        controller: 'listCtrl'
+                    })
                     /*.when("/byyear", {                              //Year Listing Page
                      templateUrl: 'template/byyear.php',
                      controller: 'yearCtrl'
@@ -64,6 +68,12 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
         .controller('mp3Ctrl', function ($scope, $http) {                  //Not in Use and Left for Reference(Donot Remove)
             $scope.banner.visibility = true;
             $scope.message = "first";
+           
+                $http.get('ajax/movielist.php')
+                        .then(function (response) {
+                             $scope.listmovie = response.data[0];
+                             console.log($scope.listmovie);
+                        }); 
         })
         .controller('newCtrl', function ($scope,$http) {                  //Controller for New Releases
             $scope.banner.visibility = false;
@@ -117,6 +127,11 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 $scope.listlocation = "OldCollections";
                 $scope.listlocationname = "OLD COLLECTIONS";
                 col=3;
+            }else if (place == "Ringtones") {
+                place = "Ringtones";
+                $scope.listlocation = "Ringtones";
+                $scope.listlocationname = "RING TONES";
+                col=2;
             }
 
             /*
@@ -141,6 +156,10 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                             $scope.list2 = response.data[1];
                             $scope.list3 = response.data[2];
                         } 
+                        }else if(col==2){
+                            $scope.list1 = response.data[0];
+                            $scope.list2 = response.data[1];
+                        }
                     });
         })
         .controller('azList', function ($scope, $routeParams, $http) {      //Controller for A-Z Movie Listing Template Page
@@ -188,6 +207,8 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 place = "A R Rahman Hits";
             }else if (place == "OldHits") {
                 place = "Old Hits";                
+            }else if (place == "Ringtones") {
+                place = "Ringtones";                
             }
 
             var name = $routeParams.name;

@@ -68,7 +68,7 @@
                 <div class="fs_news_right">
                     <div class="single_mega">
                         <ul>
-                            <li> <a href="#"> Ringtones </a> </li>
+                            <li> <a href="#/List2/Ringtones"> Ringtones </a> </li>
                             <li> <a href="#">Tamil Karaoke </a></li>
                             <li> <a href="#">BGM Collections</a></li>
 
