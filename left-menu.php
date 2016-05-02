@@ -53,7 +53,7 @@
                 <div class="fs_news_right">
                     <div class="single_mega">
                         <ul>
-                            <li> <a href="#"> Old Collections </a> </li>
+                            <li> <a href="#/List/OldCollections"> Old Collections </a> </li>
                             <li> <a href="#/OldHits"> Old Hits (Singers) </a></li>
                             <li> <a href="#"> M.S.Vishwanathan Hits </a></li>
 
