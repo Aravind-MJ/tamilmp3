@@ -156,11 +156,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                             $scope.list2 = response.data[1];
                             $scope.list3 = response.data[2];
                         } 
-                        }else if(col==2){
-                            $scope.list1 = response.data[0];
-                            $scope.list2 = response.data[1];
-                        }
-                    });
+                });        
         })
         .controller('azList', function ($scope, $routeParams, $http) {      //Controller for A-Z Movie Listing Template Page
             $scope.banner.visibility = false;
