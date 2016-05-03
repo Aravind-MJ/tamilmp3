@@ -19,37 +19,45 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                     }
                 };
             }])
+        .filter('removeSpaces', [function () {
+                return function (string) {
+                    if (!angular.isString(string)) {
+                        return string;
+                    }
+                    return string.replace(/[\s]/g, '');
+                };
+            }])
         .config(function ($routeProvider) {                         //Following are the Routing Condition to Different Templates
             $routeProvider
-                    .when("/", {                                    //Index Page
+                    .when("/", {//Index Page
                         templateUrl: 'template/initial.html',
                         controller: 'mp3Ctrl'
                     })
-                    .when("/Search/:searchTerm", {                                    //Index Page
+                    .when("/Search/:searchTerm", {//Index Page
                         templateUrl: 'template/result.php',
                         controller: 'searchCtrl'
                     })
-                    .when("/azlisting/:place/:alpha", {                    //A-Z Movie Listing
+                    .when("/azlisting/:place/:alpha", {//A-Z Movie Listing
                         templateUrl: 'template/az.php',
                         controller: 'azList'
                     })
-                    .when("/Album/:place/:name", {                  //Album Page
+                    .when("/Album/:place/:name", {//Album Page
                         templateUrl: 'template/album.php',
                         controller: 'albumCtrl'
                     })
-                    .when("/List/:place", {                         //List Common Page
+                    .when("/List/:place", {//List Common Page
                         templateUrl: 'template/3col.php',
                         controller: 'listCtrl'
                     })
-                    .when("/NewReleases", {                         //List Common Page
+                    .when("/NewReleases", {//List Common Page
                         templateUrl: 'template/2col.php',
                         controller: 'txtCtrl'
                     })
-                    .when("/:place", {                              //Hits Common Page
+                    .when("/:place", {//Hits Common Page
                         templateUrl: 'template/hits.php',
                         controller: 'listCtrl'
                     })
-                    .when("/List2/:place", {                        //List 2col Common Page
+                    .when("/List2/:place", {//List 2col Common Page
                         templateUrl: 'template/2col.php',
                         controller: 'listCtrl'
                     })
@@ -63,54 +71,54 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                      })*/
                     .otherwise({redirectTo: '/'});
         })
-        .controller('main', function ($scope,$location) {                     //Main Controller (mainly used For Caching)
+        .controller('main', function ($scope, $location) {                     //Main Controller (mainly used For Caching)
             $scope.banner = {};
             $scope.searchterm = '';
             $scope.fetchedatoz = [];
             $scope.fetchedbyyear = [];
             $scope.banner.visibility = true;
-            $scope.albumSearch = function(){
-                $location.path('/Search/'+$scope.searchTerm);
+            $scope.albumSearch = function () {
+                $location.path('/Search/' + $scope.searchTerm);
             }
         })
         .controller('mp3Ctrl', function ($scope, $http) {                  //Not in Use and Left for Reference(Donot Remove)
             $scope.banner.visibility = true;
             $scope.message = "first";
-           
-                $http.get('ajax/movielist.php')
-                        .then(function (response) {
-                             $scope.listmovie = response.data[0];
-                             console.log($scope.listmovie);
-                        }); 
+
+            $http.get('ajax/movielist.php')
+                    .then(function (response) {
+                        $scope.listmovie = response.data[0];
+                        console.log($scope.listmovie);
+                    });
         })
-        .controller('searchCtrl', function ($scope, $http,$routeParams) {                  //Not in Use and Left for Reference(Donot Remove)
+        .controller('searchCtrl', function ($scope, $http, $routeParams) {                  //Not in Use and Left for Reference(Donot Remove)
             $scope.banner.visibility = false;
             $scope.listlocationname = "Search Result";
             var term = $routeParams.searchTerm;
-            $http.post("ajax/search.php",{
-                search:term
-            }).then(function(response){
+            $http.post("ajax/search.php", {
+                search: term
+            }).then(function (response) {
                 $scope.result = response.data;
             });
         })
-        .controller('txtCtrl', function ($scope,$http) {                  //Controller for New Releases
+        .controller('txtCtrl', function ($scope, $http) {                  //Controller for New Releases
             $scope.banner.visibility = false;
             $scope.listlocation = "NewReleases";
             $scope.listlocationname = "A-Z MOVIE SONGS";
-            $http.post("ajax/read.php",{
-                file:"../text_files/newreleases.txt"
+            $http.post("ajax/read.php", {
+                file: "../text_files/newreleases.txt"
             })
-                    .then(function(response){
+                    .then(function (response) {
                         $scope.list1 = response.data[0];
                         $scope.list2 = response.data[1];
-            });
-            
+                    });
+
         })
         .controller('listCtrl', function ($scope, $routeParams, $http) {
             //Controller for Star Hits Template Page
             $scope.banner.visibility = false;
             var place = $routeParams.place;
-            var col=1;
+            var col = 1;
 
             if (place == "StarHits") {
                 place = "Star Hits";
@@ -127,37 +135,58 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 $scope.listlocation = "SingerHits";
                 $scope.listlocationname = "SINGER HITS";
                 $scope.location = "singer_images";
-            }else if (place == "OldHits") {
+            } else if (place == "OldHits") {
                 place = "Old Hits";
                 $scope.listlocation = "OldHits";
                 $scope.listlocationname = "OLD HITS";
                 $scope.location = "old_images";
                 col = 1;
-            } if (place == "IlayarajaHits") {
+            }
+            if (place == "IlayarajaHits") {
                 place = "Ilayaraja Hits";
                 $scope.listlocation = "IlayarajaHits";
                 $scope.listlocationname = "ILAYARAJA HITS";
-                col=3;
+                col = 3;
             } else if (place == "ARRahmanHits") {
                 place = "A R Rahman Hits";
                 $scope.listlocation = "ARRahmanHits";
                 $scope.listlocationname = "A R RAHMAN HITS";
-                col=3;
+                col = 3;
             } else if (place == "OldCollections") {
                 place = "Old Collections";
                 $scope.listlocation = "OldCollections";
                 $scope.listlocationname = "OLD COLLECTIONS";
-                col=3;
-            }else if (place == "Ringtones") {
+                col = 3;
+            } else if (place == "Ringtones") {
                 place = "Ringtones";
                 $scope.listlocation = "Ringtones";
                 $scope.listlocationname = "RING TONES";
-                col=2;
-            }else if (place == "BGMCollections") {
+                col = 2;
+            } else if (place == "BGMCollections") {
                 place = "BGM Collections";
                 $scope.listlocation = "BGMCollections";
                 $scope.listlocationname = "BGM COLLECTIONS";
-                col=2;
+                col = 2;
+            } else if (place == "DevotionalCollections") {
+                place = "Devotional Collections";
+                $scope.listlocation = "DevotionalCollections";
+                $scope.listlocationname = "DEVOTIONAL COLLECTIONS";
+                col = 3;
+            } else if (place == "HinduCollections") {
+                place = "Devotional Collections/Hindu Collections";
+                $scope.listlocation = "HinduCollections";
+                $scope.listlocationname = "HINDU COLLECTIONS";
+                col = 3;
+            } else if (place == "ChristianCollections") {
+                place = "Devotional Collections/Christian Collections";
+                $scope.listlocation = "ChristianCollections";
+                $scope.listlocationname = "CHRISTIAN COLLECTIONS";
+                col = 3;
+            } else if (place == "IslamicCollections") {
+                place = "Devotional Collections/Islamic Collections";
+                $scope.listlocation = "IslamicCollections";
+                $scope.listlocationname = "ISLAMIC COLLECTIONS";
+                col = 3;
             }
 
             /*
@@ -168,21 +197,21 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
              */
 
             $http.post('ajax/list.php', {
-                loc: "../FileSystem/" + place + "/",               //Location of Folder
+                loc: "../FileSystem/" + place + "/", //Location of Folder
                 col: col
             })
                     .then(function (response) {
-                        if(col==1){
-                        $scope.list = response.data[0];
-                        } else if(col==2){
+                        if (col == 1) {
+                            $scope.list = response.data[0];
+                        } else if (col == 2) {
                             $scope.list1 = response.data[0];
                             $scope.list2 = response.data[1];
-                        } else if(col==3){
+                        } else if (col == 3) {
                             $scope.list1 = response.data[0];
                             $scope.list2 = response.data[1];
                             $scope.list3 = response.data[2];
-                        } 
-                });        
+                        }
+                    });
         })
         .controller('azList', function ($scope, $routeParams, $http) {      //Controller for A-Z Movie Listing Template Page
             $scope.banner.visibility = false;
@@ -198,7 +227,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 place = "A-Z Movie Songs";
                 $scope.listlocation = "A-ZMovieSongs";
                 $scope.listlocationname = "A-Z MOVIE LIST";
-            }else if (place == "TamilKaraoke") {
+            } else if (place == "TamilKaraoke") {
                 place = "Tamil Karaoke";
                 $scope.listlocation = "TamilKaraoke";
                 $scope.listlocationname = "TAMIL KARAOKE";
@@ -210,9 +239,9 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 console.log($scope.list1);
             } else {
                 $http.post('ajax/azlist.php', {
-                loc: "../FileSystem/" + place + "/",               //Location of Folder
-                alpha: alpha
-            })
+                    loc: "../FileSystem/" + place + "/", //Location of Folder
+                    alpha: alpha
+                })
 //                $http.get('ajax/azlist.php?alpha=' + alpha)
                         .then(function (response) {
                             $scope.fetchedatoz[alpha] = [];
@@ -243,14 +272,20 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 place = "Ilayaraja Hits";
             } else if (place == "ARRahmanHits") {
                 place = "A R Rahman Hits";
-            }else if (place == "OldHits") {
-                place = "Old Hits";                
-            }else if (place == "Ringtones") {
-                place = "Ringtones";                
-            }else if (place == "TamilKaraoke") {
-                place = "Tamil Karaoke";                
-            }else if (place == "BGMCollections") {
-                place = "BGM Collections";                
+            } else if (place == "OldHits") {
+                place = "Old Hits";
+            } else if (place == "Ringtones") {
+                place = "Ringtones";
+            } else if (place == "TamilKaraoke") {
+                place = "Tamil Karaoke";
+            } else if (place == "BGMCollections") {
+                place = "BGM Collections";
+            } else if (place == "HinduCollections") {
+                place = "Devotional Collections/Hindu Collections";
+            } else if (place == "IslamicCollections") {
+                place = "Devotional Collections/Islamic Collections";
+            } else if (place == "ChristianCollections") {
+                place = "Devotional Collections/Christian Collections";
             }
 
             var name = $routeParams.name;

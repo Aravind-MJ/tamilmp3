@@ -86,7 +86,7 @@
                         <ul>
                             <li> <a href="#"> Album Songs </a> </li>
                             <li> <a href="#"> Comedy Dramas </a></li>
-                            <li> <a href="#"> Devotional Collections </a></li>
+                            <li> <a href="#/List/DevotionalCollections"> Devotional Collections </a></li>
                             <li> <a href="#"> Remix Collections </a></li>
 
                         </ul>

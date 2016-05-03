@@ -15,7 +15,8 @@
                 <li ng-repeat = "dir in result track by $index">
                     Inside {{ dir.in }}
                     <div class = "searchItem" ng-repeat="album in dir.albums track by $index">
-                        <a href = "#/Album/{{ dir.place }}/{{ album }}"> {{ album }}</a>
+                        <a href = "#/Album/{{ dir.in | removeSpaces }}/{{ album }}" ng-if="dir.in!='Devotional Collections'"> {{ album }}</a>
+                        <a href = "#/List/{{ album | removeSpaces }}" ng-if="dir.in=='Devotional Collections'"> {{ album }}</a>
                     </div>
                 </li>
             </ul>
