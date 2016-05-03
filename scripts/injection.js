@@ -25,6 +25,10 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                         templateUrl: 'template/initial.html',
                         controller: 'mp3Ctrl'
                     })
+                    .when("/Search/:searchTerm", {                                    //Index Page
+                        templateUrl: 'template/result.php',
+                        controller: 'searchCtrl'
+                    })
                     .when("/azlisting/:place/:alpha", {                    //A-Z Movie Listing
                         templateUrl: 'template/az.php',
                         controller: 'azList'
@@ -38,8 +42,8 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                         controller: 'listCtrl'
                     })
                     .when("/NewReleases", {                         //List Common Page
-                        templateUrl: 'template/new.php',
-                        controller: 'newCtrl'
+                        templateUrl: 'template/2col.php',
+                        controller: 'txtCtrl'
                     })
                     .when("/:place", {                              //Hits Common Page
                         templateUrl: 'template/hits.php',
@@ -59,11 +63,15 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                      })*/
                     .otherwise({redirectTo: '/'});
         })
-        .controller('main', function ($scope) {                     //Main Controller (mainly used For Caching)
+        .controller('main', function ($scope,$location) {                     //Main Controller (mainly used For Caching)
             $scope.banner = {};
+            $scope.searchterm = '';
             $scope.fetchedatoz = [];
             $scope.fetchedbyyear = [];
             $scope.banner.visibility = true;
+            $scope.albumSearch = function(){
+                $location.path('/Search/'+$scope.searchTerm);
+            }
         })
         .controller('mp3Ctrl', function ($scope, $http) {                  //Not in Use and Left for Reference(Donot Remove)
             $scope.banner.visibility = true;
@@ -75,10 +83,23 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                              console.log($scope.listmovie);
                         }); 
         })
-        .controller('newCtrl', function ($scope,$http) {                  //Controller for New Releases
+        .controller('searchCtrl', function ($scope, $http,$routeParams) {                  //Not in Use and Left for Reference(Donot Remove)
             $scope.banner.visibility = false;
+            $scope.listlocationname = "Search Result";
+            var term = $routeParams.searchTerm;
+            $http.post("ajax/search.php",{
+                search:term
+            }).then(function(response){
+                $scope.result = response.data;
+            });
+        })
+        .controller('txtCtrl', function ($scope,$http) {                  //Controller for New Releases
+            $scope.banner.visibility = false;
+            $scope.listlocation = "NewReleases";
             $scope.listlocationname = "A-Z MOVIE SONGS";
-            $http.get("ajax/new.php")
+            $http.post("ajax/read.php",{
+                file:"../text_files/newreleases.txt"
+            })
                     .then(function(response){
                         $scope.list1 = response.data[0];
                         $scope.list2 = response.data[1];
@@ -210,7 +231,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
             $scope.name = $routeParams.name;
             var place = $routeParams.place;
 
-            if (place == "azlisting") {                                   //Location of Folder by Condition
+            if (place == "A-ZMovieSongs") {                                   //Location of Folder by Condition
                 place = "A-Z Movie Songs";
             } else if (place == "StarHits") {
                 place = "Star Hits";

@@ -45,9 +45,9 @@
             height:100%;
             position: fixed;
             z-index: 20;
-            background-color: #111;
-            opacity: 0.6;
-            filter: alpha(opacity=60);
+            background-color: #110C09;
+            opacity: 0.5;
+            filter: alpha(opacity=50);
 
         }
         .loading-icon{
@@ -62,7 +62,7 @@
             text-align: center;
             font-size: 10px; }
         .sk-wave .sk-rect {
-            background-color: #fff;
+            background-color: #DE4197;
             height: 100%;
             width: 6px;
             display: inline-block;
@@ -181,7 +181,9 @@
                 <div class="row">
                     <?php include_once ('left-menu.php'); ?>
                     <div class="col-lg-9 col-md-9">
+                        
                         <ng-view></ng-view>
+                        
                         <div data-loading class="loading-screen">
                             <div class="loading-icon">
                                 <div class="sk-wave">
