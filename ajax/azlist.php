@@ -1,7 +1,10 @@
 <?php
 
-$alpha = $_GET['alpha'];
-$folder = "../FileSystem/A-Z Movie Songs/";
+//$alpha = $_GET['alpha'];
+//$folder = "../FileSystem/A-Z Movie Songs/";
+$param = json_decode(file_get_contents("php://input"));
+ $folder = $param->loc;
+ $alpha = $param->alpha;
 function folderlist($startdir, $alpha) {
     $ignoredDirectory[] = '.';
     $ignoredDirectory[] = '..';

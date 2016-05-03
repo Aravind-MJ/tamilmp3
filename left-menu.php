@@ -8,7 +8,8 @@
                 <div class="fs_news_right">
                     <div class="single_mega">
                         <ul>
-                            <li> <a href="#/azlisting/A"> A-Z Movie Songs </a> </li>
+                            <li> <a href="#/azlisting/A-ZMovieSongs/A"> A-Z Movie Songs </a> </li>
+                            <!--<li><a href="#/azlisting/A"> A-Z Movie Songs </a> </li>-->
                             <li> <a href="#"> Movie List By Year </a></li>
                             <li> <a href="#/NewReleases"> New Releases </a></li>
 
@@ -69,8 +70,8 @@
                     <div class="single_mega">
                         <ul>
                             <li> <a href="#/List2/Ringtones"> Ringtones </a> </li>
-                            <li> <a href="#">Tamil Karaoke </a></li>
-                            <li> <a href="#">BGM Collections</a></li>
+                            <li> <a href="#/azlisting/TamilKaraoke/A">Tamil Karaoke </a></li>
+                            <li> <a href="#/List2/BGMCollections">BGM Collections</a></li>
 
                         </ul>
                     </div>

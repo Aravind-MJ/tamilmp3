@@ -25,7 +25,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                         templateUrl: 'template/initial.html',
                         controller: 'mp3Ctrl'
                     })
-                    .when("/azlisting/:alpha", {                    //A-Z Movie Listing
+                    .when("/azlisting/:place/:alpha", {                    //A-Z Movie Listing
                         templateUrl: 'template/az.php',
                         controller: 'azList'
                     })
@@ -45,7 +45,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                         templateUrl: 'template/hits.php',
                         controller: 'listCtrl'
                     })
-                    .when("/List2/:place", {//List 2col Common Page
+                    .when("/List2/:place", {                        //List 2col Common Page
                         templateUrl: 'template/2col.php',
                         controller: 'listCtrl'
                     })
@@ -132,6 +132,11 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 $scope.listlocation = "Ringtones";
                 $scope.listlocationname = "RING TONES";
                 col=2;
+            }else if (place == "BGMCollections") {
+                place = "BGM Collections";
+                $scope.listlocation = "BGMCollections";
+                $scope.listlocationname = "BGM COLLECTIONS";
+                col=2;
             }
 
             /*
@@ -166,13 +171,28 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
             $scope.getTimes = function (n) {
                 return new Array(n);
             };
+            var place = $routeParams.place;
             var alpha = $routeParams.alpha;
+            if (place == "A-ZMovieSongs") {
+                place = "A-Z Movie Songs";
+                $scope.listlocation = "A-ZMovieSongs";
+                $scope.listlocationname = "A-Z MOVIE LIST";
+            }else if (place == "TamilKaraoke") {
+                place = "Tamil Karaoke";
+                $scope.listlocation = "TamilKaraoke";
+                $scope.listlocationname = "TAMIL KARAOKE";
+            }
             if (angular.isDefined($scope.fetchedatoz[alpha])) {
                 $scope.list1 = $scope.fetchedatoz[alpha]['list1'];
                 $scope.list2 = $scope.fetchedatoz[alpha]['list2'];
                 $scope.list3 = $scope.fetchedatoz[alpha]['list3'];
+                console.log($scope.list1);
             } else {
-                $http.get('ajax/azlist.php?alpha=' + alpha)
+                $http.post('ajax/azlist.php', {
+                loc: "../FileSystem/" + place + "/",               //Location of Folder
+                alpha: alpha
+            })
+//                $http.get('ajax/azlist.php?alpha=' + alpha)
                         .then(function (response) {
                             $scope.fetchedatoz[alpha] = [];
                             $scope.list1 = response.data[0];
@@ -181,6 +201,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                             $scope.fetchedatoz[alpha]['list1'] = response.data[0];
                             $scope.fetchedatoz[alpha]['list2'] = response.data[1];
                             $scope.fetchedatoz[alpha]['list3'] = response.data[2];
+                            console.log($scope.list1);
                         });
             }
         })
@@ -205,6 +226,10 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 place = "Old Hits";                
             }else if (place == "Ringtones") {
                 place = "Ringtones";                
+            }else if (place == "TamilKaraoke") {
+                place = "Tamil Karaoke";                
+            }else if (place == "BGMCollections") {
+                place = "BGM Collections";                
             }
 
             var name = $routeParams.name;
