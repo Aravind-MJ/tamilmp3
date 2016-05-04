@@ -1,6 +1,7 @@
 <?php
 
-$file = "../text_files/newreleases.txt";
+$param = json_decode(file_get_contents("php://input"));
+$file = $param->file;
 
 $response = array();
 $ofile = fopen($file, 'r') or die("Unable to open file!");

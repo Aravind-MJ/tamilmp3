@@ -54,8 +54,8 @@
                 </div>
                 <div class="col-md-7 col-sm-8 col-xs-12">
                     <div class="header_add"> <form class="form-wrapper">
-                            <input type="text" id="search" placeholder="Search Album/Movie ..." required>
-                            <input type="submit" value="Search Music" id="submit">
+                            <input type="text" id="search" placeholder="Search Album/Movie ..." ng-model="searchTerm" required>
+                            <input type="button" value="Search Music" id="submit" ng-click="albumSearch()">
                         </form></div>
                 </div>
             </div>

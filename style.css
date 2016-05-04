@@ -1863,7 +1863,7 @@ transition: all 0.7s ease;
   color:#777;
   text-transform: uppercase;
 }
-.comments_form input[type="submit"] {
+.comments_form input[type="submit"],.form-wrapper #submit {
   background: #fff none repeat scroll 0 0;
   border: 1px solid #ddd;
   color: hsl(0, 0%, 20%);
@@ -2390,7 +2390,7 @@ input[type="submit"]:hover, button:hover, .btn:hover {
 		input[type="submit"].medium, button.medium, .btn.medium { padding: 14px 22px; }
 		input[type="submit"].large, button.large, .btn.large { padding: 20px 28px; }
 
-input[type="submit"] i, button i, .btn i {
+input[type="submit"] i, button i, .btn i{
 	margin-right: 8px;
 	color: #fff; 
         vertical-align:text-bottom;

@@ -14,6 +14,7 @@
             <li> <a href="#/azlisting/{{ listlocation }}/<?php echo $char; ?>" class="alphabets"> <?php echo $char; ?> </a> </li>
         <?php endforeach; ?>
         <li> <a href = "#/azlisting/{{ listlocation }}/num" class = "" data-pid = "126" data-lang = "tamil" data-toggle = "tootltip" title = "" data-original-title = "Tamil Private Albums"> 1-9 </a> </li>
+
     </ul>
 </div>
 
