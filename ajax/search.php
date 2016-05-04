@@ -1,5 +1,4 @@
 <?php
-
 $param = json_decode(file_get_contents("php://input"));
 $searchTerm = $param->search;
 $root = '..\FileSystem';

@@ -45,6 +45,10 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                         templateUrl: 'template/album.php',
                         controller: 'albumCtrl'
                     })
+                    .when("/List/Others/:place", {//List Common Page
+                        templateUrl: 'template/3col.php',
+                        controller: 'othersCtrl'
+                    })
                     .when("/List/:place", {//List Common Page
                         templateUrl: 'template/3col.php',
                         controller: 'listCtrl'
@@ -67,7 +71,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                      })*/
                     .otherwise({redirectTo: '/'});
         })
-        .controller('main', function ($scope, $location) {                     //Main Controller (mainly used For Caching)
+        .controller('main', function ($scope, $location, $http) {                     //Main Controller (mainly used For Caching)
             $scope.banner = {};
             $scope.searchterm = '';
             $scope.fetchedatoz = [];
@@ -77,8 +81,16 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 var search = $scope.searchTerm;
                 $scope.searchTerm = '';
                 $location.path('/Search/' + search);
-                
+
             }
+
+            $http.post('ajax/list.php', {
+                loc: "../FileSystem/Others/", //Location of Folder
+                col: 1
+            })
+                    .then(function (response) {
+                        $scope.otherslist = response.data[0];
+                    });
         })
         .controller('mp3Ctrl', function ($scope, $http) {                  //Not in Use and Left for Reference(Donot Remove)
             $scope.banner.visibility = true;
@@ -90,7 +102,30 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                         console.log($scope.listmovie);
                     });
         })
-        .controller('searchCtrl', function ($scope, $http, $routeParams) {                  //Not in Use and Left for Reference(Donot Remove)
+        .controller('othersCtrl', function ($scope, $http, $routeParams, $filter) {
+            $scope.banner.visibility = false;
+            var place = $routeParams.place;
+
+            angular.forEach($scope.otherslist, function (value, key) {
+                placec = $filter('removeSpaces')(value.name);
+                if (placec == place) {
+                    place = value.name;
+                    $scope.listlocation = placec;
+                    $scope.listlocationname = value.name;
+                }
+            });
+
+            $http.post('ajax/list.php', {
+                loc: "../FileSystem/Others/" + place + '/', //Location of Folder
+                col: 3
+            })
+                    .then(function (response) {
+                        $scope.list1 = response.data[0];
+                        $scope.list2 = response.data[1];
+                        $scope.list3 = response.data[2];
+                    });
+        })
+        .controller('searchCtrl', function ($scope, $http, $routeParams) {
             $scope.banner.visibility = false;
             $scope.listlocationname = "Search Result";
             var term = $routeParams.searchTerm;
@@ -195,12 +230,12 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 $scope.listlocation = "RemixCollections";
                 $scope.listlocationname = "REMIX COLLECTIONS";
                 col = 2;
-            }else if (place == "SpecialCollections") {
+            } else if (place == "SpecialCollections") {
                 place = "Special Collections";
                 $scope.listlocation = "SpecialCollections";
                 $scope.listlocationname = "SPECIAL COLLECTIONS";
                 col = 2;
-            }
+            } 
 
             /*
              * @var listlocation = Store the Tag Value  
@@ -215,7 +250,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
             })
                     .then(function (response) {
                         if (col == 1) {
-                            $scope.list = response.data[0];
+                            $scope.list = response.data;
                         } else if (col == 2) {
                             $scope.list1 = response.data[0];
                             $scope.list2 = response.data[1];
@@ -255,7 +290,6 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                     loc: "../FileSystem/" + place + "/", //Location of Folder
                     alpha: alpha
                 })
-//                $http.get('ajax/azlist.php?alpha=' + alpha)
                         .then(function (response) {
                             $scope.fetchedatoz[alpha] = [];
                             $scope.list1 = response.data[0];
@@ -268,7 +302,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                         });
             }
         })
-        .controller('albumCtrl', function ($scope, $routeParams, $http) {
+        .controller('albumCtrl', function ($scope, $routeParams, $http,$filter) {
             $scope.banner.visibility = false;
             $scope.name = $routeParams.name;
             var place = $routeParams.place;
@@ -305,7 +339,16 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 place = "Remix Collections";
             } else if (place == "SpecialCollections") {
                 place = "Special Collections";
-            } 
+            } else {
+                
+                angular.forEach($scope.otherslist, function (value, key) {
+                    placec = $filter('removeSpaces')(value.name);
+                    if (placec == place) {
+                        place = "Others/"+value.name;
+                    }
+                });
+                col = 3;
+            }
 
             var name = $routeParams.name;
             $http.post('ajax/songlist.php', {
