@@ -69,9 +69,9 @@
                 <div class="fs_news_right">
                     <div class="single_mega">
                         <ul>
-                            <li> <a href="#/List2/Ringtones"> Ringtones </a> </li>
+                            <li> <a href="#/List/Ringtones"> Ringtones </a> </li>
                             <li> <a href="#/azlisting/TamilKaraoke/A">Tamil Karaoke </a></li>
-                            <li> <a href="#/List2/BGMCollections">BGM Collections</a></li>
+                            <li> <a href="#/List/BGMCollections">BGM Collections</a></li>
 
                         </ul>
                     </div>
@@ -84,10 +84,10 @@
                 <div class="fs_news_right">
                     <div class="single_mega">
                         <ul>
-                            <li> <a href="#"> Album Songs </a> </li>
+                            <li> <a href="#/List/AlbumSongs"> Album Songs </a> </li>
                             <li> <a href="#"> Comedy Dramas </a></li>
                             <li> <a href="#/List/DevotionalCollections"> Devotional Collections </a></li>
-                            <li> <a href="#"> Remix Collections </a></li>
+                            <li> <a href="#/List/RemixCollections"> Remix Collections </a></li>
 
                         </ul>
                     </div>
@@ -100,7 +100,7 @@
                 <div class="fs_news_right">
                     <div class="single_mega">
                         <ul>
-                            <li> <a href="#"> Special Collections</a> </li>
+                            <li> <a href="#/List/SpecialCollections"> Special Collections</a> </li>
 
 
                         </ul>

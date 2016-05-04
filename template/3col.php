@@ -9,7 +9,7 @@
 
     </div>
     <div class = "m-b-f-p" id = "a-zlist-affix">
-        <div class = "col-md-4 col-sm-4 col-xs-12">
+        <div ng-class="{'col-md-4 col-sm-4':list3 != undefined,'col-md-6 col-sm-6':list3 == undefined}">
             <ul class = "lineup">
                 <li ng-repeat = "name in list1 track by $index">
                     <div class = "lineup-artist">
@@ -21,7 +21,7 @@
                 </li>
             </ul>
         </div>
-        <div class = "col-md-4 col-sm-4 col-xs-12">
+        <div ng-class="{'col-md-4 col-sm-4':list3 != undefined,'col-md-6 col-sm-6':list3 == undefined}">
             <ul class = "lineup">
                 <li ng-repeat = "name in list2 track by $index">
                     <div class = "lineup-artist">
@@ -33,7 +33,7 @@
                 </li>
             </ul>
         </div>
-        <div class = "col-md-4 col-sm-4 col-xs-12">
+        <div class = "col-md-4 col-sm-4 col-xs-12" ng-hide="list3 == undefined">
             <ul class = "lineup">
                 <li ng-repeat = "name in list3 track by $index">
                     <div class = "lineup-artist">

@@ -57,10 +57,6 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                         templateUrl: 'template/hits.php',
                         controller: 'listCtrl'
                     })
-                    .when("/List2/:place", {//List 2col Common Page
-                        templateUrl: 'template/2col.php',
-                        controller: 'listCtrl'
-                    })
                     /*.when("/byyear", {                              //Year Listing Page
                      templateUrl: 'template/byyear.php',
                      controller: 'yearCtrl'
@@ -78,7 +74,10 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
             $scope.fetchedbyyear = [];
             $scope.banner.visibility = true;
             $scope.albumSearch = function () {
-                $location.path('/Search/' + $scope.searchTerm);
+                var search = $scope.searchTerm;
+                $scope.searchTerm = '';
+                $location.path('/Search/' + search);
+                
             }
         })
         .controller('mp3Ctrl', function ($scope, $http) {                  //Not in Use and Left for Reference(Donot Remove)
@@ -140,7 +139,6 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 $scope.listlocation = "OldHits";
                 $scope.listlocationname = "OLD HITS";
                 $scope.location = "old_images";
-                col = 1;
             }
             if (place == "IlayarajaHits") {
                 place = "Ilayaraja Hits";
@@ -187,6 +185,21 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 $scope.listlocation = "IslamicCollections";
                 $scope.listlocationname = "ISLAMIC COLLECTIONS";
                 col = 3;
+            } else if (place == "AlbumSongs") {
+                place = "Album Songs";
+                $scope.listlocation = "AlbumSongs";
+                $scope.listlocationname = "ALBUM SONGS";
+                col = 2;
+            } else if (place == "RemixCollections") {
+                place = "Remix Collections";
+                $scope.listlocation = "RemixCollections";
+                $scope.listlocationname = "REMIX COLLECTIONS";
+                col = 2;
+            }else if (place == "SpecialCollections") {
+                place = "Special Collections";
+                $scope.listlocation = "SpecialCollections";
+                $scope.listlocationname = "SPECIAL COLLECTIONS";
+                col = 2;
             }
 
             /*
@@ -286,7 +299,13 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 place = "Devotional Collections/Islamic Collections";
             } else if (place == "ChristianCollections") {
                 place = "Devotional Collections/Christian Collections";
-            }
+            } else if (place == "AlbumSongs") {
+                place = "Album Songs";
+            } else if (place == "RemixCollections") {
+                place = "Remix Collections";
+            } else if (place == "SpecialCollections") {
+                place = "Special Collections";
+            } 
 
             var name = $routeParams.name;
             $http.post('ajax/songlist.php', {
