@@ -235,7 +235,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 $scope.listlocation = "SpecialCollections";
                 $scope.listlocationname = "SPECIAL COLLECTIONS";
                 col = 2;
-            } 
+            }
 
             /*
              * @var listlocation = Store the Tag Value  

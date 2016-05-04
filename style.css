@@ -2704,11 +2704,26 @@ input[type="checkbox"] {
     display:none !important
 }
 
+.searchTable{
+    padding: 0px;
+}
+.searchTable tr{
+    padding: 0px;
+}
+.searchTable td{
+    padding: 0px;
+}
 
+.resultTable{
+    padding: 0px;
+}
 
-
-
-
+.resultTable tr{
+    padding: 0px;
+}
+.resultTable td{
+    padding: 0px;
+}
 
 /* END of Style */
 

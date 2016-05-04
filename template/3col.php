@@ -3,7 +3,7 @@
 
         <ul class="top-filter-select">
 
-            <li> <a href="#/List/{{ listlocation}}" class="active" data-pid="106" data-lang="tamil" data-toggle="tootltip" title="" data-original-title="Latest Releases"> {{ listlocationname | uppercase }} </a> </li>
+            <li> <a href="#" class="active" data-pid="106" data-lang="tamil" data-toggle="tootltip" title="" data-original-title="Latest Releases"> {{ listlocationname | uppercase }} </a> </li>
 
         </ul>
 
