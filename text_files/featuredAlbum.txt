@@ -1,9 +1,9 @@
-A [1000] 
-B [2000]
-C [3000]
-D [4000]
-E [5000]
-F [6000]
-Aravind [7000]
-This is Great [7000]
-works [7000]
+A:1000 :starname1 :music1 :director1
+B:2000 :starname2 :music2 :director2
+C:3000 :starname3 :music3 :director3
+D:4000 :starname4 :music4 :director4
+E:5000 :starname5 :music5 :director5
+F:6000 :starname6 :music6 :director6
+Aravind:7000 :starname7 :music7 :director7
+This is Great:8000 :starname8 :music8 :director8
+works:9000:starname9 :music9 :director9
