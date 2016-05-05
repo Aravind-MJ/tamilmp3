@@ -49,7 +49,7 @@ $autoload->js_inc = $js_inc;
         </div>
     </div>
     <div class="col-md-5">
-        <div id="jp-player" >
+        <div id="jp-player" ng-hide="playershow">
             <div id="jquery_jplayer_1" class="jp-jplayer"></div>
             <div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
                 <div class="jp-type-single">
@@ -99,7 +99,7 @@ $autoload->js_inc = $js_inc;
 
     <div class="col-md-4">
         <ul class="buttons-list">
-            <li><a class="btn small" href="javascript:;"><i class="icon icon-download"><img
+            <li><a class="btn small" href="javascript:;" ng-click="playCurrentSong()"><i class="icon icon-download"><img
                             src="images/play-but.png"></i> Play</a>
             </li>
         </ul>
@@ -107,7 +107,7 @@ $autoload->js_inc = $js_inc;
 
     <div class="col-md-4">
         <ul class="buttons-list">
-            <li><a class="btn small" href="javascript:;"><i class="icon icon-download"><img
+            <li><a class="btn small" href="javascript:;" ng-click="addToPlaylist()"><i class="icon icon-download"><img
                             src="images/add-but.png"></i> Add to Playlist </a>
             </li>
         </ul>
@@ -131,7 +131,7 @@ $autoload->js_inc = $js_inc;
         <div class="col-md-11 col-xs-11 col-sm-11 selec-m" ng-show="!list.song">No Songs</div>
     </div>
     <div class="col-md-9" ng-repeat="x in list.song">
-        <div class="col-md-1 col-md-1 col-xs-1 col-sm-1"><input type="checkbox" name="a" class="styled"/>
+        <div class="col-md-1 col-md-1 col-xs-1 col-sm-1"><input type="checkbox" value="{{$index}}" ng-model="x.selected" class="styled"/>
         </div>
         <div class="col-md-11 col-xs-11 col-sm-11">
             <div id="main" class="release main-left main-medium">
@@ -141,9 +141,9 @@ $autoload->js_inc = $js_inc;
                         <li>
                             <div class="track-details">
                                 <div class="track-buttons">
-                                    <a href="javascript:;" class="googleplus-share"><i class="icon icon-soundcloud"><img
+                                    <a href="javascript:;" ng-click="playSong(x.downpath, x.name, $index, 'play')" class="googleplus-share"><i class="icon icon-soundcloud"><img
                                                 src="images/playlist-play.png"> </i></a>
-                                    <a href="javascript:;" class="googleplus-share"><i class="icon icon-download"><img
+                                    <a href="javascript:;" class="googleplus-share" ng-click="playSong(x.downpath, x.name, $index, 'add')"><i class="icon icon-download"><img
                                                 src="images/playlist-add.png"></i></a>
                                     <a href="{{ x.downpath}}/{{ x.name}}" download="{{ x.name}}" class="googleplus-share"><i class="icon icon-download"><img
                                                 src="images/playlist-dl.png"></i></a>

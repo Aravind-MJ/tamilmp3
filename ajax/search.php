@@ -1,5 +1,4 @@
 <?php
-
 $param = json_decode(file_get_contents("php://input"));
 $searchTerm = $param->search;
 $root = '..\FileSystem';
@@ -10,16 +9,9 @@ $iter = new RecursiveIteratorIterator(
 );
 
 function check($string, $searchTerm) {
-    if (strpos($string, ucwords($searchTerm)) !== false) {
+    if (strpos(strtolower($string), strtolower($searchTerm)) !== false) {
         return true;
     }
-    if (strpos($string, strtolower($searchTerm)) !== false) {
-        return true;
-    }
-    if (strpos($string, strtoupper($searchTerm)) !== false) {
-        return true;
-    }
-
     return false;
 }
 

@@ -88,7 +88,7 @@
                             <li> <a href="#"> Comedy Dramas </a></li>
                             <li> <a href="#/List/DevotionalCollections"> Devotional Collections </a></li>
                             <li> <a href="#/List/RemixCollections"> Remix Collections </a></li>
-
+                            <li> <a href="#/List/SpecialCollections"> Special Collections</a> </li>
                         </ul>
                     </div>
 
@@ -96,13 +96,11 @@
 
             </div>
 
-            <div class="all_news_right m_t">
+            <div class="all_news_right m_t ng-cloak">
                 <div class="fs_news_right">
                     <div class="single_mega">
-                        <ul>
-                            <li> <a href="#/List/SpecialCollections"> Special Collections</a> </li>
-
-
+                        <ul >
+                            <li ng-repeat="each in otherslist track by $index"> <a href="#/Album/Others/{{ each.name | removeSpaces }}"> {{ each.name }}</a> </li>
                         </ul>
                     </div>
 

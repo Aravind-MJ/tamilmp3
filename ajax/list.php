@@ -23,15 +23,14 @@ function folderlist($startdir) {
     }
     return($directorylist);
 }
-$rlist = array();
+
 $list = folderlist($folder);
-if ($col == 2 && count($list) < 20) {
+if ($col == 2 && (count($list) < 20)) {
     $rlist[0]=$list;
     $rlist[1]='';
-    echo json_encode($rlist);
 } else {
     $count = ceil(count($list) / $col);
     $rlist = array_chunk($list, $count);
-    echo json_encode($rlist);
 }
+    echo json_encode($rlist);
 ?>

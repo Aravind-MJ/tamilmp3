@@ -67,7 +67,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                      })*/
                     .otherwise({redirectTo: '/'});
         })
-        .controller('main', function ($scope, $location) {                     //Main Controller (mainly used For Caching)
+        .controller('main', function ($scope, $location, $http) {                     //Main Controller (mainly used For Caching)
             $scope.banner = {};
             $scope.searchterm = '';
             $scope.fetchedatoz = [];
@@ -77,8 +77,16 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 var search = $scope.searchTerm;
                 $scope.searchTerm = '';
                 $location.path('/Search/' + search);
-                
+
             }
+
+            $http.post('ajax/list.php', {
+                loc: "../FileSystem/Others/", //Location of Folder
+                col: 1
+            })
+                    .then(function (response) {
+                        $scope.otherslist = response.data[0];
+                    });
         })
         .controller('mp3Ctrl', function ($scope, $http) {                  //Not in Use and Left for Reference(Donot Remove)
             $scope.banner.visibility = true;
@@ -90,7 +98,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                         console.log($scope.listmovie);
                     });
         })
-        .controller('searchCtrl', function ($scope, $http, $routeParams) {                  //Not in Use and Left for Reference(Donot Remove)
+        .controller('searchCtrl', function ($scope, $http, $routeParams) {
             $scope.banner.visibility = false;
             $scope.listlocationname = "Search Result";
             var term = $routeParams.searchTerm;
@@ -195,7 +203,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 $scope.listlocation = "RemixCollections";
                 $scope.listlocationname = "REMIX COLLECTIONS";
                 col = 2;
-            }else if (place == "SpecialCollections") {
+            } else if (place == "SpecialCollections") {
                 place = "Special Collections";
                 $scope.listlocation = "SpecialCollections";
                 $scope.listlocationname = "SPECIAL COLLECTIONS";
@@ -215,7 +223,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
             })
                     .then(function (response) {
                         if (col == 1) {
-                            $scope.list = response.data[0];
+                            $scope.list = response.data;
                         } else if (col == 2) {
                             $scope.list1 = response.data[0];
                             $scope.list2 = response.data[1];
@@ -255,7 +263,6 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                     loc: "../FileSystem/" + place + "/", //Location of Folder
                     alpha: alpha
                 })
-//                $http.get('ajax/azlist.php?alpha=' + alpha)
                         .then(function (response) {
                             $scope.fetchedatoz[alpha] = [];
                             $scope.list1 = response.data[0];
@@ -268,10 +275,11 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                         });
             }
         })
-        .controller('albumCtrl', function ($scope, $routeParams, $http) {
+        .controller('albumCtrl', function ($scope, $routeParams, $http,$filter) {
             $scope.banner.visibility = false;
             $scope.name = $routeParams.name;
             var place = $routeParams.place;
+            var name = $routeParams.name;
 
             if (place == "A-ZMovieSongs") {                                   //Location of Folder by Condition
                 place = "A-Z Movie Songs";
@@ -305,19 +313,133 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 place = "Remix Collections";
             } else if (place == "SpecialCollections") {
                 place = "Special Collections";
-            } 
+            } else if(place == "Others"){
+                
+                angular.forEach($scope.otherslist, function (value, key) {
+                    namec = $filter('removeSpaces')(value.name);
+                    if (namec == name) {
+                        name = value.name;
+                    }
+                });
+                
+            }
 
-            var name = $routeParams.name;
+            
             $http.post('ajax/songlist.php', {
                 loc: '../FileSystem/' + place + '/' + name + '/'                       //Album location
-            })
-                    .then(function (response) {
-                        $scope.list = response.data;
-                        $scope.detail = response.data.detail;
-                        console.log($scope.list);
-                    });
+            }).then(function (response) {
+                $scope.list = response.data;
+                $scope.detail = response.data.detail;
+                console.log($scope.list);
+            });
 
-        })
+
+        $("#jquery_jplayer_1").jPlayer({
+            ready: function (event) {
+                $(this).jPlayer("setMedia", {});
+            },
+            swfPath: "/../plugin/jplayer/dist/jplayer",
+            supplied: "mp3",
+            wmode: "window",
+            preload:"auto",
+            useStateClassSkin: true,
+            autoBlur: false,
+            smoothPlayBar: true,
+            keyEnabled: true,
+            remainingDuration: true,
+            toggleDuration: true
+        }).jPlayer("play");
+
+
+
+            $scope.playershow = true;
+            var songflag = 0;
+            song_list_arr = new Array();
+            $scope.playSong = function(path, songname, index,action) {
+            $scope.playershow = false;
+
+
+
+                if (action == 'play') {
+                    songflag == 0;
+                    song_list_arr = new Array();
+                    song_list_arr = [{mp3:'../'+path + songname}];
+                } else {
+                    /*if (songflag == 0) {
+                        song_list_arr = new Array();
+                        songflag = 1;
+                    }*/
+
+                    song_list_arr.push({mp3:'../'+path + songname});
+                }
+
+
+
+
+                /*song_list_arr = new Array();
+                angular.forEach($scope.list.song, function(value, key) {
+                    songpathName= value.path + value.name;
+                    //console.log(songpathName)
+                    //song_list_arr = {mp3:songpathName};
+                    song_list_arr.push({mp3:songpathName});
+
+                });*/
+
+
+                console.log(song_list_arr);
+
+                var myPlaylist = player(song_list_arr);
+
+                if (action == 'play') {
+                    myPlaylist.setPlaylist(song_list_arr);
+                    myPlaylist.play(0);
+                } else {
+                    myPlaylist.setPlaylist(song_list_arr);
+                }
+
+
+
+
+                $scope.playCurrentSong = function() {
+                    $scope.playershow = false;
+                    var myPlaylist = player(song_list_arr);
+                    myPlaylist.setPlaylist(song_list_arr);
+                    myPlaylist.play(0);
+                }
+
+
+
+
+            }
+
+            $scope.addToPlaylist = function() {
+                angular.forEach($scope.list.song, function(songselected, index){
+                    if(songselected.selected) {
+                        if (songflag == 0) {
+                            song_list_arr = new Array();
+                            songflag = 1;
+                        }
+                        song_list_arr.push({mp3:index});
+                        console.log(song_list_arr);
+                    }
+                });
+            }
+
+            player = function(playlist) {
+                var playlist = playlist;
+                var cssSelector = { jPlayer: "#jquery_jplayer_1", cssSelectorAncestor: "#jp_container_1" };
+                var options = { swfPath: "/../plugin/jplayer/dist/jplayer", playlistOptions: {
+                    enableRemoveControls: true
+                },supplied: "mp3",smoothPlayBar: true, keyEnabled: true,audioFullScreen: true };
+                var myPlaylist = new jPlayerPlaylist(cssSelector, playlist, options);
+                return myPlaylist;
+            }
+
+
+
+
+
+        });
         /*.controller('yearCtrl', function ($scope) {                     //Controller for Year Listing
          $scope.banner.visibility = false;
          $scope.years = [];
