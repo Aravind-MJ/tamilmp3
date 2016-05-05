@@ -40,8 +40,8 @@
                             <li> <a href="#/StarHits"> Star Hits </a> </li>
                             <li> <a href="#/MusicDirectorHits"> Music Director Hits </a></li>
                             <li> <a href="#/SingerHits"> Singer Hits </a></li>
-                            <li> <a href="#"> Star Movies </a></li>
-                            <li> <a href="#"> Music Director Movies </a></li>
+                            <li> <a href="#/Star/StarMovies"> Star Movies </a></li>
+                            <li> <a href="#/Star/MusicDirectorMovies"> Music Director Movies </a></li>
 
                         </ul>
                     </div>

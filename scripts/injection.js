@@ -57,6 +57,14 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                         templateUrl: 'template/hits.php',
                         controller: 'listCtrl'
                     })
+                    .when("/Star/:place", {//List Common Page
+                        templateUrl: 'template/starlist.php',
+                        controller: 'starCtrl'
+                    })
+                    .when("/:place/:name", {//List StarMovie Page
+                        templateUrl: 'template/2col.php',
+                        controller: 'movieCtrl'
+                    })
                     /*.when("/byyear", {                              //Year Listing Page
                      templateUrl: 'template/byyear.php',
                      controller: 'yearCtrl'
@@ -439,7 +447,66 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
 
 
 
-        });
+        })
+
+     
+        .controller('starCtrl', function ($scope, $routeParams, $http) {                  //Controller for Star list n Music director list
+
+            $scope.banner.visibility = false;
+            var place = $routeParams.place;
+            if (place == 'StarMovies') {
+
+                $scope.listlocation = "Star Movies";
+                $scope.listlocationname = "STAR MOVIES";
+                $scope.filename = "Star Movies/star_details.txt";
+
+            } else if (place == 'MusicDirectorMovies') {
+
+                $scope.listlocation = "Music Director Movies";
+                $scope.listlocationname = "MUSIC DIRECTOR MOVIES";
+                $scope.filename = "Music Director Movies/music_directors.txt";
+
+            }
+
+            $http.post("ajax/readstar.php", {
+                file: "../FileSystem/" + $scope.filename
+            })
+                    .then(function (response) {
+                        $scope.list1 = response.data[0];
+                        $scope.list2 = response.data[1];
+                    });
+
+        })
+        .controller('movieCtrl', function ($scope, $routeParams, $http) {                  //Controller for Star movies n Music director movies
+            
+            $scope.banner.visibility = false;
+            $scope.name = $routeParams.name;
+            var place = $routeParams.place;
+            $scope.starname = "/" + $scope.name;
+            
+            if (place == "Star Movies") {
+                
+                $scope.listlocation = "Star Movies";
+                $scope.listlocationname = "STAR MOVIES";
+                
+            } else if (place == "Music Director Movies") {
+                
+                $scope.listlocation = "Music Director Movies";
+                $scope.listlocationname = "MUSIC DIRECTOR MOVIES";
+                
+            }
+            
+            $http.post("ajax/read.php", {
+                file: "../FileSystem/" + place + "/" + $scope.name + ".txt"
+            })
+                    .then(function (response) {
+                        $scope.list1 = response.data[0];
+                        $scope.list2 = response.data[1];
+                    });
+
+        })
+
+
         /*.controller('yearCtrl', function ($scope) {                     //Controller for Year Listing
          $scope.banner.visibility = false;
          $scope.years = [];
