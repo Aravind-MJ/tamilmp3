@@ -160,7 +160,7 @@ include 'db.php';
                 data:{id:rowId, status:status}
             }).done(function( data ) {
                if(data=="SUCCESS"){
-                   alert("State Changed");
+                   //alert("State Changed");
                }else{
                    alert("State Change Failed");
                }

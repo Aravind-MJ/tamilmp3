@@ -13,15 +13,19 @@
 
                                 <!-- Wrapper for slides -->
                                 <div class="carousel-inner" role="listbox">
-                                    <div class="item active">
-                                        <p>FRIENDS TAMIL MP3 NEW DESIGNED BY IMROKRAFT SOLUTIONS</p>
+                                    <div class="item active" ng-if="newslist.length == 0">
+                                        <p>NO NEWS</p>
                                     </div>
-                                    <div class="item">
-                                        <p>FRIENDS TAMIL MP3 NEW DESIGNED BY IMROKRAFT SOLUTIONS</p>
+                                    <div class="item" ng-repeat="news in newslist" ng-class="{'active':$first}">
+
+                                        <p>
+                                            {{ news }}
+                                        </p>
+                                        
                                     </div>
-                                    <div class="item">
+                                    <!-- <div class="item">
                                         <p>FRIENDS TAMIL MP3 NEW DESIGNED BY IMROKRAFT SOLUTIONS</p>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -70,7 +74,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <nav class="main_nav_box">
                         <ul id="nav">
-                            <li class="nav_news active"><a href="index.html">HOME</a>
+                            <li class="nav_news active"><a href="#/">HOME</a>
 
                             </li>
                             <li class="nav_lifeguide"><a href="">CHAT </a>

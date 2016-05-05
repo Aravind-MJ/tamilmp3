@@ -270,6 +270,16 @@ $filename = basename($url);
                                 ?>"><a href="view_movie_director.php"><i class='fa fa-list'></i>List Movie Directors</a></li>
                             </ul>
                         </li>
+                        <li <?php
+                        if ($filename == "banner_control.php") {
+                            echo 'class="active"';
+                        }
+                        ?>><a href="banner_control.php"><i class='fa fa-image'></i> <span>Banner Control</span></a></li>
+                        <li <?php
+                        if ($filename == "news_control.php") {
+                            echo 'class="active"';
+                        }
+                        ?>><a href="news_control.php"><i class='fa fa-newspaper-o'></i> <span>News Control</span></a></li>
                         <!--li><a href="#"><i class='fa fa-link'></i> <span>Another Link</span></a></li>
                         <li class="treeview">
                             <a href="#"><i class='fa fa-link'></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>

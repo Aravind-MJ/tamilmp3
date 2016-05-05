@@ -1,4 +1,4 @@
-var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
+var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate','ngMarquee'])
         .directive('loading', ['$http', function ($http)            //Directive defined to show Loading Screen on Ajax Call
             {
                 return {
@@ -95,8 +95,14 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                     .then(function (response) {
                         $scope.otherslist = response.data[0];
                     });
+
+            $http.get('ajax/banner_news.php')
+                    .then(function (response) {
+                        $scope.bannerlist = response.data[0];
+                        $scope.newslist = response.data[1];
+                    });
         })
-        .controller('mp3Ctrl', function ($scope, $http) {                  //Not in Use and Left for Reference(Donot Remove)
+        .controller('mp3Ctrl', function ($scope, $http) {
             $scope.banner.visibility = true;
             $scope.message = "first";
 
@@ -231,7 +237,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
             })
                     .then(function (response) {
                         if (col == 1) {
-                            $scope.list = response.data;
+                            $scope.list = response.data[0];
                         } else if (col == 2) {
                             $scope.list1 = response.data[0];
                             $scope.list2 = response.data[1];
@@ -283,7 +289,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                         });
             }
         })
-        .controller('albumCtrl', function ($scope, $routeParams, $http,$filter) {
+        .controller('albumCtrl', function ($scope, $routeParams, $http, $filter) {
             $scope.banner.visibility = false;
             $scope.name = $routeParams.name;
             var place = $routeParams.place;
@@ -321,18 +327,18 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 place = "Remix Collections";
             } else if (place == "SpecialCollections") {
                 place = "Special Collections";
-            } else if(place == "Others"){
-                
+            } else if (place == "Others") {
+
                 angular.forEach($scope.otherslist, function (value, key) {
                     namec = $filter('removeSpaces')(value.name);
                     if (namec == name) {
                         name = value.name;
                     }
                 });
-                
+
             }
 
-            
+
             $http.post('ajax/songlist.php', {
                 loc: '../FileSystem/' + place + '/' + name + '/'                       //Album location
             }).then(function (response) {
@@ -342,56 +348,54 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
             });
 
 
-        $("#jquery_jplayer_1").jPlayer({
-            ready: function (event) {
-                $(this).jPlayer("setMedia", {});
-            },
-            swfPath: "/../plugin/jplayer/dist/jplayer",
-            supplied: "mp3",
-            wmode: "window",
-            preload:"auto",
-            useStateClassSkin: true,
-            autoBlur: false,
-            smoothPlayBar: true,
-            keyEnabled: true,
-            remainingDuration: true,
-            toggleDuration: true
-        }).jPlayer("play");
+            $("#jquery_jplayer_1").jPlayer({
+                ready: function (event) {
+                    $(this).jPlayer("setMedia", {});
+                },
+                swfPath: "/../plugin/jplayer/dist/jplayer",
+                supplied: "mp3",
+                wmode: "window",
+                preload: "auto",
+                useStateClassSkin: true,
+                autoBlur: false,
+                smoothPlayBar: true,
+                keyEnabled: true,
+                remainingDuration: true,
+                toggleDuration: true
+            }).jPlayer("play");
 
 
 
             $scope.playershow = true;
             var songflag = 0;
             song_list_arr = new Array();
-            $scope.playSong = function(path, songname, index,action) {
-            $scope.playershow = false;
-
-
+            $scope.playSong = function (path, songname, index, action) {
+                $scope.playershow = false;
 
                 if (action == 'play') {
                     songflag == 0;
                     song_list_arr = new Array();
-                    song_list_arr = [{mp3:'../'+path + songname}];
+                    song_list_arr = [{mp3: path + songname}];
                 } else {
                     /*if (songflag == 0) {
-                        song_list_arr = new Array();
-                        songflag = 1;
-                    }*/
+                     song_list_arr = new Array();
+                     songflag = 1;
+                     }*/
 
-                    song_list_arr.push({mp3:'../'+path + songname});
+                    song_list_arr.push({mp3: path + songname});
                 }
 
 
 
 
                 /*song_list_arr = new Array();
-                angular.forEach($scope.list.song, function(value, key) {
-                    songpathName= value.path + value.name;
-                    //console.log(songpathName)
-                    //song_list_arr = {mp3:songpathName};
-                    song_list_arr.push({mp3:songpathName});
-
-                });*/
+                 angular.forEach($scope.list.song, function(value, key) {
+                 songpathName= value.path + value.name;
+                 //console.log(songpathName)
+                 //song_list_arr = {mp3:songpathName};
+                 song_list_arr.push({mp3:songpathName});
+                 
+                 });*/
 
 
                 console.log(song_list_arr);
@@ -408,7 +412,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
 
 
 
-                $scope.playCurrentSong = function() {
+                $scope.playCurrentSong = function () {
                     $scope.playershow = false;
                     var myPlaylist = player(song_list_arr);
                     myPlaylist.setPlaylist(song_list_arr);
@@ -420,33 +424,28 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
 
             }
 
-            $scope.addToPlaylist = function() {
-                angular.forEach($scope.list.song, function(songselected, index){
-                    if(songselected.selected) {
+            $scope.addToPlaylist = function () {
+                angular.forEach($scope.list.song, function (songselected, index) {
+                    if (songselected.selected) {
                         if (songflag == 0) {
                             song_list_arr = new Array();
                             songflag = 1;
                         }
-                        song_list_arr.push({mp3:index});
+                        song_list_arr.push({mp3: index});
                         console.log(song_list_arr);
                     }
                 });
             }
 
-            player = function(playlist) {
+            player = function (playlist) {
                 var playlist = playlist;
-                var cssSelector = { jPlayer: "#jquery_jplayer_1", cssSelectorAncestor: "#jp_container_1" };
-                var options = { swfPath: "/../plugin/jplayer/dist/jplayer", playlistOptions: {
-                    enableRemoveControls: true
-                },supplied: "mp3",smoothPlayBar: true, keyEnabled: true,audioFullScreen: true };
+                var cssSelector = {jPlayer: "#jquery_jplayer_1", cssSelectorAncestor: "#jp_container_1"};
+                var options = {swfPath: "/../plugin/jplayer/dist/jplayer", playlistOptions: {
+                        enableRemoveControls: true
+                    }, supplied: "mp3", smoothPlayBar: true, keyEnabled: true, audioFullScreen: true};
                 var myPlaylist = new jPlayerPlaylist(cssSelector, playlist, options);
                 return myPlaylist;
             }
-
-
-
-
-
         })
 
      

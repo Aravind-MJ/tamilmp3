@@ -123,22 +123,22 @@
                                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                                     <!-- Indicators -->
                                     <ol class="carousel-indicators">
-                                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                                        <li ng-repeat="banner in bannerlist track by $index" ng-class="{'active':$first}" data-target="#carousel-example-generic" data-slide-to="{{ $index }}" ></li>
                                     </ol>
 
                                     <!-- Wrapper for slides -->
                                     <div class="carousel-inner" role="listbox">
-                                        <div class="item active">
+                                        <div class="item active" ng-if="bannerlist.length==0">
                                             <div class="br_single_news">
-                                                <img alt="" src="images/friends-tamil-mp3-banner.jpg">
-                                                <div class="br_cam">
-
-                                                </div>
+                                                <img alt="" src="admin/banner/noimage.jpg">
                                             </div>
                                         </div>
-                                        <div class="item">
+                                        <div class="item" ng-repeat="banner in bannerlist track by $index" ng-class="{'active':$first}">
+                                            <div class="br_single_news">
+                                                <img alt="Corrupt Image" ng-src="admin/banner/{{ banner }}">
+                                            </div>
+                                        </div>
+                                        <!--<div class="item">
                                             <div class="br_single_news">
                                                 <img alt="" src="images/friends-tamil-mp3-banner2.jpg">
                                                 <div class="br_cam">
@@ -153,7 +153,7 @@
 
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div>-->
                                     </div>
                                 </div>
 
