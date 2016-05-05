@@ -45,10 +45,6 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                         templateUrl: 'template/album.php',
                         controller: 'albumCtrl'
                     })
-                    .when("/List/Others/:place", {//List Common Page
-                        templateUrl: 'template/3col.php',
-                        controller: 'othersCtrl'
-                    })
                     .when("/List/:place", {//List Common Page
                         templateUrl: 'template/3col.php',
                         controller: 'listCtrl'
@@ -100,29 +96,6 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                     .then(function (response) {
                         $scope.listmovie = response.data[0];
                         console.log($scope.listmovie);
-                    });
-        })
-        .controller('othersCtrl', function ($scope, $http, $routeParams, $filter) {
-            $scope.banner.visibility = false;
-            var place = $routeParams.place;
-
-            angular.forEach($scope.otherslist, function (value, key) {
-                placec = $filter('removeSpaces')(value.name);
-                if (placec == place) {
-                    place = value.name;
-                    $scope.listlocation = placec;
-                    $scope.listlocationname = value.name;
-                }
-            });
-
-            $http.post('ajax/list.php', {
-                loc: "../FileSystem/Others/" + place + '/', //Location of Folder
-                col: 3
-            })
-                    .then(function (response) {
-                        $scope.list1 = response.data[0];
-                        $scope.list2 = response.data[1];
-                        $scope.list3 = response.data[2];
                     });
         })
         .controller('searchCtrl', function ($scope, $http, $routeParams) {
@@ -306,6 +279,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
             $scope.banner.visibility = false;
             $scope.name = $routeParams.name;
             var place = $routeParams.place;
+            var name = $routeParams.name;
 
             if (place == "A-ZMovieSongs") {                                   //Location of Folder by Condition
                 place = "A-Z Movie Songs";
@@ -339,18 +313,18 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 place = "Remix Collections";
             } else if (place == "SpecialCollections") {
                 place = "Special Collections";
-            } else {
+            } else if(place == "Others"){
                 
                 angular.forEach($scope.otherslist, function (value, key) {
-                    placec = $filter('removeSpaces')(value.name);
-                    if (placec == place) {
-                        place = "Others/"+value.name;
+                    namec = $filter('removeSpaces')(value.name);
+                    if (namec == name) {
+                        name = value.name;
                     }
                 });
-                col = 3;
+                
             }
 
-            var name = $routeParams.name;
+            
             $http.post('ajax/songlist.php', {
                 loc: '../FileSystem/' + place + '/' + name + '/'                       //Album location
             }).then(function (response) {

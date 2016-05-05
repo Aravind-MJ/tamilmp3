@@ -12,7 +12,7 @@
     <div class = "m-b-f-p" id = "a-zlist-affix">
         <table class="searchTable">
             <tr ng-repeat = "dir in result track by $index" class = "searchList">
-                <td rowspan="{{ dir.length }}">{{ dir.in}}</td>
+                <td rowspan="{{ dir.length }}">{{ dir.in}}</td>  <!-- Incorrect Error message. It works. Leave it as it is. -->
                 <td>
                     <table class="resultTable">
                         <tr ng-repeat="album in dir.albums track by $index" >

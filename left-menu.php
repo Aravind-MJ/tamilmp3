@@ -100,7 +100,7 @@
                 <div class="fs_news_right">
                     <div class="single_mega">
                         <ul >
-                            <li ng-repeat="each in otherslist track by $index"> <a href="#/List/Others/{{ each.name | removeSpaces }}"> {{ each.name }}</a> </li>
+                            <li ng-repeat="each in otherslist track by $index"> <a href="#/Album/Others/{{ each.name | removeSpaces }}"> {{ each.name }}</a> </li>
                         </ul>
                     </div>
 
