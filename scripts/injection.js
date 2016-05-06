@@ -434,16 +434,16 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
             }
 
             $scope.playCurrentSong = function () {
-                console.log('ME TEST');
                 //$scope.playershow = false;
 
                 angular.forEach($scope.list.song, function (songselected, index) {
+                    console.log(songselected);
                     if (songselected.selected) {
                         if (songflag == 0) {
                             song_list_arr = new Array();
                             songflag = 1;
                         }
-                        song_list_arr.push({title:songselected.name, mp3: index});
+                        song_list_arr.push({title:songselected.name, mp3: songselected.downpath});
                         console.log(song_list_arr);
                     }
                 });
@@ -461,7 +461,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                             song_list_arr = new Array();
                             songflag = 1;
                         }
-                        song_list_arr.push({title:songselected.name, mp3: index});
+                        song_list_arr.push({title:songselected.name, mp3: songselected.downpath});
                         console.log(song_list_arr);
                     }
                 });
