@@ -27,7 +27,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                     return string.replace(/[\s]/g, '');
                 };
             }])
-        .config(function ($routeProvider,$locationProvider) {                         //Following are the Routing Condition to Different Templates
+        .config(function ($routeProvider, $locationProvider) {                         //Following are the Routing Condition to Different Templates
             $routeProvider
                     .when("/", {//Index Page
                         templateUrl: 'template/initial.html',
@@ -81,7 +81,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
 
             $locationProvider.html5Mode(true);
         })
-        .controller('main', function ($scope, $location, $http) {                     //Main Controller (mainly used For Caching)
+        .controller('main', function ($scope, $location, $http,$window) {                     //Main Controller (mainly used For Caching)
             $scope.banner = {};
             $scope.searchterm = '';
             $scope.fetchedatoz = [];
@@ -94,6 +94,13 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 $location.path('/Search/' + search);
 
             }
+            var windowElement = angular.element($window);
+            windowElement.on('onbeforeunload', function (event) {
+                // do whatever you want in here before the page unloads.        
+
+                // the following line of code will prevent reload or navigating away.
+                event.preventDefault();
+            });
 
             $http.post('ajax/list.php', {
                 loc: "../FileSystem/Others/", //Location of Folder
@@ -444,7 +451,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                             song_list_arr = new Array();
                             songflag = 1;
                         }
-                        song_list_arr.push({title:songselected.name, mp3: songselected.downpath});
+                        song_list_arr.push({title: songselected.name, mp3: songselected.downpath});
                         console.log(song_list_arr);
                     }
                 });
@@ -462,7 +469,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                             song_list_arr = new Array();
                             songflag = 1;
                         }
-                        song_list_arr.push({title:songselected.name, mp3: songselected.downpath});
+                        song_list_arr.push({title: songselected.name, mp3: songselected.downpath});
                         console.log(song_list_arr);
                     }
                 });

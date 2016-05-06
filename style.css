@@ -128,7 +128,12 @@ float:left;
     
     margin-bottom: 40px;
 }
-
+.m-b-f-p1
+{
+abackground-color:#fff;
+padding-top: 10px;
+margin-bottom: 40px;
+}
 .m-b-f-p-l {
     
     margin-bottom: 20px;
@@ -643,7 +648,7 @@ position:relative;
   margin-bottom: 0px;
 }
 .br_single_news::after {
-  background: rgba(0, 0, 0, 0) url("images/hp-grad.png") no-repeat scroll 0 0;
+  background: rgba(0, 0, 0, 0) url("images/hp-grad.png") repeat scroll 0 0;
   bottom: 0;
   content: "";
   height: 83px;
@@ -2703,27 +2708,59 @@ input[type="checkbox"] {
 [ng\:cloak],[ng-cloak],.ng-cloak{
     display:none !important
 }
-
+.active
+{
+font-size:20px;
+}
 .searchTable{
-    padding: 0px;
+   margin: 0;
+    width: 500px;
 }
 .searchTable tr{
-    padding: 0px;
+     border-bottom: 1px double #e5e5e5;
+    padding: 0;
 }
 .searchTable td{
-    padding: 0px;
+    padding: 10px;
 }
 
 .resultTable{
-    padding: 0px;
+     margin: 12px 20px 10px 30px;
 }
 
 .resultTable tr{
-    padding: 0px;
+   border-bottom: medium none;
+    padding: 5px;
 }
 .resultTable td{
-    padding: 0px;
+     padding: 0 0 10px;
 }
+.searchList
+{
+padding:0 0 0 10px;
+}
+.line1
+{
+border-top: thin double #e5e5e5;
+    line-height: 0.2;
+    padding: 0;
+}
+.a
+{
+padding:0px 15px 0px 0px;
+}
+.resultTable td a{
+     font-size:16px;
+color:#2492c3;
+    
+}
+.resultTable td a:hover{
+     color:#de4197;
+     text-decoration: none;
+     padding-left:5px;
+}
+.searchTable tr:nth-child(even) {}
+.searchTable tr:nth-child(odd) {background: #d6d6d6; color:#000;}
+.resultTable tr:nth-child(odd) {background:none; }
 
-/* END of Style */
-
+/* END of Style*/
