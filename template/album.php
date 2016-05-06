@@ -4,7 +4,7 @@ $css_inc = array(
     'bootstrap-css' => '../css/bootstrap.css',
     'style-css' => '../style.css',
     'responsive-css' => '../css/responsive.css',
-    'jplayer-css' => '../plugin/jplayer/dist/skin/blue.monday/css/jplayer.blue.monday.min.css'
+    'jplayer-css' => '../plugin/jplayer/dist/skin/blue.monday/css/jplayer.blue.monday.min.css',
 );
 
 $js_inc = array(
@@ -13,7 +13,7 @@ $js_inc = array(
     'polyfill' => '../js/ie-opacity-polyfill.js',
     'theme-js' => '../js/main.js',
     'jplayer' => '../plugin/jplayer/dist/jplayer/jquery.jplayer.min.js',
-    'jplayer-playlist' => '../plugin/jplayer/dist/add-on/jplayer.playlist.min.js'
+    'jplayer-playlist' => '../plugin/jplayer/dist/add-on/jplayer.playlist.min.js',
 );
 
 include_once '../autoload.php';
@@ -22,6 +22,11 @@ $autoload->title = 'Tamil MP3';
 $autoload->css_inc = $css_inc;
 $autoload->js_inc = $js_inc;
 ?>
+<style>
+    div.jp-details {
+        display: block !important;
+    }
+</style>
 <div class="movie_ft">
     <div class="col-md-5 col-sm-5 col-xs-12">
         <div class="fs_news_left ht_fs_news_left m-t-f-p">
@@ -79,7 +84,7 @@ $autoload->js_inc = $js_inc;
                         </div>
                     </div>
                     <div class="jp-details">
-                        <div class="jp-title" aria-label="title">&nbsp;</div>
+                        <div class="jp-title"  aria-label="title">&nbsp;</div>
                     </div>
                     <div class="jp-no-solution">
                         <span>Update Required</span>
@@ -125,7 +130,7 @@ $autoload->js_inc = $js_inc;
 
 <form action="#">
 
-    <div class="select-section">
+    <div class="col-md-9 select-section">
         <div class="col-md-1 col-md-1 col-xs-1 col-sm-1" ng-show="list.song"><input type="checkbox" id="checkAll"/></div>
         <div class="col-md-11 col-xs-11 col-sm-11 selec-m" ng-show="list.song">Select All</div>
         <div class="col-md-11 col-xs-11 col-sm-11 selec-m" ng-show="!list.song">No Songs</div>
@@ -148,11 +153,11 @@ $autoload->js_inc = $js_inc;
                                     <a href="{{ x.downpath}}/{{ x.name}}" download="{{ x.name}}" class="googleplus-share"><i class="icon icon-download"><img
                                                 src="images/playlist-dl.png"></i></a>
                                 </div>
-                                <a class="track sp-play-track" href="#" data-cover="">
+                                <a class="track sp-play-track" href="javascript:void(0)" data-cover="">
                                     <!-- cover -->
-                                    <span class="track-title"></span>
+                                    <span class="track-title">{{ x.name}}</span>
                                     <!-- Artists -->
-                                    <span class="track-artists">{{ x.name}}</span>
+                                    <span class="track-artists"></span>
                                 </a>
 
                                 <div class="track-size">{{ detail[x.name] / 1000000 | number:2 }}MB</div>
@@ -161,8 +166,15 @@ $autoload->js_inc = $js_inc;
                         </li>
                     </ol>
                 </article>
+
             </div>
         </div>
     </div>
 </form>
+
+<script>
+    $("#checkAll").change(function () {
+        $("input:checkbox").prop('checked', $(this).prop("checked"));
+    });
+</script>
 

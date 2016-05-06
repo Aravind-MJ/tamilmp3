@@ -1,4 +1,4 @@
-var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate','ngMarquee'])
+var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
         .directive('loading', ['$http', function ($http)            //Directive defined to show Loading Screen on Ajax Call
             {
                 return {
@@ -366,7 +366,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate','ngMarquee'])
 
 
 
-            $scope.playershow = true;
+
             var songflag = 0;
             song_list_arr = new Array();
             $scope.playSong = function (path, songname, index, action) {
@@ -375,27 +375,12 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate','ngMarquee'])
                 if (action == 'play') {
                     songflag == 0;
                     song_list_arr = new Array();
-                    song_list_arr = [{mp3: path + songname}];
-                } else {
-                    /*if (songflag == 0) {
-                     song_list_arr = new Array();
-                     songflag = 1;
-                     }*/
 
-                    song_list_arr.push({mp3: path + songname});
+                    song_list_arr = [{title:songname, mp3:'../'+path + songname }];
+                } else {
+                    song_list_arr.push({title:songname, mp3:'../'+path + songname});
                 }
 
-
-
-
-                /*song_list_arr = new Array();
-                 angular.forEach($scope.list.song, function(value, key) {
-                 songpathName= value.path + value.name;
-                 //console.log(songpathName)
-                 //song_list_arr = {mp3:songpathName};
-                 song_list_arr.push({mp3:songpathName});
-                 
-                 });*/
 
 
                 console.log(song_list_arr);
@@ -414,6 +399,19 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate','ngMarquee'])
 
                 $scope.playCurrentSong = function () {
                     $scope.playershow = false;
+
+                    angular.forEach($scope.list.song, function (songselected, index) {
+                        if (songselected.selected) {
+                            if (songflag == 0) {
+                                song_list_arr = new Array();
+                                songflag = 1;
+                            }
+                            song_list_arr.push({mp3: index});
+                            console.log(song_list_arr);
+                        }
+                    });
+
+
                     var myPlaylist = player(song_list_arr);
                     myPlaylist.setPlaylist(song_list_arr);
                     myPlaylist.play(0);
