@@ -56,7 +56,7 @@
                         <ul>
                             <li> <a href="#/List/OldCollections"> Old Collections </a> </li>
                             <li> <a href="#/OldHits"> Old Hits (Singers) </a></li>
-                            <li> <a href="#/MSViswanathanHits"> M.S.Vishwanathan Hits </a></li>
+                            <li> <a href="#/azlisting/MSViswanathanHits/A"> M.S.Vishwanathan Hits </a></li>
 
                         </ul>
                     </div>
@@ -85,7 +85,7 @@
                     <div class="single_mega">
                         <ul>
                             <li> <a href="#/List/AlbumSongs"> Album Songs </a> </li>
-                            <li> <a href="#"> Comedy Dramas </a></li>
+                            <li> <a href="#/ComedyDramas"> Comedy Dramas </a></li>
                             <li> <a href="#/List/DevotionalCollections"> Devotional Collections </a></li>
                             <li> <a href="#/List/RemixCollections"> Remix Collections </a></li>
                             <li> <a href="#/List/SpecialCollections"> Special Collections</a> </li>

@@ -83,7 +83,8 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
             $scope.banner = {};
             $scope.searchterm = '';
             $scope.fetchedatoz = [];
-            $scope.fetchedbyyear = [];
+            //$scope.fetchedbyyear = [];
+            $scope.fetchedviswa = [];
             $scope.banner.visibility = true;
             $scope.albumSearch = function () {
                 var search = $scope.searchTerm;
@@ -91,13 +92,10 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 $location.path('/Search/' + search);
 
             }
-            $scope.redirect= function(listlocation){
-                if(listlocation == "DevotionalCollections"){
-                    return true;
-                } else if(listlocation == "A-ZMovieSongs"){
+            $scope.redirect = function (listlocation) {
+                if (listlocation == "DevotionalCollections") {
                     return true;
                 }
-                
                 return false;
             }
 
@@ -143,13 +141,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 $scope.listlocationname = "NEW RELEASES";
                 file = "newreleases.txt";
                 col = 2;
-            } else if (tag == "/MSViswanathanHits") {
-                $scope.listlocation = "A-ZMovieSongs";
-                $scope.listlocationname = "M.S.VISWANATHAN HITS";
-                file = "M.S.Viswanathan Hits.txt";
-                col = 3;
             }
-            console.log(tag);
             $http.post("ajax/read.php", {
                 file: "../text_files/" + file,
                 col: col
@@ -253,6 +245,11 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 $scope.listlocation = "SpecialCollections";
                 $scope.listlocationname = "SPECIAL COLLECTIONS";
                 col = 2;
+            } else if (place == "ComedyDramas") {
+                place = "Comedy Dramas";
+                $scope.listlocation = "ComedyDramas";
+                $scope.listlocationname = "COMEDY DRAMAS";
+                $scope.location = "comedy_drama_images";
             }
 
             /*
@@ -287,38 +284,42 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
             $scope.getTimes = function (n) {
                 return new Array(n);
             };
+            $scope.renameLocation = function (listlocation, listlocationname) {
+                if (listlocationname == "M.S.VISWANATHAN HITS") {
+                    return "MSViswanathanHits";
+                }
+                return listlocation;
+            }
             var place = $routeParams.place;
             var alpha = $routeParams.alpha;
+            var file = false;
             if (place == "A-ZMovieSongs") {
                 place = "A-Z Movie Songs";
+                place = "../FileSystem/" + place + "/";
                 $scope.listlocation = "A-ZMovieSongs";
                 $scope.listlocationname = "A-Z MOVIE LIST";
             } else if (place == "TamilKaraoke") {
                 place = "Tamil Karaoke";
+                place = "../FileSystem/" + place + "/";
                 $scope.listlocation = "TamilKaraoke";
                 $scope.listlocationname = "TAMIL KARAOKE";
+            } else if (place == "MSViswanathanHits") {
+                place = "../text_files/M.S.Viswanathan Hits.txt";
+                $scope.listlocation = "A-ZMovieSongs";
+                $scope.listlocationname = "M.S.VISWANATHAN HITS";
+                file = true;
             }
-            if (angular.isDefined($scope.fetchedatoz[alpha])) {
-                $scope.list1 = $scope.fetchedatoz[alpha]['list1'];
-                $scope.list2 = $scope.fetchedatoz[alpha]['list2'];
-                $scope.list3 = $scope.fetchedatoz[alpha]['list3'];
-                console.log($scope.list1);
-            } else {
-                $http.post('ajax/azlist.php', {
-                    loc: "../FileSystem/" + place + "/", //Location of Folder
-                    alpha: alpha
-                })
-                        .then(function (response) {
-                            $scope.fetchedatoz[alpha] = [];
-                            $scope.list1 = response.data[0];
-                            $scope.list2 = response.data[1];
-                            $scope.list3 = response.data[2];
-                            $scope.fetchedatoz[alpha]['list1'] = response.data[0];
-                            $scope.fetchedatoz[alpha]['list2'] = response.data[1];
-                            $scope.fetchedatoz[alpha]['list3'] = response.data[2];
-                            console.log($scope.list1);
-                        });
-            }
+            $http.post('ajax/azlist.php', {
+                loc: place, //Location of Folder
+                alpha: alpha,
+                file: file
+            })
+                    .then(function (response) {
+                        $scope.fetchedatoz[alpha] = [];
+                        $scope.list1 = response.data[0];
+                        $scope.list2 = response.data[1];
+                        $scope.list3 = response.data[2];
+                    });
         })
         .controller('albumCtrl', function ($scope, $routeParams, $http, $filter) {
             $scope.banner.visibility = false;
@@ -407,9 +408,9 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                     songflag == 0;
                     song_list_arr = new Array();
 
-                    song_list_arr = [{title:songname, mp3:'../'+path + songname }];
+                    song_list_arr = [{title: songname, mp3: path + songname}];
                 } else {
-                    song_list_arr.push({title:songname, mp3:'../'+path + songname});
+                    song_list_arr.push({title: songname, mp3: path + songname});
                 }
 
 

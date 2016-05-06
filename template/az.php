@@ -2,7 +2,7 @@
 
     <ul class="top-filter-select">
 
-        <li> <a href="#/azlisting/{{ listlocation }}/A" class="active" data-pid="106" data-lang="tamil" data-toggle="tootltip" title="" data-original-title="Latest Releases"> {{ listlocationname }} </a> </li>
+        <li> <a href="#/azlisting/{{ renameLocation(listlocation,listlocationname) }}/A" class="active" data-pid="106" data-lang="tamil" data-toggle="tootltip" title="" data-original-title="Latest Releases"> {{ listlocationname }} </a> </li>
 
     </ul>
 
@@ -11,9 +11,9 @@
 <div class="m-b-f-p">
     <ul class="station-select">
         <?php foreach (range('A', 'Z') as $char): ?>
-            <li> <a href="#/azlisting/{{ listlocation }}/<?php echo $char; ?>" class="alphabets"> <?php echo $char; ?> </a> </li>
+            <li> <a href="#/azlisting/{{ renameLocation(listlocation,listlocationname) }}/<?php echo $char; ?>" class="alphabets"> <?php echo $char; ?> </a> </li>
         <?php endforeach; ?>
-        <li> <a href = "#/azlisting/{{ listlocation }}/num" class = "" data-pid = "126" data-lang = "tamil" data-toggle = "tootltip" title = "" data-original-title = "Tamil Private Albums"> 1-9 </a> </li>
+        <li> <a href = "#/azlisting/{{ renameLocation(listlocation,listlocationname) }}/num" class = "" data-pid = "126" data-lang = "tamil" data-toggle = "tootltip" title = "" data-original-title = "Tamil Private Albums"> 1-9 </a> </li>
 
     </ul>
 </div>

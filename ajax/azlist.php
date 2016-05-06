@@ -1,8 +1,10 @@
 <?php
 
 $param = json_decode(file_get_contents("php://input"));
- $folder = $param->loc;
- $alpha = $param->alpha;
+$folder = $param->loc;
+$alpha = $param->alpha;
+$file = $param->file;
+
 function folderlist($startdir, $alpha) {
     $ignoredDirectory[] = '.';
     $ignoredDirectory[] = '..';
@@ -31,8 +33,29 @@ function folderlist($startdir, $alpha) {
     }
     return($directorylist);
 }
-$list = folderlist($folder, $alpha);
-$count = ceil(count($list) / 3);
-$rlist = array_chunk($list, $count);
-echo json_encode($rlist);
+if ($file == false) {
+    $list = folderlist($folder, $alpha);
+    $count = ceil(count($list) / 3);
+    $rlist = array_chunk($list, $count);
+    echo json_encode($rlist);
+} else {
+    $response = array();
+    $ofile = fopen($folder, 'r') or die("Unable to open file!");
+    while ($line = fgets($ofile)) {
+        preg_match_all('/[0-9]{4}/', $line, $iyear);
+        preg_match_all('/[A-Za-z ]+/', $line, $iname);
+        if ($iname[0][0][0] == strtolower($alpha) || $iname[0][0][0] == strtoupper($alpha)) {
+            $response[$iname[0][0]] = new stdClass;
+            $response[$iname[0][0]]->name = $iname[0][0];
+            if (isset($iyear[0][0])) {
+                $response[$iname[0][0]]->year = $iyear[0][0];
+            } else {
+                $response[$iname[0][0]]->year = null;
+            }
+        }
+    }
+    $count = ceil(sizeof($response) / 3);
+    $response = array_chunk($response, $count);
+    echo json_encode($response);
+}
 ?>
