@@ -42,15 +42,15 @@ $autoload->js_inc = $js_inc;
         <div class="single_fs_news_right_text m-t-f-p">
             <h2><a href="#"></a></h2>
 
-            <p>Starring : {{ name}} </p>
+            <p>Starring : {{ moviedetails.starring}} </p>
 
-            <p>Music Director : Ilaiyaraaja</p>
+            <p>Music Director : {{ moviedetails.mdirector }}</p>
 
-            <p>Singers : </p>
+            <p>Singers : {{ moviedetails.singers }}</p>
 
-            <p>Director :</p>
+            <p>Director : {{ moviedetails.director }}</p>
 
-            <p>Year : </p>
+            <p>Year : {{ moviedetails.year }}</p>
         </div>
     </div>
     <div class="col-md-5">
@@ -150,7 +150,7 @@ $autoload->js_inc = $js_inc;
                                                 src="images/playlist-play.png"> </i></a>
                                     <a href="javascript:;" class="googleplus-share" ng-click="playSong(x.downpath, x.name, $index, 'add')"><i class="icon icon-download"><img
                                                 src="images/playlist-add.png"></i></a>
-                                    <a href="{{ x.downpath}}/{{ x.name}}" download="{{ x.name}}" class="googleplus-share"><i class="icon icon-download"><img
+                                    <a href="{{ x.downpath}}" download="{{ x.name}}" class="googleplus-share"><i class="icon icon-download"><img
                                                 src="images/playlist-dl.png"></i></a>
                                 </div>
                                 <a class="track sp-play-track" href="javascript:void(0)" data-cover="">

@@ -92,12 +92,6 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 $location.path('/Search/' + search);
 
             }
-            $scope.redirect = function (listlocation) {
-                if (listlocation == "DevotionalCollections") {
-                    return true;
-                }
-                return false;
-            }
 
             $http.post('ajax/list.php', {
                 loc: "../FileSystem/Others/", //Location of Folder
@@ -359,6 +353,8 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 place = "Remix Collections";
             } else if (place == "SpecialCollections") {
                 place = "Special Collections";
+            } else if (place == "OldCollections") {
+                place = "Old Collections";
             } else if (place == "Others") {
 
                 angular.forEach($scope.otherslist, function (value, key) {
@@ -372,11 +368,12 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
 
 
             $http.post('ajax/songlist.php', {
-                loc: '../FileSystem/' + place + '/' + name + '/'                       //Album location
+                loc: '../FileSystem/' + place + '/' + name + '/',                     //Album location
+                col:1
             }).then(function (response) {
                 $scope.list = response.data;
                 $scope.detail = response.data.detail;
-                console.log($scope.list);
+                $scope.moviedetails = response.data.moviedetails;
             });
 
 
@@ -408,9 +405,9 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                     songflag == 0;
                     song_list_arr = new Array();
 
-                    song_list_arr = [{title: songname, mp3: path + songname}];
+                    song_list_arr = [{title: songname, mp3: path}];
                 } else {
-                    song_list_arr.push({title: songname, mp3: path + songname});
+                    song_list_arr.push({title: songname, mp3: path});
                 }
 
 
@@ -526,7 +523,8 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
             }
 
             $http.post("ajax/read.php", {
-                file: "../FileSystem/" + place + "/" + $scope.name + ".txt"
+                file: "../FileSystem/" + place + "/" + $scope.name + ".txt",
+                col:2
             })
                     .then(function (response) {
                         $scope.list1 = response.data[0];
