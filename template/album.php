@@ -32,7 +32,7 @@ $autoload->js_inc = $js_inc;
         <div class="fs_news_left ht_fs_news_left m-t-f-p">
             <div class="single_fs_news_left_text">
                 <div class="single_fs_news_lft_img_h2">
-                    <img src="images/movie-name.jpg" alt="Friends Tamil Mp3">
+                    <img ng-src="FileSystem/{{ place }}/{{ name }}/poster.jpg" alt="Friends Tamil Mp3">
                 </div>
             </div>
         </div>
@@ -40,7 +40,7 @@ $autoload->js_inc = $js_inc;
 
     <div class="col-md-7 col-sm-7 col-xs-12">
         <div class="single_fs_news_right_text m-t-f-p">
-            <h2><a href="#"></a></h2>
+            <h2><a href="#">{{ name }}</a></h2>
 
             <p>Starring : {{ moviedetails.starring}} </p>
 

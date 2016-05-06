@@ -324,6 +324,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
         .controller('albumCtrl', function ($scope, $routeParams, $http, $filter) {
             $scope.banner.visibility = false;
             $scope.name = $routeParams.name;
+            
             var place = $routeParams.place;
             var name = $routeParams.name;
 
@@ -372,7 +373,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
 
             }
 
-
+            $scope.place = place;
             $http.post('ajax/songlist.php', {
                 loc: '../FileSystem/' + place + '/' + name + '/', //Album location
                 col: 1
