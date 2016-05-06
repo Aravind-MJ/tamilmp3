@@ -177,7 +177,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 place = "Old Hits";
                 $scope.listlocation = "OldHits";
                 $scope.listlocationname = "OLD HITS";
-                $scope.location = "old_images";
+                $scope.location = "singer_images";
             }
             if (place == "IlayarajaHits") {
                 place = "Ilayaraja Hits";
