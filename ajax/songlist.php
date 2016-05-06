@@ -4,7 +4,6 @@ $param = json_decode(file_get_contents("php://input"));
 $folder = $param->loc;
 
 //$folder = '../FileSystem/A-Z Movie Songs/A';
-
 //function songslist($startdir) {
 //    $ignoredDirectory[] = '.';
 //    $ignoredDirectory[] = '..';
@@ -32,8 +31,8 @@ function songslist($strdir) {
         $list = glob($strdir . "/*.mp3");
         foreach ($list as $file) {
             $files = explode('/', $file);
-            $mp3songs[$files[sizeof($files)-1]]['name'] = $files[sizeof($files)-1];
-            $mp3songs[$files[sizeof($files)-1]]['downpath'] = substr($file, 3);
+            $mp3songs[$files[sizeof($files) - 1]]['name'] = $files[sizeof($files) - 1];
+            $mp3songs[$files[sizeof($files) - 1]]['downpath'] = substr($file, 3);
         }
     }
     return($mp3songs);
@@ -56,7 +55,7 @@ $detail = array();
 foreach ($songs as $song) {
 //    $detail[$song['name']]=tagReader($song['path'].'/'.$song['name']);
     $getID3 = new getID3;
-    $filename = '../'.$song['downpath'];
+    $filename = '../' . $song['downpath'];
 
     $ThisFileInfo = $getID3->analyze($filename);
 
@@ -64,13 +63,16 @@ foreach ($songs as $song) {
 }
 
 $moviedetails = new stdClass();
-$ofile = fopen($folder . '/details.txt', 'r') or die("Unable to open file!");
-$moviedetails->starring = ucwords(trim(fgets($ofile)));
-$moviedetails->mdirector = ucwords(trim(fgets($ofile)));
-$moviedetails->singers = ucwords(trim(fgets($ofile)));
-$moviedetails->director = ucwords(trim(fgets($ofile)));
-$moviedetails->year = ucwords(trim(fgets($ofile)));
-
+if (file_exists($folder."details.txt")) {
+    $ofile = fopen($folder . 'details.txt', 'r') or die("Unable to open file!");
+    $moviedetails->starring = ucwords(trim(fgets($ofile)));
+    $moviedetails->mdirector = ucwords(trim(fgets($ofile)));
+    $moviedetails->singers = ucwords(trim(fgets($ofile)));
+    $moviedetails->director = ucwords(trim(fgets($ofile)));
+    $moviedetails->year = ucwords(trim(fgets($ofile)));
+} else {
+    $moviedetails->found = false;
+}
 $songDetailMerge = array('detail' => $detail, 'song' => $songs, 'moviedetails' => $moviedetails);
 
 echo json_encode($songDetailMerge);

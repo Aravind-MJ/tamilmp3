@@ -4,7 +4,7 @@
 
         <ul class="top-filter-select">
 
-            <li> <a href="#/{{ listlocation }}" class="active" data-pid="106" data-lang="tamil" data-toggle="tooltip" title="" data-original-title="Latest Releases"> {{ listlocationname }} {{ starname }} </a> </li>
+            <li> <a href="{{ listlocation }}" class="active" data-pid="106" data-lang="tamil" data-toggle="tooltip" title="" data-original-title="Latest Releases"> {{ listlocationname }} {{ starname }} </a> </li>
 
         </ul>
 
@@ -13,7 +13,7 @@
         <ul class = "lineup">
             <li ng-repeat = "name in list1 track by $index">
                 <div class = "lineup-artist">
-                    <a href = "#/Album/A-ZMovieSongs/{{name.name}}"> {{ name.name}}
+                    <a href = "Album/A-ZMovieSongs/{{name.name}}"> {{ name.name}}
                     </a>
                     <small>[{{ name.year}}]</small>
                 </div>
@@ -24,7 +24,7 @@
         <ul class = "lineup">
             <li ng-repeat = "name in list2 track by $index">
                 <div class = "lineup-artist">
-                    <a href = "#/Album/A-ZMovieSongs/{{name.name}}"> {{ name.name}}
+                    <a href = "Album/A-ZMovieSongs/{{name.name}}"> {{ name.name}}
                     </a>
                     <small>[{{ name.year}}]</small>
                 </div>

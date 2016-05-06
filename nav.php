@@ -54,7 +54,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5 col-sm-4 col-xs-12">
-                    <div class="logo"> <a href="#/"><img src="images/logo.png" title="Tamil Mp3"/></a> </div>
+                    <div class="logo"> <a href=""><img src="images/logo.png" title="Tamil Mp3"/></a> </div>
                 </div>
                 <div class="col-md-7 col-sm-8 col-xs-12">
                     <div class="header_add"> <form class="form-wrapper">
@@ -74,7 +74,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <nav class="main_nav_box">
                         <ul id="nav">
-                            <li class="nav_news active"><a href="#/">HOME</a>
+                            <li class="nav_news active"><a href="">HOME</a>
 
                             </li>
                             <li class="nav_lifeguide"><a href="">CHAT </a>

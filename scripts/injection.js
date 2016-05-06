@@ -27,7 +27,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                     return string.replace(/[\s]/g, '');
                 };
             }])
-        .config(function ($routeProvider) {                         //Following are the Routing Condition to Different Templates
+        .config(function ($routeProvider,$locationProvider) {                         //Following are the Routing Condition to Different Templates
             $routeProvider
                     .when("/", {//Index Page
                         templateUrl: 'template/initial.html',
@@ -61,7 +61,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                         templateUrl: 'template/hits.php',
                         controller: 'listCtrl'
                     })
-                    .when("/Star/:place", {//List Common Page
+                    .when("/Category/:place", {//List Common Page
                         templateUrl: 'template/starlist.php',
                         controller: 'starCtrl'
                     })
@@ -77,7 +77,9 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                      templateUrl: 'template/byyearlist.php',
                      controller: 'yearlistCtrl'
                      })*/
-                    .otherwise({redirectTo: '/'});
+                    .otherwise({redirectTo: ''});
+
+            $locationProvider.html5Mode(true);
         })
         .controller('main', function ($scope, $location, $http) {                     //Main Controller (mainly used For Caching)
             $scope.banner = {};
@@ -106,6 +108,10 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                         $scope.bannerlist = response.data[0];
                         $scope.newslist = response.data[1];
                     });
+
+            $scope.rewrite = function ($location) {
+                console.log($location.path());
+            }
         })
         .controller('mp3Ctrl', function ($scope, $http) {
             $scope.banner.visibility = true;
@@ -368,8 +374,8 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
 
 
             $http.post('ajax/songlist.php', {
-                loc: '../FileSystem/' + place + '/' + name + '/',                     //Album location
-                col:1
+                loc: '../FileSystem/' + place + '/' + name + '/', //Album location
+                col: 1
             }).then(function (response) {
                 $scope.list = response.data;
                 $scope.detail = response.data.detail;
@@ -484,18 +490,18 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
 
                 $scope.listlocation = "Star Movies";
                 $scope.listlocationname = "STAR MOVIES";
-                $scope.filename = "Star Movies/star_details.txt";
+                place = "Star Movies";
 
             } else if (place == 'MusicDirectorMovies') {
 
                 $scope.listlocation = "Music Director Movies";
                 $scope.listlocationname = "MUSIC DIRECTOR MOVIES";
-                $scope.filename = "Music Director Movies/music_directors.txt";
+                place = "Music Director Movies";
 
             }
 
             $http.post("ajax/readstar.php", {
-                file: "../FileSystem/" + $scope.filename
+                file: "../FileSystem/" + place
             })
                     .then(function (response) {
                         $scope.list1 = response.data[0];
@@ -524,7 +530,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
 
             $http.post("ajax/read.php", {
                 file: "../FileSystem/" + place + "/" + $scope.name + ".txt",
-                col:2
+                col: 2
             })
                     .then(function (response) {
                         $scope.list1 = response.data[0];

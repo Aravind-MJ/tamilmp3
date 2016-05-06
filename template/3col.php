@@ -3,7 +3,7 @@
 
         <ul class="top-filter-select">
 
-            <li> <a href="#" class="active" data-pid="106" data-lang="tamil" data-toggle="tootltip" title="" data-original-title="Latest Releases"> {{ listlocationname | uppercase }} </a> </li>
+            <li> <a href="" class="active" data-pid="106" data-lang="tamil" data-toggle="tootltip" title="" data-original-title="Latest Releases"> {{ listlocationname | uppercase }} </a> </li>
 
         </ul>
 
@@ -13,9 +13,9 @@
             <ul class = "lineup">
                 <li ng-repeat = "name in list1 track by $index">
                     <div class = "lineup-artist">
-                        <a href = "#/Album/{{ listlocation }}/{{name.name}}" ng-if="listlocation!='DevotionalCollections'"> {{ name.name}}
+                        <a href = "Album/{{ listlocation }}/{{name.name}}" ng-if="listlocation!='DevotionalCollections'"> {{ name.name}}
                         </a>
-                        <a href = "#/List/{{name.name | removeSpaces }}" ng-if="listlocation=='DevotionalCollections'"> {{ name.name}}
+                        <a href = "List/{{name.name | removeSpaces }}" ng-if="listlocation=='DevotionalCollections'"> {{ name.name}}
                         </a>
                     </div>
                 </li>
@@ -25,9 +25,9 @@
             <ul class = "lineup">
                 <li ng-repeat = "name in list2 track by $index">
                     <div class = "lineup-artist">
-                        <a href = "#/Album/{{ listlocation }}/{{name.name}}" ng-if="listlocation!='DevotionalCollections'"> {{ name.name}}
+                        <a href = "Album/{{ listlocation }}/{{name.name}}" ng-if="listlocation!='DevotionalCollections'"> {{ name.name}}
                         </a>
-                        <a href = "#/List/{{ name.name | removeSpaces }}" ng-if="listlocation=='DevotionalCollections'"> {{ name.name}}
+                        <a href = "List/{{ name.name | removeSpaces }}" ng-if="listlocation=='DevotionalCollections'"> {{ name.name}}
                         </a>
                     </div>
                 </li>
@@ -37,9 +37,9 @@
             <ul class = "lineup">
                 <li ng-repeat = "name in list3 track by $index">
                     <div class = "lineup-artist">
-                        <a href = "#/Album/{{ listlocation }}/{{name.name}}" ng-if="redirect(listlocation)"> {{ name.name}}
+                        <a href = "Album/{{ listlocation }}/{{name.name}}" ng-if="redirect(listlocation)"> {{ name.name}}
                         </a>
-                        <a href = "#/List/{{name.name | removeSpaces }}" ng-if="listlocation=='DevotionalCollections'"> {{ name.name}}
+                        <a href = "List/{{name.name | removeSpaces }}" ng-if="listlocation=='DevotionalCollections'"> {{ name.name}}
                         </a>
                     </div>
                 </li>

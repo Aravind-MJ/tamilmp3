@@ -4,7 +4,7 @@
 
         <ul class="top-filter-select">
 
-            <li> <a href="#" class="active" data-pid="106" data-lang="tamil" data-toggle="tootltip" title="" data-original-title="Latest Releases"> Search Result </a> </li>
+            <li> <a href="" class="active" data-pid="106" data-lang="tamil" data-toggle="tootltip" title="" data-original-title="Latest Releases"> Search Result </a> </li>
 
         </ul>
 
@@ -17,8 +17,8 @@
                     <table class="resultTable">
                         <tr ng-repeat="album in dir.albums track by $index" >
                             <td>
-                                <a href = "#/Album/{{ dir.in | removeSpaces }}/{{ album}}" ng-if="dir.in != 'Devotional Collections'"> {{ album}}</a>
-                                <a href = "#/List/{{ album | removeSpaces }}" ng-if="dir.in == 'Devotional Collections'"> {{ album}}</a>
+                                <a href = "Album/{{ dir.in | removeSpaces }}/{{ album}}" ng-if="dir.in != 'Devotional Collections'"> {{ album}}</a>
+                                <a href = "List/{{ album | removeSpaces }}" ng-if="dir.in == 'Devotional Collections'"> {{ album}}</a>
                             </td>
                         </tr> 
                     </table>
