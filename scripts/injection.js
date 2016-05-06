@@ -53,6 +53,10 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                         templateUrl: 'template/2col.php',
                         controller: 'txtCtrl'
                     })
+                    .when("/MSViswanathanHits", {//List Common Page
+                        templateUrl: 'template/3col.php',
+                        controller: 'txtCtrl'
+                    })
                     .when("/:place", {//Hits Common Page
                         templateUrl: 'template/hits.php',
                         controller: 'listCtrl'
@@ -86,6 +90,15 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 $scope.searchTerm = '';
                 $location.path('/Search/' + search);
 
+            }
+            $scope.redirect= function(listlocation){
+                if(listlocation == "DevotionalCollections"){
+                    return true;
+                } else if(listlocation == "A-ZMovieSongs"){
+                    return true;
+                }
+                
+                return false;
             }
 
             $http.post('ajax/list.php', {
@@ -122,16 +135,34 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 $scope.result = response.data;
             });
         })
-        .controller('txtCtrl', function ($scope, $http) {                  //Controller for New Releases
+        .controller('txtCtrl', function ($scope, $http, $location) {                  //Controller for New Releases
             $scope.banner.visibility = false;
-            $scope.listlocation = "NewReleases";
-            $scope.listlocationname = "A-Z MOVIE SONGS";
+            var tag = $location.url();
+            if (tag == "/NewReleases") {
+                $scope.listlocation = "NewReleases";
+                $scope.listlocationname = "NEW RELEASES";
+                file = "newreleases.txt";
+                col = 2;
+            } else if (tag == "/MSViswanathanHits") {
+                $scope.listlocation = "A-ZMovieSongs";
+                $scope.listlocationname = "M.S.VISWANATHAN HITS";
+                file = "M.S.Viswanathan Hits.txt";
+                col = 3;
+            }
+            console.log(tag);
             $http.post("ajax/read.php", {
-                file: "../text_files/newreleases.txt"
+                file: "../text_files/" + file,
+                col: col
             })
                     .then(function (response) {
-                        $scope.list1 = response.data[0];
-                        $scope.list2 = response.data[1];
+                        if (col == 2) {
+                            $scope.list1 = response.data[0];
+                            $scope.list2 = response.data[1];
+                        } else if (col == 3) {
+                            $scope.list1 = response.data[0];
+                            $scope.list2 = response.data[1];
+                            $scope.list3 = response.data[2];
+                        }
                     });
 
         })
@@ -446,7 +477,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
             }
         })
 
-     
+
         .controller('starCtrl', function ($scope, $routeParams, $http) {                  //Controller for Star list n Music director list
 
             $scope.banner.visibility = false;
@@ -475,24 +506,24 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
 
         })
         .controller('movieCtrl', function ($scope, $routeParams, $http) {                  //Controller for Star movies n Music director movies
-            
+
             $scope.banner.visibility = false;
             $scope.name = $routeParams.name;
             var place = $routeParams.place;
             $scope.starname = "/" + $scope.name;
-            
+
             if (place == "Star Movies") {
-                
+
                 $scope.listlocation = "Star Movies";
                 $scope.listlocationname = "STAR MOVIES";
-                
+
             } else if (place == "Music Director Movies") {
-                
+
                 $scope.listlocation = "Music Director Movies";
                 $scope.listlocationname = "MUSIC DIRECTOR MOVIES";
-                
+
             }
-            
+
             $http.post("ajax/read.php", {
                 file: "../FileSystem/" + place + "/" + $scope.name + ".txt"
             })
