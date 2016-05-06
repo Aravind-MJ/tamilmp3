@@ -425,30 +425,27 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
 
 
 
+            }
 
-                $scope.playCurrentSong = function () {
-                    $scope.playershow = false;
+            $scope.playCurrentSong = function () {
+                console.log('ME TEST');
+                //$scope.playershow = false;
 
-                    angular.forEach($scope.list.song, function (songselected, index) {
-                        if (songselected.selected) {
-                            if (songflag == 0) {
-                                song_list_arr = new Array();
-                                songflag = 1;
-                            }
-                            song_list_arr.push({mp3: index});
-                            console.log(song_list_arr);
+                angular.forEach($scope.list.song, function (songselected, index) {
+                    if (songselected.selected) {
+                        if (songflag == 0) {
+                            song_list_arr = new Array();
+                            songflag = 1;
                         }
-                    });
+                        song_list_arr.push({title:songselected.name, mp3: index});
+                        console.log(song_list_arr);
+                    }
+                });
 
 
-                    var myPlaylist = player(song_list_arr);
-                    myPlaylist.setPlaylist(song_list_arr);
-                    myPlaylist.play(0);
-                }
-
-
-
-
+                var myPlaylist = player(song_list_arr);
+                myPlaylist.setPlaylist(song_list_arr);
+                myPlaylist.play(0);
             }
 
             $scope.addToPlaylist = function () {
@@ -458,7 +455,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                             song_list_arr = new Array();
                             songflag = 1;
                         }
-                        song_list_arr.push({mp3: index});
+                        song_list_arr.push({title:songselected.name, mp3: index});
                         console.log(song_list_arr);
                     }
                 });
