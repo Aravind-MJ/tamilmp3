@@ -42,15 +42,15 @@ $autoload->js_inc = $js_inc;
         <div class="single_fs_news_right_text m-t-f-p">
             <h2><a href="#">{{ name }}</a></h2>
 
-            <p>Starring : {{ moviedetails.starring}} </p>
+            <p ng-if="moviedetails.starring">Starring : {{ moviedetails.starring}} </p>
 
-            <p>Music Director : {{ moviedetails.mdirector }}</p>
+            <p ng-if="moviedetails.mdirector">Music Director : {{ moviedetails.mdirector }}</p>
 
-            <p>Singers : {{ moviedetails.singers }}</p>
+            <p ng-if="moviedetails.singers">Singers : {{ moviedetails.singers }}</p>
 
-            <p>Director : {{ moviedetails.director }}</p>
+            <p ng-if="moviedetails.director">Director : {{ moviedetails.director }}</p>
 
-            <p>Year : {{ moviedetails.year }}</p>
+            <p ng-if="moviedetails.year">Year : {{ moviedetails.year }}</p>
         </div>
     </div>
     <div class="col-md-5">
