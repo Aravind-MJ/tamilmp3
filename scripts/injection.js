@@ -253,7 +253,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
             }
 
             /*
-             * @var listlocation = Store the Tag Value  
+             * @var listlocation = Store the Tag Value
              * @var listlocationname = To be displayed on top
              * @var location = The location of Images
              * @var col = for specifying number of columns the data to be displayed in
@@ -410,6 +410,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
 
             var songflag = 0;
             song_list_arr = new Array();
+            dummy_list_arr = new Array();
             $scope.playSong = function (path, songname, index, action) {
                 $scope.playershow = false;
 
@@ -440,10 +441,10 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
             }
 
             $scope.playCurrentSong = function () {
-                //$scope.playershow = false;
-
+                songflag = 0;
+                console.log('here');
                 angular.forEach($scope.list.song, function (songselected, index) {
-                    console.log(songselected);
+
                     if (songselected.selected) {
                         if (songflag == 0) {
                             song_list_arr = new Array();
@@ -461,14 +462,16 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
             }
 
             $scope.addToPlaylist = function () {
+                songflag = 1;
                 angular.forEach($scope.list.song, function (songselected, index) {
                     if (songselected.selected) {
                         if (songflag == 0) {
                             song_list_arr = new Array();
                             songflag = 1;
                         }
-                        song_list_arr.push({title: songselected.name, mp3: songselected.downpath});
-                        console.log(song_list_arr);
+
+                            song_list_arr.push({title: songselected.name, mp3: songselected.downpath});
+                            console.log(song_list_arr);
                     }
                 });
             }
