@@ -81,7 +81,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
 
             $locationProvider.html5Mode(true);
         })
-        .controller('main', function ($scope, $location, $http,$window) {                     //Main Controller (mainly used For Caching)
+        .controller('main', function ($scope, $location, $http, $window) {                     //Main Controller (mainly used For Caching)
             $scope.banner = {};
             $scope.searchterm = '';
             $scope.fetchedatoz = [];
@@ -94,13 +94,6 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 $location.path('/Search/' + search);
 
             }
-            var windowElement = angular.element($window);
-            windowElement.on('onbeforeunload', function (event) {
-                // do whatever you want in here before the page unloads.        
-
-                // the following line of code will prevent reload or navigating away.
-                event.preventDefault();
-            });
 
             $http.post('ajax/list.php', {
                 loc: "../FileSystem/Others/", //Location of Folder
@@ -331,7 +324,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
         .controller('albumCtrl', function ($scope, $routeParams, $http, $filter) {
             $scope.banner.visibility = false;
             $scope.name = $routeParams.name;
-            
+
             var place = $routeParams.place;
             var name = $routeParams.name;
 
