@@ -12,7 +12,7 @@
         'font-awsome' => 'http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css',
         'bootstrap-css' => '/tamilmp3/css/bootstrap.css',
         'style-css' => '/tamilmp3/style.css',
-        'responsive-css' => 'css/responsive.css',
+        'responsive-css' => '/tamilmp3/css/responsive.css',
         'jplayer-css'    => '/tamilmp3/plugin/jplayer/dist/skin/blue.monday/css/jplayer.blue.monday.min.css'
     );
 

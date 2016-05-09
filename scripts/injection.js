@@ -393,7 +393,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 ready: function (event) {
                     $(this).jPlayer("setMedia", {});
                 },
-                swfPath: "/../plugin/jplayer/dist/jplayer",
+                swfPath: "/plugin/jplayer/dist/jplayer",
                 supplied: "mp3",
                 wmode: "window",
                 preload: "auto",
@@ -479,7 +479,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
             player = function (playlist) {
                 var playlist = playlist;
                 var cssSelector = {jPlayer: "#jquery_jplayer_1", cssSelectorAncestor: "#jp_container_1"};
-                var options = {swfPath: "/../plugin/jplayer/dist/jplayer", playlistOptions: {
+                var options = {swfPath: "/plugin/jplayer/dist/jplayer", playlistOptions: {
                         enableRemoveControls: true
                     }, supplied: "mp3", smoothPlayBar: true, keyEnabled: true, audioFullScreen: true};
                 var myPlaylist = new jPlayerPlaylist(cssSelector, playlist, options);
