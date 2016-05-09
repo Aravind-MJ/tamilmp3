@@ -10,7 +10,7 @@
                         <ul>
                             <li> <a href="azlisting/A-ZMovieSongs/A"> A-Z Movie Songs </a> </li>
                             <!--<li><a href="#/azlisting/A"> A-Z Movie Songs </a> </li>-->
-                            <li> <a href=""> Movie List By Year </a></li>
+                            <!--<li> <a href=""> Movie List By Year </a></li>-->
                             <li> <a href="NewReleases"> New Releases </a></li>
 
                         </ul>
@@ -25,7 +25,7 @@
                     <div class="single_mega">
                         <ul>
                             <li> <a href="List/ARRahmanHits">A R Rahman Hits </a></li>
-                            <li> <a href="List/IlayarajaHits"> ILaiyaraja Hits </a> </li>
+                            <li> <a href="azlisting/IlayarajaHits/A"> ILaiyaraja Hits </a> </li>
                         </ul>
                     </div>
 

@@ -1,25 +1,4 @@
-<div class="col-md-8 col-sm-8 col-xs-12">
-
-    <div class="ftm-alb-title"><h2>FEATURED ALBUM </h2></div>
-    <div class="sp-comments-box" ng-repeat = "name in listmovie">
-
-        <div class="single_comment">
-            <div class="single_comment_pic">
-                <a href="Album/A-ZMovieSongs/{{name.name}}"><img alt="Friends Tamil Mp3" ng-src="FileSystem/A-Z Movie Songs/{{ name.name}}/poster.jpg" ></a> </div>
-            <div class="single_comment_text">
-                <div class="sp_title">
-                    <a href="Album/A-ZMovieSongs/{{name.name}}"><h4 >{{ name.name}}</h4></a>
-                </div>
-                <p>Starring : {{ name.star}}</p>
-                <p>Music : {{ name.music}}</p>
-                <p>Director : {{ name.director}}</p>
-                <p>Year: {{ name.year }}</p>
-            </div>
-        </div>
-    </div>
-    </div>
-
-    <div class="col-md-4 col-sm-4 col-xs-12">
+<div class="col-md-4 col-sm-4 col-xs-12">
         <div class="home_sidebar">
             <div class="follow_us_side">
                 <div class="ftm-title">
@@ -33,7 +12,7 @@
                     <div class="purchase_sidebar_text">
                         <p>LOVE SONGS 2016</p>
                         <div class="purchase_s">
-                            <a href="#">VIEW MORE</a>
+                            <a href="List/Love Songs 2016">VIEW MORE</a>
                         </div>
                     </div>
                 </div>
@@ -44,7 +23,7 @@
                     <div class="purchase_sidebar_text">
                         <p>SPB HITS</p>
                         <div class="purchase_s">
-                            <a href="#">VIEW MORE</a>
+                            <a href="List/SPB Hits">VIEW MORE</a>
                         </div>
                     </div>
                 </div>
@@ -55,7 +34,7 @@
                     <div class="purchase_sidebar_text">
                         <p>AR RAHMAN HITS</p>
                         <div class="purchase_s">
-                            <a href="#">VIEW MORE</a>
+                            <a href="List/ARRahmanHits">VIEW MORE</a>
                         </div>
                     </div>
                 </div>
@@ -66,7 +45,7 @@
                     <div class="purchase_sidebar_text">
                         <p>ILAYARAJA HITS</p>
                         <div class="purchase_s">
-                            <a href="#">VIEW MORE</a>
+                            <a href="azlisting/IlayarajaHits/A">VIEW MORE</a>
                         </div>
                     </div>
                 </div>

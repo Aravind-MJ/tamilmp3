@@ -130,7 +130,7 @@ float:left;
 }
 .m-b-f-p1
 {
-abackground-color:#fff;
+background-color:#fff;
 padding-top: 10px;
 margin-bottom: 40px;
 }
@@ -379,13 +379,13 @@ text-decoration:none;
 }
 .single_mega ul li a {
   
-  color: #2492c3; !important;
+  color: #2492c3 !important;
   font-size: 15px!important;
 }
 
 .single_mega ul li a.active {
   
-  color: #de4197; !important;
+  color: #de4197 !important;
       
   
 }

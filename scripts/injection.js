@@ -30,7 +30,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
         .config(function ($routeProvider, $locationProvider) {                         //Following are the Routing Condition to Different Templates
             $routeProvider
                     .when("/", {//Index Page
-                        templateUrl: 'template/initial.html',
+                        templateUrl: 'template/initial.php',
                         controller: 'mp3Ctrl'
                     })
                     .when("/Search/:searchTerm", {//Index Page
@@ -298,6 +298,11 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 place = "../FileSystem/" + place + "/";
                 $scope.listlocation = "A-ZMovieSongs";
                 $scope.listlocationname = "A-Z MOVIE LIST";
+            } else if (place == "IlayarajaHits") {
+                place = "Ilayaraja Hits";
+                place = "../FileSystem/" + place + "/";
+                $scope.listlocation = "IlayarajaHits";
+                $scope.listlocationname = "ILAYARAJA HITS";
             } else if (place == "TamilKaraoke") {
                 place = "Tamil Karaoke";
                 place = "../FileSystem/" + place + "/";
