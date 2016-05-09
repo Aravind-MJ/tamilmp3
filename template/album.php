@@ -141,7 +141,7 @@ $autoload->js_inc = $js_inc;
 <form action="#">
 
     <div class="col-md-9 select-section">
-        <div class="col-md-1 col-md-1 col-xs-1 col-sm-1" ng-show="list.song"><input type="checkbox" id="checkAll"/></div>
+        <div class="col-md-1 col-md-1 col-xs-1 col-sm-1" ng-show="list.song"><input type="checkbox" ng-model="checkall" ng-click="checkAll()" id="checkAll"/></div>
         <div class="col-md-11 col-xs-11 col-sm-11 selec-m" ng-show="list.song">Select All</div>
         <div class="col-md-11 col-xs-11 col-sm-11 selec-m" ng-show="!list.song">No Songs</div>
     </div>
@@ -182,9 +182,4 @@ $autoload->js_inc = $js_inc;
     </div>
 </form>
 
-<script>
-    $("#checkAll").change(function () {
-        $("input:checkbox").prop('checked', $(this).prop("checked"));
-    });
-</script>
 
