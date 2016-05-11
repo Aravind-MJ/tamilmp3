@@ -69,14 +69,14 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                         templateUrl: 'template/2col.php',
                         controller: 'movieCtrl'
                     })
-                    /*.when("/byyear", {                              //Year Listing Page
+                    .when("/List/Year/byyear", {                              //Year Listing Page
                      templateUrl: 'template/byyear.php',
                      controller: 'yearCtrl'
                      })
-                     .when("/byyear/:year", {                        //Year Inner Page
+                    .when("/Movie/:place/:name", {                        //Year Inner Page
                      templateUrl: 'template/byyearlist.php',
                      controller: 'yearlistCtrl'
-                     })*/
+                     })
                     .otherwise({redirectTo: ''});
 
             $locationProvider.html5Mode(true);
@@ -329,7 +329,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
         .controller('albumCtrl', function ($scope, $routeParams, $http, $filter) {
             $scope.banner.visibility = false;
             $scope.name = $routeParams.name;
-
+            
             var place = $routeParams.place;
             var name = $routeParams.name;
 
@@ -378,7 +378,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
 
             }
 
-            $scope.place = place;
+            $scope.place = place;           
             $http.post('ajax/songlist.php', {
                 loc: '../FileSystem/' + place + '/' + name + '/', //Album location
                 col: 1
@@ -560,46 +560,32 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
 
         })
 
+        .controller('yearCtrl', function ($scope, $http) {                  //Controller for Year Listing
+            $scope.banner.visibility = false;
+             $http.post('ajax/yearlist.php', {
+                loc: '../FileSystem/byyear/', //Year location
+            }).then(function (response) {
+                $scope.list1 = response.data[0];
+                $scope.list2 = response.data[1];
+                $scope.list3 = response.data[2];
+                $scope.list4 = response.data[3];
+            });
+        })
 
-        /*.controller('yearCtrl', function ($scope) {                     //Controller for Year Listing
-         $scope.banner.visibility = false;
-         $scope.years = [];
-         $scope.years[0] = [];
-         $scope.years[1] = [];
-         $scope.years[2] = [];
-         $scope.years[3] = [];
-         var cyear = new Date().getFullYear();
-         for (i = 0; i < 67; i++) {
-         if (i < 17) {
-         $scope.years[0].push(cyear - i);
-         } else if (i < 34) {
-         $scope.years[1].push(cyear - i);
-         } else if (i < 51) {
-         $scope.years[2].push(cyear - i);
-         } else {
-         $scope.years[3].push(cyear - i);
-         }
-         }
-         })
-         .controller('yearlistCtrl', function ($scope, $routeParams, $http) {  //Controller For Year Listing Inner Page
-         $scope.banner.visibility = false;
-         $scope.year = $routeParams.year;
-         if (angular.isDefined($scope.fetchedbyyear[$routeParams.year])) {
-         $scope.list1 = $scope.fetchedbyyear[$routeParams.year]['list1'];
-         $scope.list2 = $scope.fetchedbyyear[$routeParams.year]['list2'];
-         $scope.list3 = $scope.fetchedbyyear[$routeParams.year]['list3'];
-         } else {
-         $http.get('ajax/yearlist.php?year=' + $routeParams.year)
-         .then(function (response) {
-         $scope.fetchedbyyear[$routeParams.year] = [];
-         $scope.list1 = response.data[0];
-         $scope.list2 = response.data[1];
-         $scope.list3 = response.data[2];
-         $scope.fetchedbyyear[$routeParams.year]['list1'] = response.data[0];
-         $scope.fetchedbyyear[$routeParams.year]['list2'] = response.data[1];
-         $scope.fetchedbyyear[$routeParams.year]['list3'] = response.data[2];
-         });
-         }
-         })*/;
+        .controller('yearlistCtrl', function ($scope, $http, $routeParams) {                  //Controller For Year Listing Inner Page
+            $scope.banner.visibility = false;
+            $scope.name = $routeParams.name;
+            var place = $routeParams.place;
+            $scope.listlocation = "A-ZMovieSongs";
 
+            $http.post("ajax/read.php", {
+                file: "../FileSystem/" + place + "/" + $scope.name + ".txt",
+                col: 3
+            })
+                    .then(function (response) {
+                        $scope.list1 = response.data[0];
+                        $scope.list2 = response.data[1];
+                        $scope.list3 = response.data[2];
+                    });
 
+        });

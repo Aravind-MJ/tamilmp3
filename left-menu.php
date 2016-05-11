@@ -9,8 +9,7 @@
                     <div class="single_mega">
                         <ul>
                             <li> <a href="azlisting/A-ZMovieSongs/A"> A-Z Movie Songs </a> </li>
-                            <!--<li><a href="#/azlisting/A"> A-Z Movie Songs </a> </li>-->
-                            <!--<li> <a href=""> Movie List By Year </a></li>-->
+                            <li> <a href="List/Year/byyear"> Movie List By Year </a></li>
                             <li> <a href="NewReleases"> New Releases </a></li>
 
                         </ul>
@@ -24,8 +23,11 @@
                 <div class="fs_news_right">
                     <div class="single_mega">
                         <ul>
-                            <li> <a href="List/ARRahmanHits">A R Rahman Hits </a></li>
                             <li> <a href="azlisting/IlayarajaHits/A"> ILaiyaraja Hits </a> </li>
+                            <li> <a href="Category/StarMovies"> Star Movies </a></li>
+                            <li> <a href="Category/MusicDirectorMovies"> Music Director Movies </a></li>
+                            <li> <a href="List/ARRahmanHits">A R Rahman Hits </a></li>
+
                         </ul>
                     </div>
 
@@ -40,9 +42,6 @@
                             <li> <a href="StarHits"> Star Hits </a> </li>
                             <li> <a href="MusicDirectorHits"> Music Director Hits </a></li>
                             <li> <a href="SingerHits"> Singer Hits </a></li>
-                            <li> <a href="Category/StarMovies"> Star Movies </a></li>
-                            <li> <a href="Category/MusicDirectorMovies"> Music Director Movies </a></li>
-
                         </ul>
                     </div>
 
