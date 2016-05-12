@@ -59,7 +59,7 @@ foreach ($songs as $song) {
     if (isset($ThisFileInfo['tags']['id3v2']['artist'][0])) {
         $detail[$song['name']]->artist = $ThisFileInfo['tags']['id3v2']['artist'][0];
     } else {
-        $detail[$song['name']]->artist = "Artist not found";
+        $detail[$song['name']]->artist = "Artist Unknown";
     }
 }
 
