@@ -54,7 +54,7 @@ a:hover { color: #000 }
 section .movie_ft {
     
     margin-bottom: 25px;
-float:left;
+/*float:left;*/
     
 }
 
@@ -122,6 +122,7 @@ float:left;
 .m-t-f-p {
     
     margin-top: 40px;
+    
 }
 
 .m-b-f-p {
@@ -569,6 +570,7 @@ transition: all 0.7s ease;
 .fs_news_left_img, .single_fs_news_img, .fs_news_left_img_g, .single_fs_news_img_h2, .single_fs_news_lft_img_h2, .cc_im_box, .autor_imgm, .srp_img {
   overflow: hidden;
   position: relative;
+  height: 215px;
 }
 .fs_news_left_img img {
   width: 100%;
@@ -913,6 +915,8 @@ position:relative;
   border: 1px solid #efefef;
   padding: 0px;
   background-color: #fff;
+  width: 175px;
+  height: 275px;
 }
 .left_fashion.main_nav_box ul li a {
 border-right: 0 solid #efefef;
@@ -1022,7 +1026,13 @@ padding-top: 12px;
 .playlist-section {
     
     margin-bottom: 2px;
+    margin-top: 25px; 
+    float:left;
     
+}
+.ng-pristine
+{
+    float:left;
 }
 
 .select-section {
@@ -1060,6 +1070,7 @@ line-height: normal;
 .single_fs_news_right_text {
   float: left;
   margin-left: 8px;
+    padding-top: 35px;
 }
 .fs_news_right {
   border-bottom: 1px solid #efefef;
@@ -2422,6 +2433,7 @@ input[type="submit"]:hover i, button:hover i, .btn:hover i { color: #fff; }
     margin-left: 0;
     border: 1px solid #a7a7a7;
     background-color: #fff;
+    width: 665px;
 }
 	.tracklist li {
 		margin: 0;
@@ -2762,5 +2774,16 @@ color:#2492c3;
 .searchTable tr:nth-child(even) {}
 .searchTable tr:nth-child(odd) {background: #d6d6d6; color:#000;}
 .resultTable tr:nth-child(odd) {background:none; }
-
+.paly-media
+{
+    padding-top:20px;
+}
+.jplayer_f
+{
+float:left;    
+}
+.button_f
+{
+    amargin: 10px;
+}
 /* END of Style*/

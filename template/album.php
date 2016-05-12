@@ -8,7 +8,7 @@
         <div class="fs_news_left ht_fs_news_left m-t-f-p">
             <div class="single_fs_news_left_text">
                 <div class="single_fs_news_lft_img_h2">
-                    <img ng-src="FileSystem/{{ place }}/{{ name }}/poster.jpg" alt="Friends Tamil Mp3">
+                    <img ng-src="FileSystem/{{ place }}/{{ name }}/poster.jpg" width="300px" height="300px" alt="Friends Tamil Mp3">
                 </div>
             </div>
         </div>
@@ -27,7 +27,19 @@
             <p ng-if="moviedetails.year">Year : {{ moviedetails.year }}</p>
         </div>
     </div>
-    <div class="col-md-5">
+    
+        <div id="jplayer-affix">
+
+        </div>
+    </div>
+</div>
+<div class="jplayer_f">
+<div class="col-lg-12 col-md-12">
+
+    <div class="col-md-1 col-sm-1 col-xs-1">
+    </div>
+     <div class="col-md-10 col-sm-12 col-xs-12">
+<div class="paly-media">
         <div id="jp-player" ng-hide="playershow">
             <div class="jp-type-playlist">
                 <div id="jquery_jplayer_1" class="jp-jplayer"></div>
@@ -74,16 +86,14 @@
                     </div>
                 </div>
             </div>
-
-
-        </div>
-        <div id="jplayer-affix">
-
-        </div>
+        </div></div>
+         <div class="col-md-1">
     </div>
-</div>
+    </div></div></div>
 
-
+        
+     
+<div class="button_f">
 <div class="col-lg-12 col-md-12 playlist-section">
 
     <div class="col-md-4">
@@ -110,7 +120,7 @@
         </ul>
     </div>
 
-</div>
+</div></div>
 
 <form action="#">
     <div class="col-md-9 select-section">
@@ -155,4 +165,9 @@
     </div>
 </form>
 
+<script>
+    $("#checkAll").change(function () {
+        $("input:checkbox").prop('checked', $(this).prop("checked"));
+    });
+</script>
 
