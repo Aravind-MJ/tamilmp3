@@ -108,10 +108,6 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                         $scope.bannerlist = response.data[0];
                         $scope.newslist = response.data[1];
                     });
-
-            $scope.rewrite = function ($location) {
-                console.log($location.path());
-            }
         })
         .controller('mp3Ctrl', function ($scope, $http) {
             $scope.banner.visibility = true;
@@ -120,7 +116,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
             $http.get('ajax/movielist.php')
                     .then(function (response) {
                         $scope.listmovie = response.data[0];
-                        console.log($scope.listmovie);
+//                        console.log($scope.listmovie);
                     });
         })
         .controller('searchCtrl', function ($scope, $http, $routeParams) {
@@ -425,7 +421,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
 
 
 
-                console.log(song_list_arr);
+//                console.log(song_list_arr);
 
                 var myPlaylist = player(song_list_arr);
 
@@ -457,7 +453,6 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
 
             $scope.playCurrentSong = function () {
                 songflag = 0;
-                console.log('here');
                 angular.forEach($scope.list.song, function (songselected, index) {
 
                     if (songselected.selected === true) {
@@ -466,7 +461,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                             songflag = 1;
                         }
                         song_list_arr.push({title: songselected.name, mp3: songselected.downpath});
-                        console.log(song_list_arr);
+//                        console.log(song_list_arr);
                     }
                 });
 
@@ -486,7 +481,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                         }
 
                             song_list_arr.push({title: songselected.name, mp3: songselected.downpath});
-                            console.log(song_list_arr);
+//                            console.log(song_list_arr);
                     }
                 });
             }
