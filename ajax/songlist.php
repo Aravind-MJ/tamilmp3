@@ -57,9 +57,19 @@ foreach ($songs as $song) {
     $getID3 = new getID3;
     $filename = '../' . $song['downpath'];
 
-    $ThisFileInfo = $getID3->analyze($filename);
-
-    $detail[$song['name']] = $ThisFileInfo['filesize'];
+    $ThisFileInfo = $getID3->analyze($filename);;
+    $detail[$song['name']] = new stdClass();
+    if(isset($ThisFileInfo['filesize'])){
+    $detail[$song['name']]->size = $ThisFileInfo['filesize'];
+    } else {
+        $detail[$song['name']]->size = "Undefined";
+    }
+    
+    if(isset($ThisFileInfo['tags']['id3v2']['artist'][0])){
+    $detail[$song['name']]->artist = $ThisFileInfo['tags']['id3v2']['artist'][0];
+    } else {
+        $detail[$song['name']]->artist = "Artist not found";
+    }
 }
 
 $moviedetails = new stdClass();

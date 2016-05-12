@@ -437,19 +437,19 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
             }
 
 
-            $scope.checkAll = function () {
-                if ($scope.checkall)
-                    checkUnchcek(true);
-                else
-                    checkUnchcek(false);
-            }
-
-            function checkUnchcek(boolean) {
-                song_list_arr = new Array();
-                angular.forEach($scope.list.song, function (songselected) {
-                    songselected.selected = boolean;
-                });
-            }
+//            $scope.checkAll = function () {
+//                if ($scope.checkall)
+//                    checkUnchcek(true);
+//                else
+//                    checkUnchcek(false);
+//            }
+//
+//            function checkUnchcek(boolean) {
+//                song_list_arr = new Array();
+//                angular.forEach($scope.list.song, function (songselected) {
+//                    songselected.selected = boolean;
+//                });
+//            }
 
             $scope.playCurrentSong = function () {
                 songflag = 0;
