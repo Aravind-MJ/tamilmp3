@@ -77,7 +77,6 @@ if (file_exists($folder."details.txt")) {
     $ofile = fopen($folder . 'details.txt', 'r') or die("Unable to open file!");
     $moviedetails->starring = ucwords(trim(fgets($ofile)));
     $moviedetails->mdirector = ucwords(trim(fgets($ofile)));
-    $moviedetails->singers = ucwords(trim(fgets($ofile)));
     $moviedetails->director = ucwords(trim(fgets($ofile)));
     $moviedetails->year = ucwords(trim(fgets($ofile)));
 } else {
