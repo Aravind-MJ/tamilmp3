@@ -41,15 +41,6 @@ function songslist($strdir) {
 // include getID3() library (can be in a different directory if full path is specified)
 require_once('getID3/getid3/getid3.php');
 
-// Initialize getID3 engine
-
-
-/*
-  Optional: copies data from all subarrays of [tags] into [comments] so
-  metadata is all available in one location for all tag formats
-  metainformation is always available under [tags] even if this is not called
- */
-
 $songs = songslist($folder);
 $detail = array();
 foreach ($songs as $song) {
@@ -57,23 +48,23 @@ foreach ($songs as $song) {
     $getID3 = new getID3;
     $filename = '../' . $song['downpath'];
 
-    $ThisFileInfo = $getID3->analyze($filename);;
+    $ThisFileInfo = $getID3->analyze($filename);
     $detail[$song['name']] = new stdClass();
-    if(isset($ThisFileInfo['filesize'])){
-    $detail[$song['name']]->size = $ThisFileInfo['filesize'];
+    if (isset($ThisFileInfo['filesize'])) {
+        $detail[$song['name']]->size = $ThisFileInfo['filesize'];
     } else {
         $detail[$song['name']]->size = "Undefined";
     }
-    
-    if(isset($ThisFileInfo['tags']['id3v2']['artist'][0])){
-    $detail[$song['name']]->artist = $ThisFileInfo['tags']['id3v2']['artist'][0];
+
+    if (isset($ThisFileInfo['tags']['id3v2']['artist'][0])) {
+        $detail[$song['name']]->artist = $ThisFileInfo['tags']['id3v2']['artist'][0];
     } else {
         $detail[$song['name']]->artist = "Artist not found";
     }
 }
 
 $moviedetails = new stdClass();
-if (file_exists($folder."details.txt")) {
+if (file_exists($folder . "details.txt")) {
     $ofile = fopen($folder . 'details.txt', 'r') or die("Unable to open file!");
     $moviedetails->starring = ucwords(trim(fgets($ofile)));
     $moviedetails->mdirector = ucwords(trim(fgets($ofile)));

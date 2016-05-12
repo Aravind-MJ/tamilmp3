@@ -2421,7 +2421,12 @@ input[type="submit"]:hover i, button:hover i, .btn:hover i { color: #fff; }
     
     
 }
-
+.select-section{
+    width:100%;
+}
+.song-item{
+    width: 100%;
+}
 
 /* Tracklist
  --------------------------------*/
@@ -2433,7 +2438,6 @@ input[type="submit"]:hover i, button:hover i, .btn:hover i { color: #fff; }
     margin-left: 0;
     border: 1px solid #a7a7a7;
     background-color: #fff;
-    width: 665px;
 }
 	.tracklist li {
 		margin: 0;
@@ -2781,9 +2785,5 @@ color:#2492c3;
 .jplayer_f
 {
 float:left;    
-}
-.button_f
-{
-    amargin: 10px;
 }
 /* END of Style*/
