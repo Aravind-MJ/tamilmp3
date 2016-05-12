@@ -19,7 +19,7 @@
 a:focus { outline: 0px solid }
 img {
     max-width: 100%;
-    height: auto;
+   /* height: auto;*/
 }
 .fix { overflow: hidden }
 h1,
@@ -121,7 +121,7 @@ section .movie_ft {
 
 .m-t-f-p {
     
-    margin-top: 40px;
+    margin-top: 25px;
     
 }
 
@@ -567,11 +567,18 @@ transition: all 0.7s ease;
   
  /* transform: scale(1.1) rotate(3deg); */
 }
-.fs_news_left_img, .single_fs_news_img, .fs_news_left_img_g, .single_fs_news_img_h2, .single_fs_news_lft_img_h2, .cc_im_box, .autor_imgm, .srp_img {
+.fs_news_left_img, .single_fs_news_img, .fs_news_left_img_g, .single_fs_news_img_h2,.cc_im_box, .autor_imgm, .srp_img {
   overflow: hidden;
   position: relative;
   height: 215px;
 }
+.single_fs_news_lft_img_h2{
+  overflow: hidden;
+  position: relative;
+  height: 355px;
+    width:290px;
+}
+
 .fs_news_left_img img {
   width: 100%;
 }
@@ -909,6 +916,7 @@ position:relative;
   border: 1px solid #efefef;
   padding: 5px;
   background-color: #fff;
+    width:310px;
 }
 
 .single_fs_text {
@@ -916,7 +924,7 @@ position:relative;
   padding: 0px;
   background-color: #fff;
   width: 175px;
-  height: 275px;
+  height: 290px;
 }
 .left_fashion.main_nav_box ul li a {
 border-right: 0 solid #efefef;
@@ -1070,7 +1078,7 @@ line-height: normal;
 .single_fs_news_right_text {
   float: left;
   margin-left: 8px;
-    padding-top: 35px;
+   /* padding-top: 35px;*/
 }
 .fs_news_right {
   border-bottom: 1px solid #efefef;
@@ -2593,7 +2601,7 @@ input[type="checkbox"] {
 
 .two_middle a {
     
-    font-size: 16px;
+    font-size: 14px;
     color: #de4197;
     text-align: center;
 }

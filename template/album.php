@@ -8,7 +8,8 @@
         <div class="fs_news_left ht_fs_news_left m-t-f-p">
             <div class="single_fs_news_left_text">
                 <div class="single_fs_news_lft_img_h2">
-                    <img ng-src="FileSystem/{{ place}}/{{ name}}/poster.jpg" width="300px" height="300px" alt="Friends Tamil Mp3">
+
+                    <img ng-src="FileSystem/{{ place }}/{{ name }}/poster.jpg" width="360px" height="400px" alt="Friends Tamil Mp3">
                 </div>
             </div>
         </div>
@@ -34,24 +35,23 @@
 </div>
 <div class="jplayer_f">
     <div class="col-lg-12 col-md-12">
-
-        <div class="col-md-1 col-sm-1 col-xs-1">
-        </div>
-        <div class="col-md-10 col-sm-12 col-xs-12">
-            <div class="paly-media">
-                <div id="jp-player" ng-hide="playershow">
-                    <div class="jp-type-playlist">
-                        <div id="jquery_jplayer_1" class="jp-jplayer"></div>
-                        <div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
-                            <div class="jp-type-single">
-                                <div class="jp-gui jp-interface">
-                                    <div class="jp-controls">
-                                        <button class="jp-play" role="button" tabindex="0">play</button>
-                                        <button class="jp-stop" role="button" tabindex="0">stop</button>
-                                    </div>
-                                    <div class="jp-progress">
-                                        <div class="jp-seek-bar">
-                                            <div class="jp-play-bar"></div>
+        <div class="col-md-3 col-sm-0 col-xs-0">
+    </div>
+     <div class="col-md-9 col-sm-12 col-xs-12">
+<div class="paly-media">
+        <div id="jp-player" ng-hide="playershow">
+            <div class="jp-type-playlist">
+                <div id="jquery_jplayer_1" class="jp-jplayer"></div>
+                <div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
+                    <div class="jp-type-single">
+                        <div class="jp-gui jp-interface">
+                            <div class="jp-controls">
+                                <button class="jp-play" role="button" tabindex="0">play</button>
+                                <button class="jp-stop" role="button" tabindex="0">stop</button>
+                            </div>
+                            <div class="jp-progress">
+                                <div class="jp-seek-bar">
+                                    <div class="jp-play-bar"></div>
                                         </div>
                                     </div>
                                     <div class="jp-volume-controls">
@@ -68,6 +68,7 @@
                                             <button class="jp-repeat" role="button" tabindex="0">repeat</button>
                                         </div>
                                     </div>
+
                                 </div>
                                 <div class="jp-details">
                                     <div class="jp-title"  aria-label="title">&nbsp;</div>
@@ -92,15 +93,16 @@
 
 
 <div class="button_f">
-    <div class="col-lg-12 col-md-12 playlist-section">
 
-        <div class="col-md-4">
-            <ul class="buttons-list">
-                <li><a class="btn small" href="javascript:;" ng-click="playCurrentSong()"><i class="icon icon-download"><img
-                                src="images/play-but.png"></i> Play</a>
-                </li>
-            </ul>
-        </div>
+<div class="col-lg-12 col-md-12 col-xs-12 playlist-section">
+
+    <div class="col-md-4">
+        <ul class="buttons-list">
+            <li><a class="btn small" href="javascript:;" ng-click="playCurrentSong()"><i class="icon icon-download"><img
+                            src="images/play-but.png"></i> Play</a>
+            </li>
+        </ul>
+    </div>
 
         <div class="col-md-4">
             <ul class="buttons-list">
