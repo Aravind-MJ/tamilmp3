@@ -92,6 +92,8 @@
 
 
 
+
+<form class="col-lg-12 col-md-12" action="download.php" method="post" id="zipForm">
 <div class="button_f">
 
 <div class="col-lg-12 col-md-12 col-xs-12 playlist-section">
@@ -112,17 +114,16 @@
             </ul>
         </div>
 
-        <div class="col-md-4 ">
-            <ul class="buttons-list">
-                <li><a class="btn small" href="javascript:;"><i class="icon icon-download"><img src="images/dl-but.png"></i>
+    <div class="col-md-4">
+            <ul class="buttons-list" id="downZip">
+                <li><a class="btn small" href="javascript:;" type="submit"><i  class="icon icon-download" ><img src="images/dl-but.png"></i>
                         Download </a>
                 </li>
             </ul>
         </div>
 
-    </div></div>
-
-<form class="col-lg-12 col-md-12" action="#">
+    </div>
+</div>
 
     <div class="select-section">
         <div class="col-md-1 col-md-1 col-xs-1 col-sm-1" ng-show="list.song"><input type="checkbox" ng-model="checkall" ng-click="checkAll()" id="checkAll"/></div>
@@ -130,7 +131,7 @@
         <div class="col-md-11 col-xs-11 col-sm-11 selec-m" ng-show="!list.song">No Songs</div>
     </div>
     <div class="song-item" ng-repeat="x in list.song">
-        <div class="col-md-1 col-md-1 col-xs-1 col-sm-1"><input type="checkbox" value="{{$index}}" ng-model="x.selected" class="styled"/>
+        <div class="col-md-1 col-md-1 col-xs-1 col-sm-1"><input type="checkbox" class="styled" value="{{ x.downpath }}" ng-checked="selected[$index]" name="files[]"/>
         </div>
         <div class="col-md-11 col-xs-11 col-sm-11">
             <div id="main" class="release main-left main-medium">
@@ -144,7 +145,7 @@
                                                 src="images/playlist-play.png" alt="Play"> </i></a>
                                     <a href="javascript:;" class="googleplus-share" ng-click="playSong(x.downpath, x.name, $index, 'add')"><i class="icon icon-download"><img
                                                 src="images/playlist-add.png" alt="Add"></i></a>
-                                    <a href="{{ x.downpath}}" download="{{ x.name}}" class="googleplus-share"><i class="icon icon-download"><img
+                                    <a href="{{ x.downpath}}" download="{{ x.name }}" class="googleplus-share" target="_PARENT"><i class="icon icon-download"><img
                                                 src="images/playlist-dl.png" alt="Download"></i></a>
                                 </div>
                                 <a class="track sp-play-track" href="javascript:void(0)" data-cover="">
@@ -169,5 +170,9 @@
 <script>
             $("#checkAll").change(function () {
                 $("input:checkbox").prop('checked', $(this).prop("checked"));
+            });
+            
+            $("#downZip").click(function(){
+               $("#zipForm").submit(); 
             });
 </script>

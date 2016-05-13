@@ -327,6 +327,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
         })
         .controller('albumCtrl', function ($scope, $routeParams, $http, $filter) {
             $scope.banner.visibility = false;
+            $scope.selected = [];
             $scope.name = $routeParams.name;
 
             var place = $routeParams.place;
@@ -449,8 +450,10 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
 
             function checkUnchcek(boolean) {
                 song_list_arr = new Array();
+                var i = 0;
                 angular.forEach($scope.list.song, function (songselected) {
-                    songselected.selected = boolean;
+                    $scope.selected[i] = boolean;
+                    i++;
                 });
             }
 
