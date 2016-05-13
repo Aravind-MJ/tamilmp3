@@ -15,6 +15,30 @@ function folderlist($startdir) {
                     if (filetype($startdir . $folder) == "dir") {
                         $directorylist[$startdir . $folder]['name'] = $folder;
                         $directorylist[$startdir . $folder]['path'] = $startdir;
+                        //read caption from text file
+                        $response = array();
+                        $caption = ''; 
+                        $cap = explode('/', $startdir, 3);
+                        $capdir = end($cap);
+                        if($capdir == 'Star Hits/'){
+                            $caption = 'star_images';
+                        } elseif ($capdir == 'Singer Hits/') {
+                            $caption = 'singer_images';
+                        }elseif ($capdir == 'Music Director Hits/') {
+                            $caption = 'director_images';
+                        }
+                        $file  = "../".$caption."/".$directorylist[$startdir . $folder]['name'].".txt";
+                        if(file_exists($file) == true){
+                        $ofile = fopen($file, 'r') or die("Unable to open file!");
+                        while ($line = fgets($ofile)) {
+                            preg_match_all('/[A-Za-z ]+/', $line, $iname);
+                            $response[$iname[0][0]] = new stdClass;
+                            $response[$iname[0][0]]->name = $iname[0][0];
+                            $directorylist[$startdir . $folder]['caption'] = $response[$iname[0][0]]->name;
+
+                        }
+                        }
+                       //end of read file 
                     }
                 }
             }
@@ -26,11 +50,11 @@ function folderlist($startdir) {
 
 $list = folderlist($folder);
 if ($col == 2 && (count($list) < 20)) {
-    $rlist[0]=$list;
-    $rlist[1]='';
+    $rlist[0] = $list;
+    $rlist[1] = '';
 } else {
     $count = ceil(count($list) / $col);
     $rlist = array_chunk($list, $count);
 }
-    echo json_encode($rlist);
+echo json_encode($rlist);
 ?>

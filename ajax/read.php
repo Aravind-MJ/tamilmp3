@@ -1,7 +1,7 @@
 <?php
 
 $param = json_decode(file_get_contents("php://input"));
-$file = $param->file;
+$file = $param->file; 
 $col = $param->col;
 
 $response = array();

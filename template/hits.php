@@ -12,7 +12,7 @@
     <div class="single_fs_text m-t-f-p">
         <div class="cc_im_box"><img alt="images" ng-src="{{ location }}/{{ name.name }}.jpg" width="175px" height="215px"/></div>
         <h2 class="two_middle"><a href="Album/{{ listlocation }}/{{ name.name }}">{{ name.name }} Hits</a></h2>
-        <!--<div class="two_middle"><p>New Hits</p></div>-->
+        <div class="two_middle"><p>{{ name.caption }}</p></div>
     </div>
 </div>
 

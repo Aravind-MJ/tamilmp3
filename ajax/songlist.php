@@ -33,6 +33,7 @@ function songslist($strdir) {
             $files = explode('/', $file);
             $mp3songs[$files[sizeof($files) - 1]]['name'] = $files[sizeof($files) - 1];
             $mp3songs[$files[sizeof($files) - 1]]['downpath'] = substr($file, 3);
+            $mp3songs[$files[sizeof($files) - 1]]['downpath'] = preg_replace('/(\/+)/','/',$mp3songs[$files[sizeof($files) - 1]]['downpath']);
         }
     }
     return($mp3songs);

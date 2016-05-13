@@ -171,4 +171,3 @@
                 $("input:checkbox").prop('checked', $(this).prop("checked"));
             });
 </script>
-

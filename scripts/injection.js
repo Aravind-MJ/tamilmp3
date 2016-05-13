@@ -69,14 +69,14 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                         templateUrl: 'template/2col.php',
                         controller: 'movieCtrl'
                     })
-                    .when("/List/Year/byyear", {                              //Year Listing Page
-                     templateUrl: 'template/byyear.php',
-                     controller: 'yearCtrl'
-                     })
-                    .when("/Movie/:place/:name", {                        //Year Inner Page
-                     templateUrl: 'template/byyearlist.php',
-                     controller: 'yearlistCtrl'
-                     })
+                    .when("/List/Year/byyear", {//Year Listing Page
+                        templateUrl: 'template/byyear.php',
+                        controller: 'yearCtrl'
+                    })
+                    .when("/Movie/:place/:name", {//Year Inner Page
+                        templateUrl: 'template/byyearlist.php',
+                        controller: 'yearlistCtrl'
+                    })
                     .otherwise({redirectTo: ''});
 
             $locationProvider.html5Mode(true);
@@ -328,7 +328,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
         .controller('albumCtrl', function ($scope, $routeParams, $http, $filter) {
             $scope.banner.visibility = false;
             $scope.name = $routeParams.name;
-            
+
             var place = $routeParams.place;
             var name = $routeParams.name;
 
@@ -377,7 +377,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
 
             }
 
-            $scope.place = place;           
+            $scope.place = place;
             $http.post('ajax/songlist.php', {
                 loc: '../FileSystem/' + place + '/' + name + '/', //Album location
                 col: 1
@@ -483,7 +483,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                             songflag = 1;
                         }
 
-                            song_list_arr.push({title: songselected.name, mp3: songselected.downpath});
+                        song_list_arr.push({title: songselected.name, mp3: songselected.downpath});
 //                            console.log(song_list_arr);
                     }
                 });
@@ -560,7 +560,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
 
         .controller('yearCtrl', function ($scope, $http) {                  //Controller for Year Listing
             $scope.banner.visibility = false;
-             $http.post('ajax/yearlist.php', {
+            $http.post('ajax/yearlist.php', {
                 loc: '../FileSystem/byyear/', //Year location
             }).then(function (response) {
                 $scope.list1 = response.data[0];
