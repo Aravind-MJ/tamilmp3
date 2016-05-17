@@ -13,7 +13,8 @@
         'bootstrap-css' => '/tamilmp3/css/bootstrap.css',
         'style-css' => '/tamilmp3/style.css',
         'responsive-css' => '/tamilmp3/css/responsive.css',
-        'jplayer-css'    => '/tamilmp3/plugin/jplayer/dist/skin/blue.monday/css/jplayer.blue.monday.min.css'
+        'jplayer-css'    => '/tamilmp3/plugin/jplayer/dist/skin/blue.monday/css/jplayer.blue.monday.min.css',
+        'formValidator_css' => 'admin/plugins/formValidator/formValidation.min.css'
     );
 
     $js_inc = array(
@@ -25,7 +26,9 @@
         'script' => '/tamilmp3/scripts/injection.js',
         'animate' => 'http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js',
         'jplayer'          => '/tamilmp3/plugin/jplayer/dist/jplayer/jquery.jplayer.min.js',
-        'jplayer-playlist' => '/tamilmp3/plugin/jplayer/dist/add-on/jplayer.playlist.min.js'
+        'jplayer-playlist' => '/tamilmp3/plugin/jplayer/dist/add-on/jplayer.playlist.min.js',
+        'formValidator_jss' => 'admin/plugins/formValidator/formValidation.min.js',
+        'formValidator_framework' => 'admin/plugins/formValidator/framework/bootstrap.js'
     );
 
     include_once 'autoload.php';

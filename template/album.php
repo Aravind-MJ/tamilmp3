@@ -9,7 +9,7 @@
             <div class="single_fs_news_left_text">
                 <div class="single_fs_news_lft_img_h2">
 
-                    <img ng-src="FileSystem/{{ place }}/{{ name }}/poster.jpg" width="360px" height="400px" alt="Friends Tamil Mp3">
+                    <img ng-src="FileSystem/{{ place}}/{{ name}}/poster.jpg" width="360px" height="400px" alt="Friends Tamil Mp3">
                 </div>
             </div>
         </div>
@@ -36,22 +36,22 @@
 <div class="jplayer_f">
     <div class="col-lg-12 col-md-12">
         <div class="col-md-3 col-sm-0 col-xs-0">
-    </div>
-     <div class="col-md-9 col-sm-12 col-xs-12">
-<div class="paly-media">
-        <div id="jp-player" ng-hide="playershow">
-            <div class="jp-type-playlist">
-                <div id="jquery_jplayer_1" class="jp-jplayer"></div>
-                <div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
-                    <div class="jp-type-single">
-                        <div class="jp-gui jp-interface">
-                            <div class="jp-controls">
-                                <button class="jp-play" role="button" tabindex="0">play</button>
-                                <button class="jp-stop" role="button" tabindex="0">stop</button>
-                            </div>
-                            <div class="jp-progress">
-                                <div class="jp-seek-bar">
-                                    <div class="jp-play-bar"></div>
+        </div>
+        <div class="col-md-9 col-sm-12 col-xs-12">
+            <div class="paly-media">
+                <div id="jp-player" ng-hide="playershow">
+                    <div class="jp-type-playlist">
+                        <div id="jquery_jplayer_1" class="jp-jplayer"></div>
+                        <div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
+                            <div class="jp-type-single">
+                                <div class="jp-gui jp-interface">
+                                    <div class="jp-controls">
+                                        <button class="jp-play" role="button" tabindex="0">play</button>
+                                        <button class="jp-stop" role="button" tabindex="0">stop</button>
+                                    </div>
+                                    <div class="jp-progress">
+                                        <div class="jp-seek-bar">
+                                            <div class="jp-play-bar"></div>
                                         </div>
                                     </div>
                                     <div class="jp-volume-controls">
@@ -94,44 +94,48 @@
 
 
 <form class="col-lg-12 col-md-12" action="download.php" method="post" id="zipForm">
-<div class="button_f">
+    <div class="button_f">
 
-<div class="col-lg-12 col-md-12 col-xs-12 playlist-section">
+        <div class="col-lg-12 col-md-12 col-xs-12 playlist-section">
 
-    <div class="col-md-4">
-        <ul class="buttons-list">
-            <li><a class="btn small" href="javascript:;" ng-click="playCurrentSong()"><i class="icon icon-download"><img
-                            src="images/play-but.png"></i> Play</a>
-            </li>
-        </ul>
-    </div>
+            <div class="col-md-4">
+                <ul class="buttons-list">
+                    <li><a class="btn small" href="javascript:;" ng-click="playCurrentSong()"><i class="icon icon-download"><img
+                                    src="images/play-but.png"></i> Play</a>
+                    </li>
+                </ul>
+            </div>
 
-        <div class="col-md-4">
-            <ul class="buttons-list">
-                <li><a class="btn small" href="javascript:;" ng-click="addToPlaylist()"><i class="icon icon-download"><img
-                                src="images/add-but.png"></i> Add to Playlist </a>
-                </li>
-            </ul>
+            <div class="col-md-4">
+                <ul class="buttons-list">
+                    <li><a class="btn small" href="javascript:;" ng-click="addToPlaylist()"><i class="icon icon-download"><img
+                                    src="images/add-but.png"></i> Add to Playlist </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-4">
+                <ul class="buttons-list" id="downZip">
+                    <li><a class="btn small" href="javascript:;"><i  class="icon icon-download" ><img src="images/dl-but.png"></i>
+                            Download </a>
+                    </li>
+                </ul>
+            </div>
+
         </div>
-
-    <div class="col-md-4">
-            <ul class="buttons-list" id="downZip">
-                <li><a class="btn small" href="javascript:;" type="submit"><i  class="icon icon-download" ><img src="images/dl-but.png"></i>
-                        Download </a>
-                </li>
-            </ul>
-        </div>
-
     </div>
-</div>
-
+    <div class="alert alert-info alert-dismissable pull-left">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h2><i class="icon fa fa-info"></i> Note!</h2>
+        Please Choose at-least One Song for Download
+    </div>
     <div class="select-section">
         <div class="col-md-1 col-md-1 col-xs-1 col-sm-1" ng-show="list.song"><input type="checkbox" ng-model="checkall" ng-click="checkAll()" id="checkAll"/></div>
         <div class="col-md-11 col-xs-11 col-sm-11 selec-m" ng-show="list.song">Select All</div>
         <div class="col-md-11 col-xs-11 col-sm-11 selec-m" ng-show="!list.song">No Songs</div>
     </div>
     <div class="song-item" ng-repeat="x in list.song">
-        <div class="col-md-1 col-md-1 col-xs-1 col-sm-1"><input type="checkbox" class="styled" value="{{ x.downpath }}" ng-checked="selected[$index]" name="files[]"/>
+        <div class="col-md-1 col-md-1 col-xs-1 col-sm-1"><input type="checkbox" class="styled" value="{{ x.downpath}}" ng-checked="selected[$index]" name="files[]"/>
         </div>
         <div class="col-md-11 col-xs-11 col-sm-11">
             <div id="main" class="release main-left main-medium">
@@ -145,7 +149,7 @@
                                                 src="images/playlist-play.png" alt="Play"> </i></a>
                                     <a href="javascript:;" class="googleplus-share" ng-click="playSong(x.downpath, x.name, $index, 'add')"><i class="icon icon-download"><img
                                                 src="images/playlist-add.png" alt="Add"></i></a>
-                                    <a href="{{ x.downpath}}" download="{{ x.name }}" class="googleplus-share" target="_PARENT"><i class="icon icon-download"><img
+                                    <a href="{{ x.downpath}}" download="{{ x.name}}" class="googleplus-share" target="_PARENT"><i class="icon icon-download"><img
                                                 src="images/playlist-dl.png" alt="Download"></i></a>
                                 </div>
                                 <a class="track sp-play-track" href="javascript:void(0)" data-cover="">
@@ -166,13 +170,16 @@
         </div>
     </div>
 </form>
-
 <script>
             $("#checkAll").change(function () {
                 $("input:checkbox").prop('checked', $(this).prop("checked"));
             });
-            
-            $("#downZip").click(function(){
-               $("#zipForm").submit(); 
+
+            $("#downZip").click(function () {
+                if ($("#zipForm input:checkbox:checked").length > 0) {
+                    $("#zipForm").submit();
+                }
+                alert("Please Choose Alteast one Song for download");
+
             });
 </script>
