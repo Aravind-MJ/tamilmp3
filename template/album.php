@@ -172,7 +172,9 @@
       </div>
       <div class="modal-body">
         <p>Please Choose atleast one Song for downloading...</p>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <center>
+            <button type="button" class="btn btn-default" data-dismiss="modal" style="width:200px;">Close</button>
+        </center>
       </div>
     </div>
 
