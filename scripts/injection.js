@@ -450,10 +450,9 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
 
             function checkUnchcek(boolean) {
                 song_list_arr = new Array();
-                var i = 0;
                 angular.forEach($scope.list.song, function (songselected) {
-                    $scope.selected[i] = boolean;
-                    i++;
+                    songselected.selected = boolean;
+                    console.log(songselected);
                 });
             }
 
@@ -501,6 +500,13 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 var myPlaylist = new jPlayerPlaylist(cssSelector, playlist, options);
                 return myPlaylist;
             }
+
+            $(document).on('click', '.jp-playlist-item-remove', function(){
+                // Determine song index if necessary
+                var index = $(this).parents('li').index('.jp-playlist li');
+                song_list_arr.splice(index, 2);
+
+            });
         })
 
 

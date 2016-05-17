@@ -10,23 +10,25 @@
     <?php
     $css_inc = array(
         'font-awsome' => 'http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css',
-        'bootstrap-css' => '/tamilmp3/css/bootstrap.css',
-        'style-css' => '/tamilmp3/style.css',
-        'responsive-css' => '/tamilmp3/css/responsive.css',
-        'jplayer-css'    => '/tamilmp3/plugin/jplayer/dist/skin/blue.monday/css/jplayer.blue.monday.min.css',
+        'bootstrap-css' => 'css/bootstrap.css',
+        'style-css' => 'style.css',
+        'responsive-css' => 'css/responsive.css',
+        'jplayer-css'    => 'plugin/jplayer/dist/skin/blue.monday/css/jplayer.blue.monday.min.css',
         'formValidator_css' => 'admin/plugins/formValidator/formValidation.min.css'
     );
 
     $js_inc = array(
         'jquery' => 'https://code.jquery.com/jquery.min.js',
-        'bootstrap-js' => '/tamilmp3/js/bootstrap.min.js',
-        'theme-js' => '/tamilmp3/js/main.js',
+        'bootstrap-js' => 'js/bootstrap.min.js',
+        'theme-js' => 'js/main.js',
+
+
+        'jplayer'          => 'plugin/jplayer/dist/jplayer/jquery.jplayer.min.js',
+        'jplayer-playlist' => 'plugin/jplayer/dist/add-on/jplayer.playlist.min.js',
         'angular-js' => 'http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js',
         'angular-js-route' => 'http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js',
-        'script' => '/tamilmp3/scripts/injection.js',
+        'script' => 'scripts/injection.js',
         'animate' => 'http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js',
-        'jplayer'          => '/tamilmp3/plugin/jplayer/dist/jplayer/jquery.jplayer.min.js',
-        'jplayer-playlist' => '/tamilmp3/plugin/jplayer/dist/add-on/jplayer.playlist.min.js',
         'formValidator_jss' => 'admin/plugins/formValidator/formValidation.min.js',
         'formValidator_framework' => 'admin/plugins/formValidator/framework/bootstrap.js'
     );
