@@ -90,9 +90,6 @@
             </div>
         </div></div></div>
 
-
-
-
 <form class="col-lg-12 col-md-12" action="download.php" method="post" id="zipForm">
     <div class="button_f">
 
@@ -123,11 +120,6 @@
             </div>
 
         </div>
-    </div>
-    <div class="alert alert-info alert-dismissable pull-left">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <h2><i class="icon fa fa-info"></i> Note!</h2>
-        Please Choose at-least One Song for Download
     </div>
     <div class="select-section">
         <div class="col-md-1 col-md-1 col-xs-1 col-sm-1" ng-show="list.song"><input type="checkbox" ng-model="checkall" ng-click="checkAll()" id="checkAll"/></div>
@@ -170,6 +162,23 @@
         </div>
     </div>
 </form>
+<div id="alertModal" class="modal fade ngHide" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title"><i class="fa fa-info"></i> Note</h3>
+      </div>
+      <div class="modal-body">
+        <p>Please Choose atleast one Song for downloading...</p>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <script>
             $("#checkAll").change(function () {
                 $("input:checkbox").prop('checked', $(this).prop("checked"));
@@ -178,8 +187,9 @@
             $("#downZip").click(function () {
                 if ($("#zipForm input:checkbox:checked").length > 0) {
                     $("#zipForm").submit();
+                } else {
+                    $('#alertModal').modal('show');
                 }
-                alert("Please Choose Alteast one Song for download");
 
             });
 </script>
