@@ -90,9 +90,6 @@
             </div>
         </div></div></div>
 
-
-
-
 <form class="col-lg-12 col-md-12" action="download.php" method="post" id="zipForm">
     <div class="button_f">
 
@@ -123,11 +120,6 @@
             </div>
 
         </div>
-    </div>
-    <div class="alert alert-info alert-dismissable pull-left">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-        <h2><i class="icon fa fa-info"></i> Note!</h2>
-        Please Choose at-least One Song for Download
     </div>
     <div class="select-section">
         <div class="col-md-1 col-md-1 col-xs-1 col-sm-1" ng-show="list.song"><input type="checkbox" ng-model="checkall" ng-click="checkAll()" id="checkAll"/></div>
