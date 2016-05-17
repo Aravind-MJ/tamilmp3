@@ -182,9 +182,6 @@
 </div>
 
 <script>
-            $("#checkAll").change(function () {
-                $("input:checkbox").prop('checked', $(this).prop("checked"));
-            });
 
             $("#downZip").click(function () {
                 if ($("#zipForm input:checkbox:checked").length > 0) {
