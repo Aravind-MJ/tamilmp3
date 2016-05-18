@@ -127,7 +127,7 @@
         <div class="col-md-11 col-xs-11 col-sm-11 selec-m" ng-show="!list.song">No Songs</div>
     </div>
     <div class="song-item" ng-repeat="x in list.song">
-        <div class="col-md-1 col-md-1 col-xs-1 col-sm-1"><input type="checkbox" class="styled" value="{{ x.downpath}}" ng-checked="song.selected" name="files[]"/>
+        <div class="col-md-1 col-md-1 col-xs-1 col-sm-1"><input type="checkbox" class="styled" ng-model="x.selected" value="{{ x.downpath}}" ng-checked="x.selected" name="files[]"/>
         </div>
         <div class="col-md-11 col-xs-11 col-sm-11">
             <div id="main" class="release main-left main-medium">
