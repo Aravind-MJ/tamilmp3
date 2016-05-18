@@ -424,9 +424,6 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 }
 
 
-
-//                console.log(song_list_arr);
-
                 var myPlaylist = player(song_list_arr);
 
                 if (action == 'play') {
@@ -452,7 +449,6 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 song_list_arr = new Array();
                 angular.forEach($scope.list.song, function (songselected) {
                     songselected.selected = boolean;
-                    console.log(songselected);
                 });
             }
 
