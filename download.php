@@ -32,7 +32,6 @@ if (isset($_POST)) {
         @unlink($zipname);
     } else {
         echo "nothing new";
-        echo $modifiedDate;
     }
 }
 ?>
