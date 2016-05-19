@@ -2794,4 +2794,9 @@ color:#2492c3;
 {
 float:left;    
 }
+
+.scrollList{
+    overflow-y: auto;
+    max-height: 142px;
+}
 /* END of Style*/

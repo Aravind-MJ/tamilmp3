@@ -73,10 +73,12 @@
                                 <div class="jp-details">
                                     <div class="jp-title"  aria-label="title">&nbsp;</div>
                                 </div>
-                                <div class="jp-playlist">
-                                    <ul>
-                                        <!-- The method Playlist.displayPlaylist() uses this unordered list -->
-                                    </ul>
+                                <div class="scrollList">
+                                    <div class="jp-playlist">
+                                        <ul>
+                                            <!-- The method Playlist.displayPlaylist() uses this unordered list -->
+                                        </ul>
+                                    </div>
                                 </div>
                                 <div class="jp-no-solution">
                                     <span>Update Required</span>
@@ -163,22 +165,22 @@
     </div>
 </form>
 <div id="alertModal" class="modal fade ngHide" role="dialog">
-  <div class="modal-dialog">
+    <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="modal-title"><i class="fa fa-info"></i> Note</h3>
-      </div>
-      <div class="modal-body">
-        <p>Please Choose atleast one Song for downloading...</p>
-        <center>
-            <button type="button" class="btn btn-default" data-dismiss="modal" style="width:200px;">Close</button>
-        </center>
-      </div>
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title"><i class="fa fa-info"></i> Note</h3>
+            </div>
+            <div class="modal-body">
+                <p>Please Choose atleast one Song for downloading...</p>
+                <center>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" style="width:200px;">Close</button>
+                </center>
+            </div>
+        </div>
+
     </div>
-
-  </div>
 </div>
 
 <script>
