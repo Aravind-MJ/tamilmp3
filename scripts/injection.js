@@ -408,32 +408,30 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
 
 
 
-            var songflag = 0;
-            song_list_arr = new Array();
-            dummy_list_arr = new Array();
+            var dummy_list_arr = new Array();
+
+        var playlist = [];
+        var cssSelector = {jPlayer: "#jquery_jplayer_1", cssSelectorAncestor: "#jp_container_1"};
+        var options = {swfPath: "/plugin/jplayer/dist/jplayer", playlistOptions: {
+            enableRemoveControls: true
+        }, supplied: "mp3", smoothPlayBar: true, keyEnabled: true, audioFullScreen: true};
+        var myPlaylist = new jPlayerPlaylist(cssSelector, playlist, options);
+
             $scope.playSong = function (path, songname, index, action) {
                 $scope.playershow = false;
 
                 if (action == 'play') {
-                    songflag == 0;
-                    song_list_arr = new Array();
-
-                    song_list_arr = [{title: songname, mp3: path}];
-                } else {
-                    song_list_arr.push({title: songname, mp3: path});
-                }
-
-
-                var myPlaylist = player(song_list_arr);
-
-                if (action == 'play') {
-                    myPlaylist.setPlaylist(song_list_arr);
+                    song_list_arr = [];
+                    myPlaylist = player(song_list_arr);
+                    myPlaylist.add({title: songname, mp3: path});
                     myPlaylist.play(0);
                 } else {
-                    myPlaylist.setPlaylist(song_list_arr);
+
+                    if ($.inArray(songname, dummy_list_arr) == -1) {
+                        myPlaylist.add({title: songname, mp3: path});
+                        dummy_list_arr.push(songname);
+                    }
                 }
-
-
 
             }
 
@@ -453,38 +451,53 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
             }
 
             $scope.playCurrentSong = function () {
-                songflag = 0;
-                angular.forEach($scope.list.song, function (songselected, index) {
 
+                angular.forEach($scope.list.song, function (songselected, index) {
                     if (songselected.selected === true) {
-                        if (songflag == 0) {
-                            song_list_arr = new Array();
-                            songflag = 1;
+
+                        if ($.inArray(songselected.name, dummy_list_arr) == -1) {
+                            myPlaylist.add({title: songselected.name, mp3: songselected.downpath});
+                            dummy_list_arr.push(songselected.name);
                         }
-                        song_list_arr.push({title: songselected.name, mp3: songselected.downpath});
-//                        console.log(song_list_arr);
+
+
+                    } else {
+
+                        if ($.inArray(songselected.name, dummy_list_arr) !== -1) {
+                            var index = dummy_list_arr.indexOf(songselected.name);
+
+                            dummy_list_arr.splice(index, 1);
+                            myPlaylist.remove(index);
+                        }
                     }
                 });
-
-
-                var myPlaylist = player(song_list_arr);
-                myPlaylist.setPlaylist(song_list_arr);
                 myPlaylist.play(0);
+
             }
 
             $scope.addToPlaylist = function () {
-                songflag = 1;
-                angular.forEach($scope.list.song, function (songselected, index) {
-                    if (songselected.selected) {
-                        if (songflag == 0) {
-                            song_list_arr = new Array();
-                            songflag = 1;
-                        }
 
-                        song_list_arr.push({title: songselected.name, mp3: songselected.downpath});
-//                            console.log(song_list_arr);
+                angular.forEach($scope.list.song, function (songselected, index) {
+
+                    if (songselected.selected) {
+
+                        if ($.inArray(songselected.name, dummy_list_arr) == -1) {
+                            myPlaylist.add({title: songselected.name, mp3: songselected.downpath});
+                            dummy_list_arr.push(songselected.name);
+                        }
+                    } else {
+
+                        if ($.inArray(songselected.name, dummy_list_arr) !== -1) {
+                            var index = dummy_list_arr.indexOf(songselected.name);
+
+                            dummy_list_arr.splice(index, 1);
+                            myPlaylist.remove(index);
+                        }
                     }
-                });
+
+                })
+
+
             }
 
             player = function (playlist) {
