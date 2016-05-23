@@ -576,7 +576,7 @@ transition: all 0.7s ease;
   overflow: hidden;
   position: relative;
   height: 355px;
-    width:290px;
+    width:282px;
 }
 
 .fs_news_left_img img {
@@ -1373,7 +1373,7 @@ ul.lev2sub {
   width: 100%;
 }
 .ht_fs_news_left .single_fs_news_left_text {
-  padding: 10px;
+  padding: 14px;
 }
 .ht_all_news_right .single_fs_news_img {
   float: none;
@@ -2477,10 +2477,12 @@ input[type="submit"]:hover i, button:hover i, .btn:hover i { color: #fff; }
 		}
 		.track-title:hover {
 			color: #df4198;
+			text-decoration:none;
 		}
 		.track-artists, .track-artists:hover {
 			color: #777;
 			font-size: 12px;
+			text-decoration:none;
 		}
 		.track-cover {
 			position: absolute;
@@ -2520,7 +2522,7 @@ input[type="submit"]:hover i, button:hover i, .btn:hover i { color: #fff; }
             line-height: 40px;
             content: "\e6c9";
 		}
-		.track:hover.sp-pause .track-title:before { color: #eee; }
+		.track:hover.sp-pause .track-title:before { color: #eee;text-decoration:none; }
 
 	/* Track Buttons */
 	.track-buttons {
@@ -2728,6 +2730,14 @@ input[type="checkbox"] {
     
    
 }
+.Top_name1 >h2 a{
+    color: #de4197;
+    
+}
+.Top_name1 >h2 a:hover {
+    color: #414141;
+    text-decoration: none;   
+}
 
 [ng\:cloak],[ng-cloak],.ng-cloak{
     display:none !important
@@ -2792,11 +2802,16 @@ color:#2492c3;
 }
 .jplayer_f
 {
-float:left;    
+float:right;    
 }
 
 .scrollList{
     overflow-y: auto;
-    max-height: 142px;
+    max-height: 114px;
+}
+.Top_name1
+{
+text-align:center;
+padding-top:35px;
 }
 /* END of Style*/

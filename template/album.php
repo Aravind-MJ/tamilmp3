@@ -4,12 +4,14 @@
     }
 </style>
 <div class="movie_ft">
+<div class="Top_name1">
+ <h2><a href="#">{{ name}}</a></h2> </div>
     <div class="col-md-5 col-sm-5 col-xs-12">
         <div class="fs_news_left ht_fs_news_left m-t-f-p">
             <div class="single_fs_news_left_text">
                 <div class="single_fs_news_lft_img_h2">
 
-                    <img ng-src="FileSystem/{{ place}}/{{ name}}/poster.jpg" width="360px" height="400px" alt="Friends Tamil Mp3">
+                    <img ng-src="FileSystem/{{ place}}/{{ name}}/poster.jpg" width="350px" height="400px" alt="Friends Tamil Mp3">
                 </div>
             </div>
         </div>
@@ -17,7 +19,7 @@
 
     <div class="col-md-7 col-sm-7 col-xs-12">
         <div class="single_fs_news_right_text m-t-f-p">
-            <h2><a href="#">{{ name}}</a></h2>
+            
 
             <p ng-if="moviedetails.starring">Starring : {{ moviedetails.starring}} </p>
 
@@ -27,17 +29,14 @@
 
             <p ng-if="moviedetails.year">Year : {{ moviedetails.year}}</p>
         </div>
+		
+		
     </div>
 
     <div id="jplayer-affix">
-
-    </div>
-</div>
 <div class="jplayer_f">
-    <div class="col-lg-12 col-md-12">
-        <div class="col-md-3 col-sm-0 col-xs-0">
-        </div>
-        <div class="col-md-9 col-sm-12 col-xs-12">
+
+       
             <div class="paly-media">
                 <div id="jp-player" ng-hide="playershow">
                     <div class="jp-type-playlist">
@@ -90,7 +89,11 @@
                 </div></div>
             <div class="col-md-1">
             </div>
-        </div></div></div>
+       
+		</div>
+    </div>
+</div>
+
 
 <form class="col-lg-12 col-md-12" action="download.php" method="post" id="zipForm">
     <div class="button_f">
