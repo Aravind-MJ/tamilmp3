@@ -215,17 +215,17 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 place = "Devotional Collections/Hindu Collections";
                 $scope.listlocation = "HinduCollections";
                 $scope.listlocationname = "HINDU COLLECTIONS";
-                col = 3;
+                $scope.location = "hindu_collection_images";
             } else if (place == "ChristianCollections") {
                 place = "Devotional Collections/Christian Collections";
                 $scope.listlocation = "ChristianCollections";
                 $scope.listlocationname = "CHRISTIAN COLLECTIONS";
-                col = 3;
+                $scope.location = "christian_collection_images";
             } else if (place == "IslamicCollections") {
                 place = "Devotional Collections/Islamic Collections";
                 $scope.listlocation = "IslamicCollections";
                 $scope.listlocationname = "ISLAMIC COLLECTIONS";
-                col = 3;
+                $scope.location = "islamic_collection_images";
             } else if (place == "AlbumSongs") {
                 place = "Album Songs";
                 $scope.listlocation = "AlbumSongs";

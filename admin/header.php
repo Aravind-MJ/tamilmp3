@@ -34,6 +34,7 @@ $filename = basename($url);
 
         <script src="plugins/filestyle/bootstrap-filestyle.js" type="text/javascript"></script>
         <script src="plugins/filestyle/bootstrap-filestyle.min.js" type="text/javascript"></script>
+        
         <!-- FORM VALIDATOR -->
         <link href="plugins/formValidator/formValidation.min.css" rel="stylesheet" type="text/css"/>
         <script src="plugins/formValidator/formValidation.min.js" type="text/javascript"></script>
