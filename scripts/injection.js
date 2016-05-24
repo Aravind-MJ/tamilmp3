@@ -513,7 +513,16 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
             $(document).on('click', '.jp-playlist-item-remove', function(){
                 // Determine song index if necessary
                 var index = $(this).parents('li').index('.jp-playlist li');
-                song_list_arr.splice(index, 2);
+                //song_list_arr.splice(index, 2);
+                var mp3name = $(this).next().html();
+
+
+                if ($.inArray(mp3name, dummy_list_arr) !== -1) {
+                    var index = dummy_list_arr.indexOf(mp3name);
+
+                    dummy_list_arr.splice(index, 1);
+                    myPlaylist.remove(index);
+                }
 
             });
         })
