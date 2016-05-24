@@ -61,7 +61,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                         templateUrl: 'template/hits.php',
                         controller: 'listCtrl'
                     })
-                    .when("/Category/:place", {//List Common Page
+                    .when("/Category/:place", {//List Category Page
                         templateUrl: 'template/starlist.php',
                         controller: 'starCtrl'
                     })
