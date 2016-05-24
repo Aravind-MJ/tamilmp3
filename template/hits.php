@@ -11,7 +11,7 @@
 <div class="col-md-3 col-sm-3 col-xs-12" ng-repeat="name in list track by $index">    
     <div class="single_fs_text m-t-f-p">
         <div class="cc_im_box"><img alt="images" ng-src="{{ location }}/{{ name.name }}.jpg" width="175px" height="215px"/></div>
-        <h2 class="two_middle"><a href="Album/{{ listlocation }}/{{ name.name }}">{{ name.name }} Hits</a></h2>
+        <h2 class="two_middle"><a href="Album/{{ listlocation }}/{{ name.name }}">{{ name.name }}</a></h2>
         <div class="two_middle"><p>{{ name.caption }}</p></div>
     </div>
 </div>

@@ -164,22 +164,22 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 place = "Star Hits";
                 $scope.listlocation = "StarHits";
                 $scope.listlocationname = "STAR HITS";
-                $scope.location = "star_images";
+                $scope.location = "images/star_images";
             } else if (place == "MusicDirectorHits") {
                 place = "Music Director Hits";
                 $scope.listlocation = "MusicDirectorHits";
                 $scope.listlocationname = "MUSIC DIRECTOR HITS";
-                $scope.location = "director_images";
+                $scope.location = "images/director_images";
             } else if (place == "SingerHits") {
                 place = "Singer Hits";
                 $scope.listlocation = "SingerHits";
                 $scope.listlocationname = "SINGER HITS";
-                $scope.location = "singer_images";
+                $scope.location = "images/singer_images";
             } else if (place == "OldHits") {
                 place = "Old Hits";
                 $scope.listlocation = "OldHits";
                 $scope.listlocationname = "OLD HITS";
-                $scope.location = "singer_images";
+                $scope.location = "images/singer_images";
             }
             if (place == "IlayarajaHits") {
                 place = "Ilayaraja Hits";
@@ -215,17 +215,17 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 place = "Devotional Collections/Hindu Collections";
                 $scope.listlocation = "HinduCollections";
                 $scope.listlocationname = "HINDU COLLECTIONS";
-                $scope.location = "hindu_collection_images";
+                $scope.location = "images/hindu_collection_images";
             } else if (place == "ChristianCollections") {
                 place = "Devotional Collections/Christian Collections";
                 $scope.listlocation = "ChristianCollections";
                 $scope.listlocationname = "CHRISTIAN COLLECTIONS";
-                $scope.location = "christian_collection_images";
+                $scope.location = "images/christian_collection_images";
             } else if (place == "IslamicCollections") {
                 place = "Devotional Collections/Islamic Collections";
                 $scope.listlocation = "IslamicCollections";
                 $scope.listlocationname = "ISLAMIC COLLECTIONS";
-                $scope.location = "islamic_collection_images";
+                $scope.location = "images/islamic_collection_images";
             } else if (place == "AlbumSongs") {
                 place = "Album Songs";
                 $scope.listlocation = "AlbumSongs";
@@ -245,7 +245,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 place = "Comedy Dramas";
                 $scope.listlocation = "ComedyDramas";
                 $scope.listlocationname = "COMEDY DRAMAS";
-                $scope.location = "comedy_drama_images";
+                $scope.location = "images/comedy_drama_images";
             } else {
                 $scope.listlocation = place;
                 $scope.listlocationname = place;

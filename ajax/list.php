@@ -21,11 +21,11 @@ function folderlist($startdir) {
                         $cap = explode('/', $startdir, 3);
                         $capdir = end($cap);
                         if($capdir == 'Star Hits/'){
-                            $caption = 'star_images';
+                            $caption = 'images/star_images';
                         } elseif ($capdir == 'Singer Hits/') {
-                            $caption = 'singer_images';
+                            $caption = 'images/singer_images';
                         }elseif ($capdir == 'Music Director Hits/') {
-                            $caption = 'director_images';
+                            $caption = 'images/director_images';
                         }
                         $file  = "../".$caption."/".$directorylist[$startdir . $folder]['name'].".txt";
                         if(file_exists($file) == true){
