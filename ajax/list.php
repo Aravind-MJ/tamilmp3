@@ -49,6 +49,7 @@ function folderlist($startdir) {
 }
 
 $list = folderlist($folder);
+sort($list);
 if ($col == 2 && (count($list) < 20)) {
     $rlist[0] = $list;
     $rlist[1] = '';

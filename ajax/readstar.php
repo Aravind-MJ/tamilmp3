@@ -7,6 +7,7 @@ function songslist($strdir) {
     $mp3songs = array();
     if (is_dir($strdir)) {
         $list = glob($strdir . "/*.txt");
+        sort($list);
         foreach ($list as $file) {
             $files = explode('/', $file);
             $mp3songs[]['name'] = substr($files[sizeof($files)-1],0,  sizeof($files[sizeof($files)-1])-5);

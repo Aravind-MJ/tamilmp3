@@ -17,6 +17,7 @@ while ($line = fgets($ofile)) {
         $response[$iname[0][0]]->year = null;
     }
 }
+sort($response);
 $count = ceil(sizeof($response)/$col);
 $response = array_chunk($response,$count);
 echo json_encode($response);

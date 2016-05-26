@@ -31,6 +31,7 @@ function folderlist($startdir, $alpha) {
             closedir($dh);
         }
     }
+    sort($directorylist);
     return($directorylist);
 }
 if ($file == false) {
@@ -55,6 +56,7 @@ if ($file == false) {
         }
     }
     $count = ceil(sizeof($response) / 3);
+    sort($response);
     $response = array_chunk($response, $count);
     echo json_encode($response);
 }

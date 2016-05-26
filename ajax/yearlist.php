@@ -20,6 +20,7 @@ function songslist($strdir) {
 }
 
 $years = songslist($folder);
+sort($years);
 $years = array_reverse($years, true);
 $count = ceil(sizeof($years) / 4);
 $years = array_chunk($years, $count);

@@ -87,7 +87,6 @@
                             <li> <a href="ComedyDramas"> Comedy Dramas </a></li>
                             <li> <a href="List/DevotionalCollections"> Devotional Collections </a></li>
                             <li> <a href="List/RemixCollections"> Remix Collections </a></li>
-                            <li> <a href="List/SpecialCollections"> Special Collections</a> </li>
                         </ul>
                     </div>
 
@@ -99,6 +98,7 @@
                 <div class="fs_news_right">
                     <div class="single_mega">
                         <ul >
+                            <li> <a href="List/SpecialCollections"> Special Collections</a> </li>
                             <li ng-repeat="each in otherslist track by $index"> <a href="Album/Others/{{ each.name }}"> {{ each.name }}</a> </li>
                         </ul>
                     </div>
