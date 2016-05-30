@@ -2731,11 +2731,11 @@ input[type="checkbox"] {
    
 }
 .Top_name1 >h2 a{
-    color: #de4197;
+    color: #414141;
     
 }
 .Top_name1 >h2 a:hover {
-    color: #414141;
+    color: #de4197;
     text-decoration: none;   
 }
 
@@ -2811,7 +2811,8 @@ float:right;
 }
 .Top_name1
 {
-text-align:center;
+text-align:left;
+padding-left:15px;
 padding-top:35px;
 }
 /* END of Style*/

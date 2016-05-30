@@ -1,4 +1,4 @@
-<div class="col-md-3 col-sm-3 col-xs-12">
+<div class="">
     <div class="home_sidebar">
         <div class="follow_us_side">
             <div class="ftm-title">
@@ -23,10 +23,10 @@
                 <div class="fs_news_right">
                     <div class="single_mega">
                         <ul>
-                            <li> <a href="azlisting/IlayarajaHits/A"> ILaiyaraja Hits </a> </li>
+                            <li> <a href="azlisting/ILayarajaMovies/A">ILaiyaraja Movies </a> </li>                           
+                            <!--<li> <a href="List/ARRahmanHits">A R Rahman Hits </a></li>-->
                             <li> <a href="Category/StarMovies"> Star Movies </a></li>
                             <li> <a href="Category/MusicDirectorMovies"> Music Director Movies </a></li>
-                            <li> <a href="List/ARRahmanHits">A R Rahman Hits </a></li>
 
                         </ul>
                     </div>
