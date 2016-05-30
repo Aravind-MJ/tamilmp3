@@ -461,31 +461,64 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 toggleDuration: true
             }).jPlayer("play");
 
-
-
-
-            var dummy_list_arr = new Array();
-
         var playlist = [];
+        var dummy_list_arr = new Array();
+
         var cssSelector = {jPlayer: "#jquery_jplayer_1", cssSelectorAncestor: "#jp_container_1"};
         var options = {swfPath: "/plugin/jplayer/dist/jplayer", playlistOptions: {
             enableRemoveControls: true
         }, supplied: "mp3", smoothPlayBar: true, keyEnabled: true, audioFullScreen: true};
         var myPlaylist = new jPlayerPlaylist(cssSelector, playlist, options);
 
+            $scope.place = place;
+            $http.post('ajax/songlist.php', {
+                loc: '../FileSystem/' + place + '/' + name + '/', //Album location
+                col: 1
+            }).then(function (response) {
+                $scope.list = response.data;
+                $scope.detail = response.data.detail;
+                $scope.moviedetails = response.data.moviedetails;
+                var sngCnt = 0;
+
+                $.each(response.data.song , function(index, val) {
+                    if (sngCnt == 0) {
+                        myPlaylist.add({title:val.name, mp3: val.downpath});
+                        dummy_list_arr.push(val.name);
+                    }
+
+                    sngCnt++
+                })
+
+            });
+
+            var playlisted_arr = [];
             $scope.playSong = function (path, songname, index, action) {
                 $scope.playershow = false;
 
                 if (action == 'play') {
-                    song_list_arr = [];
-                    myPlaylist = player(song_list_arr);
-                    myPlaylist.add({title: songname, mp3: path});
-                    myPlaylist.play(0);
+                    //song_list_arr = [];
+                    //myPlaylist = player(song_list_arr);
+                    console.log(songname);
+                    if ($.inArray(songname, dummy_list_arr) !== -1) {
+                        console.log('in the playlist');
+                        var indexi = dummy_list_arr.indexOf(songname);
+                    } else {
+                        if ($.inArray(songname, playlisted_arr) == -1) {
+                            console.log('added and play');
+                            dummy_list_arr.push(songname);
+                            //myPlaylist.add({title: songname, mp3: path});
+                            var indexi = dummy_list_arr.indexOf(songname);
+
+                        }
+                    }
+                    myPlaylist.play(indexi);
+
                 } else {
 
                     if ($.inArray(songname, dummy_list_arr) == -1) {
                         myPlaylist.add({title: songname, mp3: path});
                         dummy_list_arr.push(songname);
+                        playlisted_arr.push(songname);
                     }
                 }
 
@@ -500,14 +533,15 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
             }
 
             function checkUnchcek(boolean) {
-                song_list_arr = new Array();
                 angular.forEach($scope.list.song, function (songselected) {
                     songselected.selected = boolean;
                 });
             }
 
             $scope.playCurrentSong = function () {
-
+                //console.log(dummy_list_arr);
+                //console.log($scope.list.song);
+                var v = 0;
                 angular.forEach($scope.list.song, function (songselected, index) {
                     if (songselected.selected === true) {
 
@@ -520,12 +554,16 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                     } else {
 
                         if ($.inArray(songselected.name, dummy_list_arr) !== -1) {
-                            var index = dummy_list_arr.indexOf(songselected.name);
 
-                            dummy_list_arr.splice(index, 1);
-                            myPlaylist.remove(index);
+                            var indexi = dummy_list_arr.indexOf(songselected.name);
+
+                            myPlaylist.option("removeTime", 0);
+                            myPlaylist.remove(indexi);
+                            dummy_list_arr.splice(indexi, 1);
+                            console.log(dummy_list_arr);
                         }
                     }
+                    v++;
                 });
                 myPlaylist.play(0);
 
@@ -541,15 +579,16 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                             myPlaylist.add({title: songselected.name, mp3: songselected.downpath});
                             dummy_list_arr.push(songselected.name);
                         }
-                    } else {
+                    } /*else {
 
                         if ($.inArray(songselected.name, dummy_list_arr) !== -1) {
-                            var index = dummy_list_arr.indexOf(songselected.name);
+                            var indexi = dummy_list_arr.indexOf(songselected.name);
 
-                            dummy_list_arr.splice(index, 1);
-                            myPlaylist.remove(index);
+                            dummy_list_arr.splice(indexi, 1);
+                            myPlaylist.option("removeTime", 0);
+                            myPlaylist.remove(indexi);
                         }
-                    }
+                    }*/
 
                 })
 
@@ -569,9 +608,9 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
             $(document).on('click', '.jp-playlist-item-remove', function(){
                 // Determine song index if necessary
                 var index = $(this).parents('li').index('.jp-playlist li');
+
                 //song_list_arr.splice(index, 2);
                 var mp3name = $(this).next().html();
-
 
                 if ($.inArray(mp3name, dummy_list_arr) !== -1) {
                     var index = dummy_list_arr.indexOf(mp3name);
