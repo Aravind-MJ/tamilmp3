@@ -35,7 +35,6 @@
     $autoload->css_inc = $css_inc;
     $autoload->js_inc = $js_inc;
     ?>
-
     <?php include ('header.php'); ?>
     <style type="text/css">
 
@@ -183,7 +182,7 @@
                     <div class="col-lg-3 col-md-3">
                         <?php include_once ('left-menu.php'); ?>
                     </div>
-                    <div class="col-lg-9 col-md-9">
+                    <div class="col-lg-9 col-md-9 ss">
                         <div class="breadcrumbs" ng-bind-html="breadcrumbs.path"></div>
                         <ng-view></ng-view>
                     </div>
