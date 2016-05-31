@@ -2,8 +2,9 @@
 
 if (isset($_POST)) {
     $filesToSend = $_POST['files'];
+    $album = $_POST['album_name'];
     if (count($filesToSend) > 0) {
-        $zipname = time().".zip";
+        $zipname = $album.".zip";
         $zip = new ZipArchive();
         $res = $zip->open($zipname, ZipArchive::CREATE);
 
@@ -30,8 +31,6 @@ if (isset($_POST)) {
         flush();
         readfile($zipname);
         @unlink($zipname);
-    } else {
-        echo "nothing new";
     }
 }
 ?>

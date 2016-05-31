@@ -96,6 +96,7 @@
 
 
 <form class="col-lg-12 col-md-12" action="download.php" method="post" id="zipForm">
+    <input type="text" name="album_name" value="{{ name | removeSpaces}}" hidden>
     <div class="button_f">
 
         <div class="col-lg-12 col-md-12 col-xs-12 playlist-section">

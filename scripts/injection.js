@@ -91,8 +91,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
             $scope.fetchedviswa = [];
             $scope.banner.visibility = true;
             $scope.albumSearch = function () {
-                var search = $scope.searchTerm;
-                $scope.searchTerm = '';
+                var search = $scope.searchTerm.text;
                 $location.path('/Search/' + search);
 
             }
@@ -130,7 +129,8 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
             $http.post("ajax/search.php", {
                 search: term
             }).then(function (response) {
-                $scope.result = response.data;
+                $scope.result = response.data[0];
+                $scope.songs = response.data[1];
             });
         })
         .controller('txtCtrl', function ($scope, $http, $location,$sce) {                  //Controller for New Releases

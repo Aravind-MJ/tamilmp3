@@ -8,25 +8,58 @@
         </ul>
 
     </div>
-    <div class = "m-b-f-p1" id = "a-zlist-affix">
-        <table class="searchTable">
-            <tr ng-repeat = "dir in result track by $index" class = "searchList">
-                <td rowspan="{{ dir.length }}"><img class="a" src="images/list-ico.png">{{ dir.in}}</td>
-                 <td class="a"></td>
-                <td>
-                    <table class="resultTable">
-                        <tr ng-repeat="album in dir.albums track by $index" >
-                            <td>
-                                <a href = "Album/{{ dir.in | removeSpaces }}/{{ album}}" ng-if="dir.in != 'Devotional Collections'"> {{ album}}</a>
-                                <a href = "List/{{ album | removeSpaces }}" ng-if="dir.in == 'Devotional Collections'"> {{ album}}</a>
-                            </td>
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class = "m-b-f-p2" id = "a-zlist-affix">
+            <!--            <div class="resp-tabs-list">
+                            <div  class="resp-tab-item " aria-controls="tab_item-0" role="tab">ALBUMS</div>
+                            <div class="resp-tab-item active" aria-controls="tab_item-1" role="tab"><span>SONGS</span></div>
+                            <div class="clear"> </div>
+                        </div>-->
+            <ul class="nav nav-tabs" ng-init="tab = true">
+                <li ng-class="{'active':tab}" ng-click="tab = true"><a>ALBUMS</a></li>
+                <li ng-class="{'active':!tab}" ng-click="tab = false"><a>SONGS</a></li>
+            </ul>
+            <div class="f_d" ng-show="tab">
+                <div class="f_d1">
+                    <div class="category_name" ng-repeat = "dir in result track by $index">
+                        <span>Category : {{ dir.in}}</span> <br>
+                        <div class="album_name" ng-repeat="album in dir.albums track by $index">
+                            <a href = "Album/{{ dir.in | removeSpaces }}/{{ album}}" ng-if="dir.in != 'Devotional Collections'"> {{ album }}</a>
+                            <a href = "{{ album | removeSpaces }}" ng-if="dir.in == 'Devotional Collections'"> {{ album }}</a>
+                        </div>
+                    </div>
 
-                        </tr> 
-                    </table>
-                </td>
-<td class="a"></td>
-            </tr>
-        </table>
-         
+                    <a href="#" class="button pull-right">Next ></a>
+                    <a href="#" class="button">< Previous</a>
+
+                </div>
+                <!--div class="n_p">
+                <div class="show_more"><a href="#">Next</a></div>
+                        <div class="show_more sss"><a href="#">Previous</a></div>
+        </div-->
+            </div>
+            <div class="f_d" ng-show="!tab">
+                <div class="f_d1">
+                    <div class="category_name" ng-repeat = "category in songs track by $index">
+                        <a class="album_name" href = "Album/{{ category.name | removeSpaces }}/{{ album.name}}" ng-repeat = "album in category.albums track by $index">
+                             <span>Album : {{ album.name}}</span><span class="pull-right">Category : {{ category.name}}</span>
+                            <div class="song_name" ng-repeat = "song in album.songs track by $index">
+                                {{ song }}
+                            </div>
+                        </a>
+                    </div>
+
+                    <a href="#" class="button pull-right">Next ></a>
+                    <a href="#" class="button ">< Previous</a>
+
+                </div>
+                <!--div class="n_p">
+                <div class="show_more"><a href="#">Next</a></div>
+                        <div class="show_more sss"><a href="#">Previous</a></div>
+        </div-->
+            </div>
+
+        </div> 
+
     </div>
 </div>
