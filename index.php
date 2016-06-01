@@ -183,7 +183,7 @@
                         <?php include_once ('left-menu.php'); ?>
                     </div>
                     <div class="col-lg-9 col-md-9 ss">
-                        <div class="breadcrumbs" ng-bind-html-unsafe="breadcrumbs.path"></div>
+                        <div class="breadcrumbs" ng-bind-html="breadcrumbs.path"></div>
                         <ng-view></ng-view>
                     </div>
                         <div data-loading class="loading-screen">

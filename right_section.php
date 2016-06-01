@@ -45,7 +45,7 @@
                     <div class="purchase_sidebar_text">
                         <p>ILAYARAJA HITS</p>
                         <div class="purchase_s">
-                            <a href="azlisting/IlayarajaHits/A">VIEW MORE</a>
+                            <a href="azlisting/ILayarajaMovies/A">VIEW MORE</a>
                         </div>
                     </div>
                 </div>

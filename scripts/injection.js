@@ -86,9 +86,6 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
             $scope.breadcrumbs = {};
             $scope.breadcrumbs.path='';
             $scope.searchterm = '';
-            $scope.fetchedatoz = [];
-            //$scope.fetchedbyyear = [];
-            $scope.fetchedviswa = [];
             $scope.banner.visibility = true;
             $scope.albumSearch = function () {
                 var search = $scope.searchTerm.text;
@@ -348,7 +345,6 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 file: file
             })
                     .then(function (response) {
-                        $scope.fetchedatoz[alpha] = [];
                         $scope.list1 = response.data[0];
                         $scope.list2 = response.data[1];
                         $scope.list3 = response.data[2];
