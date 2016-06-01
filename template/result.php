@@ -15,7 +15,7 @@
                             <div class="resp-tab-item active" aria-controls="tab_item-1" role="tab"><span>SONGS</span></div>
                             <div class="clear"> </div>
                         </div>-->
-            <ul class="nav nav-tabs" ng-init="tab = true">
+            <ul class="nav nav-tabs s_h" ng-init="tab = true">
                 <li ng-class="{'active':tab}" ng-click="tab = true"><a>ALBUMS</a></li>
                 <li ng-class="{'active':!tab}" ng-click="tab = false"><a>SONGS</a></li>
             </ul>
