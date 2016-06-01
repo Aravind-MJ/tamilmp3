@@ -53,6 +53,9 @@ foreach ($iter as $path => $dir) {
         }
     }
 }
+
+sort($result[0]);
+sort($result[1]);
 //die();
 echo json_encode($result);
 ?>

@@ -3,13 +3,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php echo $autoload->getTitle();?></title>
+    <meta property="og:url"                content="https://www.demox.imrokraft.com/tamilmp3" />
+    <meta property="og:type"               content="article" />
+    <meta property="og:title"              content="One stop for all your songs" />
+    <meta property="og:description"        content="Find your songs right here" />
+    <meta property="og:image"              content="https://www.demox.imrokraft.com/tamilmp3/images/friends-tamil-mp3-banner2.jpg" />
+    <title><?php echo $autoload->getTitle(); ?></title>
 
     <!-- ~~~=| Fonts files |==-->
     <link href='http://fonts.googleapis.com/css?family=Lato:400,300,700,900,700italic,400italic,300italic,100' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,400italic,500,700,700italic,900' rel='stylesheet' type='text/css'>
 
-    <?php $autoload->loadCss();?>
+    <?php $autoload->loadCss(); ?>
 
     <!-- Favicons -->
     <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon-precomposed.png">
@@ -25,4 +30,4 @@
     <base href="/tamilmp3/">
 </head>
 
-<?php require ('db.php');?>
+<?php require ('db.php'); ?>

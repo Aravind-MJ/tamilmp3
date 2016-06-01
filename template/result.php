@@ -29,8 +29,8 @@
                         </div>
                     </div>
 
-                    <a href="#" class="button pull-right">Next ></a>
-                    <a href="#" class="button">< Previous</a>
+<!--                    <a href="#" class="button pull-right">Next ></a>
+                    <a href="#" class="button">< Previous</a>-->
 
                 </div>
                 <!--div class="n_p">
@@ -49,8 +49,8 @@
                         </a>
                     </div>
 
-                    <a href="#" class="button pull-right">Next ></a>
-                    <a href="#" class="button ">< Previous</a>
+<!--                    <a href="#" class="button pull-right">Next ></a>
+                    <a href="#" class="button ">< Previous</a>-->
 
                 </div>
                 <!--div class="n_p">
