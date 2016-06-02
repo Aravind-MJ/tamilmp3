@@ -264,7 +264,33 @@ width: 460px;
     width: 67%;
 }
 }
+/* Mobile Layout: 240px. */
 
+@media only screen and (min-width: 240px) and (max-width: 319px) {
+.container {
+	width:240px;
+}
+.paly-media
+{
+    padding-top:20px;
+	width:230px;
+}
+.l_n
+{
+overflow-y:auto;
+}
+     .playlist-section
+    {margin-bottom: 2px;
+margin-top: 25px;
+width:230px;
+padding-left:0px;
+
+    }
+.b_n
+{
+padding-left:0px;
+}
+}
 /* Mobile Layout: 320px. */
 
 @media only screen and (min-width: 320px) and (max-width: 767px) {

@@ -94,7 +94,7 @@
 </div>
 
 
-<form class="col-lg-12 col-md-12" action="download.php" method="post" id="zipForm">
+<form class="col-lg-12 col-md-12 b_n" action="download.php" method="post" id="zipForm">
     <input type="text" name="album_name" value="{{ name | removeSpaces}}" hidden>
     <div class="button_f">
 
