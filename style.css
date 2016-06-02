@@ -2968,4 +2968,12 @@ margin:0px;
 .s_h li a{
 color:#555;
 }
+
+.ui-tooltip {
+    display:none;
+    font-size: 12px !important;
+    color: #de4197 !important;
+    border-radius: 30px !important;
+    border: 1px solid #de4197 !important;
+}
 /* END of Style*/

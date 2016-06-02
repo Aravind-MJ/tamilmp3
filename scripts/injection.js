@@ -84,13 +84,27 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
         .controller('main', function ($scope, $location, $http, $window) {                     //Main Controller (mainly used For Caching)
             $scope.banner = {};
             $scope.breadcrumbs = {};
-            $scope.breadcrumbs.path='';
-            $scope.searchterm = '';
+            $scope.breadcrumbs.path = '';
+            $scope.searchTerm = {};
+            $scope.searchTerm.text = '';
             $scope.banner.visibility = true;
             $scope.albumSearch = function () {
-                var search = $scope.searchTerm.text;
-                $location.path('/Search/' + search);
+                if ($scope.searchTerm.text == '' || $scope.searchTerm.text == undefined) {
 
+                    $('.searchText').on("mouseenter", function (e) {
+                        e.stopImmediatePropagation();
+                    });
+
+                    $('.searchText').tooltip({items: '.searchText', content: 'Search Term Required'});
+                    $('.searchText').tooltip('open');
+
+                    $(document).mouseup(function () {
+                        $('.searchText').tooltip('close');
+                    });
+                } else {
+                    var search = $scope.searchTerm.text;
+                    $location.path('/Search/' + search);
+                }
             }
 
             $http.post('ajax/list.php', {
@@ -108,7 +122,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                     });
         })
         .controller('mp3Ctrl', function ($scope, $http) {
-            $scope.breadcrumbs.path='';
+            $scope.breadcrumbs.path = '';
             $scope.banner.visibility = true;
             $scope.message = "first";
 
@@ -118,19 +132,103 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
 //                        console.log($scope.listmovie);
                     });
         })
-        .controller('searchCtrl', function ($scope, $http, $routeParams) {
-            $scope.breadcrumbs.path = "Home > Search > "+$routeParams.searchTerm;
+        .controller('searchCtrl', function ($scope, $http, $routeParams, $sce) {
+            $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> > Search > " + $routeParams.searchTerm);
             $scope.banner.visibility = false;
             $scope.listlocationname = "Search Result";
+            $scope.tab = true;
+            $scope.noalbum=false;
+            $scope.nosong=false;
+            $scope.pagination = {};
             var term = $routeParams.searchTerm;
             $http.post("ajax/search.php", {
                 search: term
             }).then(function (response) {
+                if (response.data[0].length < 1) {
+                    $scope.tab = false;
+                    $scope.noalbum = true;
+                }
+                
+                if(response.data[1].length < 1){
+                    $scope.nosong = true;
+                }
                 $scope.result = response.data[0];
                 $scope.songs = response.data[1];
+                
+                $scope.pagination.albumpage = 0;
+                $scope.pagination.albumlimit = response.data[0].length;
+                $scope.pagination.songpage = 0;
+                $scope.pagination.songlimit = response.data[1].length;
+                
             });
+            
+            $scope.check = function(index,type){
+                if(type=='album'){
+                    var start = $scope.pagination.albumpage;
+                    if(index>=start && index<=start+2){
+                        return true;
+                    }
+                    return false;
+                } else if(type='song') {
+                    var start = $scope.pagination.songpage;
+                    if(index>=start && index<=start+2){
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            
+            $scope.next = function(type){
+                if(type=='album'){
+                    var current = $scope.pagination.albumpage;
+                    var limit = $scope.pagination.albumlimit;
+                    
+                    if(current+2>=limit){
+                        current = limit-2;
+                    } else {
+                        current = current + 2;
+                    }
+                    
+                    $scope.pagination.albumpage = current;
+                } else if (type='song'){
+                    var current = $scope.pagination.songpage;
+                    var limit = $scope.pagination.songlimit;
+                    
+                    if(current+2>=limit){
+                        current = limit-2;
+                    } else {
+                        current = current + 2;
+                    }
+                    
+                    $scope.pagination.songpage = current;
+                }
+            }
+            
+            $scope.prev = function(type){
+                if(type=='album'){
+                    var current = $scope.pagination.albumpage;
+                    
+                    if(current<=2){
+                        current = 0;
+                    } else {
+                        current = current - 2;
+                    }
+                    
+                    $scope.pagination.albumpage = current;
+                } else if (type='song'){
+                    var current = $scope.pagination.songpage;
+                    
+                    if(current<=2){
+                        current = 0;
+                    } else {
+                        current = current - 2;
+                    }
+                    
+                    $scope.pagination.songpage = current;
+                }
+            }
         })
-        .controller('txtCtrl', function ($scope, $http, $location,$sce) {                  //Controller for New Releases
+        .controller('txtCtrl', function ($scope, $http, $location, $sce) {                  //Controller for New Releases
             $scope.banner.visibility = false;
             var tag = $location.url();
             if (tag == "/NewReleases") {
@@ -139,8 +237,8 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 $scope.listlocationname = "NEW RELEASES";
                 file = "newreleases.txt";
                 col = 2;
-            } 
-            
+            }
+
             $http.post("ajax/read.php", {
                 file: "../text_files/" + file,
                 col: col
@@ -157,7 +255,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                     });
 
         })
-        .controller('listCtrl', function ($scope, $routeParams, $http,$sce) {
+        .controller('listCtrl', function ($scope, $routeParams, $http, $sce) {
             //Controller for Star Hits Template Page
             $scope.banner.visibility = false;
             var place = $routeParams.place;
@@ -267,7 +365,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 $scope.listlocationname = "COMEDY DRAMAS";
                 $scope.location = "images/comedy_drama_images";
             } else {
-                $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> > "+place);
+                $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> > " + place);
                 $scope.listlocation = place;
                 $scope.listlocationname = place;
             }
@@ -296,7 +394,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                         }
                     });
         })
-        .controller('azList', function ($scope, $routeParams, $http,$sce) {      //Controller for A-Z Movie Listing Template Page
+        .controller('azList', function ($scope, $routeParams, $http, $sce) {      //Controller for A-Z Movie Listing Template Page
             $scope.banner.visibility = false;
             $scope.indexChar = function (index) {
                 return String.fromCharCode(65 + index);
@@ -316,24 +414,24 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
             if (place == "A-ZMovieSongs") {
                 track = place;
                 place = "A-Z Movie Songs";
-                $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> > <a href='azlisting/"+track+"/A'>"+place+"</a> > "+alpha);
+                $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> > <a href='azlisting/" + track + "/A'>" + place + "</a> > " + alpha);
                 place = "../FileSystem/" + place + "/";
                 $scope.listlocation = "A-ZMovieSongs";
                 $scope.listlocationname = "A-Z MOVIE LIST";
             } else if (place == "ILayarajaMovies") {
                 place = "ILayaraja Movies";
-                $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> > <a href='azlisting/"+track+"/A'>"+place+"</a> > "+alpha);
+                $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> > <a href='azlisting/" + track + "/A'>" + place + "</a> > " + alpha);
                 place = "../FileSystem/" + place + "/";
                 $scope.listlocation = "ILayarajaMovies";
                 $scope.listlocationname = "ILAYARAJA MOVIES";
             } else if (place == "TamilKaraoke") {
                 place = "Tamil Karaoke";
-                $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> > <a href='azlisting/"+track+"/A'>"+place+"</a> > "+alpha);
+                $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> > <a href='azlisting/" + track + "/A'>" + place + "</a> > " + alpha);
                 place = "../FileSystem/" + place + "/";
                 $scope.listlocation = "TamilKaraoke";
                 $scope.listlocationname = "TAMIL KARAOKE";
             } else if (place == "MSViswanathanHits") {
-                $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> > <a href='azlisting/"+place+"/A'>M S Viswanathan Hits</a> > "+alpha);
+                $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> > <a href='azlisting/" + place + "/A'>M S Viswanathan Hits</a> > " + alpha);
                 place = "../text_files/M.S.Viswanathan Hits.txt";
                 $scope.listlocation = "A-ZMovieSongs";
                 $scope.listlocationname = "M.S.VISWANATHAN HITS";
@@ -350,7 +448,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                         $scope.list3 = response.data[2];
                     });
         })
-        .controller('albumCtrl', function ($scope, $routeParams, $http, $filter,$sce) {
+        .controller('albumCtrl', function ($scope, $routeParams, $http, $filter, $sce) {
             $scope.banner.visibility = false;
             $scope.selected = [];
             $scope.name = $routeParams.name;
@@ -361,34 +459,34 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
 
             if (place == "A-ZMovieSongs") {                                   //Location of Folder by Condition
                 place = "A-Z Movie Songs";
-                track = $sce.trustAsHtml("> <a href='azlisting/A-ZMovieSongs/A'>"+place+"</a> >");
+                track = $sce.trustAsHtml("> <a href='azlisting/A-ZMovieSongs/A'>" + place + "</a> >");
             } else if (place == "StarHits") {
                 place = "Star Hits";
-                track = $sce.trustAsHtml("> <a href='StarHits'>"+place+"</a> >");
+                track = $sce.trustAsHtml("> <a href='StarHits'>" + place + "</a> >");
             } else if (place == "MusicDirectorHits") {
                 place = "Music Director Hits";
-                track = $sce.trustAsHtml("> <a href='MusicDirectorHits'>"+place+"</a> >");
+                track = $sce.trustAsHtml("> <a href='MusicDirectorHits'>" + place + "</a> >");
             } else if (place == "SingerHits") {
                 place = "Singer Hits";
-                track = $sce.trustAsHtml("> <a href='SingerHits'>"+place+"</a> >");
+                track = $sce.trustAsHtml("> <a href='SingerHits'>" + place + "</a> >");
             } else if (place == "ILayarajaMovies") {
                 place = "ILayaraja Movies";
-                track = $sce.trustAsHtml("> <a href='azlisting/ILayarajaMovies/A'>"+place+"</a> >");
+                track = $sce.trustAsHtml("> <a href='azlisting/ILayarajaMovies/A'>" + place + "</a> >");
             } else if (place == "ARRahmanHits") {
                 place = "A R Rahman Hits";
-                track = $sce.trustAsHtml("> <a href='List/ARRahmanHits'>"+place+"</a> >");
+                track = $sce.trustAsHtml("> <a href='List/ARRahmanHits'>" + place + "</a> >");
             } else if (place == "OldHits") {
                 place = "Old Hits";
-                track = $sce.trustAsHtml("> <a href='OldHits'>"+place+"</a> >");
+                track = $sce.trustAsHtml("> <a href='OldHits'>" + place + "</a> >");
             } else if (place == "Ringtones") {
                 place = "Ringtones";
-                track = $sce.trustAsHtml("> <a href='List/Ringtones'>"+place+"</a> >");
+                track = $sce.trustAsHtml("> <a href='List/Ringtones'>" + place + "</a> >");
             } else if (place == "TamilKaraoke") {
                 place = "Tamil Karaoke";
-                track = $sce.trustAsHtml("> <a href='azlisting/TamilKaraoke/A'>"+place+"</a> >");
+                track = $sce.trustAsHtml("> <a href='azlisting/TamilKaraoke/A'>" + place + "</a> >");
             } else if (place == "BGMCollections") {
                 place = "BGM Collections";
-                track = $sce.trustAsHtml("> <a href='List/BGMCollections'>"+place+"</a> >");
+                track = $sce.trustAsHtml("> <a href='List/BGMCollections'>" + place + "</a> >");
             } else if (place == "HinduCollections") {
                 place = "Devotional Collections/Hindu Collections";
                 track = $sce.trustAsHtml("> <a href='List/DevotionalCollections'>Devotional Collections</a> > <a href='HinduCollections'>Hindu Collections</a> >");
@@ -400,19 +498,19 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 track = $sce.trustAsHtml("> <a href='List/DevotionalCollections'>Devotional Collections</a> > <a href='ChristianCollections'>Christian Collections</a> >");
             } else if (place == "AlbumSongs") {
                 place = "Album Songs";
-                track = $sce.trustAsHtml("> <a href='List/AlbumSongs'>"+place+"</a> >");
+                track = $sce.trustAsHtml("> <a href='List/AlbumSongs'>" + place + "</a> >");
             } else if (place == "RemixCollections") {
                 place = "Remix Collections";
-                track = $sce.trustAsHtml("> <a href='List/RemixCollections'>"+place+"</a> >");
+                track = $sce.trustAsHtml("> <a href='List/RemixCollections'>" + place + "</a> >");
             } else if (place == "SpecialCollections") {
                 place = "Special Collections";
-                track = $sce.trustAsHtml("> <a href='List/SpecialCollections'>"+place+"</a> >");
+                track = $sce.trustAsHtml("> <a href='List/SpecialCollections'>" + place + "</a> >");
             } else if (place == "OldCollections") {
                 place = "Old Collections";
-                track = $sce.trustAsHtml("> <a href='List/OldCollections'>"+place+"</a> >");
-            }else if (place == "ComedyDramas") {
+                track = $sce.trustAsHtml("> <a href='List/OldCollections'>" + place + "</a> >");
+            } else if (place == "ComedyDramas") {
                 place = "Comedy Dramas";
-                track = $sce.trustAsHtml("> <a href='ComedyDramas'>"+place+"</a> >");
+                track = $sce.trustAsHtml("> <a href='ComedyDramas'>" + place + "</a> >");
             } else if (place == "Others") {
 
                 angular.forEach($scope.otherslist, function (value, key) {
@@ -421,15 +519,15 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                         name = value.name;
                     }
                 });
-                
+
                 track = ">";
 
             } else {
                 namec = $filter('removeSpaces')(place);
-                track = $sce.trustAsHtml("> <a href='"+namec+"'>"+place+"</a> >");
+                track = $sce.trustAsHtml("> <a href='" + namec + "'>" + place + "</a> >");
             }
 
-            $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> "+track+" "+name);
+            $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> " + track + " " + name);
             $scope.place = place;
             $http.post('ajax/songlist.php', {
                 loc: '../FileSystem/' + place + '/' + name + '/', //Album location
@@ -457,14 +555,14 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 toggleDuration: true
             }).jPlayer("play");
 
-        var playlist = [];
-        var dummy_list_arr = new Array();
+            var playlist = [];
+            var dummy_list_arr = new Array();
 
-        var cssSelector = {jPlayer: "#jquery_jplayer_1", cssSelectorAncestor: "#jp_container_1"};
-        var options = {swfPath: "/plugin/jplayer/dist/jplayer", playlistOptions: {
-            enableRemoveControls: true
-        }, supplied: "mp3", smoothPlayBar: true, keyEnabled: true, audioFullScreen: true};
-        var myPlaylist = new jPlayerPlaylist(cssSelector, playlist, options);
+            var cssSelector = {jPlayer: "#jquery_jplayer_1", cssSelectorAncestor: "#jp_container_1"};
+            var options = {swfPath: "/plugin/jplayer/dist/jplayer", playlistOptions: {
+                    enableRemoveControls: true
+                }, supplied: "mp3", smoothPlayBar: true, keyEnabled: true, audioFullScreen: true};
+            var myPlaylist = new jPlayerPlaylist(cssSelector, playlist, options);
 
             $scope.place = place;
             $http.post('ajax/songlist.php', {
@@ -476,9 +574,9 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 $scope.moviedetails = response.data.moviedetails;
                 var sngCnt = 0;
 
-                $.each(response.data.song , function(index, val) {
+                $.each(response.data.song, function (index, val) {
                     if (sngCnt == 0) {
-                        myPlaylist.add({title:val.name, mp3: val.downpath});
+                        myPlaylist.add({title: val.name, mp3: val.downpath});
                         dummy_list_arr.push(val.name);
                     }
 
@@ -576,15 +674,15 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                             dummy_list_arr.push(songselected.name);
                         }
                     } /*else {
-
-                        if ($.inArray(songselected.name, dummy_list_arr) !== -1) {
-                            var indexi = dummy_list_arr.indexOf(songselected.name);
-
-                            dummy_list_arr.splice(indexi, 1);
-                            myPlaylist.option("removeTime", 0);
-                            myPlaylist.remove(indexi);
-                        }
-                    }*/
+                     
+                     if ($.inArray(songselected.name, dummy_list_arr) !== -1) {
+                     var indexi = dummy_list_arr.indexOf(songselected.name);
+                     
+                     dummy_list_arr.splice(indexi, 1);
+                     myPlaylist.option("removeTime", 0);
+                     myPlaylist.remove(indexi);
+                     }
+                     }*/
 
                 })
 
@@ -601,7 +699,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 return myPlaylist;
             }
 
-            $(document).on('click', '.jp-playlist-item-remove', function(){
+            $(document).on('click', '.jp-playlist-item-remove', function () {
                 // Determine song index if necessary
                 var index = $(this).parents('li').index('.jp-playlist li');
 
@@ -619,18 +717,18 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
         })
 
 
-        .controller('starCtrl', function ($scope, $routeParams, $http) {                  //Controller for Star list n Music director list
+        .controller('starCtrl', function ($scope, $routeParams, $http, $sce) {                  //Controller for Star list n Music director list
 
             $scope.banner.visibility = false;
             var place = $routeParams.place;
             if (place == 'StarMovies') {
-                $scope.breadcrumbs.path = "Home > Star Movies";
+                $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> > <a href='category/StarMovies'>Star Movies </a>");
                 $scope.listlocation = "Star Movies";
                 $scope.listlocationname = "STAR MOVIES";
                 place = "Star Movies";
 
             } else if (place == 'MusicDirectorMovies') {
-                $scope.breadcrumbs.path = "Home > Music Director Movies";
+                $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> > <a href='category/MusicDirectorMovies'>Music Director Movies</a>");
                 $scope.listlocation = "Music Director Movies";
                 $scope.listlocationname = "MUSIC DIRECTOR MOVIES";
                 place = "Music Director Movies";
@@ -646,7 +744,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                     });
 
         })
-        .controller('movieCtrl', function ($scope, $routeParams, $http) {                  //Controller for Star movies n Music director movies
+        .controller('movieCtrl', function ($scope, $routeParams, $http, $sce) {                  //Controller for Star movies n Music director movies
 
             $scope.banner.visibility = false;
             $scope.name = $routeParams.name;
@@ -654,12 +752,12 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
             $scope.starname = "/" + $scope.name;
 
             if (place == "Star Movies") {
-                $scope.breadcrumbs.path = "Home > Star Movies > "+$scope.name;
+                $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> > <a href='category/StarMovies'>Star Movies </a> > " + $scope.name);
                 $scope.listlocation = "Star Movies";
                 $scope.listlocationname = "STAR MOVIES";
 
             } else if (place == "Music Director Movies") {
-                $scope.breadcrumbs.path = "Home > Music Director Movies > "+$scope.name;
+                $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> > <a href='category/MusicDirectorMovies'>Music Director Movies </a> > " + $scope.name);
                 $scope.listlocation = "Music Director Movies";
                 $scope.listlocationname = "MUSIC DIRECTOR MOVIES";
 
@@ -676,8 +774,8 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
 
         })
 
-        .controller('yearCtrl', function ($scope, $http) {                  //Controller for Year Listing
-            $scope.breadcrumbs.path = "Home > List By Year";
+        .controller('yearCtrl', function ($scope, $http, $sce) {                  //Controller for Year Listing
+            $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> > List By Year");
             $scope.banner.visibility = false;
             $http.post('ajax/yearlist.php', {
                 loc: '../FileSystem/byyear/', //Year location
@@ -689,10 +787,10 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
             });
         })
 
-        .controller('yearlistCtrl', function ($scope, $http, $routeParams) {                  //Controller For Year Listing Inner Page
+        .controller('yearlistCtrl', function ($scope, $http, $routeParams, $sce) {                  //Controller For Year Listing Inner Page
             $scope.banner.visibility = false;
             $scope.name = $routeParams.name;
-            $scope.breadcrumbs.path = "Home > List By Year > "+$scope.name;
+            $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> > <a href='List/Year/byyear'>List By Year<a> > " + $scope.name);
             var place = $routeParams.place;
             $scope.listlocation = "A-ZMovieSongs";
 

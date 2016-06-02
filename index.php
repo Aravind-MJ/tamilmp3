@@ -14,7 +14,8 @@
         'bootstrap-css' => $root . 'css/bootstrap.css',
         'style-css' => $root . 'style.css',
         'responsive-css' => $root . 'css/responsive.css',
-        'jplayer-css' => $root . 'plugin/jplayer/dist/skin/blue.monday/css/jplayer.blue.monday.min.css'
+        'jplayer-css' => $root . 'plugin/jplayer/dist/skin/blue.monday/css/jplayer.blue.monday.min.css',
+        'jquery-ui-css' => 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.css'
     );
 
     $js_inc = array(
@@ -23,6 +24,7 @@
         'theme-js' => $root . 'js/main.js',
         'angular-js' => 'http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js',
         'angular-js-route' => 'http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js',
+        'jquery-ui-js' => 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js',
         'script' => $root . 'scripts/injection.js',
         'jplayer' => $root . 'plugin/jplayer/dist/jplayer/jquery.jplayer.min.js',
         'jplayer-playlist' => $root . 'plugin/jplayer/dist/add-on/jplayer.playlist.min.js',
