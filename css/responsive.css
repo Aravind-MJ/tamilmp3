@@ -274,7 +274,11 @@ width: 460px;
 .paly-media
 {
     padding-top:20px;
-	width:350px;
+	width:300px;
+}
+.l_n
+{
+overflow-y:auto;
 }
 .news_twiks_items {
   width: 77%;

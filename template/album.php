@@ -35,8 +35,7 @@
 
     <div id="jplayer-affix">
 <div class="jplayer_f">
-
-       
+<div class="l_n">
             <div class="paly-media">
                 <div id="jp-player" ng-hide="playershow">
                     <div class="jp-type-playlist">
@@ -89,7 +88,7 @@
                 </div></div>
             <div class="col-md-1">
             </div>
-      
+      </div>
 		</div>
     </div>
 </div>
