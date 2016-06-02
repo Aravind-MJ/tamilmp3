@@ -105,14 +105,14 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                     var search = $scope.searchTerm.text;
                     $location.path('/Search/' + search);
                 }
-            }
+            };
             
             $scope.checkEnter = function($event){
                 var keycode = $event.which || $event.keyCode;
                 if(keycode==13){
                     $scope.albumSearch();
                 }
-            }
+            };
 
             $http.post('ajax/list.php', {
                 loc: "../FileSystem/Others/", //Location of Folder
@@ -222,7 +222,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                     }
                     
                     $scope.pagination.albumpage = current;
-                } else if (type='song'){
+                } else if (type=='song'){
                     var current = $scope.pagination.songpage;
                     
                     if(current<=2){
@@ -426,12 +426,14 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 $scope.listlocation = "A-ZMovieSongs";
                 $scope.listlocationname = "A-Z MOVIE LIST";
             } else if (place == "ILayarajaMovies") {
+                track = place;
                 place = "ILayaraja Movies";
                 $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> > <a href='azlisting/" + track + "/A'>" + place + "</a> > " + alpha);
                 place = "../FileSystem/" + place + "/";
                 $scope.listlocation = "ILayarajaMovies";
                 $scope.listlocationname = "ILAYARAJA MOVIES";
             } else if (place == "TamilKaraoke") {
+                track = place;
                 place = "Tamil Karaoke";
                 $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> > <a href='azlisting/" + track + "/A'>" + place + "</a> > " + alpha);
                 place = "../FileSystem/" + place + "/";

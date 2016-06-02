@@ -29,8 +29,8 @@
                         </div>
                     </div>
 
-                    <a href="#" class="button pull-right" ng-class="{'disabled':pagination.albumpage==(pagination.albumlimit-2)}" ng-click="next('album')">Next ></a>
-                    <a href="#" class="button" ng-class="{'disabled':pagination.songpage==0}" ng-click="prev('album')">< Previous</a>
+                    <a href="#" class="button pull-right" ng-class="{'disabled':pagination.albumpage>=(pagination.albumlimit-2)}" ng-click="next('album')">Next ></a>
+                    <a href="#" class="button" ng-class="{'disabled':pagination.albumpage==0}" ng-click="prev('album')">< Previous</a>
 
                 </div>
                 <div class="f_d1" ng-show="noalbum">
@@ -51,7 +51,7 @@
                             </div>
                         </a>
                     </div>
-                    <a href="#" class="button pull-right" ng-class="{'disabled':pagination.songpage==(pagination.songlimit-2)}" ng-click="next('song')">Next ></a>
+                    <a href="#" class="button pull-right" ng-class="{'disabled':pagination.songpage>=(pagination.songlimit-2)}" ng-click="next('song')">Next ></a>
                     <a href="#" class="button " ng-class="{'disabled':pagination.songpage==0}" ng-click="prev('song')">< Previous</a>
 
                 </div>
