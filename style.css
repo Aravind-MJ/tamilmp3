@@ -2938,7 +2938,7 @@ margin:0px;
 }
 
 
-.button:after, .button1:after{
+.button:after{
     content: "";
     background: #f1f1f1;
     display: block;
@@ -2951,8 +2951,26 @@ margin:0px;
     opacity: 0;
     transition: all 0.8s
 }
-
-.button:active:after, .button1:active:after {
+a.disabled:after{
+    background: #f1f1f1!important;
+    display: block!important;
+    position: absolute!important;
+    padding: 0!important;
+    margin:0 !important;
+    opacity: 0!important;
+}
+.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+	background-color:#959595;
+}
+a.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+	background-color:#959595;
+	color: #000;	
+}
+.button:active:after{
     padding: 0;
     margin: 0;
     opacity: 1;

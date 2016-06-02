@@ -51,7 +51,6 @@
                             </div>
                         </a>
                     </div>
-
                     <a href="#" class="button pull-right" ng-class="{'disabled':pagination.songpage==(pagination.songlimit-2)}" ng-click="next('song')">Next ></a>
                     <a href="#" class="button " ng-class="{'disabled':pagination.songpage==0}" ng-click="prev('song')">< Previous</a>
 
