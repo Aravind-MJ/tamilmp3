@@ -106,6 +106,13 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                     $location.path('/Search/' + search);
                 }
             }
+            
+            $scope.checkEnter = function($event){
+                var keycode = $event.which || $event.keyCode;
+                if(keycode==13){
+                    $scope.albumSearch();
+                }
+            }
 
             $http.post('ajax/list.php', {
                 loc: "../FileSystem/Others/", //Location of Folder
