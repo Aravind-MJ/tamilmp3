@@ -21,16 +21,29 @@
             </ul>
             <div class="f_d" ng-show="tab">
                 <div class="f_d1" ng-show="!noalbum">
-                    <div class="category_name" ng-repeat = "dir in result track by $index" ng-show="check($index,'album')">
-                        <span>Category : {{ dir.in}}</span> <br>
-                        <div class="album_name" ng-repeat="album in dir.albums track by $index">
-                            <a href = "Album/{{ dir.in | removeSpaces }}/{{ album}}" ng-if="dir.in != 'Devotional Collections'"> {{ album}}</a>
-                            <a href = "{{ album | removeSpaces }}" ng-if="dir.in == 'Devotional Collections'"> {{ album}}</a>
-                        </div>
-                    </div>
 
-                    <a href="#" class="button pull-right" ng-class="{'disabled':pagination.albumpage>=(pagination.albumlimit-2)}" ng-click="next('album')">Next ></a>
-                    <a href="#" class="button" ng-class="{'disabled':pagination.albumpage==0}" ng-click="prev('album')">< Previous</a>
+                    <!--                    <div class="category_name" ng-repeat = "dir in result track by $index" ng-show="check($index,'album')">
+                                            <span>Category : {{ dir.in}}</span> <br>
+                                            <div class="album_name" ng-repeat="album in dir.albums track by $index">
+                                                <a href = "Album/{{ dir.in | removeSpaces }}/{{ album}}" ng-if="dir.in != 'Devotional Collections'"> {{ album}}</a>
+                                                <a href = "{{ album | removeSpaces }}" ng-if="dir.in == 'Devotional Collections'"> {{ album}}</a>
+                                            </div>
+                                        </div>-->
+
+                    <table class="table table-striped album_table" ng-repeat = "dir in result track by $index" ng-show="check($index, 'album')">
+                        <tr ng-repeat="album in dir.albums track by $index">
+                            <td class="black_it">
+                                <a href = "Album/{{ dir.in | removeSpaces }}/{{ album.name }}" ng-if="dir.in != 'Devotional Collections'"><span ng-bind-html="album.show | trust"></span></a>
+                                <a href = "{{ album.name | removeSpaces }}" ng-if="dir.in == 'Devotional Collections'"><span ng-bind-html="album.show | trust"></span></a>                                
+                            </td>
+                            <td>
+                                <span ng-bind="dir.in"></span>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <a href="#" class="button pull-right" ng-class="{'disabled':pagination.albumpage >= (pagination.albumlimit - 2)}" ng-click="next('album')">Next ></a>
+                    <a href="#" class="button" ng-class="{'disabled':pagination.albumpage == 0}" ng-click="prev('album')">< Previous</a>
 
                 </div>
                 <div class="f_d1" ng-show="noalbum">
@@ -43,16 +56,33 @@
             </div>
             <div class="f_d" ng-show="!tab">
                 <div class="f_d1" ng-show="!nosong">
-                    <div class="category_name" ng-repeat = "category in songs track by $index" ng-show="check($index,'song')">
-                        <a class="album_name" href = "Album/{{ category.name | removeSpaces }}/{{ album.name}}" ng-repeat = "album in category.albums track by $index">
-                            <span>Album : {{ album.name}}</span><span class="pull-right">Category : {{ category.name}}</span>
-                            <div class="song_name" ng-repeat = "song in album.songs track by $index">
-                                {{ song}}
-                            </div>
-                        </a>
+
+                    <!--    <div class="category_name" ng-repeat = "category in songs track by $index" ng-show="check($index, 'song')">
+                            <a class="album_name" href = "Album/{{ category.name | removeSpaces }}/{{ album.name}}" ng-repeat = "album in category.albums track by $index">
+                                <span>Album : {{ album.name}}</span><span class="pull-right">Category : {{ category.name}}</span>
+                                <div class="song_name" ng-repeat = "song in album.songs track by $index">
+                                    {{ song}}
+                                </div>
+                            </a>
+                        </div>-->
+
+                    <div ng-repeat = "category in songs track by $index" ng-show="check($index, 'song')">
+                        <table class="table table-striped album_table" ng-repeat = "album in category.albums track by $index">
+                            <tr ng-repeat = "song in album.songs track by $index">
+                                <td class="black_it">
+                                    <a class="album_name" href = "Album/{{ category.name | removeSpaces }}/{{ album.name}}">
+                                        <span ng-bind-html="song | trust"></span>
+                                    </a>
+                                </td>
+                                <td>
+                                    <span ng-bind="category.name"></span> | <span ng-bind="album.name"></span> 
+                                </td>
+                            </tr>
+                        </table>
                     </div>
-                    <a href="#" class="button pull-right" ng-class="{'disabled':pagination.songpage>=(pagination.songlimit-2)}" ng-click="next('song')">Next ></a>
-                    <a href="#" class="button " ng-class="{'disabled':pagination.songpage==0}" ng-click="prev('song')">< Previous</a>
+
+                    <a href="#" class="button pull-right" ng-class="{'disabled':pagination.songpage >= (pagination.songlimit - 2)}" ng-click="next('song')">Next ></a>
+                    <a href="#" class="button " ng-class="{'disabled':pagination.songpage == 0}" ng-click="prev('song')">< Previous</a>
 
                 </div>
                 <div class="f_d1" ng-show="nosong">

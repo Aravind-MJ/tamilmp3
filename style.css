@@ -2876,39 +2876,15 @@ width:100%;
 margin:0px;
 padding:0px;
 }
-.category_name{
-    background: #de4197 none repeat scroll 0 0;
-    color: #fff;
-    display: inline-block;
-    font-size: 15px;
-    margin:0px;
-    text-align:center;
-    padding:0px 0px 4px 0px;
-	line-height: 2.6;
-    width: 100%;
-}
-.album_name{
-    background: #eaeaea none repeat scroll 0 0;
+
+.black_it a{
     color: #000;
-    display: inline-block;
-    font-size: 16px;
-    margin:0px 0px;
-    text-align:left;
-    padding: 8px 0px 10px 8px;;
-    width: 100%;
 }
 .resp-tabs-list {
     list-style: outside none none;
     text-align: center;
 }
-.song_name{
-background-color:#fff;
-font-size: 14px;
-color:#000;
-text-align:left;
-width: 100%;
-padding:10px 0px 10px 10px;
-}
+
 .line_d
 {
 margin-top: 10px;
@@ -2993,5 +2969,13 @@ color:#555;
     color: #de4197 !important;
     border-radius: 30px !important;
     border: 1px solid #de4197 !important;
+}
+
+.album_table td:last-child{
+    width: 300px;
+}
+
+.highlight{
+    color: #de4197;
 }
 /* END of Style*/

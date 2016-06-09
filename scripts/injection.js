@@ -27,6 +27,15 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                     return string.replace(/[\s]/g, '');
                 };
             }])
+        .filter('trust', [
+            '$sce',
+            function ($sce) {
+                return function (value, type) {
+                    // Defaults to treating trusted text as `html`
+                    return $sce.trustAs(type || 'html', value);
+                }
+            }
+        ])
         .config(function ($routeProvider, $locationProvider) {                         //Following are the Routing Condition to Different Templates
             $routeProvider
                     .when("/", {//Index Page
@@ -106,10 +115,10 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                     $location.path('/Search/' + search);
                 }
             };
-            
-            $scope.checkEnter = function($event){
+
+            $scope.checkEnter = function ($event) {
                 var keycode = $event.which || $event.keyCode;
-                if(keycode==13){
+                if (keycode == 13) {
                     $scope.albumSearch();
                 }
             };
@@ -144,8 +153,8 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
             $scope.banner.visibility = false;
             $scope.listlocationname = "Search Result";
             $scope.tab = true;
-            $scope.noalbum=false;
-            $scope.nosong=false;
+            $scope.noalbum = false;
+            $scope.nosong = false;
             $scope.pagination = {};
             var term = $routeParams.searchTerm;
             $http.post("ajax/search.php", {
@@ -155,82 +164,82 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                     $scope.tab = false;
                     $scope.noalbum = true;
                 }
-                
-                if(response.data[1].length < 1){
+
+                if (response.data[1].length < 1) {
                     $scope.nosong = true;
                 }
                 $scope.result = response.data[0];
                 $scope.songs = response.data[1];
-                
+
                 $scope.pagination.albumpage = 0;
                 $scope.pagination.albumlimit = response.data[0].length;
                 $scope.pagination.songpage = 0;
                 $scope.pagination.songlimit = response.data[1].length;
-                
+
             });
-            
-            $scope.check = function(index,type){
-                if(type=='album'){
+
+            $scope.check = function (index, type) {
+                if (type == 'album') {
                     var start = $scope.pagination.albumpage;
-                    if(index>=start && index<=start+2){
+                    if (index >= start && index <= start + 2) {
                         return true;
                     }
                     return false;
-                } else if(type='song') {
+                } else if (type = 'song') {
                     var start = $scope.pagination.songpage;
-                    if(index>=start && index<=start+2){
+                    if (index >= start && index <= start + 2) {
                         return true;
                     }
                     return false;
                 }
             }
-            
-            $scope.next = function(type){
-                if(type=='album'){
+
+            $scope.next = function (type) {
+                if (type == 'album') {
                     var current = $scope.pagination.albumpage;
                     var limit = $scope.pagination.albumlimit;
-                    
-                    if(current+2>=limit){
-                        current = limit-2;
+
+                    if (current + 2 >= limit) {
+                        current = limit - 2;
                     } else {
                         current = current + 2;
                     }
-                    
+
                     $scope.pagination.albumpage = current;
-                } else if (type='song'){
+                } else if (type = 'song') {
                     var current = $scope.pagination.songpage;
                     var limit = $scope.pagination.songlimit;
-                    
-                    if(current+2>=limit){
-                        current = limit-2;
+
+                    if (current + 2 >= limit) {
+                        current = limit - 2;
                     } else {
                         current = current + 2;
                     }
-                    
+
                     $scope.pagination.songpage = current;
                 }
             }
-            
-            $scope.prev = function(type){
-                if(type=='album'){
+
+            $scope.prev = function (type) {
+                if (type == 'album') {
                     var current = $scope.pagination.albumpage;
-                    
-                    if(current<=2){
+
+                    if (current <= 2) {
                         current = 0;
                     } else {
                         current = current - 2;
                     }
-                    
+
                     $scope.pagination.albumpage = current;
-                } else if (type=='song'){
+                } else if (type == 'song') {
                     var current = $scope.pagination.songpage;
-                    
-                    if(current<=2){
+
+                    if (current <= 2) {
                         current = 0;
                     } else {
                         current = current - 2;
                     }
-                    
+
                     $scope.pagination.songpage = current;
                 }
             }

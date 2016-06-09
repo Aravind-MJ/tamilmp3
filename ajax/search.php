@@ -20,6 +20,7 @@ function check($string, $searchTerm) {
 $result = array();
 $result[0] = array();
 $result[1] = array();
+$ai = 0;
 foreach ($iter as $path => $dir) {
     if ($dir->isDir()) {
         $pathsplit = explode('\\', $path);
@@ -27,9 +28,14 @@ foreach ($iter as $path => $dir) {
         if (check($pathsplit[$max - 1], $searchTerm) && $max > 3) {
             if (!isset($result[0][$pathsplit[$max - 2]])) {
                 $result[0][$pathsplit[$max - 2]] = new stdClass();
+                $ai = 0;
             }
             $result[0][$pathsplit[$max - 2]]->in = $pathsplit[$max - 2];
-            $result[0][$pathsplit[$max - 2]]->albums[] = $pathsplit[$max - 1];
+            $highlighted = str_ireplace($searchTerm, "<span class='highlight'>" . $searchTerm . "</span>", $pathsplit[$max - 1]);
+            $result[0][$pathsplit[$max - 2]]->albums[$ai] = new stdClass();
+            $result[0][$pathsplit[$max - 2]]->albums[$ai]->name = $pathsplit[$max - 1];
+            $result[0][$pathsplit[$max - 2]]->albums[$ai]->show = $highlighted;
+            $ai++;
         }
     } else {
         $pathsplit = explode('\\', $path);
@@ -48,7 +54,8 @@ foreach ($iter as $path => $dir) {
                     $result[1][$pathsplit[$max - 3]]->albums[$pathsplit[$max - 2]]->name = $pathsplit[$max - 2];
                     $result[1][$pathsplit[$max - 3]]->albums[$pathsplit[$max - 2]]->songs = array();
                 }
-                $result[1][$pathsplit[$max - 3]]->albums[$pathsplit[$max - 2]]->songs[] = $pathsplit[$max - 1];
+                $highlighted = str_ireplace($searchTerm, "<span class='highlight'>" . $searchTerm . "</span>", $pathsplit[$max - 1]);
+                $result[1][$pathsplit[$max - 3]]->albums[$pathsplit[$max - 2]]->songs[] = $highlighted;
             }
         }
     }
@@ -56,6 +63,7 @@ foreach ($iter as $path => $dir) {
 
 sort($result[0]);
 sort($result[1]);
+//print_r($result);
 //die();
 echo json_encode($result);
 ?>
