@@ -36,6 +36,21 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 }
             }
         ])
+        .filter('orderObjectBy', function () {
+            return function (items, field, reverse) {
+                var filtered = [];
+                angular.forEach(items, function (item) {
+                    filtered.push(item);
+                });
+                filtered.sort(function (a, b) {
+                    return (a[field] > b[field] ? 1 : -1);
+                });
+                if (reverse){
+                    filtered.reverse();
+                }
+                return filtered;
+            };
+        })
         .config(function ($routeProvider, $locationProvider) {                         //Following are the Routing Condition to Different Templates
             $routeProvider
                     .when("/", {//Index Page
@@ -145,6 +160,18 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
             $http.get('ajax/movielist.php')
                     .then(function (response) {
                         $scope.listmovie = response.data[0];
+//                        console.log($scope.listmovie);
+                    });
+
+            $http.get('ajax/top_collections.php')
+                    .then(function (response) {
+                        $scope.listtc = response.data;
+//                        console.log($scope.listmovie);
+                    });
+
+            $http.get('ajax/popular_downloads.php')
+                    .then(function (response) {
+                        $scope.listpd = response.data;
 //                        console.log($scope.listmovie);
                     });
         })
@@ -271,7 +298,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                     });
 
         })
-        .controller('listCtrl', function ($scope, $routeParams, $http, $sce) {
+        .controller('listCtrl', function ($scope, $routeParams, $http, $sce, $location) {
             //Controller for Star Hits Template Page
             $scope.banner.visibility = false;
             var place = $routeParams.place;
@@ -301,13 +328,6 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 $scope.listlocation = "OldHits";
                 $scope.listlocationname = "OLD HITS";
                 $scope.location = "images/singer_images";
-            }
-            if (place == "ILayarajaMovies") {
-                place = "ILayaraja Movies";
-                $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> > ILayaraja Movies");
-                $scope.listlocation = "ILayarajaMovies";
-                $scope.listlocationname = "ILAYARAJA MOVIES";
-                col = 3;
             } else if (place == "ARRahmanHits") {
                 place = "A R Rahman Hits";
                 $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> > A R Rahman Hits");
@@ -381,9 +401,15 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 $scope.listlocationname = "COMEDY DRAMAS";
                 $scope.location = "images/comedy_drama_images";
             } else {
+
+                if (place == "ILayaraja Movies") {
+                    $location.path('/azlisting/ILayarajaMovies/A');
+                }
+
                 $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> > " + place);
                 $scope.listlocation = place;
                 $scope.listlocationname = place;
+                col = 3;
             }
 
             /*

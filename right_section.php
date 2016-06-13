@@ -6,50 +6,17 @@
                 </div>
 
 
-                <div class="purchase_sidebar_img m_t_l">
-                    <img src="images/coll-img-1.jpg" alt="Friends Tamil Mp3">
+                <div class="purchase_sidebar_img m_t_l" ng-repeat="name in listtc">
+                    <img ng-src="images/TC {{ name }}.jpg" alt="Friends Tamil Mp3">
                     <div class="purchase_overlay"></div>
                     <div class="purchase_sidebar_text">
-                        <p>LOVE SONGS 2016</p>
+                        <p>{{ name }}</p>
                         <div class="purchase_s">
-                            <a href="List/Love Songs 2016">VIEW MORE</a>
+                            <a href="List/{{ name }}">VIEW MORE</a>
                         </div>
                     </div>
                 </div>
-
-                <div class="purchase_sidebar_img m_t_l">
-                    <img src="images/coll-img-2.jpg" alt="Friends Tamil Mp3">
-                    <div class="purchase_overlay"></div>
-                    <div class="purchase_sidebar_text">
-                        <p>SPB HITS</p>
-                        <div class="purchase_s">
-                            <a href="List/SPB Hits">VIEW MORE</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="purchase_sidebar_img m_t_l">
-                    <img src="images/coll-img3.jpg" alt="Friends Tamil Mp3">
-                    <div class="purchase_overlay"></div>
-                    <div class="purchase_sidebar_text">
-                        <p>AR RAHMAN HITS</p>
-                        <div class="purchase_s">
-                            <a href="List/ARRahmanHits">VIEW MORE</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="purchase_sidebar_img m_t_l">
-                    <img src="images/coll-img4.jpg" alt="Friends Tamil Mp3">
-                    <div class="purchase_overlay"></div>
-                    <div class="purchase_sidebar_text">
-                        <p>ILAYARAJA HITS</p>
-                        <div class="purchase_s">
-                            <a href="azlisting/ILayarajaMovies/A">VIEW MORE</a>
-                        </div>
-                    </div>
-                </div>
-
+                
             </div>
         </div>
 
@@ -59,51 +26,17 @@
                     <h2>POPULAR DOWNLOADS</h2>
                 </div>
 
-
-                <div class="purchase_sidebar_img m_t_l">
-                    <img src="images/pop-img1.jpg" alt="Friends Tamil Mp3">
+                <div class="purchase_sidebar_img m_t_l" ng-repeat="name in listpd | orderObjectBy:'count':true">
+                    <img ng-src="{{ name.path }}/poster.jpg" alt="Friends Tamil Mp3">
                     <div class="purchase_overlay"></div>
                     <div class="purchase_sidebar_text">
-                        <p>jithan-2</p>
+                        <p>{{ name.name }}</p>
                         <div class="purchase_s">
-                            <a href="#">VIEW MORE</a>
+                            <a href="{{ name.loc }}">VIEW MORE</a>
                         </div>
                     </div>
                 </div>
-
-                <div class="purchase_sidebar_img m_t_l">
-                    <img src="images/pop-img2.jpg" alt="Friends Tamil Mp3">
-                    <div class="purchase_overlay"></div>
-                    <div class="purchase_sidebar_text">
-                        <p>Megaman </p>
-                        <div class="purchase_s">
-                            <a href="#">VIEW MORE</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="purchase_sidebar_img m_t_l">
-                    <img src="images/pop-img3.jpg" alt="Friends Tamil Mp3">
-                    <div class="purchase_overlay"></div>
-                    <div class="purchase_sidebar_text">
-                        <p>Senthatti Kaalai Sevatha Kaalai</p>
-                        <div class="purchase_s">
-                            <a href="#">VIEW MORE</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="purchase_sidebar_img m_t_l">
-                    <img src="images/pop-img4.jpg" alt="Friends Tamil Mp3">
-                    <div class="purchase_overlay"></div>
-                    <div class="purchase_sidebar_text">
-                        <p>Irudhi Sutru</p>
-                        <div class="purchase_s">
-                            <a href="#">VIEW MORE</a>
-                        </div>
-                    </div>
-                </div>
-
+                
             </div>
         </div>
     </div>

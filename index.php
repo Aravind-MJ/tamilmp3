@@ -186,7 +186,7 @@
                     </div>
                     <div class="col-lg-9 col-md-9 ss">
                         <div class="breadcrumbs" ng-bind-html="breadcrumbs.path"></div>
-                        <ng-view></ng-view>
+                        <ng-view autoscroll="true"></ng-view>
                     </div>
                         <div data-loading class="loading-screen">
                             <div class="loading-icon">
