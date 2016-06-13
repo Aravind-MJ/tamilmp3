@@ -130,14 +130,14 @@
 
                                     <!-- Wrapper for slides -->
                                     <div class="carousel-inner" role="listbox">
-                                        <div class="item active" ng-if="bannerlist.length == 0">
+                                        <div class="item" ng-if="!bannerlist">
                                             <div class="br_single_news">
-                                                <img alt="" src="admin/banner/noimage.jpg">
+                                                <img alt="" src="banner/noimage.jpg">
                                             </div>
                                         </div>
                                         <div class="item" ng-repeat="banner in bannerlist track by $index" ng-class="{'active':$first}">
                                             <div class="br_single_news">
-                                                <img alt="Corrupt Image" ng-src="admin/banner/{{ banner}}">
+                                                <img alt="Corrupt Image" ng-src="{{ banner}}">
                                             </div>
                                         </div>
                                         <!--<div class="item">

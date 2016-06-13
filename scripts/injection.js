@@ -45,7 +45,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 filtered.sort(function (a, b) {
                     return (a[field] > b[field] ? 1 : -1);
                 });
-                if (reverse){
+                if (reverse) {
                     filtered.reverse();
                 }
                 return filtered;
@@ -280,6 +280,19 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 $scope.listlocationname = "NEW RELEASES";
                 file = "newreleases.txt";
                 col = 2;
+
+
+                $http.get('ajax/top_collections.php')
+                        .then(function (response) {
+                            $scope.listtc = response.data;
+//                        console.log($scope.listmovie);
+                        });
+
+                $http.get('ajax/popular_downloads.php')
+                        .then(function (response) {
+                            $scope.listpd = response.data;
+//                        console.log($scope.listmovie);
+                        });
             }
 
             $http.post("ajax/read.php", {

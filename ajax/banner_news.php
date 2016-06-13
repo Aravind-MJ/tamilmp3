@@ -1,16 +1,19 @@
 <?php
-include 'db.php';
-$query = sprintf("SELECT file FROM banner WHERE active=1 AND del_status=0");
-$result  = mysqli_query($link, $query) or die(mysqli_error($link));
+
 $response = array();
-$response[0] = array();
-$response[1] = array();
-while($row = mysqli_fetch_assoc($result)){
-    $response[0][]=$row['file'];
+foreach (glob("../banner/*") as $filename) {
+    if (!strpos($filename, 'noimage')) {
+        $response[0][] = substr($filename, 3, strlen($filename));
+    }
 }
-$query = sprintf("SELECT news FROM news WHERE active=1 AND del_status=0");
-$result  = mysqli_query($link, $query) or die(mysqli_error($link));
-while($row = mysqli_fetch_assoc($result)){
-    $response[1][]=$row['news'];
+
+$filename = "../text_files/news.txt";
+$mode = "r";
+if (file_exists($filename) && filesize($filename)>0) {
+    $file = fopen($filename, $mode);
+    $content = fread($file, filesize($filename));
+    $response[1] = explode(PHP_EOL, $content);
 }
+
+//print_r($response);
 echo json_encode($response);

@@ -13,7 +13,7 @@
 
                                 <!-- Wrapper for slides -->
                                 <div class="carousel-inner" role="listbox">
-                                    <div class="item active" ng-if="newslist.length == 0">
+                                    <div class="item active" ng-if="!newslist">
                                         <p>NO NEWS</p>
                                     </div>
                                     <div class="item" ng-repeat="news in newslist" ng-class="{'active':$first}">
