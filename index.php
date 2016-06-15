@@ -5,7 +5,7 @@
 <!--[if IE 8 ]>    <html lang="en" class="ie8">    <![endif]-->
 <!--[if IE 9 ]>    <html lang="en" class="ie9">    <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!-->
-<html lang="en">
+<html lang="en"  ng-app="tamilMp3" ng-controller="main">
     <!--<![endif]-->
     <?php
     $root = "/tamilmp3/";
@@ -28,7 +28,7 @@
         'script' => $root . 'scripts/injection.js',
         'jplayer' => $root . 'plugin/jplayer/dist/jplayer/jquery.jplayer.min.js',
         'jplayer-playlist' => $root . 'plugin/jplayer/dist/add-on/jplayer.playlist.min.js',
-        'animate' => 'http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js'
+        'FBSdk' => 'http://pc035860.github.io/angular-easyfb/angular-easyfb.min.js'
     );
 
     include_once 'autoload.php';
@@ -104,7 +104,7 @@
 
     </style>
 
-    <body ng-app="tamilMp3" ng-controller="main">
+    <body>
         <!-- NAVIGATION -->
         <?php include ('nav.php'); ?>
 
@@ -176,8 +176,6 @@
         </section>
         <!-- ~~~=| Banner END |=~~~ -->
 
-
-
         <section class="main_news_wrapper cc_single_post_wrapper">
             <div class="container">
                 <div class="row">
@@ -188,20 +186,20 @@
                         <div class="breadcrumbs" ng-bind-html="breadcrumbs.path"></div>
                         <ng-view autoscroll="true"></ng-view>
                     </div>
-                        <div data-loading class="loading-screen">
-                            <div class="loading-icon">
-                                <div class="sk-wave">
-                                    <div class="sk-rect sk-rect1"></div>
-                                    <div class="sk-rect sk-rect2"></div>
-                                    <div class="sk-rect sk-rect3"></div>
-                                    <div class="sk-rect sk-rect4"></div>
-                                    <div class="sk-rect sk-rect5"></div>
-                                </div>
+                    <div data-loading class="loading-screen">
+                        <div class="loading-icon">
+                            <div class="sk-wave">
+                                <div class="sk-rect sk-rect1"></div>
+                                <div class="sk-rect sk-rect2"></div>
+                                <div class="sk-rect sk-rect3"></div>
+                                <div class="sk-rect sk-rect4"></div>
+                                <div class="sk-rect sk-rect5"></div>
                             </div>
                         </div>
+                    </div>
                 </div>
             </div>
-        </section>
+        </section>  
 
         <?php include ('footer.php'); ?>
 

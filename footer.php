@@ -1,6 +1,9 @@
 <!-- ~~~=| Footer START |=~~~ -->
 <footer class="footer_area">
 
+    <div class="share42init" data-top1="150" data-top2="20" data-margin="0"></div>
+    <script type="text/javascript" src="share42/share42.js"></script> 
+
     <div class="footer_bottom">
         <div class="container">
             <div class="row">
@@ -14,4 +17,4 @@
     </div>
 </footer>
 
-<?php $autoload->loadJs();?>
+<?php $autoload->loadJs(); ?>

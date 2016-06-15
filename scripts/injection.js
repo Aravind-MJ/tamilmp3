@@ -1,4 +1,4 @@
-var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
+var app = angular.module('tamilMp3', ['ngRoute', 'ezfb'])
         .directive('loading', ['$http', function ($http)            //Directive defined to show Loading Screen on Ajax Call
             {
                 return {
@@ -50,6 +50,11 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 }
                 return filtered;
             };
+        })
+        .config(function (ezfbProvider) {
+            ezfbProvider.setInitParams({
+                appId: '1121767971198398'
+            });
         })
         .config(function ($routeProvider, $locationProvider) {                         //Following are the Routing Condition to Different Templates
             $routeProvider
@@ -226,10 +231,10 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                     var current = $scope.pagination.albumpage;
                     var limit = $scope.pagination.albumlimit;
 
-                    if (current + 2 >= limit) {
-                        current = limit - 2;
+                    if (current + 3 >= limit) {
+                        current = limit - 3;
                     } else {
-                        current = current + 2;
+                        current = current + 3;
                     }
 
                     $scope.pagination.albumpage = current;
@@ -237,10 +242,10 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                     var current = $scope.pagination.songpage;
                     var limit = $scope.pagination.songlimit;
 
-                    if (current + 2 >= limit) {
-                        current = limit - 2;
+                    if (current + 3 >= limit) {
+                        current = limit - 3;
                     } else {
-                        current = current + 2;
+                        current = current + 3;
                     }
 
                     $scope.pagination.songpage = current;
@@ -251,23 +256,31 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ngAnimate'])
                 if (type == 'album') {
                     var current = $scope.pagination.albumpage;
 
-                    if (current <= 2) {
+                    if (current <= 3) {
                         current = 0;
                     } else {
-                        current = current - 2;
+                        current = current - 3;
                     }
 
                     $scope.pagination.albumpage = current;
                 } else if (type == 'song') {
                     var current = $scope.pagination.songpage;
 
-                    if (current <= 2) {
+                    if (current <= 3) {
                         current = 0;
                     } else {
-                        current = current - 2;
+                        current = current - 3;
                     }
 
                     $scope.pagination.songpage = current;
+                }
+            }
+
+            $scope.pageOf = function (type) {
+                if (type == 'album') {
+                    return "Page " + Math.ceil($scope.pagination.albumpage / 3 + 1) + " of " + Math.ceil($scope.pagination.albumlimit / 3);
+                } else if (type == 'song') {
+                    return "Page " + Math.ceil($scope.pagination.songpage / 3 + 1) + " of " + Math.ceil($scope.pagination.songlimit / 3);
                 }
             }
         })

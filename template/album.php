@@ -4,8 +4,11 @@
     }
 </style>
 <div class="movie_ft">
-<div class="Top_name1">
- <h2><a href="#">{{ name}}</a></h2> </div>
+    <div class="Top_name1">
+        <h2><a href="#">{{ name}}</a></h2> 
+        <div class="fb-like" data-href="{{ $route.current.templateUrl}}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+    </div>    
+
     <div class="col-md-5 col-sm-5 col-xs-12">
         <div class="fs_news_left ht_fs_news_left m-t-f-p">
             <div class="single_fs_news_left_text">
@@ -19,7 +22,7 @@
 
     <div class="col-md-7 col-sm-7 col-xs-12">
         <div class="single_fs_news_right_text m-t-f-p">
-            
+
 
             <p ng-if="moviedetails.starring">Starring : {{ moviedetails.starring}} </p>
 
@@ -29,67 +32,67 @@
 
             <p ng-if="moviedetails.year">Year : {{ moviedetails.year}}</p>
         </div>
-		
-		
+
+
     </div>
 
     <div id="jplayer-affix">
-<div class="jplayer_f">
-<div class="l_n">
-            <div class="paly-media">
-                <div id="jp-player" ng-hide="playershow">
-                    <div class="jp-type-playlist">
-                        <div id="jquery_jplayer_1" class="jp-jplayer"></div>
-                        <div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
-                            <div class="jp-type-single">
-                                <div class="jp-gui jp-interface">
-                                    <div class="jp-controls">
-                                        <button class="jp-play" role="button" tabindex="0">play</button>
-                                        <button class="jp-stop" role="button" tabindex="0">stop</button>
-                                    </div>
-                                    <div class="jp-progress">
-                                        <div class="jp-seek-bar">
-                                            <div class="jp-play-bar"></div>
+        <div class="jplayer_f">
+            <div class="l_n">
+                <div class="paly-media">
+                    <div id="jp-player" ng-hide="playershow">
+                        <div class="jp-type-playlist">
+                            <div id="jquery_jplayer_1" class="jp-jplayer"></div>
+                            <div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
+                                <div class="jp-type-single">
+                                    <div class="jp-gui jp-interface">
+                                        <div class="jp-controls">
+                                            <button class="jp-play" role="button" tabindex="0">play</button>
+                                            <button class="jp-stop" role="button" tabindex="0">stop</button>
                                         </div>
-                                    </div>
-                                    <div class="jp-volume-controls">
-                                        <button class="jp-mute" role="button" tabindex="0">mute</button>
-                                        <button class="jp-volume-max" role="button" tabindex="0">max volume</button>
-                                        <div class="jp-volume-bar">
-                                            <div class="jp-volume-bar-value"></div>
+                                        <div class="jp-progress">
+                                            <div class="jp-seek-bar">
+                                                <div class="jp-play-bar"></div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="jp-time-holder">
-                                        <div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
-                                        <div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
-                                        <div class="jp-toggles">
-                                            <button class="jp-repeat" role="button" tabindex="0">repeat</button>
+                                        <div class="jp-volume-controls">
+                                            <button class="jp-mute" role="button" tabindex="0">mute</button>
+                                            <button class="jp-volume-max" role="button" tabindex="0">max volume</button>
+                                            <div class="jp-volume-bar">
+                                                <div class="jp-volume-bar-value"></div>
+                                            </div>
                                         </div>
-                                    </div>
+                                        <div class="jp-time-holder">
+                                            <div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
+                                            <div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
+                                            <div class="jp-toggles">
+                                                <button class="jp-repeat" role="button" tabindex="0">repeat</button>
+                                            </div>
+                                        </div>
 
-                                </div>
-                                <div class="jp-details">
-                                    <div class="jp-title"  aria-label="title">&nbsp;</div>
-                                </div>
-                                <div class="scrollList">
-                                    <div class="jp-playlist">
-                                        <ul>
-                                            <!-- The method Playlist.displayPlaylist() uses this unordered list -->
-                                        </ul>
                                     </div>
-                                </div>
-                                <div class="jp-no-solution">
-                                    <span>Update Required</span>
-                                    To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+                                    <div class="jp-details">
+                                        <div class="jp-title"  aria-label="title">&nbsp;</div>
+                                    </div>
+                                    <div class="scrollList">
+                                        <div class="jp-playlist">
+                                            <ul>
+                                                <!-- The method Playlist.displayPlaylist() uses this unordered list -->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="jp-no-solution">
+                                        <span>Update Required</span>
+                                        To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div></div>
-            <div class="col-md-1">
+                    </div></div>
+                <div class="col-md-1">
+                </div>
             </div>
-      </div>
-		</div>
+        </div>
     </div>
 </div>
 
@@ -126,15 +129,15 @@
 
         </div>
     </div>
-    <div class="select-section">
+    <div class="select-section row">
         <div class="col-md-1 col-md-1 col-xs-1 col-sm-1" ng-show="list.song"><input type="checkbox" ng-model="checkall" ng-click="checkAll()" id="checkAll"/></div>
         <div class="col-md-11 col-xs-11 col-sm-11 selec-m" ng-show="list.song">Select All</div>
         <div class="col-md-11 col-xs-11 col-sm-11 selec-m" ng-show="!list.song">No Songs</div>
     </div>
-    <div class="song-item" ng-repeat="x in list.song">
-        <div class="col-md-1 col-md-1 col-xs-1 col-sm-1"><input type="checkbox" class="styled" ng-model="x.selected" value="{{ x.downpath}}" ng-checked="x.selected" name="files[]"/>
+    <div class="song-item row" ng-repeat="x in list.song">
+        <div class="col-lg-1 col-md-1 col-xs-1 col-sm-1"><input type="checkbox" class="styled" ng-model="x.selected" value="{{ x.downpath}}" ng-checked="x.selected" name="files[]"/>
         </div>
-        <div class="col-md-11 col-xs-11 col-sm-11">
+        <div class="col-lg-10 col-md-10 col-xs-10 col-sm-10">
             <div id="main" class="release main-left main-medium">
                 <!-- Article -->
                 <article>
@@ -165,8 +168,12 @@
 
             </div>
         </div>
+        <div class="fb-like col-lg-1 col-md-1 col-xs-1 col-sm-1" data-href="{{ $route.current.templateUrl+'/'+x.name }}" data-layout="box_count" data-action="like" data-show-faces="true" data-share="false"></div>
     </div>
 </form>
+<center>
+    <div class="fb-comments" data-href="{{ $route.current.templateUrl}}" data-numposts="5" data-colorscheme="light"></div>
+</center>
 <div id="alertModal" class="modal fade ngHide" role="dialog">
     <div class="modal-dialog">
 
