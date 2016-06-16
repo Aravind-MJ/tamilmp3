@@ -3,11 +3,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:url"                content="https://www.demox.imrokraft.com/tamilmp3" />
-    <meta property="og:type"               content="article" />
-    <meta property="og:title"              content="One stop for all your songs" />
-    <meta property="og:description"        content="Find your songs right here" />
-    <meta property="og:image"              content="https://www.demox.imrokraft.com/tamilmp3/images/friends-tamil-mp3-banner2.jpg" />
+    <meta property="og:url"                content="{{ OgTags.url }}" />
+    <meta property="og:type"               content="{{ OgTags.type }}" />
+    <meta property="og:title"              content="{{ OgTags.title }}" />
+    <meta property="og:description"        content="{{ OgTags.description }}" />
+    <meta property="og:image"              content="{{ OgTags.image }}" />
     <title><?php echo $autoload->getTitle(); ?></title>
 
     <!-- ~~~=| Fonts files |==-->

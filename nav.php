@@ -42,10 +42,9 @@
                                 <li><a class="fa fa-behance" href=""></a></li>
                             </ul>-->
                             <ul id="share42">
-                                <li><a rel="nofollow" class="fa fa-facebook" href="#" data-count="fb" onclick="window.open('//www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdemox.imrokraft.com%2Ftamilmp3%2F', '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');return false" title="Share on Facebook" target="_blank"></a></li>
-                                <li><a rel="nofollow" class="fa fa-twitter" href="#" data-count="gplus" onclick="window.open('//plus.google.com/share?url=http%3A%2F%2Fdemox.imrokraft.com%2Ftamilmp3%2F', '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');return false" title="Share on Google+" target="_blank"></a></li>
-                                <li><a rel="nofollow" class="fa fa-google-plus" href="#" data-count="twi" onclick="window.open('//twitter.com/intent/tweet?text=Tamil%20MP3&amp;url=http%3A%2F%2Fdemox.imrokraft.com%2Ftamilmp3%2F', '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');return false" title="Share on Twitter" target="_blank"></a></li>
-                                <li><a rel="nofollow" href="http://share42.com/" title="Share42.com - Free Social Sharing Buttons Script" target="_blank"></a></li>
+                                <li><a rel="nofollow" class="fa fa-facebook" href="#" data-count="fb" ng-click="socialShare('facebook')" title="Share on Facebook" target="_blank"></a></li>
+                                <li><a rel="nofollow" class="fa fa-twitter" href="#" data-count="gplus" ng-click="socialShare('twitter')" title="Share on Google+" target="_blank"></a></li>
+                                <li><a rel="nofollow" class="fa fa-google-plus" href="#" data-count="twi" ng-click="socialShare('googleplus')" title="Share on Twitter" target="_blank"></a></li>
                             </ul>
                         </div>
 

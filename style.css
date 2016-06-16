@@ -2998,4 +2998,29 @@ color:#555;
 .shareButtons .stButton_gradient{
     padding: 10px !important;
 }
+
+.albumshare{
+    display: inline-block;
+}
+
+.albumshare li{
+    display: inline-block;
+}
+
+.shareBox{
+    border: 1px solid #de4197;
+    border-radius: 10px;
+    display: inline-block;
+    padding: 10px; 
+    float: right;
+}
+
+.shareBox div{
+    
+}
+.shareBox li{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+}
 /* END of Style*/

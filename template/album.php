@@ -5,9 +5,17 @@
 </style>
 <div class="movie_ft">
     <div class="Top_name1">
+        <div class="shareBox">
+            <div>Share this album.</div>
+            <ul id="share42" class="albumshare">
+                <li><a rel="nofollow" class="fa fa-facebook text-primary" href="" data-count="fb" ng-click="socialShare('facebook')" title="Share on Facebook" target="_blank"></a></li>
+                <li><a rel="nofollow" class="fa fa-twitter text-aqua" href="" data-count="gplus" ng-click="socialShare('twitter')" title="Share on Google+" target="_blank"></a></li>
+                <li><a rel="nofollow" class="fa fa-google-plus text-danger" href="" data-count="twi" ng-click="socialShare('googleplus')" title="Share on Twitter" target="_blank"></a></li>
+            </ul>  
+        </div>
         <h2><a href="#">{{ name}}</a></h2> 
-        <div class="fb-like" data-href="{{ $route.current.templateUrl}}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
-    </div>    
+        <div class="fb-like" data-href="{{ $route.current.templateUrl}}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
+    </div>
 
     <div class="col-md-5 col-sm-5 col-xs-12">
         <div class="fs_news_left ht_fs_news_left m-t-f-p">
@@ -168,7 +176,7 @@
 
             </div>
         </div>
-        <div class="fb-like col-lg-1 col-md-1 col-xs-1 col-sm-1" data-href="{{ $route.current.templateUrl+'/'+x.name }}" data-layout="box_count" data-action="like" data-show-faces="true" data-share="false"></div>
+        <div class="fb-like col-lg-1 col-md-1 col-xs-1 col-sm-1" data-href="{{ $route.current.templateUrl + '/' + x.name}}" data-layout="box_count" data-action="like" data-show-faces="true" data-share="false"></div>
     </div>
 </form>
 <center>

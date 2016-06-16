@@ -51,9 +51,9 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb'])
                 return filtered;
             };
         })
-        .config(function (ezfbProvider) {
+        .config(function (ezfbProvider) {                                               //Configuration for facebook Integration
             ezfbProvider.setInitParams({
-                appId: '1121767971198398'
+                appId: '1121767971198398'                                               //Facebook App Id
             });
         })
         .config(function ($routeProvider, $locationProvider) {                         //Following are the Routing Condition to Different Templates
@@ -117,6 +117,28 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb'])
             $scope.searchTerm = {};
             $scope.searchTerm.text = '';
             $scope.banner.visibility = true;
+
+            $scope.OgTags = {};
+            $scope.OgTags.url = 'https://www.demox.imrokraft.com/tamilmp3';
+            $scope.OgTags.type = 'website';
+            $scope.OgTags.title = 'One Stop for all your Songs';
+            $scope.OgTags.description = 'Find your songs right here';
+            $scope.OgTags.image = 'https://www.demox.imrokraft.com/tamilmp3/images/friends-tamil-mp3-banner2.jpg';
+
+            $scope.socialShare = function (type) {
+                var url = '';
+                if (type == "facebook") {
+                    url = '//www.facebook.com/sharer/sharer.php?u=' + encodeURI($scope.OgTags.url);
+                } else if(type == "twitter"){
+                    url = '//twitter.com/intent/tweet?text=Tamil%20MP3&amp;url=' + $scope.OgTags.url;
+                } else if (type == "googleplus"){
+                    url = '//plus.google.com/share?url=' + encodeURI($scope.OgTags.url);
+                } else {
+                    return false;
+                }
+                window.open(url, '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
+            };
+
             $scope.albumSearch = function () {
                 if ($scope.searchTerm.text == '' || $scope.searchTerm.text == undefined) {
 
