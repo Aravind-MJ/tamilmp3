@@ -7,11 +7,13 @@
     <div class="Top_name1">
         <div class="shareBox">
             <div>Share this album.</div>
-            <ul id="share42" class="albumshare">
-                <li><a rel="nofollow" class="fa fa-facebook text-primary" href="" data-count="fb" ng-click="socialShare('facebook')" title="Share on Facebook" target="_blank"></a></li>
-                <li><a rel="nofollow" class="fa fa-twitter text-aqua" href="" data-count="gplus" ng-click="socialShare('twitter')" title="Share on Google+" target="_blank"></a></li>
-                <li><a rel="nofollow" class="fa fa-google-plus text-danger" href="" data-count="twi" ng-click="socialShare('googleplus')" title="Share on Twitter" target="_blank"></a></li>
-            </ul>  
+            <center>
+                <ul id="share42" class="albumshare">
+                    <li><a rel="nofollow" class="fa fa-facebook text-primary" href="" data-count="fb" ng-click="socialShare('facebook')" title="Share on Facebook" target="_blank"></a></li>
+                    <li><a rel="nofollow" class="fa fa-twitter text-aqua" href="" data-count="gplus" ng-click="socialShare('twitter')" title="Share on Twitter" target="_blank"></a></li>
+                    <li><a rel="nofollow" class="fa fa-google-plus text-danger" href="" data-count="twi" ng-click="socialShare('googleplus')" title="Share on Google+" target="_blank"></a></li>
+                </ul>  
+            </center>
         </div>
         <h2><a href="#">{{ name}}</a></h2> 
         <div class="fb-like" data-href="{{ $route.current.templateUrl}}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
@@ -153,12 +155,12 @@
                         <li>
                             <div class="track-details">
                                 <div class="track-buttons">
-                                    <a href="javascript:;" ng-click="playSong(x.downpath, x.name, $index, 'play')" class="googleplus-share"><i class="icon icon-soundcloud"><img
-                                                src="images/playlist-play.png" alt="Play"> </i></a>
-                                    <a href="javascript:;" class="googleplus-share" ng-click="playSong(x.downpath, x.name, $index, 'add')"><i class="icon icon-download"><img
-                                                src="images/playlist-add.png" alt="Add"></i></a>
-                                    <a href="{{ x.downpath}}" download="{{ x.name}}" class="googleplus-share" target="_PARENT"><i class="icon icon-download"><img
-                                                src="images/playlist-dl.png" alt="Download"></i></a>
+                                    <a href="javascript:;" ng-click="playSong(x.downpath, x.name, $index, 'play')" class="googleplus-share"><i class="icon icon-soundcloud">
+                                            <img src="images/playlist-play.png" alt="Play"> </i></a>
+                                    <a href="javascript:;" class="googleplus-share" ng-click="playSong(x.downpath, x.name, $index, 'add')"><i class="icon icon-download">
+                                            <img src="images/playlist-add.png" alt="Add"></i></a>
+                                    <a href="{{ x.downpath}}" download="{{ x.name}}" class="googleplus-share" target="_PARENT"><i class="icon icon-download">
+                                            <img src="images/playlist-dl.png" alt="Download"></i></a>
                                 </div>
                                 <a class="track sp-play-track" href="javascript:void(0)" data-cover="">
                                     <!-- cover -->

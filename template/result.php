@@ -107,7 +107,7 @@
     </div>
     <script>
                 $(".button").click(function () {
-                    $("html, body").animate({scrollTop: 0}, "slow");
+                    $("html, body").animate({scrollTop: $('#a-zlist-affix').offset().top}, "slow");
                     return false;
                 });
     </script>

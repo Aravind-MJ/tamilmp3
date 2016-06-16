@@ -78,12 +78,8 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb'])
                         templateUrl: 'template/3col.php',
                         controller: 'listCtrl'
                     })
-                    .when("/NewReleases", {//List Common Page
+                    .when("/NewReleases", {//New Releases Page
                         templateUrl: 'template/2col.php',
-                        controller: 'txtCtrl'
-                    })
-                    .when("/MSViswanathanHits", {//List Common Page
-                        templateUrl: 'template/3col.php',
                         controller: 'txtCtrl'
                     })
                     .when("/:place", {//Hits Common Page
@@ -119,7 +115,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb'])
             $scope.banner.visibility = true;
 
             $scope.OgTags = {};
-            $scope.OgTags.url = 'https://www.demox.imrokraft.com/tamilmp3';
+            $scope.OgTags.url = 'demox.imrokraft.com/tamilmp3';
             $scope.OgTags.type = 'website';
             $scope.OgTags.title = 'One Stop for all your Songs';
             $scope.OgTags.description = 'Find your songs right here';
@@ -128,11 +124,11 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb'])
             $scope.socialShare = function (type) {
                 var url = '';
                 if (type == "facebook") {
-                    url = '//www.facebook.com/sharer/sharer.php?u=' + encodeURI($scope.OgTags.url);
+                    url = '//www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent($scope.OgTags.url);
                 } else if(type == "twitter"){
-                    url = '//twitter.com/intent/tweet?text=Tamil%20MP3&amp;url=' + $scope.OgTags.url;
+                    url = '//twitter.com/intent/tweet?text=Tamil%20MP3&amp;url=' + encodeURIComponent($scope.OgTags.url);
                 } else if (type == "googleplus"){
-                    url = '//plus.google.com/share?url=' + encodeURI($scope.OgTags.url);
+                    url = '//plus.google.com/share?url=' + encodeURIComponent($scope.OgTags.url);
                 } else {
                     return false;
                 }
@@ -254,7 +250,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb'])
                     var limit = $scope.pagination.albumlimit;
 
                     if (current + 3 >= limit) {
-                        current = limit - 3;
+//                        current = limit - 3;
                     } else {
                         current = current + 3;
                     }
@@ -265,7 +261,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb'])
                     var limit = $scope.pagination.songlimit;
 
                     if (current + 3 >= limit) {
-                        current = limit - 3;
+//                        current = limit - 3;
                     } else {
                         current = current + 3;
                     }
@@ -497,7 +493,14 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb'])
                     return "MSViswanathanHits";
                 }
                 return listlocation;
-            }
+            };
+            $scope.currentAlpha = function(char){
+                var term = $routeParams.alpha;
+                if(term == char){
+                    return true;
+                }
+                return false;
+            };
             var place = $routeParams.place;
             var alpha = $routeParams.alpha;
             var file = false;

@@ -42,9 +42,9 @@
                                 <li><a class="fa fa-behance" href=""></a></li>
                             </ul>-->
                             <ul id="share42">
-                                <li><a rel="nofollow" class="fa fa-facebook" href="#" data-count="fb" ng-click="socialShare('facebook')" title="Share on Facebook" target="_blank"></a></li>
-                                <li><a rel="nofollow" class="fa fa-twitter" href="#" data-count="gplus" ng-click="socialShare('twitter')" title="Share on Google+" target="_blank"></a></li>
-                                <li><a rel="nofollow" class="fa fa-google-plus" href="#" data-count="twi" ng-click="socialShare('googleplus')" title="Share on Twitter" target="_blank"></a></li>
+                                <li><a rel="nofollow" class="fa fa-facebook" href="" data-count="fb" ng-click="socialShare('facebook')" title="Share on Facebook" target="_blank"></a></li>
+                                <li><a rel="nofollow" class="fa fa-twitter" href="" data-count="gplus" ng-click="socialShare('twitter')" title="Share on Twitter" target="_blank"></a></li>
+                                <li><a rel="nofollow" class="fa fa-google-plus" href="" data-count="twi" ng-click="socialShare('googleplus')" title="Share on Google+" target="_blank"></a></li>
                             </ul>
                         </div>
 

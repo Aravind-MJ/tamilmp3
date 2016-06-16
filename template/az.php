@@ -11,9 +11,9 @@
 <div class="m-b-f-p">
     <ul class="station-select">
         <?php foreach (range('A', 'Z') as $char): ?>
-            <li> <a href="azlisting/{{ renameLocation(listlocation,listlocationname) }}/<?php echo $char; ?>" class="alphabets"> <?php echo $char; ?> </a> </li>
+        <li> <a href="azlisting/{{ renameLocation(listlocation,listlocationname) }}/<?php echo $char; ?>" ng-class="{alphabets:true,current:currentAlpha('<?= $char ?>')}"> <?php echo $char; ?> </a> </li>
         <?php endforeach; ?>
-        <li> <a href = "azlisting/{{ renameLocation(listlocation,listlocationname) }}/num" class = "" data-pid = "126" data-lang = "tamil" data-toggle = "tootltip" title = "" data-original-title = "Tamil Private Albums"> 1-9 </a> </li>
+        <li> <a href = "azlisting/{{ renameLocation(listlocation,listlocationname) }}/num" ng-class="{alphabets:true,current:currentAlpha('num')}" data-pid = "126" data-lang = "tamil" data-toggle = "tootltip" title = "" data-original-title = "Tamil Private Albums"> 1-9 </a> </li>
 
     </ul>
 </div>
