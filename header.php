@@ -3,13 +3,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <!--<meta property="og:url"                content="demox.imrokraft.com/tamilmp3" />-->
-    <meta property="og:title"              content="Friends Tamil MP3" />
-    <meta property="og:image"              content="http://www.demox.imrokraft.com/tamilmp3/images/friends-tamil-mp3-banner3.jpg" />
-    <meta property="og:type"               content="website" />
-    <meta property="og:description"        content="Tamil Music Search Ends Here" />
-    
+        
     <title>Friends Tamil Mp3</title>
 
     <!-- ~~~=| Fonts files |==-->

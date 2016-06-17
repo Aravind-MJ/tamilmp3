@@ -1,3 +1,9 @@
+
+<!--<meta property="og:url"                content="demox.imrokraft.com/tamilmp3" />-->
+<meta property="og:title"              content="Friends Tamil MP3" />
+<meta property="og:image"              content="http://www.demox.imrokraft.com/tamilmp3/images/ogimage.jpg" />
+<meta property="og:type"               content="website" />
+<meta property="og:description"        content="Tamil Music Search Ends Here" />
 <div class="col-md-8 col-sm-8 col-xs-12">
 
     <div class="ftm-alb-title"><h2>FEATURED ALBUM </h2></div>

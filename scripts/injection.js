@@ -53,7 +53,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb'])
         })
         .config(function (ezfbProvider) {                                               //Configuration for facebook Integration
             ezfbProvider.setInitParams({
-                appId: '1121767971198398'                                               //Facebook App Id
+                appId: '1121767714531757'                                               //Facebook App Id
             });
         })
         .config(function ($routeProvider, $locationProvider) {          //Following are the Routing Condition to Different Templates
@@ -117,11 +117,12 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb'])
             $scope.socialShare = function (type) {
                 var url = '';
                 if (type == "facebook") {
-                    url = '//www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent($route.current.templateUrl) + '&app_id=1121767971198398';
+                    url = '//www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent('demox.imrokraft.com/tamilmp3/' + $route.current.templateUrl);
+                    console.log(url);
                 } else if (type == "twitter") {
-                    url = '//twitter.com/intent/tweet?text=Tamil%20MP3&amp;url=' + encodeURIComponent($route.current.templateUrl) + '&app_id=1121767971198398';
+                    url = '//twitter.com/intent/tweet?text=Tamil%20MP3&amp;url=' + encodeURIComponent('demox.imrokraft.com/tamilmp3/' + $route.current.templateUrl);
                 } else if (type == "googleplus") {
-                    url = '//plus.google.com/share?url=' + encodeURIComponent($route.current.templateUrl) + '&app_id=1121767971198398';
+                    url = '//plus.google.com/share?url=' + encodeURIComponent('demox.imrokraft.com/tamilmp3/' + $route.current.templateUrl);
                 } else {
                     return false;
                 }

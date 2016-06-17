@@ -1,3 +1,8 @@
+<!--<meta property="og:url"                content="demox.imrokraft.com/tamilmp3" />-->
+<meta property="og:title"              content="Album" />
+<meta property="og:image"              content="http://www.demox.imrokraft.com/tamilmp3/images/ogimage.jpg" />
+<meta property="og:type"               content="article" />
+<meta property="og:description"        content="A nice album" />
 <style>
     div.jp-details {
         display: block !important;
