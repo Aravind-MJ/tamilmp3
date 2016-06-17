@@ -2,7 +2,6 @@
 
 $param = json_decode(file_get_contents("php://input"));
 $searchTerm = $param->search;
-//$searchTerm = 'a';
 $root = '..\FileSystem';
 //$searchTerm = "A";
 
@@ -31,7 +30,8 @@ foreach ($iter as $path => $dir) {
                 $ai = 0;
             }
             $result[0][$pathsplit[$max - 2]]->in = $pathsplit[$max - 2];
-            $highlighted = str_ireplace($searchTerm, "<span class='highlight'>" . $searchTerm . "</span>", $pathsplit[$max - 1]);
+//            $highlighted = str_ireplace($searchTerm, "<span class='highlight'>" . $searchTerm . "</span>", $pathsplit[$max - 1]);
+            $highlighted = preg_replace('#' . preg_quote($searchTerm) . '#i', "<span class='highlight'>\\0</span>", $pathsplit[$max - 1]);
             $result[0][$pathsplit[$max - 2]]->albums[$ai] = new stdClass();
             $result[0][$pathsplit[$max - 2]]->albums[$ai]->name = $pathsplit[$max - 1];
             $result[0][$pathsplit[$max - 2]]->albums[$ai]->show = $highlighted;
@@ -54,7 +54,8 @@ foreach ($iter as $path => $dir) {
                     $result[1][$pathsplit[$max - 3]]->albums[$pathsplit[$max - 2]]->name = $pathsplit[$max - 2];
                     $result[1][$pathsplit[$max - 3]]->albums[$pathsplit[$max - 2]]->songs = array();
                 }
-                $highlighted = str_ireplace($searchTerm, "<span class='highlight'>" . $searchTerm . "</span>", $pathsplit[$max - 1]);
+//                $highlighted = str_ireplace($searchTerm, "<span class='highlight'>" . $searchTerm . "</span>", $pathsplit[$max - 1]);
+                $highlighted = preg_replace('#' . preg_quote($searchTerm) . '#i', "<span class='highlight'>\\0</span>", $pathsplit[$max - 1]);
                 $result[1][$pathsplit[$max - 3]]->albums[$pathsplit[$max - 2]]->songs[] = $highlighted;
             }
         }

@@ -142,7 +142,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb'])
                         e.stopImmediatePropagation();
                     });
 
-                    $('.searchText').tooltip({items: '.searchText', content: 'Search Term Required'});
+                    $('.searchText').tooltip({items: '.searchText', content: '<center>Search Term Required.<br> Only Alphabets and Numbers allowed</center>'});
                     $('.searchText').tooltip('open');
 
                     $(document).mouseup(function () {
