@@ -56,7 +56,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb'])
                 appId: '1121767971198398'                                               //Facebook App Id
             });
         })
-        .config(function ($routeProvider, $locationProvider) {                         //Following are the Routing Condition to Different Templates
+        .config(function ($routeProvider, $locationProvider) {          //Following are the Routing Condition to Different Templates
             $routeProvider
                     .when("/", {//Index Page
                         templateUrl: 'template/initial.php',
@@ -106,7 +106,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb'])
 
             $locationProvider.html5Mode(true);
         })
-        .controller('main', function ($scope, $location, $http, $window) {                     //Main Controller (mainly used For Caching)
+        .controller('main', function ($scope, $location, $http, $window, $route) {                     //Main Controller (mainly used For Caching)
             $scope.banner = {};
             $scope.breadcrumbs = {};
             $scope.breadcrumbs.path = '';
@@ -114,21 +114,14 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb'])
             $scope.searchTerm.text = '';
             $scope.banner.visibility = true;
 
-            $scope.OgTags = {};
-            $scope.OgTags.url = 'demox.imrokraft.com/tamilmp3';
-            $scope.OgTags.type = 'website';
-            $scope.OgTags.title = 'One Stop for all your Songs';
-            $scope.OgTags.description = 'Find your songs right here';
-            $scope.OgTags.image = 'https://www.demox.imrokraft.com/tamilmp3/images/friends-tamil-mp3-banner2.jpg';
-
             $scope.socialShare = function (type) {
                 var url = '';
                 if (type == "facebook") {
-                    url = '//www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent($scope.OgTags.url);
-                } else if(type == "twitter"){
-                    url = '//twitter.com/intent/tweet?text=Tamil%20MP3&amp;url=' + encodeURIComponent($scope.OgTags.url);
-                } else if (type == "googleplus"){
-                    url = '//plus.google.com/share?url=' + encodeURIComponent($scope.OgTags.url);
+                    url = '//www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent($route.current.templateUrl) + '&app_id=1121767971198398';
+                } else if (type == "twitter") {
+                    url = '//twitter.com/intent/tweet?text=Tamil%20MP3&amp;url=' + encodeURIComponent($route.current.templateUrl) + '&app_id=1121767971198398';
+                } else if (type == "googleplus") {
+                    url = '//plus.google.com/share?url=' + encodeURIComponent($route.current.templateUrl) + '&app_id=1121767971198398';
                 } else {
                     return false;
                 }
@@ -494,9 +487,9 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb'])
                 }
                 return listlocation;
             };
-            $scope.currentAlpha = function(char){
+            $scope.currentAlpha = function (char) {
                 var term = $routeParams.alpha;
-                if(term == char){
+                if (term == char) {
                     return true;
                 }
                 return false;

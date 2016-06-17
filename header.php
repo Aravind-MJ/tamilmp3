@@ -3,12 +3,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:url"                content="{{ OgTags.url }}" />
-    <meta property="og:type"               content="{{ OgTags.type }}" />
-    <meta property="og:title"              content="{{ OgTags.title }}" />
-    <meta property="og:description"        content="{{ OgTags.description }}" />
-    <meta property="og:image"              content="{{ OgTags.image }}" />
-    <title><?php echo $autoload->getTitle(); ?></title>
+    
+    <!--<meta property="og:url"                content="demox.imrokraft.com/tamilmp3" />-->
+    <meta property="og:title"              content="Friends Tamil MP3" />
+    <meta property="og:image"              content="http://www.demox.imrokraft.com/tamilmp3/images/friends-tamil-mp3-banner3.jpg" />
+    <meta property="og:type"               content="website" />
+    <meta property="og:description"        content="Tamil Music Search Ends Here" />
+    
+    <title>Friends Tamil Mp3</title>
 
     <!-- ~~~=| Fonts files |==-->
     <link href='http://fonts.googleapis.com/css?family=Lato:400,300,700,900,700italic,400italic,300italic,100' rel='stylesheet' type='text/css'>

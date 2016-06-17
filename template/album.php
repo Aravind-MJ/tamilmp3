@@ -182,7 +182,7 @@
     </div>
 </form>
 <center>
-    <div class="fb-comments" data-href="{{ $route.current.templateUrl}}" data-numposts="5" data-colorscheme="light"></div>
+    <div class="fb-comments" data-href="{{ $route.current.templateUrl }}" data-numposts="5" data-colorscheme="light"></div>
 </center>
 <div id="alertModal" class="modal fade ngHide" role="dialog">
     <div class="modal-dialog">

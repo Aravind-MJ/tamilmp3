@@ -24,6 +24,7 @@
         'theme-js' => $root . 'js/main.js',
         'angular-js' => 'http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js',
         'angular-js-route' => 'http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js',
+        'ngMeta' => $root . 'js/ngmeta.min.js',
         'jquery-ui-js' => 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js',
         'script' => $root . 'scripts/injection.js',
         'jplayer' => $root . 'plugin/jplayer/dist/jplayer/jquery.jplayer.min.js',
