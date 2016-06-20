@@ -608,15 +608,15 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb'])
                 if($route.current.templateUrl!="album.php"){
                     path = $route.current.templateUrl;
                 } else {
-                    
+                    path = "template/initial.php";
                 }
                 if (type == "facebook") {
                     url = '//www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent('demox.imrokraft.com/tamilmp3/' + path + '?url=' + $location.absUrl() + '&img=' + $filter('removeSpaces')($scope.place) + '_' + $filter('removeSpaces')($scope.name) + '.jpg&title=' + $scope.name );
                     console.log(url);
                 } else if (type == "twitter") {
-                    url = '//twitter.com/intent/tweet?text=Tamil%20MP3&amp;url=' + encodeURIComponent('demox.imrokraft.com/tamilmp3/' + path + '?url=1');
+                    url = '//twitter.com/intent/tweet?text=Tamil%20MP3&amp;url=' + $location.absUrl();
                 } else if (type == "googleplus") {
-                    url = '//plus.google.com/share?url=' + encodeURIComponent('demox.imrokraft.com/tamilmp3/' + path + '?url=1');
+                    url = '//plus.google.com/share?url=' + $location.absUrl();
                 } else {
                     return false;
                 }
