@@ -1,8 +1,20 @@
-<!--<meta property="og:url"                content="demox.imrokraft.com/tamilmp3" />-->
-<meta property="og:title"              content="Album" />
-<meta property="og:image"              content="http://www.demox.imrokraft.com/tamilmp3/images/ogimage.jpg" />
-<meta property="og:type"               content="article" />
-<meta property="og:description"        content="A nice album" />
+<?php
+if (isset($_GET['url'])) {
+    $url = $_GET['url'];
+    $img = $_GET['img'];
+    $title = $_GET['title'];
+    ?>
+    <meta property="fb:app_id"             content="1121767714531757" /> 
+    <meta property="og:url"                content="http://demox.imrokraft.com<?= $_SERVER['REQUEST_URI'] ?>" />
+    <meta property="og:title"              content="<?= $title ?>" />
+    <meta property="og:image"              content="http://www.demox.imrokraft.com/tamilmp3/fbshares/<?= $img ?>" />
+    <meta property="og:type"               content="article" />
+    <meta property="og:description"        content="A nice album" />
+    <?php
+    echo '<script> window.location.href="' . $url . '"; </script>';
+    die();
+}
+?>
 <style>
     div.jp-details {
         display: block !important;
@@ -187,7 +199,7 @@
     </div>
 </form>
 <center>
-    <div class="fb-comments" data-href="{{ $route.current.templateUrl }}" data-numposts="5" data-colorscheme="light"></div>
+    <div class="fb-comments" data-href="{{ $route.current.templateUrl}}" data-numposts="5" data-colorscheme="light"></div>
 </center>
 <div id="alertModal" class="modal fade ngHide" role="dialog">
     <div class="modal-dialog">

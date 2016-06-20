@@ -114,21 +114,6 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb'])
             $scope.searchTerm.text = '';
             $scope.banner.visibility = true;
 
-            $scope.socialShare = function (type) {
-                var url = '';
-                if (type == "facebook") {
-                    url = '//www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent('demox.imrokraft.com/tamilmp3/' + $route.current.templateUrl);
-                    console.log(url);
-                } else if (type == "twitter") {
-                    url = '//twitter.com/intent/tweet?text=Tamil%20MP3&amp;url=' + encodeURIComponent('demox.imrokraft.com/tamilmp3/' + $route.current.templateUrl);
-                } else if (type == "googleplus") {
-                    url = '//plus.google.com/share?url=' + encodeURIComponent('demox.imrokraft.com/tamilmp3/' + $route.current.templateUrl);
-                } else {
-                    return false;
-                }
-                window.open(url, '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
-            };
-
             $scope.albumSearch = function () {
                 if ($scope.searchTerm.text == '' || $scope.searchTerm.text == undefined) {
 
@@ -537,7 +522,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb'])
                         $scope.list3 = response.data[2];
                     });
         })
-        .controller('albumCtrl', function ($scope, $routeParams, $http, $filter, $sce) {
+        .controller('albumCtrl', function ($scope, $routeParams, $http, $filter, $sce, $route, $location) {
             $scope.banner.visibility = false;
             $scope.selected = [];
             $scope.name = $routeParams.name;
@@ -614,7 +599,29 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb'])
             } else {
                 namec = $filter('removeSpaces')(place);
                 track = $sce.trustAsHtml("> <a href='" + namec + "'>" + place + "</a> >");
-            }
+            }         
+            
+
+            $scope.socialShare = function (type) {
+                var url = '';
+                var path = '';
+                if($route.current.templateUrl!="album.php"){
+                    path = $route.current.templateUrl;
+                } else {
+                    
+                }
+                if (type == "facebook") {
+                    url = '//www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent('demox.imrokraft.com/tamilmp3/' + path + '?url=' + $location.absUrl() + '&img=' + $filter('removeSpaces')($scope.place) + '_' + $filter('removeSpaces')($scope.name) + '.jpg&title=' + $scope.name );
+                    console.log(url);
+                } else if (type == "twitter") {
+                    url = '//twitter.com/intent/tweet?text=Tamil%20MP3&amp;url=' + encodeURIComponent('demox.imrokraft.com/tamilmp3/' + path + '?url=1');
+                } else if (type == "googleplus") {
+                    url = '//plus.google.com/share?url=' + encodeURIComponent('demox.imrokraft.com/tamilmp3/' + path + '?url=1');
+                } else {
+                    return false;
+                }
+                window.open(url, '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
+            };
 
             $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> " + track + " " + name);
             $scope.place = place;
