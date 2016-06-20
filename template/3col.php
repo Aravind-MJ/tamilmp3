@@ -37,7 +37,7 @@
             <ul class = "lineup">
                 <li ng-repeat = "name in list3 track by $index">
                     <div class = "lineup-artist">
-                        <a href = "Album/{{ listlocation }}/{{name.name}}" ng-if="redirect(listlocation)"> {{ name.name}}
+                        <a href = "Album/{{ listlocation }}/{{name.name}}" ng-if="listlocation!='DevotionalCollections'"> {{ name.name}}
                         </a>
                         <a href = "{{name.name | removeSpaces }}" ng-if="listlocation=='DevotionalCollections'"> {{ name.name}}
                         </a>
