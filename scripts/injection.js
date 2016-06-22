@@ -611,7 +611,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb'])
                     path = "template/initial.php";
                 }
                 if (type == "facebook") {
-                    url = '//www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent('demox.imrokraft.com/tamilmp3/' + path + '?url=' + $location.absUrl() + '&img=' + $filter('removeSpaces')($scope.place) + '_' + $filter('removeSpaces')($scope.name) + '.jpg&title=' + $scope.name );
+                    url = '//www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent('demox.imrokraft.com/tamilmp3/' + path + '?url=') + $location.absUrl() + encodeURIComponent('&img=' + $filter('removeSpaces')($scope.place) + '_' + $filter('removeSpaces')($scope.name) + '.jpg&title=' + $scope.name );
                     console.log(url);
                 } else if (type == "twitter") {
                     url = '//twitter.com/intent/tweet?text=Tamil%20MP3&amp;url=' + $location.absUrl();

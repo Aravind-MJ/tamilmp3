@@ -8,6 +8,8 @@ if (isset($_GET['url'])) {
     <meta property="og:url"                content="http://demox.imrokraft.com<?= $_SERVER['REQUEST_URI'] ?>" />
     <meta property="og:title"              content="<?= $title ?>" />
     <meta property="og:image"              content="http://www.demox.imrokraft.com/tamilmp3/fbshares/<?= $img ?>" />
+    <meta property="og:image:width"        content="1334" />
+    <meta property="og:image:height"        content="750" />
     <meta property="og:type"               content="article" />
     <meta property="og:description"        content="A nice album" />
     <?php
@@ -162,9 +164,9 @@ if (isset($_GET['url'])) {
         <div class="col-md-11 col-xs-11 col-sm-11 selec-m" ng-show="!list.song">No Songs</div>
     </div>
     <div class="song-item row" ng-repeat="x in list.song">
-        <div class="col-lg-1 col-md-1 col-xs-1 col-sm-1"><input type="checkbox" class="styled" ng-model="x.selected" value="{{ x.downpath}}" ng-checked="x.selected" name="files[]"/>
+        <div class="col-lg-1 col-md-1 col-xs-12 col-sm-12"><input type="checkbox" class="styled" ng-model="x.selected" value="{{ x.downpath}}" ng-checked="x.selected" name="files[]"/>
         </div>
-        <div class="col-lg-10 col-md-10 col-xs-10 col-sm-10">
+        <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
             <div id="main" class="release main-left main-medium">
                 <!-- Article -->
                 <article>
@@ -191,11 +193,10 @@ if (isset($_GET['url'])) {
                             </div>
                         </li>
                     </ol>
-                </article>
-
+                </article>                
             </div>
         </div>
-        <div class="fb-like col-lg-1 col-md-1 col-xs-1 col-sm-1" data-href="{{ $route.current.templateUrl + '/' + x.name}}" data-layout="box_count" data-action="like" data-show-faces="true" data-share="false"></div>
+        <div class="fb-like col-lg-1 col-md-1 col-sm-12 col-xs-12" data-href="{{ $route.current.templateUrl + '/' + x.name}}" data-layout="box_count" data-action="like" data-show-faces="true" data-share="false"></div>
     </div>
 </form>
 <center>

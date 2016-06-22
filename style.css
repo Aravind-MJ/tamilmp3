@@ -2588,9 +2588,8 @@ input[type="submit"]:hover i, button:hover i, .btn:hover i { color: #fff; }
 }
 
 
-input[type="checkbox"] {
-    margin: 22px 0 0 !important;
-    margin-top: 1px \9;
+input[type="checkbox"]:not(.styled) {
+    margin-top: 22px !important;
     line-height: normal;
     float: right !important;
 
@@ -3070,4 +3069,8 @@ a.disabled {
     padding: 0px;
 }
 
+.styled{
+    float: left !important;
+    margin-bottom: 2px;
+}
 /* END of Style*/
