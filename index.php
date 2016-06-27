@@ -29,7 +29,8 @@
         'script' => $root . 'scripts/injection.js',
         'jplayer' => $root . 'plugin/jplayer/dist/jplayer/jquery.jplayer.min.js',
         'jplayer-playlist' => $root . 'plugin/jplayer/dist/add-on/jplayer.playlist.min.js',
-        'FBSdk' => 'http://pc035860.github.io/angular-easyfb/angular-easyfb.min.js'
+        'FBSdk' => 'http://pc035860.github.io/angular-easyfb/angular-easyfb.min.js',
+        'Cookies' => 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-cookies.min.js'
     );
 
     include_once 'autoload.php';

@@ -1,4 +1,4 @@
-var app = angular.module('tamilMp3', ['ngRoute', 'ezfb'])
+var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies'])
         .directive('loading', ['$http', function ($http)            //Directive defined to show Loading Screen on Ajax Call
             {
                 return {
@@ -522,7 +522,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb'])
                         $scope.list3 = response.data[2];
                     });
         })
-        .controller('albumCtrl', function ($scope, $routeParams, $http, $filter, $sce, $route, $location) {
+        .controller('albumCtrl', function ($scope, $routeParams, $http, $filter, $sce, $route, $location, $cookies) {
             $scope.banner.visibility = false;
             $scope.selected = [];
             $scope.name = $routeParams.name;
@@ -599,19 +599,19 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb'])
             } else {
                 namec = $filter('removeSpaces')(place);
                 track = $sce.trustAsHtml("> <a href='" + namec + "'>" + place + "</a> >");
-            }         
-            
+            }
+
 
             $scope.socialShare = function (type) {
                 var url = '';
                 var path = '';
-                if($route.current.templateUrl!="album.php"){
+                if ($route.current.templateUrl != "album.php") {
                     path = $route.current.templateUrl;
                 } else {
                     path = "template/initial.php";
                 }
                 if (type == "facebook") {
-                    url = '//www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent('demox.imrokraft.com/tamilmp3/' + path + '?url=') + $location.absUrl() + encodeURIComponent('&img=' + $filter('removeSpaces')($scope.place) + '_' + $filter('removeSpaces')($scope.name) + '.jpg&title=' + $scope.name );
+                    url = '//www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent('demox.imrokraft.com/tamilmp3/' + path + '?url=') + $location.absUrl() + encodeURIComponent('&img=' + $filter('removeSpaces')($scope.place) + '_' + $filter('removeSpaces')($scope.name) + '.jpg&title=' + $scope.name);
                     console.log(url);
                 } else if (type == "twitter") {
                     url = '//twitter.com/intent/tweet?text=Tamil%20MP3&amp;url=' + $location.absUrl();
@@ -670,47 +670,70 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb'])
                 $scope.moviedetails = response.data.moviedetails;
                 var sngCnt = 0;
 
-                $.each(response.data.song, function (index, val) {
-                    if (sngCnt == 0) {
-                        myPlaylist.add({title: val.name, mp3: val.downpath});
-                        dummy_list_arr.push(val.name);
-                    }
-
-                    sngCnt++
-                })
+//                $.each(response.data.song, function (index, val) {
+//                    if (sngCnt == 0) {
+//                        myPlaylist.add({title: val.name, mp3: val.downpath});
+//                        myPlaylist.remove(0);
+//                    }
+//
+//                    sngCnt++
+//                })
 
             });
 
             var playlisted_arr = [];
+//            $cookies.remove('global_playlist');
+//            $cookies.remove('dummy_list_arr');
+            var global_playlist = angular.fromJson($cookies.get('global_playlist'));
+            dummy_list_arr = angular.fromJson($cookies.get('dummy_list_arr'));
+            if (global_playlist == undefined) {
+                global_playlist = [];
+//                console.log("Works");
+            } else {
+                myPlaylist.setPlaylist(global_playlist);
+            }
+            if (dummy_list_arr == undefined) {
+                dummy_list_arr = [];
+//                console.log("Works");
+            }
+//            console.log(global_playlist);
+
             $scope.playSong = function (path, songname, index, action) {
                 $scope.playershow = false;
-
                 if (action == 'play') {
                     //song_list_arr = [];
                     //myPlaylist = player(song_list_arr);
                     console.log(songname);
                     if ($.inArray(songname, dummy_list_arr) !== -1) {
-                        console.log('in the playlist');
+                        //console.log('in the playlist');
                         var indexi = dummy_list_arr.indexOf(songname);
                     } else {
-                        if ($.inArray(songname, playlisted_arr) == -1) {
-                            console.log('added and play');
-                            dummy_list_arr.push(songname);
-                            //myPlaylist.add({title: songname, mp3: path});
-                            var indexi = dummy_list_arr.indexOf(songname);
+                        //if ($.inArray(songname, playlisted_arr) == -1) {
+                        //console.log('added and play');
+                        dummy_list_arr.push(songname);
+                        global_playlist.push({title: songname, mp3: path});
+//                            console.log(global_playlist);
+                        myPlaylist.add({title: songname, mp3: path});
+                        var indexi = dummy_list_arr.indexOf(songname);
 
-                        }
+                        //}
                     }
                     myPlaylist.play(indexi);
+
 
                 } else {
 
                     if ($.inArray(songname, dummy_list_arr) == -1) {
                         myPlaylist.add({title: songname, mp3: path});
+                        global_playlist.push({title: songname, mp3: path});
                         dummy_list_arr.push(songname);
                         playlisted_arr.push(songname);
                     }
                 }
+                global_playlist_json = angular.toJson(global_playlist);
+                dummy_list_arr_json = angular.toJson(dummy_list_arr);
+                $cookies.put('global_playlist', global_playlist_json);
+                $cookies.put('dummy_list_arr', dummy_list_arr_json);
 
             }
 
@@ -738,6 +761,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb'])
                         if ($.inArray(songselected.name, dummy_list_arr) == -1) {
                             myPlaylist.add({title: songselected.name, mp3: songselected.downpath});
                             dummy_list_arr.push(songselected.name);
+                            global_playlist.push({title: songselected.name, mp3: songselected.downpath});
                         }
 
 
@@ -750,12 +774,17 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb'])
                             myPlaylist.option("removeTime", 0);
                             myPlaylist.remove(indexi);
                             dummy_list_arr.splice(indexi, 1);
+                            global_playlist.splice(indexi, 1);
                             console.log(dummy_list_arr);
                         }
                     }
                     v++;
                 });
                 myPlaylist.play(0);
+                global_playlist_json = angular.toJson(global_playlist);
+                dummy_list_arr_json = angular.toJson(dummy_list_arr);
+                $cookies.put('global_playlist', global_playlist_json);
+                $cookies.put('dummy_list_arr', dummy_list_arr_json);
 
             }
 
@@ -768,6 +797,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb'])
                         if ($.inArray(songselected.name, dummy_list_arr) == -1) {
                             myPlaylist.add({title: songselected.name, mp3: songselected.downpath});
                             dummy_list_arr.push(songselected.name);
+                            global_playlist.push({title: songselected.name, mp3: songselected.downpath});
                         }
                     } /*else {
                      
@@ -780,7 +810,11 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb'])
                      }
                      }*/
 
-                })
+                });
+                global_playlist_json = angular.toJson(global_playlist);
+                dummy_list_arr_json = angular.toJson(dummy_list_arr);
+                $cookies.put('global_playlist', global_playlist_json);
+                $cookies.put('dummy_list_arr', dummy_list_arr_json);
 
 
             }
@@ -806,8 +840,13 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb'])
                     var index = dummy_list_arr.indexOf(mp3name);
 
                     dummy_list_arr.splice(index, 1);
+                    global_playlist.splice(index, 1);
                     myPlaylist.remove(index);
                 }
+                global_playlist_json = angular.toJson(global_playlist);
+                dummy_list_arr_json = angular.toJson(dummy_list_arr);
+                $cookies.put('global_playlist', global_playlist_json);
+                $cookies.put('dummy_list_arr', dummy_list_arr_json);
 
             });
         })
