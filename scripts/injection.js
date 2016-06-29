@@ -653,6 +653,10 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies'])
 
             var playlist = [];
             var dummy_list_arr = new Array();
+//            $cookies.remove('global_playlist');
+//            $cookies.remove('dummy_list_arr');
+            var global_playlist = angular.fromJson($cookies.get('global_playlist'));
+            dummy_list_arr = angular.fromJson($cookies.get('dummy_list_arr'));
 
             var cssSelector = {jPlayer: "#jquery_jplayer_1", cssSelectorAncestor: "#jp_container_1"};
             var options = {swfPath: "/plugin/jplayer/dist/jplayer", playlistOptions: {
@@ -670,22 +674,21 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies'])
                 $scope.moviedetails = response.data.moviedetails;
                 var sngCnt = 0;
 
-//                $.each(response.data.song, function (index, val) {
-//                    if (sngCnt == 0) {
-//                        myPlaylist.add({title: val.name, mp3: val.downpath});
-//                        myPlaylist.remove(0);
-//                    }
-//
-//                    sngCnt++
-//                })
+                if (global_playlist == undefined) {
+                    $.each(response.data.song, function (index, val) {
+                        if (sngCnt == 0) {
+                            myPlaylist.add({title: val.name, mp3: val.downpath});
+                            dummy_list_arr.push(val.name);
+                            global_playlist.push({title: val.name, mp3: val.downpath});
+                        }
+
+                        sngCnt++
+                    });
+                }
 
             });
 
             var playlisted_arr = [];
-//            $cookies.remove('global_playlist');
-//            $cookies.remove('dummy_list_arr');
-            var global_playlist = angular.fromJson($cookies.get('global_playlist'));
-            dummy_list_arr = angular.fromJson($cookies.get('dummy_list_arr'));
             if (global_playlist == undefined) {
                 global_playlist = [];
 //                console.log("Works");
