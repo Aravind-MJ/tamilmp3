@@ -1,3 +1,19 @@
+<style>
+    table{
+        width: 100%;
+    }
+    tr{
+        width: 100%;
+        border-bottom: 1px solid #aaa;
+    }
+    td{
+        width: 50%;
+        padding: 10px;
+    }
+    td:last-child{
+        text-align: center;
+    }
+</style>
 <div class="row">
     <div class="m-t-f-p m-b-f-p-l">
 
@@ -33,7 +49,7 @@
                                             </div>
                                         </div>-->
 
-                    <table class="table table-striped album_table" ng-repeat = "dir in result track by $index" ng-show="check($index, 'album')">
+                    <table ng-repeat = "dir in result track by $index" ng-show="check($index, 'album')">
                         <tr ng-repeat="album in dir.albums track by $index">
                             <td class="black_it">
                                 <a href = "Album/{{ dir.in | removeSpaces }}/{{ album.name}}" ng-if="dir.in != 'Devotional Collections'"><span ng-bind-html="album.show | trust"></span></a>
@@ -74,7 +90,7 @@
                         </div>-->
 
                     <div ng-repeat = "category in songs track by $index" ng-show="check($index, 'song')">
-                        <table class="table table-striped album_table" ng-repeat = "album in category.albums track by $index">
+                        <table ng-repeat = "album in category.albums track by $index">
                             <tr ng-repeat = "song in album.songs track by $index">
                                 <td class="black_it">
                                     <a class="album_name" href = "Album/{{ category.name | removeSpaces }}/{{ album.name}}">
@@ -110,5 +126,6 @@
                     $("html, body").animate({scrollTop: $('#a-zlist-affix').offset().top}, "slow");
                     return false;
                 });
+                
     </script>
 </div>
