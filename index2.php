@@ -8,6 +8,8 @@
 <html lang="en">
     <!--<![endif]-->
     <?php
+    
+    
     $css_inc = array(
         'font-awsome' => 'http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css',
         'bootstrap-css' => 'css/bootstrap.css',

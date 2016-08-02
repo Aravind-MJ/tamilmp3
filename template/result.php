@@ -5,7 +5,7 @@
     .res-tr{
         float:left;
         width: 100%;
-        border-bottom: 1px solid #aaa;
+        border-bottom: 1px solid #eee;
         color:#111;
     }
     .res-td{
