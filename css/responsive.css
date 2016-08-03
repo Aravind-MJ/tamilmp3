@@ -295,6 +295,9 @@ padding-left:0px;
 {
 padding-left:0px;
 }
+.fb_iframe_widget{
+padding-left:60px;
+}
 .track-buttons {
     margin-right:0px;
     margin-left:0px;
@@ -311,6 +314,9 @@ padding-left:0px;
 {
     padding-top:20px;
 	width:300px;
+}
+.fb_iframe_widget{
+padding-left:80px;
 }
 .l_n
 {
@@ -706,6 +712,9 @@ padding:5px;
 @media only screen and (min-width: 480px) and (max-width: 767px) {
 .container {
 	width:450px;
+}
+.fb_iframe_widget{
+padding-left:60px;
 }
 #carousel-example-generic1 p {
   font-size: 11px;
