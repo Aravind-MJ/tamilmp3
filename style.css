@@ -2542,7 +2542,7 @@ input[type="submit"]:hover i, button:hover i, .btn:hover i { color: #fff; }
     margin-right: 15px;
     margin-left: 15px;
     margin-top: 6px;
-    float: left;
+    float:left;
 }
 .track-buttons i {
     margin:0 6px;
@@ -2557,13 +2557,6 @@ input[type="submit"]:hover i, button:hover i, .btn:hover i { color: #fff; }
     float: right;
 
 }
-
-
-
-
-
-
-
 
 
 .checkbox, .radio {
@@ -2593,7 +2586,8 @@ input[type="submit"]:hover i, button:hover i, .btn:hover i { color: #fff; }
 input[type="checkbox"]:not(.styled) {
     margin-top: 22px !important;
     line-height: normal;
-    float: right !important;
+    float: left !important;
+	 margin-left: 10px 
 
 }
 
