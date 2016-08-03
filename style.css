@@ -2441,6 +2441,8 @@ input[type="submit"]:hover i, button:hover i, .btn:hover i { color: #fff; }
 .song-item{
     width: 100%;
     padding: 10px;
+    display:block;
+    float:left;
 }
 
 .song-item article{
