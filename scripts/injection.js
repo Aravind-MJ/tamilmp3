@@ -880,6 +880,19 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies'])
                         $scope.list1 = response.data[0];
                         $scope.list2 = response.data[1];
                     });
+                    
+                    
+                $http.get('ajax/top_collections.php')
+                        .then(function (response) {
+                            $scope.listtc = response.data;
+//                        console.log($scope.listmovie);
+                        });
+
+                $http.get('ajax/popular_downloads.php')
+                        .then(function (response) {
+                            $scope.listpd = response.data;
+//                        console.log($scope.listmovie);
+                        });
 
         })
         .controller('movieCtrl', function ($scope, $routeParams, $http, $sce) {                  //Controller for Star movies n Music director movies
