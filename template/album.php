@@ -97,9 +97,9 @@ if (isset($_GET['url'])) {
                                 </div>
 
                             </div>
-<!--                            <div class="jp-details">
-                                <div class="jp-title"  aria-label="title">&nbsp;</div>
-                            </div>-->
+                            <!--                            <div class="jp-details">
+                                                            <div class="jp-title"  aria-label="title">&nbsp;</div>
+                                                        </div>-->
                             <div class="scrollList">
                                 <div class="jp-playlist">
                                     <ul>
@@ -221,11 +221,20 @@ if (isset($_GET['url'])) {
 <script>
 
             $("#downZip").click(function () {
-                if ($("#zipForm input:checkbox:checked").length > 0) {
-                    $("#zipForm").submit();
-                } else {
-                    $('#alertModal').modal('show');
-                }
+                $.get('download.php', function (data, status) {
+                    if (data == 'INABLED') {
+                        if ($("#zipForm input:checkbox:checked").length > 0) {
+                            $("#zipForm").submit();
+                        } else {
+                            $('#alertModal .modal-body p').text('Please Choose atleast one Song for downloading...');
+                            $('#alertModal').modal();
+                        }
+                    } else {
+                        $('#alertModal .modal-body p').text('Sorry! Looks like the Download all Option is disabled by the Admin Right now... Try again later.');
+                        $('#alertModal').modal();
+                    }
+
+                });
 
             });
 </script>

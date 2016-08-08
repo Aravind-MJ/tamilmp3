@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST)) {
+if (isset($_POST['files'])) {
     $filesToSend = $_POST['files'];
 
     $path = explode('/', $filesToSend[0]);
@@ -128,5 +128,7 @@ if (isset($_POST)) {
         }
         fclose($tfile);
     }
+} else {
+    echo 'INABLED';
 }
 ?>
