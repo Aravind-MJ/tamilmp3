@@ -207,7 +207,8 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies'])
 
             });
 
-            $scope.check = function (index, type) {
+            //Pagination functions
+            /*$scope.check = function (index, type) {
                 if (type == 'album') {
                     var start = $scope.pagination.albumpage;
                     if (index >= start && index <= start + 2) {
@@ -279,7 +280,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies'])
                 } else if (type == 'song') {
                     return "Page " + Math.ceil($scope.pagination.songpage / 3 + 1) + " of " + Math.ceil($scope.pagination.songlimit / 3);
                 }
-            }
+            }*/
         })
         .controller('txtCtrl', function ($scope, $http, $location, $sce) {                  //Controller for New Releases
             $scope.banner.visibility = false;

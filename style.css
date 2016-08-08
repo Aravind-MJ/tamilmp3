@@ -3069,4 +3069,9 @@ a.disabled {
     float: left !important;
     margin-bottom: 2px;
 }
+
+.result-white{
+    background-color:#fff; 
+    margin-bottom: 10px;
+}
 /* END of Style*/
