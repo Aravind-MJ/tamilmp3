@@ -161,7 +161,7 @@ if (isset($_GET['url'])) {
     <div class="song-item" ng-repeat="x in list.song">
         <div class="col-lg-1 col-md-1 col-xs-1 col-sm-1"><input type="checkbox" class="styled" ng-model="x.selected" value="{{ x.downpath}}" ng-checked="x.selected" name="files[]"/>
         </div>
-        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+        <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
             <div id="main" class="release main-left main-medium">
                 <!-- Article -->
                 <article>
@@ -191,9 +191,9 @@ if (isset($_GET['url'])) {
                 </article>                
             </div>
         </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+        <!--div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
             <div class="fb-like col-lg-1 col-md-1 col-sm-12 col-xs-12" data-href="{{ $route.current.templateUrl + '/' + x.name}}" data-layout="box_count" data-action="like" data-show-faces="true" data-share="false"></div>
-        </div>
+        </div-->
     </div>
 </form>
 <!--<center>
