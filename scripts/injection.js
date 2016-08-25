@@ -12,6 +12,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies'])
                         elm.show();
                     } else {
                         elm.hide();
+                        scope.collapse();
                     }
                 });
             }
@@ -108,7 +109,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies'])
 
         $locationProvider.html5Mode(true);
     })
-    .controller('aboutus', function ($scope,$sce) {
+    .controller('aboutus', function ($scope, $sce) {
         $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> > About Us");
     })
     .controller('main', function ($scope, $location, $http, $window, $route, $interval) {                     //Main Controller (mainly used For Caching)
@@ -178,27 +179,22 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies'])
             });
 
 
-        $(document).ready(function(){
-            var collapse = function (){
-                if($('div.category-collapse').css('display') != 'none'){
+        $(document).ready(function () {
+            $scope.collapse = function () {
+                if ($('div.category-collapse').css('display') != 'none') {
                     $('#collapse').addClass('collapse');
+                    $('.ftm-title').hide();
                 } else {
                     $('#collapse').removeClass('collapse');
                     $('.ftm-title').show();
                 }
             }
 
-            $interval(function(){
-                if($('div.category-collapse').css('display') == 'none'){
-                    $('#collapse').removeClass('collapse');
-                    $('.ftm-title').show();
-                } else {
-                    $('.ftm-title').hide();
-                }
-             },1000);
+            $scope.collapse();
 
-            $('div.category-collapse').click(function(){
+            $('div.category-collapse').click(function () {
                 $('#collapse').toggleClass('collapse');
+                $('.ftm-title').hide();
             });
         });
     })
@@ -975,6 +971,18 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies'])
             .then(function (response) {
                 $scope.list1 = response.data[0];
                 $scope.list2 = response.data[1];
+            });
+
+        $http.get('ajax/top_collections.php')
+            .then(function (response) {
+                $scope.listtc = response.data;
+//                        console.log($scope.listmovie);
+            });
+
+        $http.get('ajax/popular_downloads.php')
+            .then(function (response) {
+                $scope.listpd = response.data;
+//                        console.log($scope.listmovie);
             });
 
     })

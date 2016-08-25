@@ -54,7 +54,8 @@
                         <div ng-repeat="album in dir.albums track by $index">
                             <a href = "Album/{{ dir.in | removeSpaces }}/{{ album.name}}" ng-if="dir.in !== 'Devotional Collections'" class="res-tr">
                                 <div class="res-td">
-                                    <span ng-bind-html="album.show | trust"></span>                         
+                                    <span ng-bind-html="album.show | trust"></span>
+                                    <span class="new" ng-show="checknew(album.name)">New</span>
                                 </div>
                                 <div class="res-td">
                                     <span ng-bind="dir.in"></span>
@@ -85,6 +86,7 @@
                                 <div ng-repeat = "song in album.songs track by $index" class="res-tr">
                                     <div class="res-td">
                                         <span ng-bind-html="song | trust"></span>
+                                        <span class="new" ng-show="checknew(album.name)">New</span>
                                     </div>
                                     <div class="res-td">
                                         <span ng-bind="category.name"></span> | <span ng-bind="album.name"></span> 
