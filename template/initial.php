@@ -17,7 +17,7 @@
             </div>
             <div class="single_comment_text">
                 <div class="sp_title">
-                    <a href="Album/A-ZMovieSongs/{{name.name}}"><h4 >{{ name.name}}</h4></a> <span class="new">New</span>
+                    <a href="Album/A-ZMovieSongs/{{name.name}}"><h4 >{{ name.name}}</h4></a> <span class="new" ng-show="checknew(name.name)">New</span>
                 </div>
                 <p>Starring : {{ name.star}}</p>
                 <p>Music : {{ name.music}}</p>

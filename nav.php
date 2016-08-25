@@ -87,7 +87,7 @@
                             </li>
                             <li class="nav_fashion"><a href="">FORUM</a></li>
                             <li class="nav_gadgets"><a href="">FM</a></li>
-                            <li class="nav_lifestyle"><a href="">ABOUT US</a></li>
+                            <li class="nav_lifestyle"><a href="aboutUs">ABOUT US</a></li>
                             <li class="nav_video"><a href="">COMMENTS</a></li>
 
                         </ul>
@@ -104,7 +104,7 @@
                             <div class="mobi-menu">
                                 <div id='cssmenu'>
                                     <ul>
-                                        <li> <a href='index.html'><span>HOME</span></a>
+                                        <li> <a href='/tamilmp3'><span>HOME</span></a>
 
                                         </li>
                                         <li> <a href='#'><span>CHAT</span></a>
@@ -114,7 +114,7 @@
 
                                         <li> <a href='#'><span>FM</span></a> </li>
 
-                                        <li> <a href='#'><span>ABOUT US</span></a> </li>
+                                        <li> <a href='/aboutUs'><span>ABOUT US</span></a> </li>
                                         <li> <a href='#'><span>COMMENTS</span></a> </li>
                                     </ul>
                                 </div>

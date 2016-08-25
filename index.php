@@ -139,7 +139,24 @@
 
         <?php include ('footer.php'); ?>
 
+        <script>
+            $(document).ready(function(){
+                function collapse(){
+                    if($('div.category-collapse').css('display') != 'none'){
+                        $('#collapse').addClass('collapse');
+                    } else {
+                        $('#collapse').removeClass('collapse');
+                    }
+                }
+                collapse();
+
+                $('div.category-collapse').click(function(){
+                    $('#collapse').toggleClass('collapse');
+                });
+            });
+        </script>
     </body>
+
 </html>
 
 
