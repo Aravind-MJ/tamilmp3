@@ -3548,6 +3548,10 @@ a.disabled {
 .left_menu_ms{
 font-size:18px;
 font-weight:600;
+padding:10px;
+background-color:#de4197;
+text-align:center;
+color:#fff;
 }
 span.new{
 padding:5px;
@@ -3559,18 +3563,26 @@ color:#fff;
     background-color: #fff;
     margin-bottom: 10px;
 }
+.social_fa{
+font-size:16px;
+color:#de4197;
+margin-right:9px;
+
+}
 .about_us{
 
 }
 .about_us h2{
 font-size:36px;
-color:# ;
+color:#de4197;
 text-align:center;
+margin:10px 0px 30px 0px;;
 }
 .about_us p{
 font-size:16px;
-color:#ababab ;
-text-align:left;
+color:#3f3f3f;
+text-align:justify;
+line-height:1.7;
 }
 
 

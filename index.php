@@ -146,12 +146,14 @@
                         $('#collapse').addClass('collapse');
                     } else {
                         $('#collapse').removeClass('collapse');
+						$('.ftm-title').show();
                     }
                 }
                 collapse();
 
                 $('div.category-collapse').click(function(){
                     $('#collapse').toggleClass('collapse');
+					$('.ftm-title').hide();
                 });
             });
         </script>
