@@ -10,11 +10,11 @@
     <div class="sp-comments-box" ng-repeat = "name in listmovie">
 
         <div class="single_comment">
-            <div class="single_comment_pic">
-                <a href="Album/A-ZMovieSongs/{{name.name}}"><img alt="Friends Tamil Mp3" ng-src="FileSystem/A-Z Movie Songs/{{ name.name}}/poster.jpg" ></a> </div>
+            <div class="single_comment_pic abc">
+                <a href="Album/A-ZMovieSongs/{{name.name}}"><img alt="Friends Tamil Mp3" ng-src="FileSystem/A-Z Movie Songs/{{ name.name}}/poster.jpg" ></a>  </div>
             <div class="single_comment_text">
                 <div class="sp_title">
-                    <a href="Album/A-ZMovieSongs/{{name.name}}"><h4 >{{ name.name}}</h4></a>
+                    <a href="Album/A-ZMovieSongs/{{name.name}}"><h4 >{{ name.name}}</h4></a> <span class="new">New</span>
                 </div>
                 <p>Starring : {{ name.star}}</p>
                 <p>Music : {{ name.music}}</p>

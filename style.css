@@ -3069,7 +3069,21 @@ a.disabled {
     float: left !important;
     margin-bottom: 2px;
 }
+.left_menu_ms{
+font-size:18px;
+font-weight:600;
+}
+span.new{
+padding:5px;
+background:green;
+font-size:10px;
+color:#fff;
+}
 
+
+.abc a:hover{
+background-image:url(images/new-icon.gif);
+}
 .result-white{
     background-color:#fff; 
     margin-bottom: 10px;

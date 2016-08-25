@@ -1,9 +1,11 @@
 <div class="">
     <div class="home_sidebar">
         <div class="follow_us_side">
+		
+		
             <div class="ftm-title">
-                <h2>CATEGORIES</h2>
-            </div>						
+             <a data-toggle="collapse" class="left_menu_ms" href="#collapse1">   <h2>CATEGORIES</h2></a>
+            </div>	 <div id="collapse1" class="panel-collapse collapse">					
             <div class="all_news_right">
                 <div class="fs_news_right">
                     <div class="single_mega">
@@ -106,7 +108,34 @@
                 </div>
 
             </div>
+			 <div class="only-for-mobile">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <ul class="ofm">
+                                <li class="m_nav"><i class="fa fa-bars"></i> MENU </li>
+                            </ul>
 
+                            <!-- MOBILE MENU -->
+                            <div class="mobi-menu">
+                                <div id='cssmenu'>
+                                    <ul>
+                                        <li> <a href='index.html'><span>HOME</span></a>
+
+                                        </li>
+                                        <li> <a href='#'><span>CHAT</span></a>
+
+                                        </li>
+                                        <li> <a href='#'><span>FORUM</span></a> </li>
+
+                                        <li> <a href='#'><span>FM</span></a> </li>
+
+                                        <li> <a href='#'><span>ABOUT US</span></a> </li>
+                                        <li> <a href='#'><span>COMMENTS</span></a> </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+				</div>
         </div>
     </div>
 
