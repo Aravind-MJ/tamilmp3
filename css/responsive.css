@@ -289,8 +289,10 @@ overflow-y:auto;
 margin-top: 25px;
 width:230px;
 padding-left:0px;
-
-    }
+ }
+ .fb_iframe_widget {
+padding-left:60px !important;
+}
 .b_n
 {
 padding-left:0px;
@@ -315,8 +317,8 @@ padding-left:60px;
     padding-top:20px;
 	width:300px;
 }
-.fb_iframe_widget{
-padding-left:80px;
+.fb_iframe_widget {
+padding-left:80px !important;
 }
 .l_n
 {
@@ -729,6 +731,9 @@ padding-left:60px;
 
     font-size: 14px;
 	width:28%;
+}
+.fb_iframe_widget {
+padding-left:80px !important;
 }
 
 .paly-media
