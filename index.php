@@ -138,25 +138,6 @@
         </section>  
 
         <?php include ('footer.php'); ?>
-
-        <script>
-            $(document).ready(function(){
-                function collapse(){
-                    if($('div.category-collapse').css('display') != 'none'){
-                        $('#collapse').addClass('collapse');
-                    } else {
-                        $('#collapse').removeClass('collapse');
-						$('.ftm-title').show();
-                    }
-                }
-                collapse();
-
-                $('div.category-collapse').click(function(){
-                    $('#collapse').toggleClass('collapse');
-					$('.ftm-title').hide();
-                });
-            });
-        </script>
     </body>
 
 </html>

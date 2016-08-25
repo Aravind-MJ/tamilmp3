@@ -111,7 +111,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies'])
     .controller('aboutus', function ($scope,$sce) {
         $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> > About Us");
     })
-    .controller('main', function ($scope, $location, $http, $window, $route) {                     //Main Controller (mainly used For Caching)
+    .controller('main', function ($scope, $location, $http, $window, $route, $interval) {                     //Main Controller (mainly used For Caching)
         $scope.banner = {};
         $scope.breadcrumbs = {};
         $scope.breadcrumbs.path = '';
@@ -176,6 +176,31 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies'])
                 $scope.bannerlist = response.data[0];
                 $scope.newslist = response.data[1];
             });
+
+
+        $(document).ready(function(){
+            var collapse = function (){
+                if($('div.category-collapse').css('display') != 'none'){
+                    $('#collapse').addClass('collapse');
+                } else {
+                    $('#collapse').removeClass('collapse');
+                    $('.ftm-title').show();
+                }
+            }
+
+            $interval(function(){
+                if($('div.category-collapse').css('display') == 'none'){
+                    $('#collapse').removeClass('collapse');
+                    $('.ftm-title').show();
+                } else {
+                    $('.ftm-title').hide();
+                }
+             },1000);
+
+            $('div.category-collapse').click(function(){
+                $('#collapse').toggleClass('collapse');
+            });
+        });
     })
     .controller('mp3Ctrl', function ($scope, $http) {
         $scope.breadcrumbs.path = '';
