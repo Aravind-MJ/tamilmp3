@@ -17,6 +17,7 @@
                         </a>
                         <a href = "{{name.name | removeSpaces }}" ng-if="listlocation=='DevotionalCollections'"> {{ name.name}}
                         </a>
+                        <span class="new" ng-show="checknew(name.name)">New</span>
                     </div>
                 </li>
             </ul>
@@ -29,6 +30,7 @@
                         </a>
                         <a href = "{{ name.name | removeSpaces }}" ng-if="listlocation=='DevotionalCollections'"> {{ name.name}}
                         </a>
+                        <span class="new" ng-show="checknew(name.name)">New</span>
                     </div>
                 </li>
             </ul>
@@ -41,6 +43,7 @@
                         </a>
                         <a href = "{{name.name | removeSpaces }}" ng-if="listlocation=='DevotionalCollections'"> {{ name.name}}
                         </a>
+                        <span class="new" ng-show="checknew(name.name)">New</span>
                     </div>
                 </li>
             </ul>

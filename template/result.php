@@ -18,7 +18,22 @@
     }
     .res-tr:hover{
         background-color: #eee;
-        border-bottom: 1px solid #de4197;
+    }
+    .s_h a{
+        cursor: pointer;
+    }
+    .toTop{
+        position: fixed;
+        right: 5px;
+        bottom: 5px;
+        width: 50px;
+        height: 40px;
+        background-color: #000;
+        color: #fff;
+        font-size: 30px;
+        text-align: center;
+        border-radius: 5px;
+        cursor: pointer;
     }
 </style>
 <div class="row">
@@ -84,10 +99,11 @@
                     NO SONGS FOUND
                 </div>
             </div>
-        </div> 
+        </div>
+        <div class="toTop"><span class="fa fa-angle-up"></span></div>
     </div>
     <script>
-                $(".button").click(function () {
+                $(".toTop").click(function () {
                     $("html, body").animate({scrollTop: $('#a-zlist-affix').offset().top}, "slow");
                     return false;
                 });

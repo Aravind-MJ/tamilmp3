@@ -113,6 +113,13 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies'])
             $scope.searchTerm = {};
             $scope.searchTerm.text = '';
             $scope.banner.visibility = true;
+            $scope.newList = {};
+
+            $http.get('text_files/new.txt')
+                .then(function(response){
+                    var newList = response.data.split('\r\n');
+                    $scope.newList.list = newList;
+                });
 
             $scope.albumSearch = function () {
                 if ($scope.searchTerm.text == '' || $scope.searchTerm.text == undefined) {
@@ -132,6 +139,14 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies'])
                     $location.path('/Search/' + search);
                 }
             };
+
+            $scope.checknew = function(name){
+                if($scope.newList.list.indexOf(name)!==-1){
+                    return true;
+                } else {
+                    return false;
+                }
+            }
 
             $scope.checkEnter = function ($event) {
                 var keycode = $event.which || $event.keyCode;
@@ -640,7 +655,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies'])
                 ready: function (event) {
                     $(this).jPlayer("setMedia", {});
                 },
-                swfPath: "/plugin/jplayer/dist/jplayer",
+                swfPath: "/tamilmp3/plugin/jplayer/dist/jplayer",
                 supplied: "mp3",
                 wmode: "window",
                 preload: "auto",
@@ -660,7 +675,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies'])
             dummy_list_arr = angular.fromJson($cookies.get('dummy_list_arr'));
 
             var cssSelector = {jPlayer: "#jquery_jplayer_1", cssSelectorAncestor: "#jp_container_1"};
-            var options = {swfPath: "/plugin/jplayer/dist/jplayer", playlistOptions: {
+            var options = {swfPath: "/tamilmp3/plugin/jplayer/dist/jplayer", playlistOptions: {
                     enableRemoveControls: true
                 }, supplied: "mp3", smoothPlayBar: true, keyEnabled: true, audioFullScreen: true};
             var myPlaylist = new jPlayerPlaylist(cssSelector, playlist, options);

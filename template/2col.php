@@ -16,6 +16,7 @@
                     <a href = "Album/A-ZMovieSongs/{{name.name}}"> {{ name.name}}
                     </a>
                     <small>[{{ name.year}}]</small>
+                    <span class="new" ng-show="checknew(name.name)">New</span>
                 </div>
             </li>
         </ul>
@@ -27,6 +28,7 @@
                     <a href = "Album/A-ZMovieSongs/{{name.name}}"> {{ name.name}}
                     </a>
                     <small>[{{ name.year}}]</small>
+                    <span class="new" ng-show="checknew(name.name)">New</span>
                 </div>
             </li>
         </ul>

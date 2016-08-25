@@ -25,6 +25,7 @@
                 <div class = "lineup-artist">
                     <a href = "Album/{{ listlocation }}/{{name.name}}"> {{ name.name}}
                     </a>
+                    <span class="new" ng-show="checknew(name.name)">New</span>
                 </div>
             </li>
         </ul>
@@ -35,6 +36,7 @@
                 <div class = "lineup-artist">
                     <a href = "Album/{{ listlocation }}/{{name.name}}"> {{ name.name}}
                     </a>
+                    <span class="new" ng-show="checknew(name.name)">New</span>
                 </div>
             </li>
         </ul>
@@ -45,6 +47,7 @@
                 <div class = "lineup-artist">
                     <a href = "Album/{{ listlocation }}/{{name.name}}"> {{ name.name}}
                     </a>
+                    <span class="new" ng-show="checknew(name.name)">New</span>
                 </div>
             </li>
         </ul>
