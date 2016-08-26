@@ -721,7 +721,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies'])
             $scope.moviedetails = response.data.moviedetails;
             var sngCnt = 0;
 
-            if (global_playlist == undefined) {
+            if (global_playlist == undefined || global_playlist.length<=0) {
                 $.each(response.data.song, function (index, val) {
                     if (sngCnt == 0) {
                         myPlaylist.add({title: val.name, mp3: val.downpath});
@@ -753,7 +753,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies'])
             if (action == 'play') {
                 //song_list_arr = [];
                 //myPlaylist = player(song_list_arr);
-                console.log(songname);
+                //console.log(songname);
                 if ($.inArray(songname, dummy_list_arr) !== -1) {
                     //console.log('in the playlist');
                     var indexi = dummy_list_arr.indexOf(songname);
