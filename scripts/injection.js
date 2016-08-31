@@ -1,4 +1,4 @@
-var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies'])
+var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies', 'vcRecaptcha'])
     .directive('loading', ['$http', function ($http)            //Directive defined to show Loading Screen on Ajax Call
     {
         return {
@@ -116,8 +116,64 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies'])
     .controller('aboutus', function ($scope, $sce) {
         $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> > About Us");
     })
-    .controller('comments', function ($scope, $sce) {
-        $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> > Contact Us");
+    .controller('comments', function ($scope, $sce, $http, vcRecaptchaService, $interval) {
+        $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> > Comment");
+
+        $scope.fields = {};
+
+        $scope.response = null;
+        $scope.widgetId = null;
+
+        $scope.model = {
+            key: '6LdV8ygTAAAAAEJf908XuVqUoWpPOAASO0Q_MxG0'
+        };
+
+        $scope.setResponse = function (response) {
+            $scope.response = response;
+        };
+
+        $scope.setWidgetId = function (widgetId) {
+            $scope.widgetId = widgetId;
+        };
+
+        $scope.cbExpiration = function () {
+            vcRecaptchaService.reload($scope.widgetId);
+            $scope.response = null;
+        };
+
+        $scope.submit = function () {
+            var valid;
+
+            $http.post('ajax/comment_mail.php', {
+                fields: $scope.fields,
+                response: $scope.response
+            })
+                .then(function (response) {
+                    if(response.data == 'success'){
+                        //$scope.fields = {
+                        //    name:'',
+                        //    location:'',
+                        //    email:'',
+                        //    number:'',
+                        //    comment:''
+                        //};
+
+                        $('form').hide();
+                        $(".success-message").fadeIn();
+                        $interval(function(){
+                            $(".success-message").fadeOut('slow',function(){
+                                window.location.reload();
+                            });
+                        },5000);
+                    } else {
+                        $(".failed-message").fadeIn();
+                        $interval(function(){
+                            $(".failed-message").fadeOut('slow');
+                        },5000);
+                    }
+                    vcRecaptchaService.reload($scope.widgetId);
+                });
+        };
     })
     .controller('main', function ($scope, $location, $http, $window, $route, $interval) {                     //Main Controller (mainly used For Caching)
         $scope.banner = {};
@@ -728,7 +784,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies'])
             $scope.moviedetails = response.data.moviedetails;
             var sngCnt = 0;
 
-            if (global_playlist == undefined || global_playlist.length<=0) {
+            if (global_playlist == undefined || global_playlist.length <= 0) {
                 $.each(response.data.song, function (index, val) {
                     if (sngCnt == 0) {
                         myPlaylist.add({title: val.name, mp3: val.downpath});
