@@ -1054,7 +1054,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies', 'vcRecaptc
         $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> > List By Year");
         $scope.banner.visibility = false;
         $http.post('ajax/yearlist.php', {
-            loc: '../FileSystem/byyear/', //Year location
+            loc: '../FileSystem/byyear/' //Year location
         }).then(function (response) {
             $scope.list1 = response.data[0];
             $scope.list2 = response.data[1];
