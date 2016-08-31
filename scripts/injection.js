@@ -65,6 +65,10 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies'])
                 templateUrl: 'template/aboutus.php',
                 controller: 'aboutus'
             })
+            .when("/comments", {//Year Inner Page
+                templateUrl: 'template/comments.php',
+                controller: 'comments'
+            })
             .when("/Search/:searchTerm", {//Index Page
                 templateUrl: 'template/result.php',
                 controller: 'searchCtrl'
@@ -111,6 +115,9 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies'])
     })
     .controller('aboutus', function ($scope, $sce) {
         $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> > About Us");
+    })
+    .controller('comments', function ($scope, $sce) {
+        $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> > Contact Us");
     })
     .controller('main', function ($scope, $location, $http, $window, $route, $interval) {                     //Main Controller (mainly used For Caching)
         $scope.banner = {};

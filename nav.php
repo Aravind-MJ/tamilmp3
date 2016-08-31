@@ -115,7 +115,7 @@
                                         <li> <a href='#'><span>FM</span></a> </li>
 
                                         <li> <a href='/aboutUs'><span>ABOUT US</span></a> </li>
-                                        <li> <a href='#'><span>COMMENTS</span></a> </li>
+                                        <li> <a href='/comments'><span>COMMENTS</span></a> </li>
                                     </ul>
                                 </div>
                             </div>
