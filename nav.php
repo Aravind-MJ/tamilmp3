@@ -88,7 +88,7 @@
                             <li class="nav_fashion"><a href="">FORUM</a></li>
                             <li class="nav_gadgets"><a href="http://www.friendstamilchat.com/fm/">FM</a></li>
                             <li class="nav_lifestyle"><a href="aboutUs">ABOUT US</a></li>
-                            <li class="nav_video"><a href="">COMMENTS</a></li>
+                            <li class="nav_video"><a href="comments">COMMENTS</a></li>
 
                         </ul>
                     </nav>
@@ -114,8 +114,8 @@
 
                                         <li> <a href='#'><span>FM</span></a> </li>
 
-                                        <li> <a href='/aboutUs'><span>ABOUT US</span></a> </li>
-                                        <li> <a href='/comments'><span>COMMENTS</span></a> </li>
+                                        <li> <a href='aboutUs'><span>ABOUT US</span></a> </li>
+                                        <li> <a href='comments'><span>COMMENTS</span></a> </li>
                                     </ul>
                                 </div>
                             </div>
