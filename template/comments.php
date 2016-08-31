@@ -28,13 +28,14 @@
                 <textarea name="Comment" placeholder="Comment" required="" ng-model="fields.comment"></textarea>
 
                 <div
+					size="compact"
                     vc-recaptcha
                     theme="'light'"
                     key="model.key"
                     on-create="setWidgetId(widgetId)"
                     on-success="setResponse(response)"
                     on-expire="cbExpiration()"
-                    ></div>
+                    ></div> <br>
                 <input type="submit" value="SUBMIT">
             </form>
         </div>
