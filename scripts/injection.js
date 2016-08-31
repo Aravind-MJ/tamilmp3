@@ -61,11 +61,11 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies'])
                 templateUrl: 'template/initial.php',
                 controller: 'mp3Ctrl'
             })
-            .when("/aboutUs", {//Year Inner Page
+            .when("/aboutUs", {//About us Page
                 templateUrl: 'template/aboutus.php',
                 controller: 'aboutus'
             })
-            .when("/comments", {//Year Inner Page
+            .when("/comments", {//comments Page
                 templateUrl: 'template/comments.php',
                 controller: 'comments'
             })
