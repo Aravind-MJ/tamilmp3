@@ -22,9 +22,11 @@
                 <input type="text" name="First Name" placeholder="Your Name" required="" ng-model="fields.name">
                 <input class="email" name="Location" type="text" placeholder="Location" required=""
                        ng-model="fields.location">
-                <input type="number" name="Number" placeholder="Mobile Number" required="" ng-model="fields.number">
+                <input type="text" name="Number" placeholder="Mobile Number" required="" ng-model="fields.number"
+                       pattern="[0-9]{10}" maxlength="10">
                 <input class="email" name="Email" type="email" placeholder="Email" required="" ng-model="fields.email">
                 <textarea name="Comment" placeholder="Comment" required="" ng-model="fields.comment"></textarea>
+
                 <div
                     vc-recaptcha
                     theme="'light'"
