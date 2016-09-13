@@ -1,6 +1,14 @@
 <?php
 
 ?>
+<style>
+    input,textarea{
+        float:left;
+    }
+    #jform_captcha {
+        clear: both;
+    }
+</style>
 <div class="comment">
     <h2>Comment</h2>
 
@@ -27,15 +35,14 @@
                 <input class="email" name="Email" type="email" placeholder="Email" required="" ng-model="fields.email">
                 <textarea name="Comment" placeholder="Comment" required="" ng-model="fields.comment"></textarea>
 
-                <div
-					size="compact"
+                <div id="jform_captcha"
                     vc-recaptcha
                     theme="'light'"
                     key="model.key"
                     on-create="setWidgetId(widgetId)"
                     on-success="setResponse(response)"
                     on-expire="cbExpiration()"
-                    ></div> <br>
+                    ></div>
                 <input type="submit" value="SUBMIT">
             </form>
         </div>

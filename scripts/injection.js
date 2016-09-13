@@ -150,14 +150,6 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies', 'vcRecaptc
             })
                 .then(function (response) {
                     if(response.data == 'success'){
-                        //$scope.fields = {
-                        //    name:'',
-                        //    location:'',
-                        //    email:'',
-                        //    number:'',
-                        //    comment:''
-                        //};
-
                         $('form').hide();
                         $(".success-message").fadeIn();
                         $interval(function(){
