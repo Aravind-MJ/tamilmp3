@@ -82,11 +82,11 @@
                             <li class="nav_news active"><a href="/tamilmp3">HOME</a>
 
                             </li>
-                            <li class="nav_lifeguide"><a href="http://www.friendstamilchat.com/chat/">CHAT </a>
+                            <li class="nav_lifeguide"><a href="http://www.friendstamilchat.com/chat/"target="_blank">CHAT </a>
 
                             </li>
                             <li class="nav_fashion"><a href="">FORUM</a></li>
-                            <li class="nav_gadgets"><a href="http://www.friendstamilchat.com/fm/">FM</a></li>
+                            <li class="nav_gadgets"><a href="http://www.friendstamilchat.com/fm/"target="_blank">FM</a></li>
                             <li class="nav_lifestyle"><a href="aboutUs">ABOUT US</a></li>
                             <li class="nav_video"><a href="comments">COMMENTS</a></li>
 
