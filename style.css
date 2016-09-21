@@ -3558,7 +3558,8 @@ a.disabled {
 
 span.new {
     padding: 5px;
-    background: #de4197;
+    background: #03afbe;
+	font-weight:bold;
     font-size: 10px;
     color: #fff;
 }
