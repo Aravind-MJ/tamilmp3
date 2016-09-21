@@ -79,16 +79,16 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <nav class="main_nav_box">
                         <ul id="nav">
-                            <li class="nav_news active"><a href="/tamilmp3">HOME</a>
+                            <li class="nav_home {{activeMenu('/')}}"><a href="/tamilmp3">HOME</a>
 
                             </li>
-                            <li class="nav_lifeguide"><a href="http://www.friendstamilchat.com/chat/"target="_blank">CHAT </a>
+                            <li class="nav_chat"><a href="http://www.friendstamilchat.com/chat/"target="_blank">CHAT </a>
 
                             </li>
-                            <li class="nav_fashion"><a href="">FORUM</a></li>
-                            <li class="nav_gadgets"><a href="http://www.friendstamilchat.com/fm/"target="_blank">FM</a></li>
-                            <li class="nav_lifestyle"><a href="aboutUs">ABOUT US</a></li>
-                            <li class="nav_video"><a href="comments">COMMENTS</a></li>
+                            <li class="nav_forum"><a href="http://www.friendstamilchat.com/forum/index.php" target="_BLANK">FORUM</a></li>
+                            <li class="nav_fm"><a href="http://www.friendstamilchat.com/fm/"target="_blank">FM</a></li>
+                            <li class="nav_aboutus {{activeMenu('/aboutUs')}}"><a href="aboutUs">ABOUT US</a></li>
+                            <li class="nav_comments {{activeMenu('/comments')}}"><a href="comments">COMMENTS</a></li>
 
                         </ul>
                     </nav>
@@ -107,12 +107,12 @@
                                         <li> <a href='/tamilmp3'><span>HOME</span></a>
 
                                         </li>
-                                        <li> <a href='#'><span>CHAT</span></a>
+                                        <li> <a href='http://www.friendstamilchat.com/chat/' target="_blank"><span>CHAT</span></a>
 
                                         </li>
-                                        <li> <a href='#'><span>FORUM</span></a> </li>
+                                        <li> <a href='http://www.friendstamilchat.com/forum/index.php'><span>FORUM</span></a> </li>
 
-                                        <li> <a href='#'><span>FM</span></a> </li>
+                                        <li> <a href='http://www.friendstamilchat.com/fm/'><span>FM</span></a> </li>
 
                                         <li> <a href='aboutUs'><span>ABOUT US</span></a> </li>
                                         <li> <a href='comments'><span>COMMENTS</span></a> </li>

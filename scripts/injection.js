@@ -176,6 +176,10 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies', 'vcRecaptc
         $scope.banner.visibility = true;
         $scope.newList = {};
 
+        $scope.activeMenu = function (path) {
+            return ($location.path().substr(0, path.length+1) === path) ? 'active' : '';
+        }
+
         $http.get('text_files/new.txt')
             .then(function (response) {
                 var newList = response.data.split('\r\n');
