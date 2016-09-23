@@ -13,7 +13,7 @@
                             <ul>
                                 <li><a href="azlisting/A-ZMovieSongs/A"> A-Z Movie Songs </a></li>
                                 <li><a href="List/Year/byyear"> Movie List By Year </a></li>
-                                <li><a href="NewReleases"> New Releases </a></li>
+                                <li><a href="NewReleases"> New Releases <span class="new pull-right">New</span></a></li>
 
                             </ul>
                         </div>

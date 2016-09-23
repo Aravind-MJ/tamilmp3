@@ -53,7 +53,7 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="hp_banner_box">
                             <div class="hp_banner_right">
-                                <div class="br_single_news"> <img src="images/friends-tamil-mp3-chat.jpg" alt="" />
+                                <div class="br_single_news"> <img src="images/friends-tamil-mp3-chat.gif" alt="" />
                                 </div>
                             </div>
 
@@ -101,7 +101,7 @@
                             </div>
                             <div class="hp_banner_right">
 
-                                <div class="br_single_news"> <img src="images/friends-tamil-mp3-right-banner.jpg" alt="" />
+                                <div class="br_single_news"> <img src="images/friends-tamil-mp3-right-banner.gif" alt="" />
                                     <div class="br_single_text"> <span class="blue_hp_span">CHAT NOW</span> <a href="#">
                                             <h4>FRIENDS TAMIL MP3 CHAT</h4></a> </div>
 
