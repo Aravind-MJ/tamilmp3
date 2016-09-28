@@ -102,7 +102,7 @@
                             <div class="hp_banner_right">
 
                                 <div class="br_single_news"> <img src="images/friends-tamil-mp3-right-banner.gif" alt="" />
-                                    <div class="br_single_text"> <span class="blue_hp_span">CHAT NOW</span> <a href="#">
+                                    <div class="br_single_text">  <span class="blue_hp_span"><a href="http://www.friendstamilchat.com/chat/" target="_blank">CHAT NOW</a></span>  <a href="#">
                                             <h4>FRIENDS TAMIL MP3 CHAT</h4></a> </div>
 
                                 </div>
