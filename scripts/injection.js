@@ -114,11 +114,12 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies', 'vcRecaptc
         $locationProvider.html5Mode(true);
     })
     .controller('aboutus', function ($scope, $sce) {
+        $scope.banner.visibility = $scope.isMobile();
         $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> > About Us");
     })
     .controller('comments', function ($scope, $sce, $http, vcRecaptchaService, $interval) {
         $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='/tamilmp3'>Home</a> > Comment");
-
+        $scope.banner.visibility = $scope.isMobile();
         $scope.fields = {};
 
         $scope.response = null;
@@ -222,6 +223,14 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies', 'vcRecaptc
                 $scope.albumSearch();
             }
         };
+
+        $scope.isMobile = function () {
+            if(window.innerWidth <= 800) {
+                return false;
+            } else {
+                return true;
+            }
+        }
 
         $http.post('ajax/list.php', {
             loc: "../FileSystem/Others/", //Location of Folder
