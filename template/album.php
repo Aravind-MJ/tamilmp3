@@ -21,11 +21,8 @@ if (isset($_GET['url'])) {
     div.jp-details {
         display: block !important;
     }
-</style>
-<div class="movie_ft">
-    <div class="Top_name1">
-        <div class="shareBox">
-            <div>Share this album.</div>
+</style><center>  <div class="shareBox">
+           <div>Share this album.</div>
             <center>
                 <ul id="share42" class="albumshare">
                     <li><a rel="nofollow" class="fa fa-facebook text-primary" href="" data-count="fb" ng-click="socialShare('facebook')" title="Share on Facebook" target="_blank"></a></li>
@@ -33,7 +30,10 @@ if (isset($_GET['url'])) {
                     <li><a rel="nofollow" class="fa fa-google-plus text-danger" href="" data-count="twi" ng-click="socialShare('googleplus')" title="Share on Google+" target="_blank"></a></li>
                 </ul>  
             </center>
-        </div>
+        </div></center>
+<div class="movie_ft">
+    <div class="Top_name1">
+        
         <h2><a href="#">{{ name}}</a></h2> 
         <div class="fb-like" data-href="{{ $route.current.templateUrl}}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
     </div>

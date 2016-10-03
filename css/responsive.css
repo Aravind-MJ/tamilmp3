@@ -93,6 +93,7 @@ margin-left: 10px;
 .select-section {
     float: left;
 }
+
 .single_fs_news_lft_img_h2 {
 width:auto;
 }
@@ -309,12 +310,18 @@ padding-left:60px;
 padding:10px;
 background-color:#de4197;
 }
+.shareBox {
+float:none;
+}
 }
 /* Mobile Layout: 320px. */
 
 @media only screen and (min-width: 320px) and (max-width: 767px) {
 .container {
 	width:320px;
+}
+.shareBox {
+float:none;
 }
 .ftm-alb-title {
 margin-top:0px;
