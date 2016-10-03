@@ -181,10 +181,15 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies', 'vcRecaptc
             return ($location.path().substr(0, path.length+1) === path) ? 'active' : '';
         }
 
-        $http.get('text_files/new.txt')
+        $http.get('text_files/new_album.txt')
             .then(function (response) {
                 var newList = response.data.split('\r\n');
                 $scope.newList.list = newList;
+            });
+        $http.get('text_files/new_categories.txt')
+            .then(function (response) {
+                var newList = response.data.split('\r\n');
+                $scope.newList.category = newList;
             });
 
         $scope.albumSearch = function () {
@@ -211,6 +216,14 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies', 'vcRecaptc
 
         $scope.checknew = function (name) {
             if ($scope.newList.list.indexOf(name) !== -1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        $scope.checknew_cat = function (name) {
+            if ($scope.newList.category.indexOf(name) !== -1) {
                 return true;
             } else {
                 return false;

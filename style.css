@@ -811,10 +811,6 @@ ul.lev2sub {
     z-index: 1;
 }
 
-.br_single_text a h4 {
-    width: 99%;
-}
-
 .br_single_text > span {
     color: #fff;
     display: block;
@@ -3788,6 +3784,11 @@ color:#de4197;
     width: 100%;
     min-height: 300px;
     border: none;
+}
+.single_mega > .new{
+    position: relative;
+    float: right;
+    right:-10px;
 }
 
 /* END of Style*/
