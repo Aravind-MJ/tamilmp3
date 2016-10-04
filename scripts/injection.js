@@ -176,6 +176,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies', 'vcRecaptc
         $scope.searchTerm.text = '';
         $scope.banner.visibility = true;
         $scope.newList = {};
+        $scope.newList.category = [];
 
         $scope.activeMenu = function (path) {
             return ($location.path().substr(0, path.length+1) === path) ? 'active' : '';
@@ -278,6 +279,21 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies', 'vcRecaptc
                 $('.ftm-title').hide();
             });
         });
+
+        $scope.socialShareSite = function (type) {
+            var url = '';
+            var path = "template/initial.php";
+            if (type == "facebook") {
+                url = '//www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent('demox.imrokraft.com/tamilmp3/' + path);
+            } else if (type == "twitter") {
+                url = '//twitter.com/intent/tweet?text=Tamil%20MP3&amp;url=' + $location.absUrl();
+            } else if (type == "googleplus") {
+                url = '//plus.google.com/share?url=' + $location.absUrl();
+            } else {
+                return false;
+            }
+            window.open(url, '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=550, height=440, toolbar=0, status=0');
+        };
     })
     .controller('mp3Ctrl', function ($scope, $http) {
         $scope.breadcrumbs.path = '';
