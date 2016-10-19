@@ -4,4 +4,4 @@
     RewriteCond %{REQUEST_FILENAME} -d
     RewriteRule ^.*$ - [NC,L]
 
-    RewriteRule ^(.*) /tamilmp3/index.php [NC,L]
+    RewriteRule ^(.*) /songs0/index.php [NC,L]

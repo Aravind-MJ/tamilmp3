@@ -2,7 +2,7 @@
 
 $param = json_decode(file_get_contents("php://input"));
 $searchTerm = $param->search;
-$root = '..\FileSystem';
+$root = '..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'songs2';
 //$searchTerm = "A";
 
 $iter = new RecursiveIteratorIterator(
@@ -22,7 +22,7 @@ $result[1] = array();
 $ai = 0;
 foreach ($iter as $path => $dir) {
     if ($dir->isDir()) {
-        $pathsplit = explode('\\', $path);
+        $pathsplit = explode(DIRECTORY_SEPARATOR, $path);
         $max = sizeof($pathsplit);
         if (check($pathsplit[$max - 1], $searchTerm) && $max > 3) {
             if (!isset($result[0][$pathsplit[$max - 2]])) {
@@ -38,7 +38,7 @@ foreach ($iter as $path => $dir) {
             $ai++;
         }
     } else {
-        $pathsplit = explode('\\', $path);
+        $pathsplit = explode(DIRECTORY_SEPARATOR, $path);
         $max = sizeof($pathsplit);
         $ext = explode('.', $pathsplit[$max - 1]);
         if (array_pop($ext) == "mp3") {

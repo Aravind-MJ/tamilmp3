@@ -43,7 +43,7 @@ if (isset($_GET['url'])) {
             <div class="single_fs_news_left_text">
                 <div class="single_fs_news_lft_img_h2">
 
-                    <img ng-src="FileSystem/{{ place}}/{{ name}}/poster.jpg" width="350px" height="400px" alt="Friends Tamil Mp3">
+                    <img ng-src="FileSystem/{{ place}}/{{ name}}/folder.jpg" width="350px" height="400px" alt="Friends Tamil Mp3">
                 </div>
             </div>
         </div>

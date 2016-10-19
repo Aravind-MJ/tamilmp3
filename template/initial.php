@@ -4,6 +4,16 @@
 <meta property="og:image"              content="http://www.demox.imrokraft.com/tamilmp3/images/ogimage.jpg" />
 <meta property="og:type"               content="website" />
 <meta property="og:description"        content="Tamil Music Search Ends Here" />
+<?php
+    if(isset($_GET['share'])){
+        ?>
+            <script>
+                window.location.href="/tamilmp3";
+            </script>
+        <?
+        die();
+    }
+?>
 <div class="col-md-8 col-sm-8 col-xs-12">
 
     <div class="ftm-alb-title"><h2>FEATURED ALBUM </h2></div>

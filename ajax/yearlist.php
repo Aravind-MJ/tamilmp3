@@ -3,12 +3,13 @@
 $param = json_decode(file_get_contents("php://input"));
 $folder = $param->loc;
 
-function songslist($strdir) {
+function songslist($strdir)
+{
     $txtyears = array();
     if (is_dir($strdir)) {
-        $list = glob($strdir . "/*.txt");
+        $list = glob($strdir . DIRECTORY_SEPARATOR . "*.txt");
         foreach ($list as $file) {
-            $files = explode('/', $file);
+            $files = explode(DIRECTORY_SEPARATOR, $file);
             $txtyears[$files[sizeof($files) - 1]]['name'] = $files[sizeof($files) - 1];
             $txtyears[$files[sizeof($files) - 1]]['name'] = preg_replace('/\\.[^.\\s]{3,4}$/', '', $txtyears[$files[sizeof($files) - 1]]['name']);
             if (!is_numeric($txtyears[$files[sizeof($files) - 1]]['name'])) {
@@ -16,7 +17,7 @@ function songslist($strdir) {
             }
         }
     }
-    return($txtyears);
+    return ($txtyears);
 }
 
 $years = songslist($folder);
