@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="purchase_sidebar_img m_t_l" ng-repeat="name in listpd | orderObjectBy:'count':true">
-                    <img ng-src="{{ name.path }}/poster.jpg" alt="Friends Tamil Mp3">
+                    <img ng-src="{{ name.path }}/Folder.jpg" alt="Friends Tamil Mp3">
                     <div class="purchase_overlay"></div>
                     <div class="purchase_sidebar_text">
                         <p>{{ name.name }}</p>

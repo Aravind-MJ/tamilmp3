@@ -22,7 +22,7 @@
         <div class="single_comment">
             <div class="single_comment_pic">
                 <a href="Album/A-ZMovieSongs/{{name.name}}">
-                    <img alt="Friends Tamil Mp3" ng-src="FileSystem/A-Z Movie Songs/{{ name.name}}/poster.jpg" >
+                    <img alt="Friends Tamil Mp3" ng-src="../songs2/A-Z Movie Songs/{{ name.name}}/Folder.jpg" >
                 </a>
             </div>
             <div class="single_comment_text">
