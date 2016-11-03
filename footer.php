@@ -18,3 +18,9 @@
 </footer>
 
 <?php $autoload->loadJs(); ?>
+
+<script>
+$('.mobi-menu a').click(function(){
+	$('.mobi-menu').slideUp();
+});
+</script>

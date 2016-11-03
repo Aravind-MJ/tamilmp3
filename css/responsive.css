@@ -539,6 +539,7 @@ padding:5px;
   display: block !important;
   margin-top: 0;
   position: relative;
+  collapse: hidden;
 }
 .ofm {
   margin: 0;

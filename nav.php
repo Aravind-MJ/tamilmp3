@@ -1,3 +1,4 @@
+
 <!-- ~~~=| Header START |=~~~ -->
 <header class="header_area">
     <div class="header_top">
@@ -107,7 +108,7 @@
 
                                         <li> <a href='http://www.friendstamilchat.com/fm/'><span>FM</span></a> </li>
 
-                                        <li> <a href='aboutUs'><span>ABOUT US</span></a> </li>
+                                        <li> <a data-toggle="collapse" data-target=".navbar-collapse" href='aboutUs'><span>ABOUT US</span></a> </li>
                                         <li> <a href='comments'><span>COMMENTS</span></a> </li>
                                     </ul>
                                 </div>
@@ -122,3 +123,4 @@
     </div>
 </header>
 <!-- ~~~=| Main Navigation END |=~~~ -->
+

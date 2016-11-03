@@ -160,7 +160,6 @@ section .movie_ft {
 .m-t-f-p {
 
     margin-top: 25px;
-
 }
 
 .m-b-f-p {
@@ -702,6 +701,7 @@ ul.lev2sub {
 
 .purchase_sidebar_img img {
     width: 100%;
+	height: 175px;
 }
 
 .bl_single_text {
@@ -1101,8 +1101,9 @@ footer {
     border: 1px solid #efefef;
     padding: 0px;
     background-color: #fff;
-    width: 175px;
+    width: 100%;
     height: 290px;
+	align:center;
 }
 
 .left_fashion.main_nav_box ul li a {
@@ -1537,6 +1538,7 @@ footer {
 
 .mobi-menu {
     display: none;
+	collapse: hidden;
 }
 
 .mobi-menu {
@@ -1548,15 +1550,18 @@ footer {
     top: 50px;
     width: 100%;
     z-index: 99999;
+	collapse: hidden;
 }
 
 #cssmenu {
     display: none;
     transition: all 0.3s ease-in-out 0s;
+	collapse: hidden;
 }
 
 #cssmenu ul ul {
     display: none;
+	collapse: hidden;
 }
 
 #cssmenu, #cssmenu ul, #cssmenu ul li, #cssmenu ul li a {
@@ -1570,6 +1575,11 @@ footer {
     padding: 0;
     position: relative;
     text-shadow: 0 0 0 #ffffff;
+	collapse: hidden;
+}
+
+.img-center {
+margin:0 auto;
 }
 
 #cssmenu, #cssmenu ul, #cssmenu ul li, #cssmenu ul li a {
@@ -2101,6 +2111,7 @@ ul.lev2sub {
 .cc_im_box img {
 
     transition: all 0.5s ease 0s;
+	align: center;
 }
 
 .cc_im_box:hover img {
