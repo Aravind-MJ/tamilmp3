@@ -56,6 +56,7 @@
                     <div class="fs_news_right">
                         <div class="single_mega">
                             <ul>
+
                                 <li><a href="List/OldCollections"> Old Collections <span class="new pull-right ng-cloak" ng-show="checknew_cat('Old Collections')">New</span></a></li>
                                 <li><a href="OldHits"> Old Hits (Singers) <span class="new pull-right ng-cloak" ng-show="checknew_cat('Old Hits (Singers)')">New</span> </a></li>
                                 <li><a href="azlisting/MSViswanathanHits/A"> M.S.Vishwanathan Hits <span class="new pull-right ng-cloak" ng-show="checknew_cat('M.S.Vishwanathan Hits')">New</span> </a></li>
