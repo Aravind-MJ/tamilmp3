@@ -1,5 +1,5 @@
-var root = '../../songs2';
-var folder = '/songs0';
+var root = '/tamilmp3/Filesystem';
+var folder = '/tamilmp3';
 var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies', 'vcRecaptcha'])
     .directive('loading', ['$http', function ($http)            //Directive defined to show Loading Screen on Ajax Call
     {
@@ -616,6 +616,8 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies', 'vcRecaptc
         $scope.renameLocation = function (listlocation, listlocationname) {
             if (listlocationname == "M.S.VISWANATHAN HITS") {
                 return "MSViswanathanHits";
+            } else if (listlocationname == "ILayaraja Movies") {
+                return "ILayarajaMovies";
             }
             return listlocation;
         };
@@ -637,12 +639,11 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies', 'vcRecaptc
             $scope.listlocation = "A-ZMovieSongs";
             $scope.listlocationname = "A-Z MOVIE LIST";
         } else if (place == "ILayarajaMovies") {
-            track = place;
-            place = "ILayaraja Movies";
-            $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='"+folder+"'>Home</a> > <a href='azlisting/" + track + "/A'>" + place + "</a> > " + alpha);
-            place = root+"/" + place + "/";
-            $scope.listlocation = "ILayarajaMovies";
+            $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='"+folder+"'>Home</a> > <a href='azlisting/" + place + "/A'>ILayaraja Movies</a> > " + alpha);
+            place = "../text_files/ILayaraja Movies.txt";
+            $scope.listlocation = "A-ZMovieSongs";
             $scope.listlocationname = "ILAYARAJA MOVIES";
+            file = true;
         } else if (place == "TamilKaraoke") {
             track = place;
             place = "Tamil Karaoke";

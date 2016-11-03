@@ -12,7 +12,7 @@
 <html lang="en" ng-app="tamilMp3" ng-controller="main">
 <!--<![endif]-->
 <?php
-$root = "/songs0/";
+$root = "/tamilmp3/";
 $css_inc = array(
     'font-awsome' => 'http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css',
     'bootstrap-css' => $root . 'css/bootstrap.css',
