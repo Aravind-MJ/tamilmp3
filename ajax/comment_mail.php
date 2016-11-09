@@ -12,28 +12,42 @@ if ($responseData->success) {
     $number = filter_var($input->number, FILTER_SANITIZE_NUMBER_INT);
     $comment = filter_var($input->comment, FILTER_SANITIZE_STRING);
 
-    $to = 'aravind@imrokraft.com';
+    $to = 'kannan22m@gmail.com';
     $subject = 'Friends Tamil mp3 | Comment';
     $htmlContent = "
+            <style>
+                tr,th,td{
+                    border: 1px solid #000;
+                }
+                th,td{
+                    padding: 10px;
+                }
+                th{
+                    text-align: right;
+                }
+                td{
+                    text-align: left;
+                }
+            </style>
                 <table>
                     <tr>
-                        <th>Name</th>
+                        <th>Name:</th>
                         <td>$name</td>
                     </tr>
                     <tr>
-                        <th>Location</th>
+                        <th>Location:</th>
                         <td>$location</td>
                     </tr>
                     <tr>
-                        <th>Email</th>
+                        <th>Email:</th>
                         <td>$email</td>
                     </tr>
                     <tr>
-                        <th>Mobile</th>
+                        <th>Mobile:</th>
                         <td>$number</td>
                     </tr>
                     <tr>
-                        <th>Comment</th>
+                        <th>Comment:</th>
                         <td>$comment</td>
                     </tr>
                 </table>

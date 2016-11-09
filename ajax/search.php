@@ -20,8 +20,18 @@ $result = array();
 $result[0] = array();
 $result[1] = array();
 $ai = 0;
+$albums_limit = 0;
+$songs_limit = 0;
+$limit = 399;
 foreach ($iter as $path => $dir) {
     if ($dir->isDir()) {
+        if($albums_limit>$limit){
+            if($songs_limit>$limit){
+                break;
+            }else{
+                continue;
+            }
+        }
         $pathsplit = explode(DIRECTORY_SEPARATOR, $path);
         $max = sizeof($pathsplit);
         if (check($pathsplit[$max - 1], $searchTerm) && $max > 3) {
@@ -37,7 +47,15 @@ foreach ($iter as $path => $dir) {
             $result[0][$pathsplit[$max - 2]]->albums[$ai]->show = $highlighted;
             $ai++;
         }
+        $albums_limit++;
     } else {
+        if($songs_limit>$limit){
+            if($albums_limit>$limit){
+                break;
+            }else{
+                continue;
+            }
+        }
         $pathsplit = explode(DIRECTORY_SEPARATOR, $path);
         $max = sizeof($pathsplit);
         $ext = explode('.', $pathsplit[$max - 1]);
@@ -59,11 +77,12 @@ foreach ($iter as $path => $dir) {
                 $result[1][$pathsplit[$max - 3]]->albums[$pathsplit[$max - 2]]->songs[] = $highlighted;
             }
         }
+        $songs_limit++;
     }
 }
 
-sort($result[0]);
-sort($result[1]);
+//sort($result[0]);
+//sort($result[1]);
 //print_r($result);
 //die();
 echo json_encode($result);

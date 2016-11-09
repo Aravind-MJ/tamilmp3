@@ -1,5 +1,5 @@
-var root = '/tamilmp3/Filesystem';
-var folder = '/tamilmp3';
+var root = '../Filesystem';
+var folder = '/songs0';
 var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies', 'vcRecaptcha'])
     .directive('loading', ['$http', function ($http)            //Directive defined to show Loading Screen on Ajax Call
     {
@@ -185,7 +185,6 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies', 'vcRecaptc
         $scope.activeMenu = function (path) {
             return ($location.path().substr(0, path.length + 1) === path) ? 'active' : '';
         }
-
         $http.get('text_files/new_albums.txt')
             .then(function (response) {
                 var newList = response.data.split('\r\n');
@@ -222,17 +221,15 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies', 'vcRecaptc
         $scope.checknew = function (name) {
             if ($scope.newList.list.indexOf(name) !== -1) {
                 return true;
-            } else {
-                return false;
             }
+            return false;
         }
 
         $scope.checknew_cat = function (name) {
             if ($scope.newList.category.indexOf(name) !== -1) {
                 return true;
-            } else {
-                return false;
             }
+            return false;
         }
 
         $scope.checkEnter = function ($event) {
@@ -282,6 +279,15 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies', 'vcRecaptc
                 $('#collapse').toggleClass('collapse');
                 $('.ftm-title').hide();
             });
+            //
+            //$('.m_nav').click(function(){
+            //    $('.mobi-menu').slideToggle();
+            //});
+            $('.mobi-menu a').click(function(){
+                console.log('working');
+                $('.mobi-menu').slideUp();
+            });
+
         });
 
         $scope.socialShareSite = function (type) {
@@ -639,7 +645,8 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies', 'vcRecaptc
             $scope.listlocation = "A-ZMovieSongs";
             $scope.listlocationname = "A-Z MOVIE LIST";
         } else if (place == "ILayarajaMovies") {
-            $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='"+folder+"'>Home</a> > <a href='azlisting/" + place + "/A'>ILayaraja Movies</a> > " + alpha);
+            track = place;
+            $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='"+folder+"'>Home</a> > <a href='azlisting/" + track + "/A'>ILayaraja Movies</a> > " + alpha);
             place = "../text_files/ILayaraja Movies.txt";
             $scope.listlocation = "A-ZMovieSongs";
             $scope.listlocationname = "ILAYARAJA MOVIES";
@@ -652,7 +659,8 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies', 'vcRecaptc
             $scope.listlocation = "TamilKaraoke";
             $scope.listlocationname = "TAMIL KARAOKE";
         } else if (place == "MSViswanathanHits") {
-            $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='"+folder+"'>Home</a> > <a href='azlisting/" + place + "/A'>M S Viswanathan Hits</a> > " + alpha);
+            track = place;
+            $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='"+folder+"'>Home</a> > <a href='azlisting/" + track + "/A'>M S Viswanathan Hits</a> > " + alpha);
             place = "../text_files/M.S.Viswanathan Hits.txt";
             $scope.listlocation = "A-ZMovieSongs";
             $scope.listlocationname = "M.S.VISWANATHAN HITS";
@@ -800,8 +808,6 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies', 'vcRecaptc
 
         var playlist = [];
         var dummy_list_arr = new Array();
-//            $cookies.remove('global_playlist');
-//            $cookies.remove('dummy_list_arr');
         var global_playlist = angular.fromJson($cookies.get('global_playlist'));
         dummy_list_arr = angular.fromJson($cookies.get('dummy_list_arr'));
 

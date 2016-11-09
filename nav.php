@@ -53,7 +53,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5 col-sm-4 col-xs-12">
-                    <div class="logo"> <a href="/tamilmp3"><img src="images/logo.png" title="Tamil Mp3"/></a> </div>
+                    <div class="logo"> <a href="/songs0"><img src="images/logo.png" title="Tamil Mp3"/></a> </div>
                 </div>
                 <div class="col-md-7 col-sm-8 col-xs-12">
                     <div class="header_add"> <form class="form-wrapper">
@@ -73,7 +73,7 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <nav class="main_nav_box">
                         <ul id="nav">
-                            <li class="nav_home {{activeMenu('/')}}"><a href="/tamilmp3">HOME</a>
+                            <li class="nav_home {{activeMenu('/')}}"><a href="/songs0">HOME</a>
 
                             </li>
                             <li class="nav_chat"><a href="http://www.friendstamilchat.com/chat/"target="_blank">CHAT </a>
@@ -98,7 +98,7 @@
                             <div class="mobi-menu">
                                 <div id='cssmenu'>
                                     <ul>
-                                        <li> <a href='/tamilmp3'><span>HOME</span></a>
+                                        <li> <a href='/songs0'><span>HOME</span></a>
 
                                         </li>
                                         <li> <a href='http://www.friendstamilchat.com/chat/' target="_blank"><span>CHAT</span></a>
@@ -108,7 +108,7 @@
 
                                         <li> <a href='http://www.friendstamilchat.com/fm/'><span>FM</span></a> </li>
 
-                                        <li> <a data-toggle="collapse" data-target=".navbar-collapse" href='aboutUs'><span>ABOUT US</span></a> </li>
+                                        <li> <a href='aboutUs'><span>ABOUT US</span></a> </li>
                                         <li> <a href='comments'><span>COMMENTS</span></a> </li>
                                     </ul>
                                 </div>
