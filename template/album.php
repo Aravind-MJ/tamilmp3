@@ -55,7 +55,7 @@ if (isset($_GET['url'])) {
             <div class="single_fs_news_left_text">
                 <div class="single_fs_news_lft_img_h2">
 
-                    <img ng-src="../songs2/{{ place}}/{{ name}}/Folder.jpg" width="350px" height="400px"
+                    <img ng-src="Filesystem/{{ place}}/{{ name}}/Folder.jpg" width="350px" height="400px"
                          alt="Friends Tamil Mp3">
                 </div>
             </div>

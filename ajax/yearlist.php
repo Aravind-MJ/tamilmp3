@@ -2,7 +2,7 @@
 
 $param = json_decode(file_get_contents("php://input"));
 $folder = $param->loc;
-
+//$folder = str_replace('/','\\',$folder);
 function songslist($strdir)
 {
     $txtyears = array();
@@ -17,6 +17,7 @@ function songslist($strdir)
             }
         }
     }
+//    print_r($strdir);die;
     return ($txtyears);
 }
 

@@ -12,7 +12,7 @@
 <html lang="en" ng-app="tamilMp3" ng-controller="main">
 <!--<![endif]-->
 <?php
-$root = "/tamilmp3/";
+$root = "/songs0/";
 $css_inc = array(
     'font-awsome' => 'http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css',
     'bootstrap-css' => $root . 'css/bootstrap.css',
@@ -30,7 +30,7 @@ $js_inc = array(
     'angular-js-route' => 'http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js',
     'ngMeta' => $root . 'js/ngmeta.min.js',
     'jquery-ui-js' => 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js',
-    'script' => $root . 'scripts/injection.js',
+    'script' => $root . 'scripts/injection.js?18',
     'jplayer' => $root . 'plugin/jplayer/dist/jplayer/jquery.jplayer.min.js',
     'jplayer-playlist' => $root . 'plugin/jplayer/dist/add-on/jplayer.playlist.min.js',
     'FBSdk' => 'http://pc035860.github.io/angular-easyfb/angular-easyfb.min.js',

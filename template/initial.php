@@ -1,4 +1,4 @@
-
+<?php //ini_set('opcache.enable', 0); ?>
 <!--<meta property="og:url"                content="demox.imrokraft.com/tamilmp3" />-->
 <meta property="og:title"              content="Friends Tamil MP3" />
 <meta property="og:image"              content="http://www.demox.imrokraft.com/tamilmp3/images/ogimage.jpg" />
@@ -12,7 +12,7 @@
         <div class="single_comment">
             <div class="single_comment_pic">
                 <a href="Album/A-ZMovieSongs/{{name.name}}">
-                    <img alt="Friends Tamil Mp3" ng-src="../songs2/A-Z Movie Songs/{{ name.name}}/Folder.jpg" >
+                    <img alt="Friends Tamil Mp3" ng-src="Filesystem/A-Z Movie Songs/{{ name.name}}/Folder.jpg" >
                 </a>
             </div>
             <div class="single_comment_text">
@@ -28,4 +28,5 @@
     </div>
     </div>
 
-    <?php include_once '../right_section.php';
+    <?php
+    include_once '../right_section.php';

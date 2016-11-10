@@ -187,12 +187,12 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies', 'vcRecaptc
         }
         $http.get('text_files/new_albums.txt')
             .then(function (response) {
-                var newList = response.data.split('\r\n');
+                var newList = response.data.split('\n');
                 $scope.newList.list = newList;
             });
         $http.get('text_files/new_categories.txt')
             .then(function (response) {
-                var newList = response.data.split('\r\n');
+                var newList = response.data.split('\n');
                 $scope.newList.category = newList;
             });
 
@@ -313,19 +313,19 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies', 'vcRecaptc
         $http.get('ajax/movielist.php')
             .then(function (response) {
                 $scope.listmovie = response.data[0];
-//                        console.log($scope.listmovie);
+                console.log($scope.listmovie);
             });
 
         $http.get('ajax/top_collections.php')
             .then(function (response) {
                 $scope.listtc = response.data;
-//                        console.log($scope.listmovie);
+                console.log($scope.listmovie);
             });
 
         $http.get('ajax/popular_downloads.php')
             .then(function (response) {
                 $scope.listpd = response.data;
-//                        console.log($scope.listmovie);
+                console.log($scope.listmovie);
             });
     })
     .controller('searchCtrl', function ($scope, $http, $routeParams, $sce) {
@@ -498,7 +498,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies', 'vcRecaptc
             $scope.listlocationname = "SINGER HITS";
             $scope.location = "images/singer_images";
         } else if (place == "OldHits") {
-            place = "Old Hits";
+            place = "Old Hits (Singers)";
             $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='"+folder+"'>Home</a> > Old Hits");
             $scope.listlocation = "OldHits";
             $scope.listlocationname = "OLD HITS";
@@ -622,7 +622,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies', 'vcRecaptc
         $scope.renameLocation = function (listlocation, listlocationname) {
             if (listlocationname == "M.S.VISWANATHAN HITS") {
                 return "MSViswanathanHits";
-            } else if (listlocationname == "ILayaraja Movies") {
+            } else if (listlocationname == "ILAYARAJA MOVIES") {
                 return "ILayarajaMovies";
             }
             return listlocation;
@@ -705,7 +705,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies', 'vcRecaptc
             place = "A R Rahman Hits";
             track = $sce.trustAsHtml("> <a href='List/ARRahmanHits'>" + place + "</a> >");
         } else if (place == "OldHits") {
-            place = "Old Hits";
+            place = "Old Hits (Singers)";
             track = $sce.trustAsHtml("> <a href='OldHits'>" + place + "</a> >");
         } else if (place == "Ringtones") {
             place = "Ringtones";
@@ -1099,7 +1099,7 @@ var app = angular.module('tamilMp3', ['ngRoute', 'ezfb', 'ngCookies', 'vcRecaptc
         $scope.breadcrumbs.path = $sce.trustAsHtml("<a href='"+folder+"'>Home</a> > List By Year");
         $scope.banner.visibility = false;
         $http.post('ajax/yearlist.php', {
-            loc: root+'/ByYear/' //Year location
+            loc: root+'/byyear/' //Year location
         }).then(function (response) {
             $scope.list1 = response.data[0];
             $scope.list2 = response.data[1];

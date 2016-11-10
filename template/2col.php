@@ -15,7 +15,7 @@
                 <div class = "lineup-artist">
                     <a href = "Album/A-ZMovieSongs/{{name.name}}"> {{ name.name}}
                     </a>
-                    <small>[{{ name.year}}]</small>
+                    <small ng-if="name.year!=null">[{{ name.year}}]</small>
                     <span class="new" ng-show="checknew(name.name)">New</span>
                 </div>
             </li>
@@ -27,7 +27,7 @@
                 <div class = "lineup-artist">
                     <a href = "Album/A-ZMovieSongs/{{name.name}}"> {{ name.name}}
                     </a>
-                    <small>[{{ name.year}}]</small>
+                    <small ng-if="name.year!=null">[{{ name.year}}]</small>
                     <span class="new" ng-show="checknew(name.name)">New</span>
                 </div>
             </li>

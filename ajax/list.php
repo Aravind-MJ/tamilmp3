@@ -14,7 +14,7 @@ function folderlist($startdir) {
                 if (!(array_search($folder, $ignoredDirectory) > -1)) {
                     if (filetype($startdir . $folder) == "dir") {
                         $directorylist[$startdir . $folder]['name'] = $folder;
-                        $directorylist[$startdir . $folder]['path'] = $startdir;
+                        $directorylist[$startdir . $folder]['path'] = str_replace('../','',$startdir);
                         //read caption from text file
                         $response = array();
                         $caption = ''; 

@@ -2,7 +2,7 @@
 
 $param = json_decode(file_get_contents("php://input"));
 $searchTerm = $param->search;
-$root = '..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'songs2';
+$root = '..'.DIRECTORY_SEPARATOR.'Filesystem';
 //$searchTerm = "A";
 
 $iter = new RecursiveIteratorIterator(
@@ -46,8 +46,8 @@ foreach ($iter as $path => $dir) {
             $result[0][$pathsplit[$max - 2]]->albums[$ai]->name = $pathsplit[$max - 1];
             $result[0][$pathsplit[$max - 2]]->albums[$ai]->show = $highlighted;
             $ai++;
+            $albums_limit++;
         }
-        $albums_limit++;
     } else {
         if($songs_limit>$limit){
             if($albums_limit>$limit){
@@ -75,9 +75,9 @@ foreach ($iter as $path => $dir) {
 //                $highlighted = str_ireplace($searchTerm, "<span class='highlight'>" . $searchTerm . "</span>", $pathsplit[$max - 1]);
                 $highlighted = preg_replace('#' . preg_quote($searchTerm) . '#i', "<span class='highlight'>\\0</span>", $pathsplit[$max - 1]);
                 $result[1][$pathsplit[$max - 3]]->albums[$pathsplit[$max - 2]]->songs[] = $highlighted;
+                $songs_limit++;
             }
         }
-        $songs_limit++;
     }
 }
 

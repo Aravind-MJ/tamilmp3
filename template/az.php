@@ -24,6 +24,7 @@
             <li ng-repeat = "name in list1 track by $index">
                 <div class = "lineup-artist">
                     <a href = "Album/{{ listlocation }}/{{name.name}}"> {{ name.name}}
+                        <span ng-if="name.year!=null">[{{name.year}}]</span>
                     </a>
                     <span class="new" ng-show="checknew(name.name)">New</span>
                 </div>
@@ -35,6 +36,7 @@
             <li ng-repeat = "name in list2 track by $index">
                 <div class = "lineup-artist">
                     <a href = "Album/{{ listlocation }}/{{name.name}}"> {{ name.name}}
+                        <span ng-if="name.year!=null">[{{name.year}}]</span>
                     </a>
                     <span class="new" ng-show="checknew(name.name)">New</span>
                 </div>
@@ -46,6 +48,7 @@
             <li ng-repeat = "name in list3 track by $index">
                 <div class = "lineup-artist">
                     <a href = "Album/{{ listlocation }}/{{name.name}}"> {{ name.name}}
+                        <span ng-if="name.year!=null">[{{name.year}}]</span>
                     </a>
                     <span class="new" ng-show="checknew(name.name)">New</span>
                 </div>

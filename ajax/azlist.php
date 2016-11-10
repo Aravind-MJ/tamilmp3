@@ -8,14 +8,14 @@ $file = $param->file;
 function folderlist($startdir, $alpha) {
     $ignoredDirectory[] = '.';
     $ignoredDirectory[] = '..';
-    $directorylist = '';
+    $directorylist = array();
     if (is_dir($startdir)) {
         if ($dh = opendir($startdir)) {
             while (($folder = readdir($dh)) !== false) {
                 if (!(array_search($folder, $ignoredDirectory) > -1)) {
                     if (filetype($startdir . $folder) == "dir") {
                         if ($alpha == "num") {
-                            if (is_numeric($folder[0])) {
+                            if (is_numeric($folder[0]) OR preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $folder[0])) {
                                 $directorylist[$startdir . $folder]['name'] = $folder;
                                 $directorylist[$startdir . $folder]['path'] = $startdir;
                             }
@@ -43,8 +43,8 @@ if ($file == false) {
     $response = array();
     $ofile = fopen($folder, 'r') or die("Unable to open file!");
     while ($line = fgets($ofile)) {
-        preg_match_all('/[0-9]{4}/', $line, $iyear);
-        preg_match_all('/[A-Za-z ]+/', $line, $iname);
+        preg_match_all('/[\[][0-9][\]]{4}/', $line, $iyear);
+        preg_match_all('/[\(\)0-9A-Za-z ]+/', $line, $iname);
         if ($iname[0][0][0] == strtolower($alpha) || $iname[0][0][0] == strtoupper($alpha)) {
             $response[$iname[0][0]] = new stdClass;
             $response[$iname[0][0]]->name = $iname[0][0];
